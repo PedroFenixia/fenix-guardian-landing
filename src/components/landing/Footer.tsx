@@ -1,4 +1,4 @@
-import fenixLogo from "@/assets/fenix-logo.png";
+import fenixLogo from "@/assets/fenix-final.png";
 
 const Footer = () => {
   const footerLinks = {
