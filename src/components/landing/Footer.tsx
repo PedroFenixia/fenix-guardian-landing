@@ -40,7 +40,7 @@ const Footer = () => {
                 className="h-10 w-10 object-contain opacity-70"
               />
               <span className="text-lg font-bold text-foreground">
-                Fenix <span className="text-primary">Guardian</span>
+                Fenix <span className="text-primary">Guardian</span> <span className="text-muted-foreground font-medium">Monitor</span>
               </span>
             </a>
             <p className="text-sm text-muted-foreground mb-6 max-w-xs">

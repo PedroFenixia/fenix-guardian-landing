@@ -34,7 +34,7 @@ const HeroSection = () => {
           <div className="text-center lg:text-left space-y-8">
             {/* Badge */}
             <div 
-              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-primary/20 text-sm opacity-0 animate-fade-in-up"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-primary/20 text-sm animate-fade-in-up"
               style={{ animationDelay: '0.1s' }}
             >
               <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
@@ -43,7 +43,7 @@ const HeroSection = () => {
 
             {/* Headline */}
             <h1 
-              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight opacity-0 animate-fade-in-up"
+              className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight animate-fade-in-up"
               style={{ animationDelay: '0.2s' }}
             >
               Control inteligente para{" "}
@@ -52,7 +52,7 @@ const HeroSection = () => {
 
             {/* Subheadline */}
             <p 
-              className="text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 opacity-0 animate-fade-in-up"
+              className="text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 animate-fade-in-up"
               style={{ animationDelay: '0.3s' }}
             >
               La plataforma de monitorización avanzada con IA para garantizar seguridad, productividad y cumplimiento.
@@ -60,7 +60,7 @@ const HeroSection = () => {
 
             {/* CTA Buttons */}
             <div 
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start opacity-0 animate-fade-in-up"
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up"
               style={{ animationDelay: '0.4s' }}
             >
               <Button variant="hero" size="xl" className="group">
@@ -75,7 +75,7 @@ const HeroSection = () => {
 
             {/* Trust badges */}
             <div 
-              className="flex flex-wrap items-center gap-6 justify-center lg:justify-start pt-4 opacity-0 animate-fade-in-up"
+              className="flex flex-wrap items-center gap-6 justify-center lg:justify-start pt-4 animate-fade-in-up"
               style={{ animationDelay: '0.5s' }}
             >
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -101,7 +101,7 @@ const HeroSection = () => {
 
           {/* Logo/Visual */}
           <div 
-            className="relative flex items-center justify-center opacity-0 animate-fade-in-up"
+            className="relative flex items-center justify-center animate-fade-in-up"
             style={{ animationDelay: '0.3s' }}
           >
             {/* Glow rings */}
@@ -112,12 +112,22 @@ const HeroSection = () => {
             {/* Central glow */}
             <div className="absolute w-48 h-48 lg:w-64 lg:h-64 bg-primary/10 rounded-full blur-3xl" />
             
-            {/* Logo */}
-            <img 
-              src={fenixLogo} 
-              alt="Fenix Guardian Monitor" 
-              className="relative w-48 h-48 lg:w-64 lg:h-64 object-contain animate-float drop-shadow-[0_0_30px_hsl(var(--primary)/0.3)]"
-            />
+            {/* Logo with glow effect */}
+            <div className="relative w-48 h-48 lg:w-64 lg:h-64 flex items-center justify-center">
+              {/* Outer glow ring behind logo */}
+              <div className="absolute w-52 h-52 lg:w-72 lg:h-72 bg-primary/5 rounded-full blur-2xl" />
+              {/* Inner glow */}
+              <div className="absolute inset-0 bg-gradient-radial from-primary/15 via-primary/5 to-transparent rounded-full" />
+              <img 
+                src={fenixLogo} 
+                alt="Fenix Guardian Monitor" 
+                className="relative w-44 h-44 lg:w-60 lg:h-60 object-contain animate-float"
+                style={{ 
+                  filter: 'drop-shadow(0 0 40px hsl(184 100% 54% / 0.4)) brightness(1.1)',
+                  borderRadius: '16px',
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
