@@ -34,16 +34,11 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-3 mb-4 group">
-              <div className="relative p-0.5 rounded-lg bg-gradient-to-br from-primary/30 via-primary/10 to-primary/30 shadow-[0_0_15px_hsl(var(--primary)/0.2)] transition-all duration-300 group-hover:shadow-[0_0_20px_hsl(var(--primary)/0.4)]">
-                <div className="rounded-md overflow-hidden bg-background/20 backdrop-blur-sm">
-                  <img 
-                    src={fenixLogo} 
-                    alt="Fenix Guardian Monitor" 
-                    className="h-9 w-9 object-contain"
-                    style={{ filter: 'drop-shadow(0 0 8px hsl(184 100% 54% / 0.3))' }}
-                  />
-                </div>
-              </div>
+              <img 
+                src={fenixLogo} 
+                alt="Fenix Guardian Monitor" 
+                className="h-10 w-10 object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_12px_hsl(var(--primary)/0.5)]"
+              />
               <span className="text-lg font-bold text-foreground">
                 Fenix <span className="text-primary">Guardian</span> <span className="text-muted-foreground font-medium">Monitor</span>
               </span>
