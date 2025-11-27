@@ -112,21 +112,25 @@ const HeroSection = () => {
             {/* Central glow */}
             <div className="absolute w-48 h-48 lg:w-64 lg:h-64 bg-primary/10 rounded-full blur-3xl" />
             
-            {/* Logo with glow effect */}
+            {/* Logo with decorative frame */}
             <div className="relative w-48 h-48 lg:w-64 lg:h-64 flex items-center justify-center">
               {/* Outer glow ring behind logo */}
               <div className="absolute w-52 h-52 lg:w-72 lg:h-72 bg-primary/5 rounded-full blur-2xl" />
               {/* Inner glow */}
               <div className="absolute inset-0 bg-gradient-radial from-primary/15 via-primary/5 to-transparent rounded-full" />
-              <img 
-                src={fenixLogo} 
-                alt="Fenix Guardian Monitor" 
-                className="relative w-44 h-44 lg:w-60 lg:h-60 object-contain animate-float"
-                style={{ 
-                  filter: 'drop-shadow(0 0 40px hsl(184 100% 54% / 0.4)) brightness(1.1)',
-                  borderRadius: '16px',
-                }}
-              />
+              {/* Logo container with neon frame */}
+              <div className="relative p-1 rounded-2xl bg-gradient-to-br from-primary/30 via-primary/10 to-primary/30 shadow-[0_0_30px_hsl(var(--primary)/0.3)]">
+                <div className="rounded-xl overflow-hidden bg-background/20 backdrop-blur-sm">
+                  <img 
+                    src={fenixLogo} 
+                    alt="Fenix Guardian Monitor" 
+                    className="w-40 h-40 lg:w-56 lg:h-56 object-contain animate-float"
+                    style={{ 
+                      filter: 'drop-shadow(0 0 20px hsl(184 100% 54% / 0.3))',
+                    }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         </div>
