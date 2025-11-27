@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import fenixLogo from "@/assets/fenix-final.png";
+import DemoRequestModal from "./DemoRequestModal";
 
 const HeroSection = () => {
   return (
@@ -67,10 +68,7 @@ const HeroSection = () => {
                 Empezar prueba
                 <ArrowRight className="transition-transform group-hover:translate-x-1" />
               </Button>
-              <Button variant="hero-outline" size="xl" className="group">
-                <Play size={18} />
-                Solicitar demo
-              </Button>
+              <DemoRequestModal />
             </div>
 
             {/* Trust badges */}
