@@ -25,7 +25,7 @@ const Header = () => {
               className="h-10 w-10 object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_10px_hsl(var(--primary)/0.5)]"
             />
             <span className="text-lg font-bold text-foreground hidden sm:block">
-              Fenix <span className="text-primary">Guardian</span>
+              Fenix <span className="text-primary">Guardian</span> <span className="text-muted-foreground font-medium">Monitor</span>
             </span>
           </a>
 
