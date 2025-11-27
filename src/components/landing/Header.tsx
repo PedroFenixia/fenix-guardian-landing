@@ -19,28 +19,23 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <div className="relative p-0.5 rounded-lg bg-gradient-to-br from-primary/30 via-primary/10 to-primary/30 shadow-[0_0_15px_hsl(var(--primary)/0.2)] transition-all duration-300 group-hover:shadow-[0_0_20px_hsl(var(--primary)/0.4)]">
-              <div className="rounded-md overflow-hidden bg-background/20 backdrop-blur-sm">
-                <img 
-                  src={fenixLogo} 
-                  alt="Fenix Guardian Monitor" 
-                  className="h-9 w-9 object-contain"
-                  style={{ filter: 'drop-shadow(0 0 8px hsl(184 100% 54% / 0.3))' }}
-                />
-              </div>
-            </div>
+            <img 
+              src={fenixLogo} 
+              alt="Fenix Guardian Monitor" 
+              className="h-10 w-10 object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_12px_hsl(var(--primary)/0.5)]"
+            />
             <span className="text-lg font-bold text-foreground hidden sm:block">
               Fenix <span className="text-primary">Guardian</span> <span className="text-muted-foreground font-medium">Monitor</span>
             </span>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
+                className="px-3 py-1.5 text-sm font-medium text-foreground bg-muted/50 rounded-md border border-border/50 hover:bg-primary/10 hover:border-primary/30 hover:text-primary transition-all duration-200"
               >
                 {link.label}
               </a>
@@ -48,8 +43,8 @@ const Header = () => {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden lg:flex items-center gap-4">
-            <Button variant="ghost" size="sm">
+          <div className="hidden lg:flex items-center gap-3">
+            <Button variant="secondary" size="sm">
               Iniciar sesión
             </Button>
             <Button variant="hero" size="sm">
