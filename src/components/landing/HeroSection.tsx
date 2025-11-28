@@ -103,26 +103,26 @@ const HeroSection = () => {
             style={{ animationDelay: '0.3s' }}
           >
             {/* Glow rings */}
-            <div className="absolute w-72 h-72 lg:w-96 lg:h-96 rounded-full border border-primary/20 animate-pulse-glow" />
-            <div className="absolute w-56 h-56 lg:w-72 lg:h-72 rounded-full border border-primary/30 animate-pulse-glow" style={{ animationDelay: '0.5s' }} />
-            <div className="absolute w-40 h-40 lg:w-56 lg:h-56 rounded-full border border-primary/40 animate-pulse-glow" style={{ animationDelay: '1s' }} />
+            <div className="absolute w-80 h-80 lg:w-[28rem] lg:h-[28rem] rounded-full border border-primary/20 animate-pulse-glow" />
+            <div className="absolute w-64 h-64 lg:w-96 lg:h-96 rounded-full border border-primary/30 animate-pulse-glow" style={{ animationDelay: '0.5s' }} />
+            <div className="absolute w-48 h-48 lg:w-72 lg:h-72 rounded-full border border-primary/40 animate-pulse-glow" style={{ animationDelay: '1s' }} />
             
             {/* Central glow */}
-            <div className="absolute w-48 h-48 lg:w-64 lg:h-64 bg-primary/10 rounded-full blur-3xl" />
+            <div className="absolute w-64 h-64 lg:w-80 lg:h-80 bg-primary/10 rounded-full blur-3xl" />
             
             {/* Logo */}
-            <div className="relative w-48 h-48 lg:w-64 lg:h-64 flex items-center justify-center">
+            <div className="relative w-64 h-64 lg:w-96 lg:h-96 flex items-center justify-center">
               {/* Outer glow ring behind logo */}
-              <div className="absolute w-52 h-52 lg:w-72 lg:h-72 bg-primary/5 rounded-full blur-2xl" />
+              <div className="absolute w-72 h-72 lg:w-[26rem] lg:h-[26rem] bg-primary/5 rounded-full blur-2xl" />
               {/* Inner glow */}
               <div className="absolute inset-0 bg-gradient-radial from-primary/15 via-primary/5 to-transparent rounded-full" />
               {/* Logo */}
               <img 
                 src={fenixLogo} 
                 alt="Fenix Guardian Monitor" 
-                className="relative w-44 h-44 lg:w-60 lg:h-60 object-contain animate-float"
+                className="relative w-56 h-56 lg:w-80 lg:h-80 object-contain animate-float"
                 style={{ 
-                  filter: 'drop-shadow(0 0 25px hsl(184 100% 54% / 0.4))',
+                  filter: 'drop-shadow(0 0 30px hsl(184 100% 54% / 0.5))',
                 }}
               />
             </div>

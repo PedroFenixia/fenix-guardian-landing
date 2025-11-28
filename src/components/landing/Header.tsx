@@ -22,7 +22,7 @@ const Header = () => {
             <img 
               src={fenixLogo} 
               alt="Fenix Guardian Monitor" 
-              className="h-10 w-10 object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_12px_hsl(var(--primary)/0.5)]"
+              className="h-12 w-12 object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_12px_hsl(var(--primary)/0.5)]"
             />
             <span className="text-lg font-bold text-foreground hidden sm:block">
               Fenix <span className="text-primary">Guardian</span> <span className="text-muted-foreground font-medium">Monitor</span>
