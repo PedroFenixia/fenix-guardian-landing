@@ -33,7 +33,7 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-3 mb-4 group">
               <span className="text-lg font-bold text-foreground">
-                Fenix <span className="text-primary">Guardian</span> <span className="text-muted-foreground font-medium">Monitor</span>
+                Fenix <span className="text-primary">Guardian</span>
               </span>
             </a>
             <p className="text-sm text-muted-foreground mb-6 max-w-xs">
@@ -86,7 +86,7 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Fenix Guardian Monitor. Todos los derechos reservados.
+            © {new Date().getFullYear()} Fenix Guardian. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">Política de privacidad</a>

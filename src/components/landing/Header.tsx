@@ -19,7 +19,7 @@ const Header = () => {
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
             <span className="text-lg font-bold text-foreground">
-              Fenix <span className="text-primary">Guardian</span> <span className="text-muted-foreground font-medium">Monitor</span>
+              Fenix <span className="text-primary">Guardian</span>
             </span>
           </a>
 
