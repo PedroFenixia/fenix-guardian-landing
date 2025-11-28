@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import fenixLogo from "@/assets/fenix-shield-only.png";
+import fenixLogo from "@/assets/fenix-new-logo.png";
 import DemoRequestModal from "./DemoRequestModal";
 
 const HeroSection = () => {
