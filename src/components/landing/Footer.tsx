@@ -1,5 +1,3 @@
-import fenixLogo from "@/assets/fenix-new-logo.png";
-
 const Footer = () => {
   const footerLinks = {
     producto: [
@@ -34,11 +32,6 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-3 mb-4 group">
-              <img 
-                src={fenixLogo} 
-                alt="Fenix Guardian Monitor" 
-                className="h-12 w-12 object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_12px_hsl(var(--primary)/0.5)]"
-              />
               <span className="text-lg font-bold text-foreground">
                 Fenix <span className="text-primary">Guardian</span> <span className="text-muted-foreground font-medium">Monitor</span>
               </span>
