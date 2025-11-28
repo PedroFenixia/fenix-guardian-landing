@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import fenixLogo from "@/assets/fenix-new-logo.png";
 import DemoRequestModal from "./DemoRequestModal";
 
 const HeroSection = () => {
@@ -30,9 +29,9 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent opacity-60" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="max-w-4xl mx-auto">
           {/* Content */}
-          <div className="text-center lg:text-left space-y-8">
+          <div className="text-center space-y-8">
             {/* Badge */}
             <div 
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-primary/20 text-sm animate-fade-in-up"
@@ -53,7 +52,7 @@ const HeroSection = () => {
 
             {/* Subheadline */}
             <p 
-              className="text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 animate-fade-in-up"
+              className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in-up"
               style={{ animationDelay: '0.3s' }}
             >
               La plataforma de monitorización avanzada con IA para garantizar seguridad, productividad y cumplimiento.
@@ -61,7 +60,7 @@ const HeroSection = () => {
 
             {/* CTA Buttons */}
             <div 
-              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up"
+              className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up"
               style={{ animationDelay: '0.4s' }}
             >
               <Button variant="hero" size="xl" className="group">
@@ -73,7 +72,7 @@ const HeroSection = () => {
 
             {/* Trust badges */}
             <div 
-              className="flex flex-wrap items-center gap-6 justify-center lg:justify-start pt-4 animate-fade-in-up"
+              className="flex flex-wrap items-center gap-6 justify-center pt-4 animate-fade-in-up"
               style={{ animationDelay: '0.5s' }}
             >
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -94,37 +93,6 @@ const HeroSection = () => {
                 </svg>
                 GDPR compliant
               </div>
-            </div>
-          </div>
-
-          {/* Logo/Visual */}
-          <div 
-            className="relative flex items-center justify-center animate-fade-in-up"
-            style={{ animationDelay: '0.3s' }}
-          >
-            {/* Glow rings */}
-            <div className="absolute w-80 h-80 lg:w-[28rem] lg:h-[28rem] rounded-full border border-primary/20 animate-pulse-glow" />
-            <div className="absolute w-64 h-64 lg:w-96 lg:h-96 rounded-full border border-primary/30 animate-pulse-glow" style={{ animationDelay: '0.5s' }} />
-            <div className="absolute w-48 h-48 lg:w-72 lg:h-72 rounded-full border border-primary/40 animate-pulse-glow" style={{ animationDelay: '1s' }} />
-            
-            {/* Central glow */}
-            <div className="absolute w-64 h-64 lg:w-80 lg:h-80 bg-primary/10 rounded-full blur-3xl" />
-            
-            {/* Logo */}
-            <div className="relative w-64 h-64 lg:w-96 lg:h-96 flex items-center justify-center">
-              {/* Outer glow ring behind logo */}
-              <div className="absolute w-72 h-72 lg:w-[26rem] lg:h-[26rem] bg-primary/5 rounded-full blur-2xl" />
-              {/* Inner glow */}
-              <div className="absolute inset-0 bg-gradient-radial from-primary/15 via-primary/5 to-transparent rounded-full" />
-              {/* Logo */}
-              <img 
-                src={fenixLogo} 
-                alt="Fenix Guardian Monitor" 
-                className="relative w-56 h-56 lg:w-80 lg:h-80 object-contain"
-                style={{ 
-                  filter: 'drop-shadow(0 0 30px hsl(184 100% 54% / 0.5))',
-                }}
-              />
             </div>
           </div>
         </div>
