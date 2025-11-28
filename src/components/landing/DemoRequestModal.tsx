@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Play, Send, Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
+import { supabase } from "@/integrations/supabase/client";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "El nombre es obligatorio").max(100, "Máximo 100 caracteres"),
@@ -62,18 +63,36 @@ const DemoRequestModal = () => {
 
     setIsSubmitting(true);
     
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    toast({
-      title: "Solicitud enviada",
-      description: "Nos pondremos en contacto contigo pronto.",
-    });
-    
-    setFormData({ name: "", company: "", email: "", message: "" });
-    setErrors({});
-    setIsSubmitting(false);
-    setOpen(false);
+    try {
+      const { error } = await supabase
+        .from('demo_requests')
+        .insert({
+          name: result.data.name,
+          company: result.data.company,
+          email: result.data.email,
+          message: result.data.message,
+        });
+
+      if (error) throw error;
+      
+      toast({
+        title: "Solicitud enviada",
+        description: "Nos pondremos en contacto contigo pronto.",
+      });
+      
+      setFormData({ name: "", company: "", email: "", message: "" });
+      setErrors({});
+      setOpen(false);
+    } catch (error) {
+      console.error('Error submitting demo request:', error);
+      toast({
+        title: "Error",
+        description: "No se pudo enviar la solicitud. Inténtalo de nuevo.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
