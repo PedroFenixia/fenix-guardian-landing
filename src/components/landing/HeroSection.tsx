@@ -108,7 +108,7 @@ const HeroSection = () => {
               <img 
                 src={fenixLogo} 
                 alt="Fenix Guardian" 
-                className="relative w-64 h-64 lg:w-96 lg:h-96 object-contain"
+                className="relative w-80 h-80 lg:w-[500px] lg:h-[500px] object-contain"
                 style={{ 
                   filter: 'drop-shadow(0 0 30px hsl(184 100% 54% / 0.4))',
                 }}
