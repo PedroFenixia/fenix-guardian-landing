@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import DemoRequestModal from "./DemoRequestModal";
+import fenixLogo from "@/assets/fenix-hero-logo.png";
 
 const HeroSection = () => {
   return (
@@ -29,9 +30,9 @@ const HeroSection = () => {
       <div className="absolute inset-0 bg-gradient-radial from-primary/5 via-transparent to-transparent opacity-60" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="max-w-4xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Content */}
-          <div className="text-center space-y-8">
+          <div className="text-center lg:text-left space-y-8">
             {/* Badge */}
             <div 
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-primary/20 text-sm animate-fade-in-up"
@@ -52,7 +53,7 @@ const HeroSection = () => {
 
             {/* Subheadline */}
             <p 
-              className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in-up"
+              className="text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 animate-fade-in-up"
               style={{ animationDelay: '0.3s' }}
             >
               La plataforma de monitorización avanzada con IA para garantizar seguridad, productividad y cumplimiento.
@@ -60,7 +61,7 @@ const HeroSection = () => {
 
             {/* CTA Buttons */}
             <div 
-              className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up"
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-up"
               style={{ animationDelay: '0.4s' }}
             >
               <Button variant="hero" size="xl" className="group">
@@ -72,7 +73,7 @@ const HeroSection = () => {
 
             {/* Trust badges */}
             <div 
-              className="flex flex-wrap items-center gap-6 justify-center pt-4 animate-fade-in-up"
+              className="flex flex-wrap items-center gap-6 justify-center lg:justify-start pt-4 animate-fade-in-up"
               style={{ animationDelay: '0.5s' }}
             >
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -93,6 +94,25 @@ const HeroSection = () => {
                 </svg>
                 GDPR compliant
               </div>
+            </div>
+          </div>
+
+          {/* Logo */}
+          <div 
+            className="relative flex items-center justify-center animate-fade-in-up"
+            style={{ animationDelay: '0.3s' }}
+          >
+            <div className="relative">
+              {/* Glow effect behind logo */}
+              <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl scale-75" />
+              <img 
+                src={fenixLogo} 
+                alt="Fenix Guardian" 
+                className="relative w-64 h-64 lg:w-96 lg:h-96 object-contain"
+                style={{ 
+                  filter: 'drop-shadow(0 0 30px hsl(184 100% 54% / 0.4))',
+                }}
+              />
             </div>
           </div>
         </div>
