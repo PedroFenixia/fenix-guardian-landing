@@ -103,15 +103,10 @@ const HeroSection = () => {
             style={{ animationDelay: '0.3s' }}
           >
             <div className="relative">
-              {/* Glow effect behind logo */}
-              <div className="absolute inset-0 bg-primary/10 rounded-full blur-3xl scale-75" />
               <img 
                 src={fenixLogo} 
                 alt="Fenix Guardian" 
-                className="relative w-80 h-80 lg:w-[500px] lg:h-[500px] object-contain"
-                style={{ 
-                  filter: 'drop-shadow(0 0 30px hsl(184 100% 54% / 0.4))',
-                }}
+                className="relative w-80 h-80 lg:w-[500px] lg:h-[500px] object-contain mix-blend-lighten"
               />
             </div>
           </div>
