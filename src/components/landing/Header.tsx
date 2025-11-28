@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import fenixLogo from "@/assets/fenix-new-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,12 +18,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
-            <img 
-              src={fenixLogo} 
-              alt="Fenix Guardian Monitor" 
-              className="h-12 w-12 object-contain transition-all duration-300 group-hover:drop-shadow-[0_0_12px_hsl(var(--primary)/0.5)]"
-            />
-            <span className="text-lg font-bold text-foreground hidden sm:block">
+            <span className="text-lg font-bold text-foreground">
               Fenix <span className="text-primary">Guardian</span> <span className="text-muted-foreground font-medium">Monitor</span>
             </span>
           </a>
