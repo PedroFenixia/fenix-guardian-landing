@@ -120,7 +120,7 @@ const HeroSection = () => {
               <img 
                 src={fenixLogo} 
                 alt="Fenix Guardian Monitor" 
-                className="relative w-56 h-56 lg:w-80 lg:h-80 object-contain animate-float"
+                className="relative w-56 h-56 lg:w-80 lg:h-80 object-contain"
                 style={{ 
                   filter: 'drop-shadow(0 0 30px hsl(184 100% 54% / 0.5))',
                 }}
