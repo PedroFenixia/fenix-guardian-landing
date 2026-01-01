@@ -47,6 +47,26 @@ const Contact = () => {
       if (error) {
         throw new Error(error.message);
       }
+
+      // Send to Holded CRM
+      try {
+        const holdedResponse = await supabase.functions.invoke('holded-lead', {
+          body: {
+            name: validatedData.name,
+            email: validatedData.email,
+            company: validatedData.company || '',
+            message: validatedData.message,
+          },
+        });
+        
+        if (holdedResponse.error) {
+          console.error('Error sending to Holded:', holdedResponse.error);
+        } else {
+          console.log('Lead sent to Holded successfully');
+        }
+      } catch (holdedError) {
+        console.error('Error calling Holded function:', holdedError);
+      }
       
       toast({
         title: "Mensaje enviado",
