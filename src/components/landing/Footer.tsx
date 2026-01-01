@@ -4,7 +4,6 @@ const Footer = () => {
   const footerLinks = {
     empresa: [
       { label: "Sobre nosotros", href: "/nosotros" },
-      { label: "Nuestro equipo", href: "/equipo" },
       { label: "Carreras", href: "/carreras" },
     ],
     legal: [
