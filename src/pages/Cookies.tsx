@@ -14,49 +14,99 @@ const Cookies = () => {
               </h1>
               
               <div className="prose prose-invert max-w-none space-y-8">
-                <p className="text-muted-foreground">
-                  Última actualización: Enero 2024
-                </p>
-
                 <section className="space-y-4">
-                  <h2 className="text-2xl font-semibold">1. ¿Qué son las cookies?</h2>
+                  <h2 className="text-2xl font-semibold">1. ¿Qué son las Cookies?</h2>
                   <p className="text-muted-foreground">
-                    Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas nuestro sitio web. Nos ayudan a mejorar tu experiencia de navegación y a entender cómo utilizas nuestro sitio.
+                    Las cookies son pequeños archivos de texto que se almacenan en su dispositivo cuando visita nuestro sitio web. Nos ayudan a mejorar su experiencia de navegación y a entender cómo utiliza nuestro sitio.
                   </p>
                 </section>
 
                 <section className="space-y-4">
-                  <h2 className="text-2xl font-semibold">2. Tipos de cookies que utilizamos</h2>
+                  <h2 className="text-2xl font-semibold">2. Tipos de Cookies que Utilizamos</h2>
+                  
+                  <div className="space-y-4">
+                    <div>
+                      <h3 className="text-lg font-medium text-foreground">Cookies Técnicas (Necesarias)</h3>
+                      <p className="text-muted-foreground">
+                        Son esenciales para el funcionamiento del sitio web. Sin estas cookies, el sitio no puede funcionar correctamente.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-lg font-medium text-foreground">Cookies de Análisis</h3>
+                      <p className="text-muted-foreground">
+                        Nos ayudan a entender cómo los visitantes interactúan con nuestro sitio web, proporcionándonos información sobre las páginas visitadas, el tiempo de permanencia, etc.
+                      </p>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-lg font-medium text-foreground">Cookies de Funcionalidad</h3>
+                      <p className="text-muted-foreground">
+                        Permiten que el sitio web recuerde las elecciones que hace (como su idioma o región) y proporcionan características mejoradas y más personales.
+                      </p>
+                    </div>
+                  </div>
+                </section>
+
+                <section className="space-y-4">
+                  <h2 className="text-2xl font-semibold">3. Cookies de Terceros</h2>
+                  <p className="text-muted-foreground">
+                    Nuestro sitio web puede utilizar cookies de terceros para servicios como análisis web, mapas, videos integrados, etc. Estas cookies están sujetas a las políticas de privacidad de los respectivos terceros.
+                  </p>
+                </section>
+
+                <section className="space-y-4">
+                  <h2 className="text-2xl font-semibold">4. Gestión de Cookies</h2>
+                  <p className="text-muted-foreground">
+                    Puede gestionar las cookies a través de la configuración de su navegador:
+                  </p>
                   <ul className="list-disc list-inside text-muted-foreground space-y-2">
-                    <li><strong>Cookies esenciales:</strong> Necesarias para el funcionamiento básico del sitio web.</li>
-                    <li><strong>Cookies analíticas:</strong> Nos ayudan a entender cómo los visitantes interactúan con el sitio.</li>
-                    <li><strong>Cookies de preferencias:</strong> Permiten recordar tus preferencias de navegación.</li>
+                    <li>Aceptar o rechazar cookies</li>
+                    <li>Eliminar cookies existentes</li>
+                    <li>Configurar notificaciones antes de recibir cookies</li>
+                    <li>Bloquear cookies de sitios específicos</li>
                   </ul>
                 </section>
 
                 <section className="space-y-4">
-                  <h2 className="text-2xl font-semibold">3. Gestión de cookies</h2>
+                  <h2 className="text-2xl font-semibold">5. Configuración por Navegador</h2>
+                  <div className="grid gap-3">
+                    <div className="flex items-center gap-3">
+                      <strong className="text-foreground min-w-20">Chrome</strong>
+                      <span className="text-muted-foreground">Configuración → Privacidad y seguridad → Cookies</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <strong className="text-foreground min-w-20">Firefox</strong>
+                      <span className="text-muted-foreground">Opciones → Privacidad y seguridad → Cookies</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <strong className="text-foreground min-w-20">Safari</strong>
+                      <span className="text-muted-foreground">Preferencias → Privacidad → Cookies</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <strong className="text-foreground min-w-20">Edge</strong>
+                      <span className="text-muted-foreground">Configuración → Privacidad → Cookies</span>
+                    </div>
+                  </div>
+                </section>
+
+                <section className="space-y-4">
+                  <h2 className="text-2xl font-semibold">6. Consentimiento</h2>
                   <p className="text-muted-foreground">
-                    Puedes configurar tu navegador para rechazar todas las cookies o para que te avise cuando se envía una cookie. Sin embargo, algunas funciones del sitio pueden no funcionar correctamente sin cookies.
+                    Al continuar navegando por nuestro sitio web, acepta el uso de cookies de acuerdo con esta política. Puede retirar su consentimiento en cualquier momento modificando la configuración de su navegador.
                   </p>
                 </section>
 
                 <section className="space-y-4">
-                  <h2 className="text-2xl font-semibold">4. Cookies de terceros</h2>
+                  <h2 className="text-2xl font-semibold">7. Contacto</h2>
                   <p className="text-muted-foreground">
-                    Podemos utilizar servicios de terceros que también pueden establecer cookies en tu dispositivo. Estos servicios tienen sus propias políticas de privacidad.
+                    Si tiene alguna pregunta sobre nuestra política de cookies, puede contactarnos en <a href="mailto:contacto@fenixia.tech" className="text-primary hover:underline">contacto@fenixia.tech</a> o en el teléfono <a href="tel:+34966101029" className="text-primary hover:underline">+34 966 10 10 29</a>
                   </p>
                 </section>
 
-                <section className="space-y-4">
-                  <h2 className="text-2xl font-semibold">5. Más información</h2>
-                  <p className="text-muted-foreground">
-                    Si tienes preguntas sobre nuestra política de cookies, contáctanos en:
-                  </p>
-                  <p className="text-muted-foreground">
-                    Email: <a href="mailto:hola@fenixia.tech" className="text-primary hover:underline">hola@fenixia.tech</a>
-                  </p>
-                </section>
+                <p className="text-muted-foreground pt-4 border-t border-border/50">
+                  Última actualización: Julio 2025
+                </p>
               </div>
             </div>
           </div>
