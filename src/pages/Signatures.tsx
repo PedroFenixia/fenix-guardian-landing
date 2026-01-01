@@ -155,7 +155,7 @@ const Signatures = () => {
   const signatures = [
     {
       name: "Pedro Sánchez",
-      role: "Co-Founder",
+      role: "Co-Founder & COO",
       email: "pedro@fenixia.tech",
       phone: "+34 620 654 925",
     },
