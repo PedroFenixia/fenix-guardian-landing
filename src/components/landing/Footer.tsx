@@ -6,11 +6,6 @@ const Footer = () => {
       { label: "Sobre nosotros", href: "/nosotros" },
       { label: "Carreras", href: "/carreras" },
     ],
-    legal: [
-      { label: "Aviso Legal", href: "/terminos" },
-      { label: "Política de Privacidad", href: "/privacidad" },
-      { label: "Política de Cookies", href: "/cookies" },
-    ],
     contacto: [
       { label: "Contacto", href: "/contacto" },
       { label: "hola@fenixia.tech", href: "mailto:hola@fenixia.tech" },
