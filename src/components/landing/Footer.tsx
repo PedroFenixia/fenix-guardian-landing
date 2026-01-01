@@ -75,8 +75,8 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="pt-8 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} FENIX IA SOLUTIONS. Todos los derechos reservados.
+          <p className="text-sm text-foreground/80">
+            © 2026 FENIX IA SOLUTIONS SL. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <Link to="/terminos" className="hover:text-foreground transition-colors">Aviso Legal</Link>
