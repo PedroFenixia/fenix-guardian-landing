@@ -9,7 +9,11 @@ const Footer = () => {
     contacto: [
       { label: "contacto@fenixia.tech", href: "mailto:contacto@fenixia.tech" },
       { label: "+34 966 10 10 29", href: "tel:+34966101029" },
-      { label: "C/ La Paz, 83, 03320 Torrellano-Elche, Alicante", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano-Elche,+Alicante" },
+    ],
+    dirección: [
+      { label: "C/ La Paz, 83", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano-Elche,+Alicante" },
+      { label: "03320 Torrellano-Elche", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano-Elche,+Alicante" },
+      { label: "Alicante, España", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano-Elche,+Alicante" },
     ],
   };
 
