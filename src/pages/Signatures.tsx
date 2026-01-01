@@ -36,12 +36,12 @@ END:VCARD`;
   const signatureHtml = `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 32px 40px; border-radius: 8px; width: 100%; max-width: 650px;">
   <tr>
-    <td style="padding-right: 32px; border-right: 3px solid #15F0FF; vertical-align: top; text-align: center;">
+    <td style="padding-right: 16px; border-right: 3px solid #15F0FF; vertical-align: top; text-align: center;">
       <img src="${logoUrl}" alt="Fenix IA" width="140" height="140" style="display: block; border-radius: 8px; margin-bottom: 12px;" />
       <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="80" height="80" style="display: block; margin: 0 auto; border-radius: 4px;" />
       <span style="font-size: 10px; color: #D9D9D9; display: block; margin-top: 6px;">Escanea para guardar</span>
     </td>
-    <td style="padding-left: 32px;">
+    <td style="padding-left: 24px;">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td style="font-size: 20px; font-weight: bold; color: #FFFFFF; padding-bottom: 6px;">
@@ -79,8 +79,8 @@ END:VCARD`;
     </td>
   </tr>
   <tr>
-    <td style="padding-right: 32px; vertical-align: top;"></td>
-    <td style="padding-left: 32px; padding-top: 20px;">
+    <td style="padding-right: 16px; vertical-align: top;"></td>
+    <td style="padding-left: 24px; padding-top: 20px;">
       <table cellpadding="0" cellspacing="0" border="0" width="100%">
         <tr>
           <td style="font-size: 12px; color: #D9D9D9;">
