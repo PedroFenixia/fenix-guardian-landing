@@ -30,7 +30,7 @@ const ValueProposition = () => {
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
             ¿Por qué <span className="text-primary">FENIX IA</span>?
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-foreground/80">
             Somos tu partner estratégico en la transformación digital impulsada por inteligencia artificial.
           </p>
         </div>
@@ -52,7 +52,7 @@ const ValueProposition = () => {
               <h3 className="text-xl font-semibold mb-3 text-foreground">
                 {value.title}
               </h3>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-foreground/80 leading-relaxed">
                 {value.description}
               </p>
             </div>
