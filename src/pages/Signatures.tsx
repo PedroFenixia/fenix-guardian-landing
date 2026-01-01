@@ -161,7 +161,7 @@ const Signatures = () => {
     },
     {
       name: "Jose J. Antón",
-      role: "Co-Founder",
+      role: "Co-Founder & CEO",
       email: "jose@fenixia.tech",
       phone: "+34 966 10 10 29",
     },
