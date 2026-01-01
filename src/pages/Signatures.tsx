@@ -19,17 +19,23 @@ const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
     : "/logoFENIXIA.png";
 
   // Generate vCard data for QR code
-  const vCardData = `BEGIN:VCARD
-VERSION:3.0
-N:${name.split(' ').slice(1).join(' ')};${name.split(' ')[0]}
-FN:${name}
-ORG:FENIX IA SOLUTIONS SL
-TITLE:${role}
-TEL;TYPE=WORK,VOICE:${phone.replace(/\s/g, '')}
-EMAIL:${email}
-URL:https://fenixia.tech
-ADR;TYPE=WORK:;;C/ La Paz, 83;Torrellano-Elche;Alicante;03320;Spain
-END:VCARD`;
+  const firstName = name.split(' ')[0];
+  const lastName = name.split(' ').slice(1).join(' ');
+  const phoneClean = phone.replace(/\s/g, '');
+  
+  const vCardData = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    `N:${lastName};${firstName}`,
+    `FN:${name}`,
+    'ORG:FENIX IA SOLUTIONS SL',
+    `TITLE:${role}`,
+    `TEL;TYPE=WORK,VOICE:${phoneClean}`,
+    `EMAIL:${email}`,
+    'URL:https://fenixia.tech',
+    'ADR;TYPE=WORK:;;C/ La Paz 83;Torrellano-Elche;Alicante;03320;Spain',
+    'END:VCARD'
+  ].join('\\n');
 
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=${encodeURIComponent(vCardData)}&bgcolor=1A1C1E&color=15F0FF`;
 
