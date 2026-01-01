@@ -1,60 +1,36 @@
 import { 
-  AlertCircle, 
-  Monitor, 
-  FileText, 
-  History, 
-  Sparkles,
-  Lock,
-  Eye,
-  Zap
+  Lightbulb, 
+  Target, 
+  Handshake, 
+  TrendingUp
 } from "lucide-react";
 
 const features = [
   {
-    icon: AlertCircle,
-    title: "Alertas de riesgo",
-    description: "Notificaciones en tiempo real sobre comportamientos sospechosos y potenciales amenazas de seguridad.",
+    icon: Lightbulb,
+    title: "Visión innovadora",
+    description: "Buscamos constantemente nuevas formas de aplicar la IA para generar valor en cada proyecto.",
   },
   {
-    icon: Monitor,
-    title: "Control de teletrabajo",
-    description: "Monitorización completa de la actividad remota con métricas de productividad y engagement.",
+    icon: Target,
+    title: "Enfoque personalizado",
+    description: "Cada solución es única y está diseñada específicamente para las necesidades de tu negocio.",
   },
   {
-    icon: FileText,
-    title: "Informes automáticos",
-    description: "Generación automática de reportes detallados con insights accionables para la toma de decisiones.",
+    icon: Handshake,
+    title: "Compromiso total",
+    description: "Trabajamos codo a codo contigo para garantizar el éxito de cada iniciativa.",
   },
   {
-    icon: History,
-    title: "Registro de actividad",
-    description: "Historial completo de acciones con timestamps y contexto para auditorías y compliance.",
-  },
-  {
-    icon: Sparkles,
-    title: "Detección de anomalías",
-    description: "Algoritmos de IA que identifican patrones inusuales antes de que se conviertan en problemas.",
-  },
-  {
-    icon: Lock,
-    title: "Gestión de accesos",
-    description: "Control granular de permisos y políticas de seguridad para cada usuario y dispositivo.",
-  },
-  {
-    icon: Eye,
-    title: "Supervisión en vivo",
-    description: "Vista en tiempo real de la actividad del equipo con dashboards personalizables.",
-  },
-  {
-    icon: Zap,
-    title: "Respuesta automatizada",
-    description: "Acciones automáticas ante incidentes predefinidos para minimizar tiempos de respuesta.",
+    icon: TrendingUp,
+    title: "Resultados medibles",
+    description: "Nos enfocamos en generar impacto real y cuantificable en tu organización.",
   },
 ];
 
 const FeaturesSection = () => {
   return (
-    <section id="features" className="py-24 lg:py-32 relative">
+    <section id="solutions" className="py-24 lg:py-32 relative">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/10 to-background" />
 
@@ -62,14 +38,13 @@ const FeaturesSection = () => {
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Funcionalidades
+            Nuestro enfoque
           </span>
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            Todo lo que necesitas para{" "}
-            <span className="text-primary">proteger</span> tu equipo
+            Cómo <span className="text-primary">trabajamos</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Herramientas avanzadas diseñadas para empresas que priorizan la seguridad sin comprometer la experiencia del empleado.
+            Nuestra metodología se basa en la colaboración estrecha, la innovación continua y el compromiso con los resultados.
           </p>
         </div>
 

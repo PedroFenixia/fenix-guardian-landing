@@ -1,43 +1,34 @@
 const Footer = () => {
   const footerLinks = {
-    producto: [
-      { label: "Características", href: "#features" },
-      { label: "Tarifas", href: "#pricing" },
-      { label: "Integraciones", href: "#" },
-      { label: "API", href: "#" },
-    ],
     empresa: [
-      { label: "Sobre nosotros", href: "#" },
+      { label: "Sobre nosotros", href: "#about" },
+      { label: "Nuestro equipo", href: "#" },
       { label: "Carreras", href: "#" },
-      { label: "Blog", href: "#" },
-      { label: "Prensa", href: "#" },
     ],
     legal: [
       { label: "Privacidad", href: "#" },
       { label: "Términos", href: "#" },
-      { label: "Seguridad", href: "#" },
-      { label: "GDPR", href: "#" },
+      { label: "Cookies", href: "#" },
     ],
-    soporte: [
-      { label: "Centro de ayuda", href: "#" },
-      { label: "Contacto", href: "#" },
-      { label: "Status", href: "#" },
+    contacto: [
+      { label: "Email", href: "mailto:info@fenixia.com" },
+      { label: "LinkedIn", href: "#" },
     ],
   };
 
   return (
     <footer id="footer" className="py-16 lg:py-20 border-t border-border/50">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid lg:grid-cols-6 gap-12 lg:gap-8 mb-12">
+        <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="#" className="flex items-center gap-3 mb-4 group">
               <span className="text-lg font-bold text-foreground">
-                Fenix <span className="text-primary">Guardian</span>
+                FENIX <span className="text-primary">IA SOLUTIONS</span>
               </span>
             </a>
             <p className="text-sm text-muted-foreground mb-6 max-w-xs">
-              Plataforma de monitorización avanzada con IA para equipos remotos. Seguridad, productividad y cumplimiento.
+              Transformamos empresas con soluciones de inteligencia artificial innovadoras y personalizadas.
             </p>
             <div className="flex gap-4">
               {['linkedin', 'twitter', 'github'].map((social) => (
@@ -86,12 +77,11 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Fenix Guardian. Todos los derechos reservados.
+            © {new Date().getFullYear()} FENIX IA SOLUTIONS. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">Política de privacidad</a>
             <a href="#" className="hover:text-foreground transition-colors">Términos de servicio</a>
-            <a href="#" className="hover:text-foreground transition-colors">Cookies</a>
           </div>
         </div>
       </div>
