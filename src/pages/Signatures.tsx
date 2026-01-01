@@ -1,0 +1,172 @@
+import { useState } from "react";
+import { Copy, Check } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { toast } from "@/hooks/use-toast";
+
+interface SignatureProps {
+  name: string;
+  role: string;
+  email: string;
+  phone: string;
+}
+
+const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
+  const [copied, setCopied] = useState(false);
+
+  const signatureHtml = `
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.4; color: #333333;">
+  <tr>
+    <td style="padding-right: 20px; border-right: 3px solid #15F0FF;">
+      <img src="https://fenixia.tech/logo.png" alt="Fenix IA" width="80" height="80" style="display: block;" />
+    </td>
+    <td style="padding-left: 20px;">
+      <table cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td style="font-size: 18px; font-weight: bold; color: #1A1C1E; padding-bottom: 4px;">
+            ${name}
+          </td>
+        </tr>
+        <tr>
+          <td style="font-size: 13px; color: #15F0FF; font-weight: 500; padding-bottom: 12px;">
+            ${role}
+          </td>
+        </tr>
+        <tr>
+          <td style="font-size: 13px; color: #666666; padding-bottom: 4px;">
+            <a href="mailto:${email}" style="color: #1A1C1E; text-decoration: none;">${email}</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-size: 13px; color: #666666; padding-bottom: 4px;">
+            <a href="tel:+34966101029" style="color: #1A1C1E; text-decoration: none;">${phone}</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-size: 13px; color: #666666; padding-bottom: 8px;">
+            <a href="https://fenixia.tech" style="color: #15F0FF; text-decoration: none; font-weight: 500;">fenixia.tech</a>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding-top: 8px;">
+            <a href="https://www.linkedin.com/company/fenixia" style="text-decoration: none;">
+              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="20" height="20" style="display: inline-block;" />
+            </a>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="padding-top: 16px;">
+      <table cellpadding="0" cellspacing="0" border="0" width="100%">
+        <tr>
+          <td style="font-size: 11px; color: #999999; border-top: 1px solid #E0E0E0; padding-top: 12px;">
+            <strong style="color: #1A1C1E;">FENIX IA SOLUTIONS SL</strong><br />
+            C/ La Paz, 83 · 03320 Torrellano-Elche · Alicante
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+  `.trim();
+
+  const copyToClipboard = async () => {
+    try {
+      await navigator.clipboard.writeText(signatureHtml);
+      setCopied(true);
+      toast({
+        title: "Copiado",
+        description: `Firma de ${name} copiada al portapapeles`,
+      });
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      toast({
+        title: "Error",
+        description: "No se pudo copiar la firma",
+        variant: "destructive",
+      });
+    }
+  };
+
+  return (
+    <div className="glass-card p-6 rounded-xl">
+      <div className="flex justify-between items-center mb-4">
+        <h3 className="text-lg font-semibold text-foreground">{name}</h3>
+        <Button
+          variant="outline"
+          size="sm"
+          onClick={copyToClipboard}
+          className="gap-2"
+        >
+          {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+          {copied ? "Copiado" : "Copiar HTML"}
+        </Button>
+      </div>
+      
+      {/* Preview */}
+      <div className="bg-white p-6 rounded-lg">
+        <div dangerouslySetInnerHTML={{ __html: signatureHtml }} />
+      </div>
+    </div>
+  );
+};
+
+const Signatures = () => {
+  const signatures = [
+    {
+      name: "Pedro Sánchez",
+      role: "CEO & Founder",
+      email: "pedro@fenixia.tech",
+      phone: "+34 966 10 10 29",
+    },
+    {
+      name: "Jose A. García",
+      role: "CTO",
+      email: "jose@fenixia.tech",
+      phone: "+34 966 10 10 29",
+    },
+    {
+      name: "Izhar Cohen",
+      role: "COO",
+      email: "izhar@fenixia.tech",
+      phone: "+34 966 10 10 29",
+    },
+  ];
+
+  return (
+    <div className="min-h-screen bg-background text-foreground py-12">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold mb-4">
+            Firmas de <span className="text-primary">Email</span>
+          </h1>
+          <p className="text-muted-foreground max-w-2xl mx-auto">
+            Copia el código HTML de tu firma y pégalo en la configuración de firma de tu cliente de correo.
+          </p>
+        </div>
+
+        <div className="grid gap-8 max-w-3xl mx-auto">
+          {signatures.map((sig) => (
+            <SignatureTemplate key={sig.email} {...sig} />
+          ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <div className="glass-card p-6 rounded-xl max-w-2xl mx-auto">
+            <h3 className="text-lg font-semibold mb-4">Instrucciones</h3>
+            <ol className="text-left text-muted-foreground space-y-2 text-sm">
+              <li>1. Haz clic en "Copiar HTML" para copiar el código de tu firma</li>
+              <li>2. Abre la configuración de tu cliente de correo (Gmail, Outlook, etc.)</li>
+              <li>3. Busca la opción de "Firma" en la configuración</li>
+              <li>4. Pega el código HTML en el editor de firma</li>
+              <li>5. Guarda los cambios</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Signatures;
