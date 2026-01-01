@@ -14,7 +14,7 @@ const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
   const [copied, setCopied] = useState(false);
 
   const signatureHtml = `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 24px 32px; border-radius: 8px; min-width: 480px;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 24px 32px; border-radius: 8px; width: 100%; max-width: 600px;">
   <tr>
     <td style="padding-right: 24px; border-right: 3px solid #15F0FF; vertical-align: top;">
       <img src="https://aetxomsehqbuhpotkkdy.supabase.co/storage/v1/object/public/assets/logoFENIXIA.png" alt="Fenix IA" width="90" height="90" style="display: block; border-radius: 8px;" />
@@ -146,7 +146,7 @@ const Signatures = () => {
           </p>
         </div>
 
-        <div className="grid gap-8 max-w-3xl mx-auto">
+        <div className="grid gap-8 max-w-4xl mx-auto">
           {signatures.map((sig) => (
             <SignatureTemplate key={sig.email} {...sig} />
           ))}
