@@ -8,13 +8,14 @@ const Footer = () => {
       { label: "Carreras", href: "/carreras" },
     ],
     legal: [
-      { label: "Privacidad", href: "/privacidad" },
-      { label: "Términos", href: "/terminos" },
-      { label: "Cookies", href: "/cookies" },
+      { label: "Aviso Legal", href: "/terminos" },
+      { label: "Política de Privacidad", href: "/privacidad" },
+      { label: "Política de Cookies", href: "/cookies" },
     ],
     contacto: [
       { label: "Contacto", href: "/contacto" },
       { label: "hola@fenixia.tech", href: "mailto:hola@fenixia.tech" },
+      { label: "+34 966 10 10 29", href: "tel:+34966101029" },
     ],
   };
 
@@ -91,8 +92,9 @@ const Footer = () => {
             © {new Date().getFullYear()} FENIX IA SOLUTIONS. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <Link to="/privacidad" className="hover:text-foreground transition-colors">Política de privacidad</Link>
-            <Link to="/terminos" className="hover:text-foreground transition-colors">Términos de servicio</Link>
+            <Link to="/terminos" className="hover:text-foreground transition-colors">Aviso Legal</Link>
+            <Link to="/privacidad" className="hover:text-foreground transition-colors">Política de Privacidad</Link>
+            <Link to="/cookies" className="hover:text-foreground transition-colors">Política de Cookies</Link>
           </div>
         </div>
       </div>

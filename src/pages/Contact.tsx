@@ -123,8 +123,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Email</h3>
-                    <a href="mailto:hola@fenixia.tech" className="text-muted-foreground hover:text-primary transition-colors">
-                        hola@fenixia.tech
+                      <a href="mailto:contacto@fenixia.tech" className="text-muted-foreground hover:text-primary transition-colors">
+                        contacto@fenixia.tech
                       </a>
                     </div>
                   </div>
@@ -135,8 +135,8 @@ const Contact = () => {
                     </div>
                     <div>
                       <h3 className="font-semibold mb-1">Teléfono</h3>
-                      <a href="tel:+34900000000" className="text-muted-foreground hover:text-primary transition-colors">
-                        +34 900 000 000
+                      <a href="tel:+34966101029" className="text-muted-foreground hover:text-primary transition-colors">
+                        +34 966 10 10 29
                       </a>
                     </div>
                   </div>
@@ -148,7 +148,8 @@ const Contact = () => {
                     <div>
                       <h3 className="font-semibold mb-1">Ubicación</h3>
                       <p className="text-muted-foreground">
-                        España
+                        C/ La Paz, 83<br />
+                        03320 Torrellano-Elche, Alicante
                       </p>
                     </div>
                   </div>
