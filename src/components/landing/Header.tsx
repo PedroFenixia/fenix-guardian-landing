@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Home } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
@@ -34,6 +34,12 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
+            <Link to="/">
+              <Button variant="outline" size="sm" className="gap-2">
+                <Home className="w-4 h-4" />
+                Inicio
+              </Button>
+            </Link>
             <Link to="/contacto">
               <Button variant="hero" size="sm">
                 Contáctanos
@@ -66,6 +72,12 @@ const Header = () => {
                 </Link>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
+                <Link to="/" onClick={() => setIsMenuOpen(false)}>
+                  <Button variant="outline" size="sm" className="w-full gap-2">
+                    <Home className="w-4 h-4" />
+                    Inicio
+                  </Button>
+                </Link>
                 <Link to="/contacto" onClick={() => setIsMenuOpen(false)}>
                   <Button variant="hero" size="sm" className="w-full">
                     Contáctanos
