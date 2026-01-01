@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
@@ -60,12 +61,14 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up"
             style={{ animationDelay: '0.4s' }}
           >
-            <Button variant="hero" size="xl" className="group">
-              Hablemos
-              <ArrowRight className="transition-transform group-hover:translate-x-1" />
+            <Button variant="hero" size="xl" className="group" asChild>
+              <Link to="/contacto">
+                Hablemos
+                <ArrowRight className="transition-transform group-hover:translate-x-1" />
+              </Link>
             </Button>
-            <Button variant="hero-outline" size="xl">
-              Conócenos
+            <Button variant="hero-outline" size="xl" asChild>
+              <Link to="/nosotros">Conócenos</Link>
             </Button>
           </div>
 
