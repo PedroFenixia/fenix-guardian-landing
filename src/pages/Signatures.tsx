@@ -14,42 +14,42 @@ const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
   const [copied, setCopied] = useState(false);
 
   const signatureHtml = `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.4; background-color: #1A1C1E; padding: 20px; border-radius: 8px;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 24px 32px; border-radius: 8px; min-width: 480px;">
   <tr>
-    <td style="padding-right: 20px; border-right: 3px solid #15F0FF; vertical-align: top;">
-      <img src="https://aetxomsehqbuhpotkkdy.supabase.co/storage/v1/object/public/assets/fenix-shield-only.png" alt="Fenix IA" width="80" height="80" style="display: block;" />
+    <td style="padding-right: 24px; border-right: 3px solid #15F0FF; vertical-align: top;">
+      <img src="https://aetxomsehqbuhpotkkdy.supabase.co/storage/v1/object/public/assets/fenix-shield-only.png" alt="Fenix IA" width="90" height="90" style="display: block;" />
     </td>
-    <td style="padding-left: 20px;">
+    <td style="padding-left: 24px;">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td style="font-size: 18px; font-weight: bold; color: #FFFFFF; padding-bottom: 4px;">
+          <td style="font-size: 20px; font-weight: bold; color: #FFFFFF; padding-bottom: 6px;">
             ${name}
           </td>
         </tr>
         <tr>
-          <td style="font-size: 13px; color: #15F0FF; font-weight: 500; padding-bottom: 12px;">
+          <td style="font-size: 14px; color: #15F0FF; font-weight: 500; padding-bottom: 16px;">
             ${role}
           </td>
         </tr>
         <tr>
-          <td style="font-size: 13px; padding-bottom: 4px;">
+          <td style="font-size: 14px; padding-bottom: 6px;">
             <a href="mailto:${email}" style="color: #FFFFFF; text-decoration: none;">${email}</a>
           </td>
         </tr>
         <tr>
-          <td style="font-size: 13px; padding-bottom: 4px;">
+          <td style="font-size: 14px; padding-bottom: 6px;">
             <a href="tel:${phone.replace(/\s/g, '')}" style="color: #FFFFFF; text-decoration: none;">${phone}</a>
           </td>
         </tr>
         <tr>
-          <td style="font-size: 13px; padding-bottom: 8px;">
+          <td style="font-size: 14px; padding-bottom: 12px;">
             <a href="https://fenixia.tech" style="color: #15F0FF; text-decoration: none; font-weight: 500;">fenixia.tech</a>
           </td>
         </tr>
         <tr>
-          <td style="padding-top: 8px;">
+          <td style="padding-top: 10px;">
             <a href="https://www.linkedin.com/company/fenixia" style="text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="20" height="20" style="display: inline-block;" />
+              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="24" height="24" style="display: inline-block;" />
             </a>
           </td>
         </tr>
@@ -57,10 +57,10 @@ const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
     </td>
   </tr>
   <tr>
-    <td colspan="2" style="padding-top: 16px;">
+    <td colspan="2" style="padding-top: 20px;">
       <table cellpadding="0" cellspacing="0" border="0" width="100%">
         <tr>
-          <td style="font-size: 11px; color: #D9D9D9; border-top: 1px solid #3B3D3F; padding-top: 12px;">
+          <td style="font-size: 12px; color: #D9D9D9; border-top: 1px solid #3B3D3F; padding-top: 16px;">
             <strong style="color: #15F0FF;">FENIX IA SOLUTIONS SL</strong><br />
             C/ La Paz, 83 · 03320 Torrellano-Elche · Alicante
           </td>
