@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import fenixLogo from "@/assets/fenix-guardian-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,6 +15,11 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
+            <img 
+              src={fenixLogo} 
+              alt="FENIX IA Solutions" 
+              className="h-10 w-auto brightness-110 contrast-110 drop-shadow-[0_0_8px_hsl(var(--primary)/0.3)]"
+            />
             <span className="text-lg font-bold text-foreground">
               FENIX <span className="text-primary">IA SOLUTIONS</span>
             </span>
