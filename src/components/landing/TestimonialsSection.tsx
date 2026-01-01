@@ -2,25 +2,25 @@ import { Quote } from "lucide-react";
 
 const testimonials = [
   {
-    quote: "Fenix Guardian nos ha permitido gestionar equipos remotos de forma segura y eficiente. La visibilidad que tenemos ahora es incomparable.",
+    quote: "FENIX IA nos ha ayudado a transformar nuestra visión en realidad. Su enfoque colaborativo y expertise técnico marcaron la diferencia.",
     author: "María García",
-    role: "CTO",
-    company: "TechStartup España",
-    type: "Startup tecnológica",
+    role: "CEO",
+    company: "Empresa Cliente",
+    type: "Cliente satisfecho",
   },
   {
-    quote: "La detección de anomalías con IA nos alertó de una brecha de seguridad antes de que se convirtiera en un problema mayor. Invaluable.",
+    quote: "El equipo de FENIX demostró un profundo conocimiento en IA y una capacidad excepcional para entender nuestras necesidades.",
     author: "Carlos Rodríguez",
-    role: "Director de IT",
-    company: "FinanceGroup",
-    type: "Servicios financieros",
+    role: "Director de Tecnología",
+    company: "Organización Partner",
+    type: "Partner estratégico",
   },
   {
-    quote: "Nuestro call center remoto opera ahora con total transparencia. Los informes automáticos nos ahorran horas de trabajo cada semana.",
+    quote: "Trabajar con FENIX IA ha sido una experiencia transformadora. Su compromiso con la excelencia es evidente en cada interacción.",
     author: "Ana Martínez",
-    role: "Operations Manager",
-    company: "ContactPro",
-    type: "Call center",
+    role: "Directora de Innovación",
+    company: "Empresa Colaboradora",
+    type: "Colaborador",
   },
 ];
 
@@ -34,13 +34,13 @@ const TestimonialsSection = () => {
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Casos de uso
+            Testimonios
           </span>
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            Empresas que <span className="text-primary">confían</span> en nosotros
+            Lo que dicen de <span className="text-primary">nosotros</span>
           </h2>
           <p className="text-lg text-muted-foreground">
-            Desde startups hasta grandes corporaciones, Fenix Guardian protege equipos remotos en todo tipo de industrias.
+            Nuestros clientes y partners comparten su experiencia trabajando con FENIX IA SOLUTIONS.
           </p>
         </div>
 
@@ -82,21 +82,6 @@ const TestimonialsSection = () => {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Logos section */}
-        <div className="mt-20 text-center">
-          <p className="text-sm text-muted-foreground mb-8">
-            Más de 500 empresas confían en Fenix Guardian
-          </p>
-          <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-16 opacity-50">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div
-                key={i}
-                className="h-8 w-24 bg-muted-foreground/20 rounded"
-              />
-            ))}
-          </div>
         </div>
       </div>
     </section>

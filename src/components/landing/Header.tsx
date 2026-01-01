@@ -6,9 +6,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: "Producto", href: "#features" },
-    { label: "Tarifas", href: "#pricing" },
-    { label: "Casos de uso", href: "#testimonials" },
+    { label: "Nosotros", href: "#about" },
+    { label: "Soluciones", href: "#solutions" },
     { label: "Contacto", href: "#footer" },
   ];
 
@@ -19,7 +18,7 @@ const Header = () => {
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
             <span className="text-lg font-bold text-foreground">
-              Fenix <span className="text-primary">Guardian</span>
+              FENIX <span className="text-primary">IA SOLUTIONS</span>
             </span>
           </a>
 
@@ -38,11 +37,8 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            <Button variant="secondary" size="sm">
-              Iniciar sesión
-            </Button>
             <Button variant="hero" size="sm">
-              Empezar prueba
+              Contáctanos
             </Button>
           </div>
 
@@ -71,11 +67,8 @@ const Header = () => {
                 </a>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
-                <Button variant="ghost" size="sm" className="justify-start">
-                  Iniciar sesión
-                </Button>
                 <Button variant="hero" size="sm">
-                  Empezar prueba
+                  Contáctanos
                 </Button>
               </div>
             </nav>

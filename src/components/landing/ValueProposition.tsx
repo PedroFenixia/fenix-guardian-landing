@@ -1,26 +1,26 @@
-import { Brain, Shield, BarChart3 } from "lucide-react";
+import { Brain, Rocket, Users } from "lucide-react";
 
 const values = [
   {
     icon: Brain,
-    title: "Monitorización inteligente",
-    description: "Seguimiento automatizado de actividad con machine learning para detectar patrones y optimizar la productividad de tu equipo.",
+    title: "Innovación con IA",
+    description: "Aplicamos las últimas tecnologías de inteligencia artificial para resolver los desafíos más complejos de tu negocio.",
   },
   {
-    icon: Shield,
-    title: "Seguridad y cumplimiento",
-    description: "Protección de datos sensibles y cumplimiento normativo GDPR con cifrado de extremo a extremo y auditorías automáticas.",
+    icon: Rocket,
+    title: "Impulso al crecimiento",
+    description: "Nuestras soluciones están diseñadas para escalar contigo y acelerar el crecimiento de tu empresa.",
   },
   {
-    icon: BarChart3,
-    title: "Análisis avanzado con IA",
-    description: "Informes predictivos y análisis de comportamiento que transforman datos en decisiones estratégicas para tu negocio.",
+    icon: Users,
+    title: "Equipo especializado",
+    description: "Contamos con expertos en IA, machine learning y desarrollo de software listos para ayudarte.",
   },
 ];
 
 const ValueProposition = () => {
   return (
-    <section className="py-24 lg:py-32 relative">
+    <section id="about" className="py-24 lg:py-32 relative">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
 
@@ -28,10 +28,10 @@ const ValueProposition = () => {
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            Protección <span className="text-primary">integral</span> para tu empresa
+            ¿Por qué <span className="text-primary">FENIX IA</span>?
           </h2>
           <p className="text-lg text-muted-foreground">
-            Una suite completa de herramientas diseñadas para garantizar la seguridad y productividad de equipos distribuidos.
+            Somos tu partner estratégico en la transformación digital impulsada por inteligencia artificial.
           </p>
         </div>
 

@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import DemoRequestModal from "./DemoRequestModal";
 import fenixLogo from "@/assets/fenix-hero-logo.png";
 
 const HeroSection = () => {
@@ -39,7 +38,7 @@ const HeroSection = () => {
               style={{ animationDelay: '0.1s' }}
             >
               <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              <span className="text-muted-foreground">Plataforma de monitorización avanzada</span>
+              <span className="text-muted-foreground">Soluciones de Inteligencia Artificial</span>
             </div>
 
             {/* Headline */}
@@ -47,8 +46,8 @@ const HeroSection = () => {
               className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight animate-fade-in-up"
               style={{ animationDelay: '0.2s' }}
             >
-              Control inteligente para{" "}
-              <span className="text-primary text-glow">equipos en remoto</span>
+              Transformamos tu negocio con{" "}
+              <span className="text-primary text-glow">Inteligencia Artificial</span>
             </h1>
 
             {/* Subheadline */}
@@ -56,7 +55,7 @@ const HeroSection = () => {
               className="text-lg lg:text-xl text-muted-foreground max-w-xl mx-auto lg:mx-0 animate-fade-in-up"
               style={{ animationDelay: '0.3s' }}
             >
-              La plataforma de monitorización avanzada con IA para garantizar seguridad, productividad y cumplimiento.
+              Desarrollamos soluciones personalizadas de IA para impulsar la innovación y el crecimiento de tu empresa.
             </p>
 
             {/* CTA Buttons */}
@@ -65,10 +64,12 @@ const HeroSection = () => {
               style={{ animationDelay: '0.4s' }}
             >
               <Button variant="hero" size="xl" className="group">
-                Empezar prueba
+                Hablemos
                 <ArrowRight className="transition-transform group-hover:translate-x-1" />
               </Button>
-              <DemoRequestModal />
+              <Button variant="hero-outline" size="xl">
+                Conócenos
+              </Button>
             </div>
 
             {/* Trust badges */}
@@ -80,19 +81,19 @@ const HeroSection = () => {
                 <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                Sin tarjeta requerida
+                Innovación constante
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                14 días gratis
+                Equipo experto
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                 </svg>
-                GDPR compliant
+                Resultados reales
               </div>
             </div>
           </div>
@@ -105,7 +106,7 @@ const HeroSection = () => {
             <div className="relative">
               <img 
                 src={fenixLogo} 
-                alt="Fenix Guardian" 
+                alt="FENIX IA SOLUTIONS" 
                 className="relative w-80 h-80 lg:w-[500px] lg:h-[500px] object-contain mix-blend-lighten"
               />
             </div>
