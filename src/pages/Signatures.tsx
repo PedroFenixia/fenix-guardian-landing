@@ -17,7 +17,7 @@ const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.4; color: #333333;">
   <tr>
     <td style="padding-right: 20px; border-right: 3px solid #15F0FF;">
-      <img src="https://fenixia.tech/logo.png" alt="Fenix IA" width="80" height="80" style="display: block;" />
+      <img src="https://aetxomsehqbuhpotkkdy.supabase.co/storage/v1/object/public/assets/fenix-shield-only.png" alt="Fenix IA" width="80" height="80" style="display: block;" />
     </td>
     <td style="padding-left: 20px;">
       <table cellpadding="0" cellspacing="0" border="0">
@@ -118,16 +118,16 @@ const Signatures = () => {
       name: "Pedro Sánchez",
       role: "CEO & Founder",
       email: "pedro@fenixia.tech",
-      phone: "+34 966 10 10 29",
+      phone: "+34 620 654 925",
     },
     {
-      name: "Jose A. García",
+      name: "Jose J. Antón",
       role: "CTO",
       email: "jose@fenixia.tech",
       phone: "+34 966 10 10 29",
     },
     {
-      name: "Izhar Cohen",
+      name: "Izhar Sanz",
       role: "COO",
       email: "izhar@fenixia.tech",
       phone: "+34 966 10 10 29",
