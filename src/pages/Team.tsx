@@ -45,7 +45,7 @@ const Team = () => {
         {/* Team Grid */}
         <section className="py-16">
           <div className="container mx-auto px-4 lg:px-8">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+            <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
               {team.map((member) => (
                 <div key={member.name} className="glass-card p-6 rounded-2xl text-center group">
                   {/* Avatar */}
