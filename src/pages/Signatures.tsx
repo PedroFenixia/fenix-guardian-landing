@@ -18,11 +18,28 @@ const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
     ? `${window.location.origin}/logoFENIXIA.png`
     : "/logoFENIXIA.png";
 
+  // Generate vCard data for QR code
+  const vCardData = `BEGIN:VCARD
+VERSION:3.0
+N:${name.split(' ').slice(1).join(' ')};${name.split(' ')[0]}
+FN:${name}
+ORG:FENIX IA SOLUTIONS SL
+TITLE:${role}
+TEL;TYPE=WORK,VOICE:${phone.replace(/\s/g, '')}
+EMAIL:${email}
+URL:https://fenixia.tech
+ADR;TYPE=WORK:;;C/ La Paz, 83;Torrellano-Elche;Alicante;03320;Spain
+END:VCARD`;
+
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=${encodeURIComponent(vCardData)}&bgcolor=1A1C1E&color=15F0FF`;
+
   const signatureHtml = `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 32px 40px; border-radius: 8px; width: 100%; max-width: 650px;">
   <tr>
-    <td style="padding-right: 32px; border-right: 3px solid #15F0FF; vertical-align: top;">
-      <img src="${logoUrl}" alt="Fenix IA" width="140" height="140" style="display: block; border-radius: 8px;" />
+    <td style="padding-right: 32px; border-right: 3px solid #15F0FF; vertical-align: top; text-align: center;">
+      <img src="${logoUrl}" alt="Fenix IA" width="140" height="140" style="display: block; border-radius: 8px; margin-bottom: 12px;" />
+      <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="80" height="80" style="display: block; margin: 0 auto; border-radius: 4px;" />
+      <span style="font-size: 10px; color: #D9D9D9; display: block; margin-top: 6px;">Escanea para guardar</span>
     </td>
     <td style="padding-left: 32px;">
       <table cellpadding="0" cellspacing="0" border="0">
