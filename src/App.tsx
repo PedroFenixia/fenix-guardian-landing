@@ -11,6 +11,7 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Cookies from "./pages/Cookies";
 import Signatures from "./pages/Signatures";
+import VCard from "./pages/VCard";
 import NotFound from "./pages/NotFound";
 import ChatWidget from "./components/ChatWidget";
 
@@ -31,6 +32,7 @@ const App = () => (
           <Route path="/terminos" element={<Terms />} />
           <Route path="/cookies" element={<Cookies />} />
           <Route path="/firmas" element={<Signatures />} />
+          <Route path="/vcard" element={<VCard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
