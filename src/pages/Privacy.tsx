@@ -48,7 +48,7 @@ const Privacy = () => {
                 <section className="space-y-4">
                   <h2 className="text-2xl font-semibold">4. Tus derechos</h2>
                   <p className="text-muted-foreground">
-                    Tienes derecho a acceder, rectificar, suprimir y oponerte al tratamiento de tus datos personales. Para ejercer estos derechos, puedes contactarnos en info@fenixia.com.
+                    Tienes derecho a acceder, rectificar, suprimir y oponerte al tratamiento de tus datos personales. Para ejercer estos derechos, puedes contactarnos en hola@fenixia.tech.
                   </p>
                 </section>
 
@@ -58,7 +58,7 @@ const Privacy = () => {
                     Si tienes preguntas sobre esta política de privacidad, puedes contactarnos en:
                   </p>
                   <p className="text-muted-foreground">
-                    Email: <a href="mailto:info@fenixia.com" className="text-primary hover:underline">info@fenixia.com</a>
+                    Email: <a href="mailto:hola@fenixia.tech" className="text-primary hover:underline">hola@fenixia.tech</a>
                   </p>
                 </section>
               </div>

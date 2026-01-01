@@ -54,7 +54,7 @@ const Cookies = () => {
                     Si tienes preguntas sobre nuestra política de cookies, contáctanos en:
                   </p>
                   <p className="text-muted-foreground">
-                    Email: <a href="mailto:info@fenixia.com" className="text-primary hover:underline">info@fenixia.com</a>
+                    Email: <a href="mailto:hola@fenixia.tech" className="text-primary hover:underline">hola@fenixia.tech</a>
                   </p>
                 </section>
               </div>
