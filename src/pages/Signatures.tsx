@@ -13,11 +13,16 @@ interface SignatureProps {
 const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
   const [copied, setCopied] = useState(false);
 
+
+  const logoUrl = typeof window !== "undefined"
+    ? `${window.location.origin}/logoFENIXIA.png`
+    : "/logoFENIXIA.png";
+
   const signatureHtml = `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 24px 32px; border-radius: 8px; width: 100%; max-width: 600px;">
   <tr>
     <td style="padding-right: 24px; border-right: 3px solid #15F0FF; vertical-align: top;">
-      <img src="https://fenixia.tech/logoFENIXIA.png" alt="Fenix IA" width="110" height="110" style="display: block; border-radius: 8px;" />
+      <img src="${logoUrl}" alt="Fenix IA" width="110" height="110" style="display: block; border-radius: 8px;" />
     </td>
     <td style="padding-left: 24px;">
       <table cellpadding="0" cellspacing="0" border="0">
