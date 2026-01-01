@@ -43,7 +43,7 @@ const FeaturesSection = () => {
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
             Cómo <span className="text-primary">trabajamos</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-foreground/80">
             Nuestra metodología se basa en la colaboración estrecha, la innovación continua y el compromiso con los resultados.
           </p>
         </div>
@@ -64,7 +64,7 @@ const FeaturesSection = () => {
               <h3 className="text-lg font-semibold mb-2 text-foreground group-hover:text-primary transition-colors">
                 {feature.title}
               </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-foreground/80 leading-relaxed">
                 {feature.description}
               </p>
             </div>

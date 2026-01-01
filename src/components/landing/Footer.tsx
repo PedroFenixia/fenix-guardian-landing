@@ -24,7 +24,7 @@ const Footer = () => {
                 FENIX <span className="text-primary">IA SOLUTIONS</span>
               </span>
             </Link>
-            <p className="text-sm text-muted-foreground mb-6 max-w-xs">
+            <p className="text-sm text-foreground/80 mb-6 max-w-xs">
               Transformamos empresas con soluciones de inteligencia artificial innovadoras y personalizadas.
             </p>
             <div className="flex gap-4">
