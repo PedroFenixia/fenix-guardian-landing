@@ -60,7 +60,11 @@ serve(async (req) => {
     const { allowed, remaining, resetIn } = checkRateLimit(clientIp);
     
     if (!allowed) {
-      console.log(`Rate limit exceeded for IP: ${clientIp}`);
+      // Mask IP for privacy - only log partial IP
+      const maskedIp = clientIp.includes('.') 
+        ? clientIp.split('.').slice(0, 2).join('.') + '.xxx.xxx'
+        : 'masked';
+      console.log(`Rate limit exceeded for IP: ${maskedIp}`);
       const resetInMinutes = Math.ceil(resetIn / 60000);
       return new Response(
         JSON.stringify({ 
@@ -152,7 +156,7 @@ INSTRUCCIONES:
         });
       }
       const errorText = await response.text();
-      console.error("AI gateway error:", response.status, errorText);
+      console.error("AI gateway error:", response.status);
       return new Response(JSON.stringify({ error: "Error del servicio de IA" }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
