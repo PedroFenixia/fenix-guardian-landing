@@ -18,26 +18,22 @@ const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
     ? `${window.location.origin}/logoFENIXIA.png`
     : "/logoFENIXIA.png";
 
-  // Generate vCard data for QR code
+  // QR: use an URL that downloads the contact (more compatible than embedding VCARD in QR)
   const firstName = name.split(' ')[0];
   const lastName = name.split(' ').slice(1).join(' ');
   const phoneClean = phone.replace(/\s/g, '');
-  
-  const vCardData = [
-    'BEGIN:VCARD',
-    'VERSION:3.0',
-    `N:${lastName};${firstName}`,
-    `FN:${name}`,
-    'ORG:FENIX IA SOLUTIONS SL',
-    `TITLE:${role}`,
-    `TEL;TYPE=WORK,VOICE:${phoneClean}`,
-    `EMAIL:${email}`,
-    'URL:https://fenixia.tech',
-    'ADR;TYPE=WORK:;;C/ La Paz 83;Torrellano-Elche;Alicante;03320;Spain',
-    'END:VCARD'
-  ].join('\\n');
 
-  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=${encodeURIComponent(vCardData)}&bgcolor=1A1C1E&color=15F0FF`;
+  const vCardUrl = typeof window !== "undefined"
+    ? `${window.location.origin}/vcard?${new URLSearchParams({
+        name,
+        role,
+        email,
+        phone: phoneClean,
+        auto: "1",
+      }).toString()}`
+    : `/vcard?name=${encodeURIComponent(name)}&role=${encodeURIComponent(role)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phoneClean)}&auto=1`;
+
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(vCardUrl)}&bgcolor=1A1C1E&color=15F0FF`;
 
   const signatureHtml = `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 32px 40px; border-radius: 8px; width: 100%; max-width: 650px;">
