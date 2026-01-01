@@ -80,7 +80,7 @@ END:VCARD`;
   </tr>
   <tr>
     <td style="padding-right: 32px; vertical-align: top;"></td>
-    <td style="padding-left: 32px; padding-top: 20px; border-top: 1px solid #3B3D3F;">
+    <td style="padding-left: 32px; padding-top: 20px;">
       <table cellpadding="0" cellspacing="0" border="0" width="100%">
         <tr>
           <td style="font-size: 12px; color: #D9D9D9;">
