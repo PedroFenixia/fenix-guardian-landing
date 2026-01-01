@@ -14,15 +14,15 @@ const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
   const [copied, setCopied] = useState(false);
 
   const signatureHtml = `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.4; color: #333333;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.4; background-color: #1A1C1E; padding: 20px; border-radius: 8px;">
   <tr>
-    <td style="padding-right: 20px; border-right: 3px solid #15F0FF;">
+    <td style="padding-right: 20px; border-right: 3px solid #15F0FF; vertical-align: top;">
       <img src="https://aetxomsehqbuhpotkkdy.supabase.co/storage/v1/object/public/assets/fenix-shield-only.png" alt="Fenix IA" width="80" height="80" style="display: block;" />
     </td>
     <td style="padding-left: 20px;">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td style="font-size: 18px; font-weight: bold; color: #1A1C1E; padding-bottom: 4px;">
+          <td style="font-size: 18px; font-weight: bold; color: #FFFFFF; padding-bottom: 4px;">
             ${name}
           </td>
         </tr>
@@ -32,17 +32,17 @@ const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
           </td>
         </tr>
         <tr>
-          <td style="font-size: 13px; color: #666666; padding-bottom: 4px;">
-            <a href="mailto:${email}" style="color: #1A1C1E; text-decoration: none;">${email}</a>
+          <td style="font-size: 13px; padding-bottom: 4px;">
+            <a href="mailto:${email}" style="color: #FFFFFF; text-decoration: none;">${email}</a>
           </td>
         </tr>
         <tr>
-          <td style="font-size: 13px; color: #666666; padding-bottom: 4px;">
-            <a href="tel:+34966101029" style="color: #1A1C1E; text-decoration: none;">${phone}</a>
+          <td style="font-size: 13px; padding-bottom: 4px;">
+            <a href="tel:${phone.replace(/\s/g, '')}" style="color: #FFFFFF; text-decoration: none;">${phone}</a>
           </td>
         </tr>
         <tr>
-          <td style="font-size: 13px; color: #666666; padding-bottom: 8px;">
+          <td style="font-size: 13px; padding-bottom: 8px;">
             <a href="https://fenixia.tech" style="color: #15F0FF; text-decoration: none; font-weight: 500;">fenixia.tech</a>
           </td>
         </tr>
@@ -60,8 +60,8 @@ const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
     <td colspan="2" style="padding-top: 16px;">
       <table cellpadding="0" cellspacing="0" border="0" width="100%">
         <tr>
-          <td style="font-size: 11px; color: #999999; border-top: 1px solid #E0E0E0; padding-top: 12px;">
-            <strong style="color: #1A1C1E;">FENIX IA SOLUTIONS SL</strong><br />
+          <td style="font-size: 11px; color: #D9D9D9; border-top: 1px solid #3B3D3F; padding-top: 12px;">
+            <strong style="color: #15F0FF;">FENIX IA SOLUTIONS SL</strong><br />
             C/ La Paz, 83 · 03320 Torrellano-Elche · Alicante
           </td>
         </tr>
