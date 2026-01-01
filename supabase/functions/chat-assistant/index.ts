@@ -5,13 +5,96 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
 
+// Simple in-memory rate limiting (resets when function cold starts)
+// In production, consider using a database or Redis for persistence
+const RATE_LIMIT_MAP = new Map<string, { count: number; resetAt: number }>();
+const MAX_REQUESTS_PER_HOUR = 20; // 20 requests per hour per IP
+const RATE_LIMIT_WINDOW_MS = 3600000; // 1 hour in milliseconds
+
+function getRateLimitKey(req: Request): string {
+  // Try to get the real client IP from various headers
+  const forwardedFor = req.headers.get("x-forwarded-for");
+  const realIp = req.headers.get("x-real-ip");
+  const cfConnectingIp = req.headers.get("cf-connecting-ip");
+  
+  // Use the first IP from x-forwarded-for, or fall back to other headers
+  const ip = (forwardedFor?.split(",")[0]?.trim()) || realIp || cfConnectingIp || "unknown";
+  return ip;
+}
+
+function checkRateLimit(ip: string): { allowed: boolean; remaining: number; resetIn: number } {
+  const now = Date.now();
+  const rateLimit = RATE_LIMIT_MAP.get(ip);
+  
+  // If no record exists or window has expired, create new record
+  if (!rateLimit || now > rateLimit.resetAt) {
+    RATE_LIMIT_MAP.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true, remaining: MAX_REQUESTS_PER_HOUR - 1, resetIn: RATE_LIMIT_WINDOW_MS };
+  }
+  
+  // Check if limit exceeded
+  if (rateLimit.count >= MAX_REQUESTS_PER_HOUR) {
+    const resetIn = rateLimit.resetAt - now;
+    return { allowed: false, remaining: 0, resetIn };
+  }
+  
+  // Increment counter
+  rateLimit.count++;
+  RATE_LIMIT_MAP.set(ip, rateLimit);
+  
+  return { 
+    allowed: true, 
+    remaining: MAX_REQUESTS_PER_HOUR - rateLimit.count, 
+    resetIn: rateLimit.resetAt - now 
+  };
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
   }
 
   try {
+    // Rate limiting check
+    const clientIp = getRateLimitKey(req);
+    const { allowed, remaining, resetIn } = checkRateLimit(clientIp);
+    
+    if (!allowed) {
+      console.log(`Rate limit exceeded for IP: ${clientIp}`);
+      const resetInMinutes = Math.ceil(resetIn / 60000);
+      return new Response(
+        JSON.stringify({ 
+          error: `Demasiadas solicitudes. Por favor, intenta de nuevo en ${resetInMinutes} minutos.` 
+        }), 
+        {
+          status: 429,
+          headers: { 
+            ...corsHeaders, 
+            "Content-Type": "application/json",
+            "X-RateLimit-Remaining": "0",
+            "X-RateLimit-Reset": String(Math.ceil(resetIn / 1000))
+          },
+        }
+      );
+    }
+
     const { messages } = await req.json();
+    
+    // Basic input validation
+    if (!messages || !Array.isArray(messages)) {
+      return new Response(
+        JSON.stringify({ error: "Formato de mensaje inválido" }), 
+        {
+          status: 400,
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        }
+      );
+    }
+    
+    // Limit message history to prevent abuse
+    const MAX_MESSAGES = 20;
+    const truncatedMessages = messages.slice(-MAX_MESSAGES);
+    
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     
     if (!LOVABLE_API_KEY) {
@@ -49,7 +132,7 @@ INSTRUCCIONES:
         model: "google/gemini-2.5-flash",
         messages: [
           { role: "system", content: systemPrompt },
-          ...messages,
+          ...truncatedMessages,
         ],
         stream: true,
       }),
@@ -77,7 +160,11 @@ INSTRUCCIONES:
     }
 
     return new Response(response.body, {
-      headers: { ...corsHeaders, "Content-Type": "text/event-stream" },
+      headers: { 
+        ...corsHeaders, 
+        "Content-Type": "text/event-stream",
+        "X-RateLimit-Remaining": String(remaining)
+      },
     });
   } catch (error) {
     console.error("Chat assistant error:", error);
