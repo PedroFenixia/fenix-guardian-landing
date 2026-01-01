@@ -8,7 +8,7 @@ const Footer = () => {
     ],
     contacto: [
       { label: "Contacto", href: "/contacto" },
-      { label: "hola@fenixia.tech", href: "mailto:hola@fenixia.tech" },
+      { label: "contacto@fenixia.tech", href: "mailto:contacto@fenixia.tech" },
       { label: "+34 966 10 10 29", href: "tel:+34966101029" },
     ],
   };
