@@ -17,10 +17,97 @@ interface HoldedFunnel {
   name: string;
 }
 
+// ============ Rate Limiting ============
+const RATE_LIMIT_MAP = new Map<string, { count: number; resetAt: number }>();
+const MAX_REQUESTS_PER_HOUR = 5; // Conservative limit for form submissions
+const RATE_LIMIT_WINDOW_MS = 3600000; // 1 hour
+
+function getRateLimitKey(req: Request): string {
+  const forwardedFor = req.headers.get("x-forwarded-for");
+  const realIp = req.headers.get("x-real-ip");
+  return forwardedFor?.split(",")[0]?.trim() || realIp || "unknown";
+}
+
+function checkRateLimit(ip: string): { allowed: boolean; remaining: number; resetIn: number } {
+  const now = Date.now();
+  const rateLimit = RATE_LIMIT_MAP.get(ip);
+
+  if (!rateLimit || now > rateLimit.resetAt) {
+    RATE_LIMIT_MAP.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return { allowed: true, remaining: MAX_REQUESTS_PER_HOUR - 1, resetIn: RATE_LIMIT_WINDOW_MS };
+  }
+
+  if (rateLimit.count >= MAX_REQUESTS_PER_HOUR) {
+    return { allowed: false, remaining: 0, resetIn: rateLimit.resetAt - now };
+  }
+
+  rateLimit.count++;
+  return { allowed: true, remaining: MAX_REQUESTS_PER_HOUR - rateLimit.count, resetIn: rateLimit.resetAt - now };
+}
+
+// ============ Input Validation ============
+function validateInput(data: unknown): { valid: boolean; error?: string; parsed?: LeadData } {
+  if (!data || typeof data !== 'object') {
+    return { valid: false, error: 'Invalid request body' };
+  }
+
+  const { name, email, company, message } = data as Record<string, unknown>;
+
+  if (typeof name !== 'string' || name.trim().length === 0 || name.length > 100) {
+    return { valid: false, error: 'Name is required and must be less than 100 characters' };
+  }
+
+  if (typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 255) {
+    return { valid: false, error: 'Valid email is required' };
+  }
+
+  if (company !== undefined && (typeof company !== 'string' || company.length > 200)) {
+    return { valid: false, error: 'Company must be less than 200 characters' };
+  }
+
+  if (typeof message !== 'string' || message.trim().length === 0 || message.length > 2000) {
+    return { valid: false, error: 'Message is required and must be less than 2000 characters' };
+  }
+
+  return {
+    valid: true,
+    parsed: {
+      name: name.trim(),
+      email: email.trim().toLowerCase(),
+      company: typeof company === 'string' ? company.trim() : undefined,
+      message: message.trim(),
+    },
+  };
+}
+
 serve(async (req) => {
   // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
+  }
+
+  // Rate limiting check
+  const clientIp = getRateLimitKey(req);
+  const { allowed, remaining, resetIn } = checkRateLimit(clientIp);
+
+  if (!allowed) {
+    console.warn(`Rate limit exceeded for IP: ${clientIp}`);
+    return new Response(
+      JSON.stringify({ 
+        success: false, 
+        error: 'Demasiadas solicitudes. Por favor, intenta más tarde.',
+        retryAfterMs: resetIn,
+      }),
+      { 
+        status: 429, 
+        headers: { 
+          ...corsHeaders, 
+          'Content-Type': 'application/json',
+          'X-RateLimit-Remaining': String(remaining),
+          'Retry-After': String(Math.ceil(resetIn / 1000)),
+        } 
+      }
+    );
   }
 
   try {
@@ -31,7 +118,19 @@ serve(async (req) => {
       throw new Error('Holded API key not configured');
     }
 
-    const { name, email, company, message }: LeadData = await req.json();
+    // Validate input
+    const rawBody = await req.json();
+    const validation = validateInput(rawBody);
+
+    if (!validation.valid || !validation.parsed) {
+      console.warn('Input validation failed:', validation.error);
+      return new Response(
+        JSON.stringify({ success: false, error: validation.error }),
+        { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
+    }
+
+    const { name, email, company, message } = validation.parsed;
 
     console.log('Creating lead in Holded CRM:', { name, email, company });
 
