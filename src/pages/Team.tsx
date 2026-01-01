@@ -5,27 +5,21 @@ import { Linkedin, Mail } from "lucide-react";
 const team = [
   {
     name: "Director General",
-    role: "CEO & Fundador",
+    role: "Co-Fundador",
     bio: "Líder visionario con más de 15 años de experiencia en tecnología e innovación.",
     initials: "DG",
   },
   {
     name: "Director de Tecnología",
-    role: "CTO",
+    role: "Co-Fundador",
     bio: "Experto en arquitectura de sistemas e implementación de soluciones de IA a escala.",
     initials: "DT",
   },
   {
     name: "Director de Operaciones",
-    role: "COO",
+    role: "Co-Fundador",
     bio: "Especialista en gestión de proyectos y optimización de procesos empresariales.",
     initials: "DO",
-  },
-  {
-    name: "Director Comercial",
-    role: "CCO",
-    bio: "Profesional con amplia experiencia en desarrollo de negocios y relaciones con clientes.",
-    initials: "DC",
   },
 ];
 
