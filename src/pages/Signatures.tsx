@@ -167,7 +167,7 @@ const Signatures = () => {
     },
     {
       name: "Izhar Sanz",
-      role: "Co-Founder",
+      role: "Co-Founder & CTO",
       email: "izhar@fenixia.tech",
       phone: "+34 966 10 10 29",
     },
