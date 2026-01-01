@@ -18,7 +18,7 @@ const Header = () => {
             <img 
               src={fenixLogo} 
               alt="FENIX IA Solutions" 
-              className="h-10 w-auto brightness-110 contrast-110 drop-shadow-[0_0_8px_hsl(var(--primary)/0.3)]"
+              className="h-10 w-auto brightness-110 contrast-110 drop-shadow-[0_0_8px_hsl(var(--primary)/0.3)] transition-all duration-300 group-hover:brightness-125 group-hover:drop-shadow-[0_0_16px_hsl(var(--primary)/0.6)]"
             />
             <span className="text-lg font-bold text-foreground">
               FENIX <span className="text-primary">IA SOLUTIONS</span>
