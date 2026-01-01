@@ -1,14 +1,15 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const navLinks = [
-    { label: "Nosotros", href: "#about" },
-    { label: "Soluciones", href: "#solutions" },
-    { label: "Contacto", href: "#footer" },
+    { label: "Nosotros", href: "/nosotros" },
+    { label: "Equipo", href: "/equipo" },
+    { label: "Contacto", href: "/contacto" },
   ];
 
   return (
@@ -16,30 +17,32 @@ const Header = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
+          <Link to="/" className="flex items-center gap-3 group">
             <span className="text-lg font-bold text-foreground">
               FENIX <span className="text-primary">IA SOLUTIONS</span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
                 className="px-3 py-1.5 text-sm font-medium text-foreground bg-muted/50 rounded-md border border-border/50 hover:bg-primary/10 hover:border-primary/30 hover:text-primary transition-all duration-200"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            <Button variant="hero" size="sm">
-              Contáctanos
-            </Button>
+            <Link to="/contacto">
+              <Button variant="hero" size="sm">
+                Contáctanos
+              </Button>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -57,19 +60,21 @@ const Header = () => {
           <div className="lg:hidden py-4 border-t border-border/50 animate-fade-in-up">
             <nav className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.label}
-                  href={link.href}
+                  to={link.href}
                   className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
               <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
-                <Button variant="hero" size="sm">
-                  Contáctanos
-                </Button>
+                <Link to="/contacto" onClick={() => setIsMenuOpen(false)}>
+                  <Button variant="hero" size="sm" className="w-full">
+                    Contáctanos
+                  </Button>
+                </Link>
               </div>
             </nav>
           </div>

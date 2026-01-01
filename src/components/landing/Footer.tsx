@@ -1,18 +1,20 @@
+import { Link } from "react-router-dom";
+
 const Footer = () => {
   const footerLinks = {
     empresa: [
-      { label: "Sobre nosotros", href: "#about" },
-      { label: "Nuestro equipo", href: "#" },
-      { label: "Carreras", href: "#" },
+      { label: "Sobre nosotros", href: "/nosotros" },
+      { label: "Nuestro equipo", href: "/equipo" },
+      { label: "Carreras", href: "/carreras" },
     ],
     legal: [
-      { label: "Privacidad", href: "#" },
-      { label: "Términos", href: "#" },
-      { label: "Cookies", href: "#" },
+      { label: "Privacidad", href: "/privacidad" },
+      { label: "Términos", href: "/terminos" },
+      { label: "Cookies", href: "/cookies" },
     ],
     contacto: [
-      { label: "Email", href: "mailto:info@fenixia.com" },
-      { label: "LinkedIn", href: "#" },
+      { label: "Contacto", href: "/contacto" },
+      { label: "info@fenixia.com", href: "mailto:info@fenixia.com" },
     ],
   };
 
@@ -22,11 +24,11 @@ const Footer = () => {
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="#" className="flex items-center gap-3 mb-4 group">
+            <Link to="/" className="flex items-center gap-3 mb-4 group">
               <span className="text-lg font-bold text-foreground">
                 FENIX <span className="text-primary">IA SOLUTIONS</span>
               </span>
-            </a>
+            </Link>
             <p className="text-sm text-muted-foreground mb-6 max-w-xs">
               Transformamos empresas con soluciones de inteligencia artificial innovadoras y personalizadas.
             </p>
@@ -61,12 +63,21 @@ const Footer = () => {
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
-                    >
-                      {link.label}
-                    </a>
+                    {link.href.startsWith('mailto:') ? (
+                      <a
+                        href={link.href}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link
+                        to={link.href}
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                      >
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -80,8 +91,8 @@ const Footer = () => {
             © {new Date().getFullYear()} FENIX IA SOLUTIONS. Todos los derechos reservados.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground transition-colors">Política de privacidad</a>
-            <a href="#" className="hover:text-foreground transition-colors">Términos de servicio</a>
+            <Link to="/privacidad" className="hover:text-foreground transition-colors">Política de privacidad</Link>
+            <Link to="/terminos" className="hover:text-foreground transition-colors">Términos de servicio</Link>
           </div>
         </div>
       </div>
