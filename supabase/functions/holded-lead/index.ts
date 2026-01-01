@@ -91,7 +91,11 @@ serve(async (req) => {
   const { allowed, remaining, resetIn } = checkRateLimit(clientIp);
 
   if (!allowed) {
-    console.warn(`Rate limit exceeded for IP: ${clientIp}`);
+    // Mask IP for privacy - only log partial IP
+    const maskedIp = clientIp.includes('.') 
+      ? clientIp.split('.').slice(0, 2).join('.') + '.xxx.xxx'
+      : 'masked';
+    console.warn(`Rate limit exceeded for IP: ${maskedIp}`);
     return new Response(
       JSON.stringify({ 
         success: false, 
@@ -123,7 +127,7 @@ serve(async (req) => {
     const validation = validateInput(rawBody);
 
     if (!validation.valid || !validation.parsed) {
-      console.warn('Input validation failed:', validation.error);
+      console.warn('Input validation failed');
       return new Response(
         JSON.stringify({ success: false, error: validation.error }),
         { status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
@@ -132,7 +136,7 @@ serve(async (req) => {
 
     const { name, email, company, message } = validation.parsed;
 
-    console.log('Creating lead in Holded CRM:', { name, email, company });
+    console.log('Creating lead in Holded CRM');
 
     // Step 1: Create the contact first (required to get contactId)
     const contactData = {
@@ -144,7 +148,7 @@ serve(async (req) => {
       tags: ['web-lead', 'fenix-ia'],
     };
 
-    console.log('Creating contact with data:', contactData);
+    console.log('Creating contact in Holded');
 
     const contactResponse = await fetch('https://api.holded.com/api/invoicing/v1/contacts', {
       method: 'POST',
@@ -157,13 +161,12 @@ serve(async (req) => {
     });
 
     if (!contactResponse.ok) {
-      const errorText = await contactResponse.text();
-      console.error('Holded Contact API error:', contactResponse.status, errorText);
-      throw new Error(`Holded Contact API error: ${contactResponse.status} - ${errorText}`);
+      console.error('Holded Contact API error:', contactResponse.status);
+      throw new Error(`Holded Contact API error: ${contactResponse.status}`);
     }
 
     const contactResult = await contactResponse.json();
-    console.log('Contact created successfully:', contactResult);
+    console.log('Contact created successfully with ID:', contactResult.id);
 
     const contactId = contactResult.id;
 
@@ -178,8 +181,7 @@ serve(async (req) => {
     });
 
     if (!funnelsResponse.ok) {
-      const errorText = await funnelsResponse.text();
-      console.error('Error fetching funnels:', funnelsResponse.status, errorText);
+      console.error('Error fetching funnels:', funnelsResponse.status);
       // Contact was created, but funnel assignment failed - still return success
       return new Response(
         JSON.stringify({ 
@@ -196,7 +198,7 @@ serve(async (req) => {
     }
 
     const funnels: HoldedFunnel[] = await funnelsResponse.json();
-    console.log('Available funnels:', funnels.map(f => ({ id: f.id, name: f.name })));
+    console.log('Fetched funnels count:', funnels.length);
 
     // Find the funnel "FORMULARIO CONTACTO WEB"
     const targetFunnel = funnels.find(f => 
@@ -205,7 +207,7 @@ serve(async (req) => {
     );
 
     if (!targetFunnel) {
-      console.error('Funnel "FORMULARIO CONTACTO WEB" not found. Available funnels:', funnels.map(f => f.name));
+      console.error('Target funnel not found');
       // Contact was created, but funnel not found - still return success
       return new Response(
         JSON.stringify({ 
@@ -221,7 +223,7 @@ serve(async (req) => {
       );
     }
 
-    console.log('Target funnel found:', targetFunnel);
+    console.log('Target funnel found');
 
     // Step 3: Create the lead in the CRM with the funnel and contact ID
     const leadData = {
@@ -232,7 +234,7 @@ serve(async (req) => {
       potential: 0,
     };
 
-    console.log('Creating lead with data:', leadData);
+    console.log('Creating lead in funnel');
 
     const leadResponse = await fetch('https://api.holded.com/api/crm/v1/leads', {
       method: 'POST',
@@ -245,15 +247,13 @@ serve(async (req) => {
     });
 
     if (!leadResponse.ok) {
-      const errorText = await leadResponse.text();
-      console.error('Holded CRM API error:', leadResponse.status, errorText);
+      console.error('Holded CRM API error:', leadResponse.status);
       // Contact was created, but lead creation in funnel failed
       return new Response(
         JSON.stringify({ 
           success: true, 
           message: 'Contact created but lead creation failed',
-          contactId: contactId,
-          error: errorText
+          contactId: contactId
         }),
         { 
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -263,7 +263,7 @@ serve(async (req) => {
     }
 
     const leadResult = await leadResponse.json();
-    console.log('Lead created successfully in CRM:', leadResult);
+    console.log('Lead created successfully in CRM with ID:', leadResult.id);
 
     return new Response(
       JSON.stringify({ 
