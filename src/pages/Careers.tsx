@@ -60,8 +60,8 @@ const Careers = () => {
                     <p className="text-sm text-muted-foreground">
                       Pero siempre estamos interesados en conocer talento. Envíanos tu CV a:
                     </p>
-                    <a href="mailto:careers@fenixia.com" className="text-primary hover:underline text-sm">
-                      careers@fenixia.com
+                    <a href="mailto:contacto@fenixia.tech" className="text-primary hover:underline text-sm font-medium">
+                      contacto@fenixia.tech
                     </a>
                   </div>
                 </div>
