@@ -36,7 +36,7 @@ const HeroSection = () => {
             style={{ animationDelay: '0.1s' }}
           >
             <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            <span className="text-muted-foreground">Soluciones de Inteligencia Artificial</span>
+            <span className="text-foreground">Soluciones de Inteligencia Artificial</span>
           </div>
 
           {/* Headline */}
@@ -77,19 +77,19 @@ const HeroSection = () => {
             className="flex flex-wrap items-center gap-6 justify-center pt-4 animate-fade-in-up"
             style={{ animationDelay: '0.5s' }}
           >
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2 text-sm text-foreground">
               <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               Innovación constante
             </div>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2 text-sm text-foreground">
               <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
               Equipo experto
             </div>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2 text-sm text-foreground">
               <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
