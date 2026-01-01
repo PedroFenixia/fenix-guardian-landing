@@ -14,7 +14,7 @@ const Footer = () => {
     ],
     contacto: [
       { label: "Contacto", href: "/contacto" },
-      { label: "info@fenixia.com", href: "mailto:info@fenixia.com" },
+      { label: "hola@fenixia.tech", href: "mailto:hola@fenixia.tech" },
     ],
   };
 
