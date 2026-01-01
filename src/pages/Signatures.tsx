@@ -60,7 +60,7 @@ const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
     <td colspan="2" style="padding-top: 20px;">
       <table cellpadding="0" cellspacing="0" border="0" width="100%">
         <tr>
-          <td style="font-size: 12px; color: #D9D9D9; border-top: 1px solid #3B3D3F; padding-top: 16px;">
+          <td style="font-size: 12px; color: #D9D9D9; border-top: 1px solid #3B3D3F; padding-top: 16px; text-align: right;">
             <strong style="color: #15F0FF;">FENIX IA SOLUTIONS SL</strong><br />
             C/ La Paz, 83 · 03320 Torrellano-Elche · Alicante
           </td>
