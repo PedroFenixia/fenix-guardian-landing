@@ -6,6 +6,15 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
+import { z } from "zod";
+
+const contactSchema = z.object({
+  name: z.string().trim().min(1, "El nombre es requerido").max(100, "El nombre es demasiado largo"),
+  email: z.string().trim().email("Email inválido").max(255, "El email es demasiado largo"),
+  company: z.string().trim().max(100, "El nombre de la empresa es demasiado largo").optional().default(""),
+  message: z.string().trim().min(1, "El mensaje es requerido").max(2000, "El mensaje es demasiado largo"),
+});
 
 const Contact = () => {
   const { toast } = useToast();
@@ -21,16 +30,47 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    toast({
-      title: "Mensaje enviado",
-      description: "Gracias por contactarnos. Te responderemos pronto.",
-    });
-    
-    setFormData({ name: "", email: "", company: "", message: "" });
-    setIsSubmitting(false);
+    try {
+      // Validate input with zod
+      const validatedData = contactSchema.parse(formData);
+      
+      // Submit to database
+      const { error } = await supabase
+        .from('demo_requests')
+        .insert({
+          name: validatedData.name,
+          email: validatedData.email,
+          company: validatedData.company || '',
+          message: validatedData.message,
+        });
+      
+      if (error) {
+        throw new Error(error.message);
+      }
+      
+      toast({
+        title: "Mensaje enviado",
+        description: "Gracias por contactarnos. Te responderemos pronto.",
+      });
+      
+      setFormData({ name: "", email: "", company: "", message: "" });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        toast({
+          title: "Error de validación",
+          description: error.errors[0]?.message || "Por favor revisa los campos del formulario",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "No se pudo enviar el mensaje. Por favor intenta de nuevo.",
+          variant: "destructive",
+        });
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
