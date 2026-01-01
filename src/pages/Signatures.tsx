@@ -36,10 +36,24 @@ END:VCARD`;
   const signatureHtml = `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 32px 40px; border-radius: 8px; width: 100%; max-width: 650px;">
   <tr>
-    <td style="padding-right: 16px; border-right: 3px solid #15F0FF; vertical-align: top; text-align: center;">
-      <img src="${logoUrl}" alt="Fenix IA" width="140" height="140" style="display: block; border-radius: 8px; margin-bottom: 12px;" />
-      <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="80" height="80" style="display: block; margin: 0 auto; border-radius: 4px;" />
-      <span style="font-size: 10px; color: #D9D9D9; display: block; margin-top: 6px;">Escanea para guardar</span>
+    <td style="padding-right: 16px; border-right: 3px solid #15F0FF; vertical-align: middle; text-align: center;">
+      <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
+        <tr>
+          <td style="text-align: center;">
+            <img src="${logoUrl}" alt="Fenix IA" width="140" height="140" style="display: block; border-radius: 8px; margin: 0 auto 12px auto;" />
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">
+            <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="80" height="80" style="display: block; margin: 0 auto; border-radius: 4px;" />
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">
+            <span style="font-size: 10px; color: #D9D9D9; display: block; margin-top: 6px;">Escanea para guardar</span>
+          </td>
+        </tr>
+      </table>
     </td>
     <td style="padding-left: 24px;">
       <table cellpadding="0" cellspacing="0" border="0">
