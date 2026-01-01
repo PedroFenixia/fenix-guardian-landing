@@ -49,7 +49,7 @@ const ValueProposition = () => {
               </div>
 
               {/* Content */}
-              <h3 className="text-xl font-semibold mb-3 text-foreground">
+              <h3 className="text-xl font-semibold mb-3 text-primary">
                 {value.title}
               </h3>
               <p className="text-foreground/80 leading-relaxed">
