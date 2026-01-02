@@ -144,7 +144,7 @@ const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
       </div>
       
       {/* Preview */}
-      <div className="bg-white p-6 rounded-lg">
+      <div className="rounded-lg overflow-hidden">
         <div dangerouslySetInnerHTML={{ __html: signatureHtml }} />
       </div>
     </div>
