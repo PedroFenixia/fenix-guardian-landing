@@ -14,6 +14,24 @@ export type Database = {
   }
   public: {
     Tables: {
+      demo_request_limits: {
+        Row: {
+          ip_address: string
+          request_count: number | null
+          window_start: string | null
+        }
+        Insert: {
+          ip_address: string
+          request_count?: number | null
+          window_start?: string | null
+        }
+        Update: {
+          ip_address?: string
+          request_count?: number | null
+          window_start?: string | null
+        }
+        Relationships: []
+      }
       demo_requests: {
         Row: {
           company: string
@@ -70,6 +88,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      check_demo_request_rate_limit: { Args: never; Returns: boolean }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
