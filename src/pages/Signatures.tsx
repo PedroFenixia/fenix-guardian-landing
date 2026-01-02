@@ -67,25 +67,25 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
   const safeLinkedinHref = escapeHtml(safeLinkedinUrl(linkedin));
 
   const signatureHtml = `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 28px 32px; border-radius: 8px; width: 100%; max-width: 680px;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 24px 28px; border-radius: 12px; width: 100%; max-width: 720px;">
   <tr>
-    <td style="padding-right: 20px; border-right: 1px solid rgba(21, 240, 255, 0.4); vertical-align: middle; text-align: center; width: 140px;">
-      <img src="${logoUrl}" alt="Fenix IA" width="110" height="110" style="display: block; border-radius: 8px; margin: 0 auto;" />
+    <td style="padding-right: 18px; border-right: 2px solid rgba(21, 240, 255, 0.5); vertical-align: middle; text-align: center; width: 120px;">
+      <img src="${logoUrl}" alt="Fenix IA" width="100" height="100" style="display: block; margin: 0 auto;" />
     </td>
-    <td style="padding-left: 24px; padding-right: 20px; vertical-align: middle;">
+    <td style="padding-left: 22px; padding-right: 24px; vertical-align: middle;">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td style="font-size: 20px; font-weight: bold; color: #FFFFFF; padding-bottom: 4px;">${safeName}</td>
+          <td style="font-size: 22px; font-weight: bold; color: #FFFFFF; padding-bottom: 2px;">${safeName}</td>
         </tr>
         <tr>
-          <td style="font-size: 14px; color: #15F0FF; font-weight: 500; padding-bottom: 12px;">${safeRole}</td>
+          <td style="font-size: 14px; color: #15F0FF; font-weight: 500; padding-bottom: 14px;">${safeRole}</td>
         </tr>
         <tr>
-          <td style="font-size: 13px; padding-bottom: 4px;">
+          <td style="font-size: 13px; padding-bottom: 6px;">
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td style="padding-right: 8px; vertical-align: middle;">
-                  <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" width="14" height="14" style="display: block;" />
+                <td style="padding-right: 10px; vertical-align: middle;">
+                  <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" width="16" height="16" style="display: block;" />
                 </td>
                 <td style="vertical-align: middle;">
                   <a href="mailto:${safeEmail}" style="color: #FFFFFF; text-decoration: none;">${safeEmail}</a>
@@ -95,11 +95,11 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
           </td>
         </tr>
         <tr>
-          <td style="font-size: 13px; padding-bottom: 4px;">
+          <td style="font-size: 13px; padding-bottom: 6px;">
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td style="padding-right: 8px; vertical-align: middle;">
-                  <img src="https://cdn-icons-png.flaticon.com/512/126/126509.png" alt="Teléfono" width="14" height="14" style="display: block; filter: brightness(0) invert(1);" />
+                <td style="padding-right: 10px; vertical-align: middle;">
+                  <img src="https://cdn-icons-png.flaticon.com/512/3059/3059446.png" alt="Teléfono" width="16" height="16" style="display: block;" />
                 </td>
                 <td style="vertical-align: middle;">
                   <a href="tel:${safePhoneHref}" style="color: #FFFFFF; text-decoration: none;">${safePhone}</a>
@@ -109,11 +109,11 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
           </td>
         </tr>
         <tr>
-          <td style="font-size: 13px; padding-bottom: 4px;">
+          <td style="font-size: 13px; padding-bottom: 6px;">
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td style="padding-right: 8px; vertical-align: middle;">
-                  <img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png" alt="Web" width="14" height="14" style="display: block; filter: brightness(0) invert(1);" />
+                <td style="padding-right: 10px; vertical-align: middle;">
+                  <img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png" alt="Web" width="16" height="16" style="display: block; filter: invert(76%) sepia(85%) saturate(1000%) hue-rotate(130deg) brightness(103%) contrast(104%);" />
                 </td>
                 <td style="vertical-align: middle;">
                   <a href="https://fenixia.tech" style="color: #15F0FF; text-decoration: none; font-weight: 500;">fenixia.tech</a>
@@ -123,30 +123,30 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
           </td>
         </tr>
         <tr>
-          <td style="font-size: 12px; padding-bottom: 8px;">
+          <td style="font-size: 12px; padding-bottom: 10px;">
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
-                <td style="padding-right: 8px; vertical-align: middle;">
-                  <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Dirección" width="14" height="14" style="display: block; filter: brightness(0) invert(1);" />
+                <td style="padding-right: 10px; vertical-align: middle;">
+                  <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Dirección" width="16" height="16" style="display: block; filter: invert(45%) sepia(90%) saturate(2000%) hue-rotate(330deg) brightness(95%) contrast(95%);" />
                 </td>
                 <td style="vertical-align: middle;">
-                  <span style="color: #D9D9D9;">C/ La Paz, 83 · 03320 Torrellano-Elche · Alicante</span>
+                  <span style="color: #FFFFFF;">C/ La Paz, 83 · 03320 Torrellano-Elche · Alicante</span>
                 </td>
               </tr>
             </table>
           </td>
         </tr>
         <tr>
-          <td style="padding-top: 4px;">
+          <td style="padding-top: 2px;">
             <a href="${safeLinkedinHref}" style="text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="20" height="20" style="display: inline-block;" />
+              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="22" height="22" style="display: inline-block;" />
             </a>
           </td>
         </tr>
       </table>
     </td>
-    <td style="padding-left: 16px; vertical-align: middle; text-align: center; width: 80px;">
-      <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="65" height="65" style="display: block; margin: 0 auto;" />
+    <td style="padding-left: 20px; padding-right: 8px; vertical-align: middle; text-align: center; width: 100px;">
+      <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="85" height="85" style="display: block; margin: 0 auto;" />
     </td>
   </tr>
 </table>
@@ -236,53 +236,53 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
               fontSize: 14,
               lineHeight: 1.5,
               backgroundColor: "#1A1C1E",
-              padding: "28px 32px",
-              borderRadius: 8,
+              padding: "24px 28px",
+              borderRadius: 12,
               width: "100%",
-              maxWidth: 680,
+              maxWidth: 720,
             }}
           >
             <tbody>
               <tr>
                 <td
                   style={{
-                    paddingRight: 20,
-                    borderRight: "1px solid rgba(21, 240, 255, 0.4)",
+                    paddingRight: 18,
+                    borderRight: "2px solid rgba(21, 240, 255, 0.5)",
                     verticalAlign: "middle",
                     textAlign: "center",
-                    width: 140,
+                    width: 120,
                   }}
                 >
                   <img
                     src={logoUrl}
                     alt="Fenix IA"
-                    width={110}
-                    height={110}
-                    style={{ display: "block", borderRadius: 8, margin: "0 auto" }}
+                    width={100}
+                    height={100}
+                    style={{ display: "block", margin: "0 auto" }}
                   />
                 </td>
 
-                <td style={{ paddingLeft: 24, paddingRight: 20, verticalAlign: "middle" }}>
+                <td style={{ paddingLeft: 22, paddingRight: 24, verticalAlign: "middle" }}>
                   <table cellPadding={0} cellSpacing={0} border={0}>
                     <tbody>
                       <tr>
-                        <td style={{ fontSize: 20, fontWeight: "bold", color: "#FFFFFF", paddingBottom: 4 }}>{name}</td>
+                        <td style={{ fontSize: 22, fontWeight: "bold", color: "#FFFFFF", paddingBottom: 2 }}>{name}</td>
                       </tr>
                       <tr>
-                        <td style={{ fontSize: 14, color: "#15F0FF", fontWeight: 500, paddingBottom: 12 }}>{role}</td>
+                        <td style={{ fontSize: 14, color: "#15F0FF", fontWeight: 500, paddingBottom: 14 }}>{role}</td>
                       </tr>
 
                       <tr>
-                        <td style={{ fontSize: 13, paddingBottom: 4 }}>
+                        <td style={{ fontSize: 13, paddingBottom: 6 }}>
                           <table cellPadding={0} cellSpacing={0} border={0}>
                             <tbody>
                               <tr>
-                                <td style={{ paddingRight: 8, verticalAlign: "middle" }}>
+                                <td style={{ paddingRight: 10, verticalAlign: "middle" }}>
                                   <img
                                     src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
                                     alt="Email"
-                                    width={14}
-                                    height={14}
+                                    width={16}
+                                    height={16}
                                     style={{ display: "block" }}
                                   />
                                 </td>
@@ -298,17 +298,17 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
                       </tr>
 
                       <tr>
-                        <td style={{ fontSize: 13, paddingBottom: 4 }}>
+                        <td style={{ fontSize: 13, paddingBottom: 6 }}>
                           <table cellPadding={0} cellSpacing={0} border={0}>
                             <tbody>
                               <tr>
-                                <td style={{ paddingRight: 8, verticalAlign: "middle" }}>
+                                <td style={{ paddingRight: 10, verticalAlign: "middle" }}>
                                   <img
-                                    src="https://cdn-icons-png.flaticon.com/512/126/126509.png"
+                                    src="https://cdn-icons-png.flaticon.com/512/3059/3059446.png"
                                     alt="Teléfono"
-                                    width={14}
-                                    height={14}
-                                    style={{ display: "block", filter: "brightness(0) invert(1)" }}
+                                    width={16}
+                                    height={16}
+                                    style={{ display: "block" }}
                                   />
                                 </td>
                                 <td style={{ verticalAlign: "middle" }}>
@@ -323,17 +323,17 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
                       </tr>
 
                       <tr>
-                        <td style={{ fontSize: 13, paddingBottom: 4 }}>
+                        <td style={{ fontSize: 13, paddingBottom: 6 }}>
                           <table cellPadding={0} cellSpacing={0} border={0}>
                             <tbody>
                               <tr>
-                                <td style={{ paddingRight: 8, verticalAlign: "middle" }}>
+                                <td style={{ paddingRight: 10, verticalAlign: "middle" }}>
                                   <img
                                     src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png"
                                     alt="Web"
-                                    width={14}
-                                    height={14}
-                                    style={{ display: "block", filter: "brightness(0) invert(1)" }}
+                                    width={16}
+                                    height={16}
+                                    style={{ display: "block", filter: "invert(76%) sepia(85%) saturate(1000%) hue-rotate(130deg) brightness(103%) contrast(104%)" }}
                                   />
                                 </td>
                                 <td style={{ verticalAlign: "middle" }}>
@@ -351,21 +351,21 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
                       </tr>
 
                       <tr>
-                        <td style={{ fontSize: 12, paddingBottom: 8 }}>
+                        <td style={{ fontSize: 12, paddingBottom: 10 }}>
                           <table cellPadding={0} cellSpacing={0} border={0}>
                             <tbody>
                               <tr>
-                                <td style={{ paddingRight: 8, verticalAlign: "middle" }}>
+                                <td style={{ paddingRight: 10, verticalAlign: "middle" }}>
                                   <img
                                     src="https://cdn-icons-png.flaticon.com/512/684/684908.png"
                                     alt="Dirección"
-                                    width={14}
-                                    height={14}
-                                    style={{ display: "block", filter: "brightness(0) invert(1)" }}
+                                    width={16}
+                                    height={16}
+                                    style={{ display: "block", filter: "invert(45%) sepia(90%) saturate(2000%) hue-rotate(330deg) brightness(95%) contrast(95%)" }}
                                   />
                                 </td>
                                 <td style={{ verticalAlign: "middle" }}>
-                                  <span style={{ color: "#D9D9D9" }}>
+                                  <span style={{ color: "#FFFFFF" }}>
                                     C/ La Paz, 83 · 03320 Torrellano-Elche · Alicante
                                   </span>
                                 </td>
@@ -376,13 +376,13 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
                       </tr>
 
                       <tr>
-                        <td style={{ paddingTop: 4 }}>
+                        <td style={{ paddingTop: 2 }}>
                           <a href={safeLinkedinUrl(linkedin)} style={{ textDecoration: "none" }}>
                             <img
                               src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
                               alt="LinkedIn"
-                              width={20}
-                              height={20}
+                              width={22}
+                              height={22}
                               style={{ display: "inline-block" }}
                             />
                           </a>
@@ -392,12 +392,12 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
                   </table>
                 </td>
 
-                <td style={{ paddingLeft: 16, verticalAlign: "middle", textAlign: "center", width: 80 }}>
+                <td style={{ paddingLeft: 20, paddingRight: 8, verticalAlign: "middle", textAlign: "center", width: 100 }}>
                   <img
                     src={qrCodeUrl}
                     alt="Tarjeta de visita"
-                    width={65}
-                    height={65}
+                    width={85}
+                    height={85}
                     style={{ display: "block", margin: "0 auto" }}
                   />
                 </td>
