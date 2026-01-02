@@ -9,9 +9,10 @@ interface SignatureProps {
   role: string;
   email: string;
   phone: string;
+  linkedin?: string;
 }
 
-const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
+const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProps) => {
   const [copied, setCopied] = useState(false);
   const [downloading, setDownloading] = useState(false);
   const signatureRef = useRef<HTMLDivElement>(null);
@@ -88,9 +89,12 @@ const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
         </tr>
         <tr>
           <td style="padding-top: 10px;">
-            <a href="https://www.linkedin.com/company/fenixia" style="text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="24" height="24" style="display: inline-block;" />
+            <a href="https://www.linkedin.com/company/fenixiasolutions" style="text-decoration: none; margin-right: 8px;">
+              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Empresa" width="24" height="24" style="display: inline-block;" />
             </a>
+            ${linkedin ? `<a href="${linkedin}" style="text-decoration: none;">
+              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Personal" width="24" height="24" style="display: inline-block; border: 2px solid #15F0FF; border-radius: 4px;" />
+            </a>` : ''}
           </td>
         </tr>
       </table>
@@ -203,6 +207,7 @@ const Signatures = () => {
       role: "Co-Founder",
       email: "pedro@fenixia.tech",
       phone: "+34 620 654 925",
+      linkedin: "https://www.linkedin.com/in/pedro-s%C3%A1nchez-81b4a0377",
     },
     {
       name: "Jose J. Antón",
