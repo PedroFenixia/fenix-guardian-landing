@@ -42,7 +42,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 32px 40px; border-radius: 8px; width: 100%; max-width: 700px;">
   <tr>
     <!-- Logo centrado -->
-    <td style="padding-right: 20px; border-right: 3px solid #15F0FF; vertical-align: middle; text-align: center; width: 160px;">
+    <td style="padding-right: 20px; border-right: 1px solid rgba(21, 240, 255, 0.4); vertical-align: middle; text-align: center; width: 160px;">
       <img src="${logoUrl}" alt="Fenix IA" width="130" height="130" style="display: block; border-radius: 8px; margin: 0 auto;" />
     </td>
     <!-- Contenido central -->
