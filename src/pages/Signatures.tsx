@@ -39,14 +39,14 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(vCardUrl)}&bgcolor=1A1C1E&color=FFFFFF`;
 
   const signatureHtml = `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 32px 40px; border-radius: 8px; width: 100%; max-width: 700px;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 28px 32px; border-radius: 8px; width: 100%; max-width: 680px;">
   <tr>
     <!-- Logo centrado -->
-    <td style="padding-right: 20px; border-right: 1px solid rgba(21, 240, 255, 0.4); vertical-align: middle; text-align: center; width: 160px;">
-      <img src="${logoUrl}" alt="Fenix IA" width="130" height="130" style="display: block; border-radius: 8px; margin: 0 auto;" />
+    <td style="padding-right: 20px; border-right: 1px solid rgba(21, 240, 255, 0.4); vertical-align: middle; text-align: center; width: 140px;">
+      <img src="${logoUrl}" alt="Fenix IA" width="110" height="110" style="display: block; border-radius: 8px; margin: 0 auto;" />
     </td>
     <!-- Contenido central -->
-    <td style="padding-left: 24px; padding-right: 24px; vertical-align: top;">
+    <td style="padding-left: 24px; padding-right: 20px; vertical-align: middle;">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td style="font-size: 20px; font-weight: bold; color: #FFFFFF; padding-bottom: 4px;">
@@ -54,12 +54,12 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
           </td>
         </tr>
         <tr>
-          <td style="font-size: 14px; color: #15F0FF; font-weight: 500; padding-bottom: 14px;">
+          <td style="font-size: 14px; color: #15F0FF; font-weight: 500; padding-bottom: 12px;">
             ${role}
           </td>
         </tr>
         <tr>
-          <td style="font-size: 13px; padding-bottom: 5px;">
+          <td style="font-size: 13px; padding-bottom: 4px;">
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding-right: 8px; vertical-align: middle;">
@@ -73,7 +73,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
           </td>
         </tr>
         <tr>
-          <td style="font-size: 13px; padding-bottom: 5px;">
+          <td style="font-size: 13px; padding-bottom: 4px;">
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding-right: 8px; vertical-align: middle;">
@@ -87,7 +87,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
           </td>
         </tr>
         <tr>
-          <td style="font-size: 13px; padding-bottom: 5px;">
+          <td style="font-size: 13px; padding-bottom: 4px;">
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding-right: 8px; vertical-align: middle;">
@@ -101,7 +101,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
           </td>
         </tr>
         <tr>
-          <td style="font-size: 12px; padding-bottom: 10px;">
+          <td style="font-size: 12px; padding-bottom: 8px;">
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding-right: 8px; vertical-align: middle;">
@@ -115,23 +115,17 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
           </td>
         </tr>
         <tr>
-          <td style="padding-top: 6px;">
+          <td style="padding-top: 4px;">
             <a href="${linkedin || 'https://www.linkedin.com/company/fenixiasolutions/'}" style="text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="22" height="22" style="display: inline-block;" />
+              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="20" height="20" style="display: inline-block;" />
             </a>
           </td>
         </tr>
       </table>
     </td>
     <!-- QR a la derecha -->
-    <td style="padding-left: 16px; padding-right: 8px; vertical-align: middle; text-align: center; width: 90px;">
-      <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
-        <tr>
-          <td style="text-align: center; background-color: #1A1C1E;">
-            <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="70" height="70" style="display: block; margin: 0 auto; border-radius: 0;" />
-          </td>
-        </tr>
-      </table>
+    <td style="padding-left: 16px; vertical-align: middle; text-align: center; width: 80px;">
+      <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="65" height="65" style="display: block; margin: 0 auto;" />
     </td>
   </tr>
 </table>
