@@ -62,6 +62,30 @@ export type Database = {
         }
         Relationships: []
       }
+      edge_function_rate_limits: {
+        Row: {
+          function_name: string
+          id: string
+          ip_address: string
+          request_count: number
+          window_start: string
+        }
+        Insert: {
+          function_name: string
+          id?: string
+          ip_address: string
+          request_count?: number
+          window_start?: string
+        }
+        Update: {
+          function_name?: string
+          id?: string
+          ip_address?: string
+          request_count?: number
+          window_start?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -89,6 +113,15 @@ export type Database = {
     }
     Functions: {
       check_demo_request_rate_limit: { Args: never; Returns: boolean }
+      check_edge_function_rate_limit: {
+        Args: {
+          p_function_name: string
+          p_ip_address: string
+          p_max_requests?: number
+          p_window_hours?: number
+        }
+        Returns: Json
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

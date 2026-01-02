@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient, SupabaseClient } from "https://esm.sh/@supabase/supabase-js@2.49.4";
 
 // Allowed origins for CORS
 const allowedOrigins = [
@@ -6,6 +7,12 @@ const allowedOrigins = [
   "https://www.fenixia.tech",
   "https://fenix-ia-landing-es.lovable.app",
 ];
+
+interface RateLimitResult {
+  allowed: boolean;
+  remaining: number;
+  reset_in_seconds: number;
+}
 
 function getCorsHeaders(req: Request): Record<string, string> {
   const origin = req.headers.get("origin") || "";
@@ -17,48 +24,41 @@ function getCorsHeaders(req: Request): Record<string, string> {
   };
 }
 
-// Simple in-memory rate limiting (resets when function cold starts)
-// In production, consider using a database or Redis for persistence
-const RATE_LIMIT_MAP = new Map<string, { count: number; resetAt: number }>();
-const MAX_REQUESTS_PER_HOUR = 20; // 20 requests per hour per IP
-const RATE_LIMIT_WINDOW_MS = 3600000; // 1 hour in milliseconds
+const MAX_REQUESTS_PER_HOUR = 20;
 
 function getRateLimitKey(req: Request): string {
-  // Try to get the real client IP from various headers
   const forwardedFor = req.headers.get("x-forwarded-for");
   const realIp = req.headers.get("x-real-ip");
   const cfConnectingIp = req.headers.get("cf-connecting-ip");
-  
-  // Use the first IP from x-forwarded-for, or fall back to other headers
   const ip = (forwardedFor?.split(",")[0]?.trim()) || realIp || cfConnectingIp || "unknown";
   return ip;
 }
 
-function checkRateLimit(ip: string): { allowed: boolean; remaining: number; resetIn: number } {
-  const now = Date.now();
-  const rateLimit = RATE_LIMIT_MAP.get(ip);
-  
-  // If no record exists or window has expired, create new record
-  if (!rateLimit || now > rateLimit.resetAt) {
-    RATE_LIMIT_MAP.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
-    return { allowed: true, remaining: MAX_REQUESTS_PER_HOUR - 1, resetIn: RATE_LIMIT_WINDOW_MS };
+// deno-lint-ignore no-explicit-any
+async function checkRateLimitDB(supabase: SupabaseClient<any>, ip: string): Promise<{ allowed: boolean; remaining: number; resetIn: number }> {
+  try {
+    const { data, error } = await supabase.rpc('check_edge_function_rate_limit', {
+      p_ip_address: ip,
+      p_function_name: 'chat-assistant',
+      p_max_requests: MAX_REQUESTS_PER_HOUR,
+      p_window_hours: 1
+    });
+
+    if (error) {
+      console.error('Rate limit check error:', error.message);
+      return { allowed: true, remaining: MAX_REQUESTS_PER_HOUR, resetIn: 3600 };
+    }
+
+    const result = data as RateLimitResult;
+    return {
+      allowed: result.allowed,
+      remaining: result.remaining,
+      resetIn: result.reset_in_seconds * 1000
+    };
+  } catch (err) {
+    console.error('Rate limit exception:', err);
+    return { allowed: true, remaining: MAX_REQUESTS_PER_HOUR, resetIn: 3600000 };
   }
-  
-  // Check if limit exceeded
-  if (rateLimit.count >= MAX_REQUESTS_PER_HOUR) {
-    const resetIn = rateLimit.resetAt - now;
-    return { allowed: false, remaining: 0, resetIn };
-  }
-  
-  // Increment counter
-  rateLimit.count++;
-  RATE_LIMIT_MAP.set(ip, rateLimit);
-  
-  return { 
-    allowed: true, 
-    remaining: MAX_REQUESTS_PER_HOUR - rateLimit.count, 
-    resetIn: rateLimit.resetAt - now 
-  };
 }
 
 serve(async (req) => {
@@ -69,12 +69,20 @@ serve(async (req) => {
   }
 
   try {
-    // Rate limiting check
+    const supabaseUrl = Deno.env.get("SUPABASE_URL");
+    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY");
+    
+    if (!supabaseUrl || !supabaseAnonKey) {
+      console.error("Supabase credentials not configured");
+      throw new Error("Supabase configuration missing");
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
     const clientIp = getRateLimitKey(req);
-    const { allowed, remaining, resetIn } = checkRateLimit(clientIp);
+    const { allowed, remaining, resetIn } = await checkRateLimitDB(supabase, clientIp);
     
     if (!allowed) {
-      // Mask IP for privacy - only log partial IP
       const maskedIp = clientIp.includes('.') 
         ? clientIp.split('.').slice(0, 2).join('.') + '.xxx.xxx'
         : 'masked';
@@ -98,7 +106,6 @@ serve(async (req) => {
 
     const { messages } = await req.json();
     
-    // Basic input validation
     if (!messages || !Array.isArray(messages)) {
       return new Response(
         JSON.stringify({ error: "Formato de mensaje inválido" }), 
@@ -109,7 +116,6 @@ serve(async (req) => {
       );
     }
     
-    // Limit message history to prevent abuse
     const MAX_MESSAGES = 20;
     const truncatedMessages = messages.slice(-MAX_MESSAGES);
     
@@ -169,7 +175,6 @@ INSTRUCCIONES:
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-      const errorText = await response.text();
       console.error("AI gateway error:", response.status);
       return new Response(JSON.stringify({ error: "Error del servicio de IA" }), {
         status: 500,
@@ -188,7 +193,7 @@ INSTRUCCIONES:
     console.error("Chat assistant error:", error);
     return new Response(JSON.stringify({ error: error instanceof Error ? error.message : "Error desconocido" }), {
       status: 500,
-      headers: { ...corsHeaders, "Content-Type": "application/json" },
+      headers: { ...getCorsHeaders(req), "Content-Type": "application/json" },
     });
   }
 });
