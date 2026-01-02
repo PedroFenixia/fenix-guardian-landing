@@ -89,12 +89,9 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
         </tr>
         <tr>
           <td style="padding-top: 10px;">
-            <a href="https://www.linkedin.com/company/fenixiasolutions" style="text-decoration: none; margin-right: 8px;">
-              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Empresa" width="24" height="24" style="display: inline-block;" />
+            <a href="${linkedin || 'https://www.linkedin.com/company/fenixiasolutions'}" style="text-decoration: none;">
+              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="24" height="24" style="display: inline-block;" />
             </a>
-            ${linkedin ? `<a href="${linkedin}" style="text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn Personal" width="24" height="24" style="display: inline-block; border: 2px solid #15F0FF; border-radius: 4px;" />
-            </a>` : ''}
           </td>
         </tr>
       </table>
