@@ -116,7 +116,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
         </tr>
         <tr>
           <td style="padding-top: 6px;">
-            <a href="${linkedin || 'https://www.linkedin.com/company/fenixiasolutions'}" style="text-decoration: none;">
+            <a href="${linkedin || 'https://www.linkedin.com/company/fenixiasolutions/'}" style="text-decoration: none;">
               <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="22" height="22" style="display: inline-block;" />
             </a>
           </td>
