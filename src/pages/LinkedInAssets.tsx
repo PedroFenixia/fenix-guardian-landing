@@ -44,16 +44,10 @@ const AssetCard = ({ title, description, imageSrc, fileName }: AssetCardProps) =
 const LinkedInAssets = () => {
   const pedroAssets = [
     {
-      title: "Pedro Sánchez - Opción 1",
-      description: "Foto de perfil profesional con blazer oscuro",
-      imageSrc: linkedinPedro1,
-      fileName: "linkedin-pedro-sanchez-1.png",
-    },
-    {
-      title: "Pedro Sánchez - Opción 2",
-      description: "Foto de perfil casual con camisa azul",
+      title: "Pedro Sánchez",
+      description: "Foto de perfil profesional con camiseta FENIXIA",
       imageSrc: linkedinPedro2,
-      fileName: "linkedin-pedro-sanchez-2.png",
+      fileName: "linkedin-pedro-sanchez.png",
     },
   ];
 
