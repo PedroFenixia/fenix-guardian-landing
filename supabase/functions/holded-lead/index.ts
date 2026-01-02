@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient, SupabaseClient } from "https://esm.sh/@supabase/supabase-js@2.49.4";
 
 // Allowed origins for CORS
 const allowedOrigins = [
@@ -29,10 +30,13 @@ interface HoldedFunnel {
   name: string;
 }
 
-// ============ Rate Limiting ============
-const RATE_LIMIT_MAP = new Map<string, { count: number; resetAt: number }>();
-const MAX_REQUESTS_PER_HOUR = 5; // Conservative limit for form submissions
-const RATE_LIMIT_WINDOW_MS = 3600000; // 1 hour
+interface RateLimitResult {
+  allowed: boolean;
+  remaining: number;
+  reset_in_seconds: number;
+}
+
+const MAX_REQUESTS_PER_HOUR = 5;
 
 function getRateLimitKey(req: Request): string {
   const forwardedFor = req.headers.get("x-forwarded-for");
@@ -40,24 +44,33 @@ function getRateLimitKey(req: Request): string {
   return forwardedFor?.split(",")[0]?.trim() || realIp || "unknown";
 }
 
-function checkRateLimit(ip: string): { allowed: boolean; remaining: number; resetIn: number } {
-  const now = Date.now();
-  const rateLimit = RATE_LIMIT_MAP.get(ip);
+// deno-lint-ignore no-explicit-any
+async function checkRateLimitDB(supabase: SupabaseClient<any>, ip: string): Promise<{ allowed: boolean; remaining: number; resetIn: number }> {
+  try {
+    const { data, error } = await supabase.rpc('check_edge_function_rate_limit', {
+      p_ip_address: ip,
+      p_function_name: 'holded-lead',
+      p_max_requests: MAX_REQUESTS_PER_HOUR,
+      p_window_hours: 1
+    });
 
-  if (!rateLimit || now > rateLimit.resetAt) {
-    RATE_LIMIT_MAP.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
-    return { allowed: true, remaining: MAX_REQUESTS_PER_HOUR - 1, resetIn: RATE_LIMIT_WINDOW_MS };
+    if (error) {
+      console.error('Rate limit check error:', error.message);
+      return { allowed: true, remaining: MAX_REQUESTS_PER_HOUR, resetIn: 3600000 };
+    }
+
+    const result = data as RateLimitResult;
+    return {
+      allowed: result.allowed,
+      remaining: result.remaining,
+      resetIn: result.reset_in_seconds * 1000
+    };
+  } catch (err) {
+    console.error('Rate limit exception:', err);
+    return { allowed: true, remaining: MAX_REQUESTS_PER_HOUR, resetIn: 3600000 };
   }
-
-  if (rateLimit.count >= MAX_REQUESTS_PER_HOUR) {
-    return { allowed: false, remaining: 0, resetIn: rateLimit.resetAt - now };
-  }
-
-  rateLimit.count++;
-  return { allowed: true, remaining: MAX_REQUESTS_PER_HOUR - rateLimit.count, resetIn: rateLimit.resetAt - now };
 }
 
-// ============ Input Validation ============
 function validateInput(data: unknown): { valid: boolean; error?: string; parsed?: LeadData } {
   if (!data || typeof data !== 'object') {
     return { valid: false, error: 'Invalid request body' };
@@ -95,40 +108,47 @@ function validateInput(data: unknown): { valid: boolean; error?: string; parsed?
 serve(async (req) => {
   const corsHeaders = getCorsHeaders(req);
 
-  // Handle CORS preflight requests
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
   }
 
-  // Rate limiting check
-  const clientIp = getRateLimitKey(req);
-  const { allowed, remaining, resetIn } = checkRateLimit(clientIp);
-
-  if (!allowed) {
-    // Mask IP for privacy - only log partial IP
-    const maskedIp = clientIp.includes('.') 
-      ? clientIp.split('.').slice(0, 2).join('.') + '.xxx.xxx'
-      : 'masked';
-    console.warn(`Rate limit exceeded for IP: ${maskedIp}`);
-    return new Response(
-      JSON.stringify({ 
-        success: false, 
-        error: 'Demasiadas solicitudes. Por favor, intenta más tarde.',
-        retryAfterMs: resetIn,
-      }),
-      { 
-        status: 429, 
-        headers: { 
-          ...corsHeaders, 
-          'Content-Type': 'application/json',
-          'X-RateLimit-Remaining': String(remaining),
-          'Retry-After': String(Math.ceil(resetIn / 1000)),
-        } 
-      }
-    );
-  }
-
   try {
+    const supabaseUrl = Deno.env.get("SUPABASE_URL");
+    const supabaseAnonKey = Deno.env.get("SUPABASE_ANON_KEY");
+    
+    if (!supabaseUrl || !supabaseAnonKey) {
+      console.error("Supabase credentials not configured");
+      throw new Error("Supabase configuration missing");
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+    const clientIp = getRateLimitKey(req);
+    const { allowed, remaining, resetIn } = await checkRateLimitDB(supabase, clientIp);
+
+    if (!allowed) {
+      const maskedIp = clientIp.includes('.') 
+        ? clientIp.split('.').slice(0, 2).join('.') + '.xxx.xxx'
+        : 'masked';
+      console.warn(`Rate limit exceeded for IP: ${maskedIp}`);
+      return new Response(
+        JSON.stringify({ 
+          success: false, 
+          error: 'Demasiadas solicitudes. Por favor, intenta más tarde.',
+          retryAfterMs: resetIn,
+        }),
+        { 
+          status: 429, 
+          headers: { 
+            ...corsHeaders, 
+            'Content-Type': 'application/json',
+            'X-RateLimit-Remaining': String(remaining),
+            'Retry-After': String(Math.ceil(resetIn / 1000)),
+          } 
+        }
+      );
+    }
+
     const HOLDED_API_KEY = Deno.env.get('HOLDED_API_KEY');
     
     if (!HOLDED_API_KEY) {
@@ -136,7 +156,6 @@ serve(async (req) => {
       throw new Error('Holded API key not configured');
     }
 
-    // Validate input
     const rawBody = await req.json();
     const validation = validateInput(rawBody);
 
@@ -152,7 +171,6 @@ serve(async (req) => {
 
     console.log('Creating lead in Holded CRM');
 
-    // Step 1: Create the contact first (required to get contactId)
     const contactData = {
       name: name,
       email: email,
@@ -184,7 +202,6 @@ serve(async (req) => {
 
     const contactId = contactResult.id;
 
-    // Step 2: Get all funnels to find "FORMULARIO CONTACTO WEB"
     console.log('Fetching funnels from Holded...');
     const funnelsResponse = await fetch('https://api.holded.com/api/crm/v1/funnels', {
       method: 'GET',
@@ -196,7 +213,6 @@ serve(async (req) => {
 
     if (!funnelsResponse.ok) {
       console.error('Error fetching funnels:', funnelsResponse.status);
-      // Contact was created, but funnel assignment failed - still return success
       return new Response(
         JSON.stringify({ 
           success: true, 
@@ -214,7 +230,6 @@ serve(async (req) => {
     const funnels: HoldedFunnel[] = await funnelsResponse.json();
     console.log('Fetched funnels count:', funnels.length);
 
-    // Find the funnel "FORMULARIO CONTACTO WEB"
     const targetFunnel = funnels.find(f => 
       f.name.toUpperCase().includes('FORMULARIO CONTACTO WEB') || 
       f.name.toUpperCase() === 'FORMULARIO CONTACTO WEB'
@@ -222,7 +237,6 @@ serve(async (req) => {
 
     if (!targetFunnel) {
       console.error('Target funnel not found');
-      // Contact was created, but funnel not found - still return success
       return new Response(
         JSON.stringify({ 
           success: true, 
@@ -239,7 +253,6 @@ serve(async (req) => {
 
     console.log('Target funnel found');
 
-    // Step 3: Create the lead in the CRM with the funnel and contact ID
     const leadData = {
       funnelId: targetFunnel.id,
       contactId: contactId,
@@ -262,7 +275,6 @@ serve(async (req) => {
 
     if (!leadResponse.ok) {
       console.error('Holded CRM API error:', leadResponse.status);
-      // Contact was created, but lead creation in funnel failed
       return new Response(
         JSON.stringify({ 
           success: true, 
@@ -303,7 +315,7 @@ serve(async (req) => {
         error: errorMessage 
       }),
       { 
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        headers: { ...getCorsHeaders(req), 'Content-Type': 'application/json' },
         status: 500 
       }
     );
