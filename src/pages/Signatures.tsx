@@ -124,11 +124,11 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
       </table>
     </td>
     <!-- QR a la derecha -->
-    <td style="padding-left: 10px; vertical-align: middle; text-align: center; width: 100px;">
+    <td style="padding-left: 10px; vertical-align: middle; text-align: center; width: 80px;">
       <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
         <tr>
           <td style="text-align: center;">
-            <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="90" height="90" style="display: block; margin: 0 auto; border-radius: 4px;" />
+            <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="70" height="70" style="display: block; margin: 0 auto; border-radius: 4px;" />
           </td>
         </tr>
         <tr>
