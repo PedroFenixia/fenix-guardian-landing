@@ -17,46 +17,68 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
   const [downloading, setDownloading] = useState(false);
   const signatureRef = useRef<HTMLDivElement>(null);
 
-  const logoUrl = typeof window !== "undefined"
-    ? `${window.location.origin}/logoFENIXIA.png`
-    : "/logoFENIXIA.png";
+  const logoUrl = typeof window !== "undefined" ? `${window.location.origin}/logoFENIXIA.png` : "/logoFENIXIA.png";
+
+  const escapeHtml = (value: string) =>
+    value
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/\"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+
+  const safeLinkedinUrl = (value?: string) => {
+    const fallback = "https://www.linkedin.com/company/fenixiasolutions/";
+    if (!value) return fallback;
+    try {
+      const url = new URL(value);
+      // Only allow http(s) and only LinkedIn domains
+      const isHttp = url.protocol === "https:" || url.protocol === "http:";
+      const host = url.hostname.toLowerCase();
+      const isLinkedIn = host === "linkedin.com" || host.endsWith(".linkedin.com");
+      return isHttp && isLinkedIn ? url.toString() : fallback;
+    } catch {
+      return fallback;
+    }
+  };
 
   // QR: use an URL that downloads the contact (more compatible than embedding VCARD in QR)
-  const firstName = name.split(' ')[0];
-  const lastName = name.split(' ').slice(1).join(' ');
-  const phoneClean = phone.replace(/\s/g, '');
+  const phoneClean = phone.replace(/\s/g, "");
 
-  const vCardUrl = typeof window !== "undefined"
-    ? `${window.location.origin}/vcard?${new URLSearchParams({
-        name,
-        role,
-        email,
-        phone: phoneClean,
-        auto: "1",
-      }).toString()}`
-    : `/vcard?name=${encodeURIComponent(name)}&role=${encodeURIComponent(role)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phoneClean)}&auto=1`;
+  const vCardUrl =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/vcard?${new URLSearchParams({
+          name,
+          role,
+          email,
+          phone: phoneClean,
+          auto: "1",
+        }).toString()}`
+      : `/vcard?name=${encodeURIComponent(name)}&role=${encodeURIComponent(role)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phoneClean)}&auto=1`;
 
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(vCardUrl)}&bgcolor=1A1C1E&color=FFFFFF`;
+
+  // Build HTML to copy (escape all interpolated values to prevent HTML/script injection)
+  const safeName = escapeHtml(name);
+  const safeRole = escapeHtml(role);
+  const safeEmail = escapeHtml(email);
+  const safePhone = escapeHtml(phone);
+  const safePhoneHref = escapeHtml(phoneClean);
+  const safeLinkedinHref = escapeHtml(safeLinkedinUrl(linkedin));
 
   const signatureHtml = `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 28px 32px; border-radius: 8px; width: 100%; max-width: 680px;">
   <tr>
-    <!-- Logo centrado -->
     <td style="padding-right: 20px; border-right: 1px solid rgba(21, 240, 255, 0.4); vertical-align: middle; text-align: center; width: 140px;">
       <img src="${logoUrl}" alt="Fenix IA" width="110" height="110" style="display: block; border-radius: 8px; margin: 0 auto;" />
     </td>
-    <!-- Contenido central -->
     <td style="padding-left: 24px; padding-right: 20px; vertical-align: middle;">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td style="font-size: 20px; font-weight: bold; color: #FFFFFF; padding-bottom: 4px;">
-            ${name}
-          </td>
+          <td style="font-size: 20px; font-weight: bold; color: #FFFFFF; padding-bottom: 4px;">${safeName}</td>
         </tr>
         <tr>
-          <td style="font-size: 14px; color: #15F0FF; font-weight: 500; padding-bottom: 12px;">
-            ${role}
-          </td>
+          <td style="font-size: 14px; color: #15F0FF; font-weight: 500; padding-bottom: 12px;">${safeRole}</td>
         </tr>
         <tr>
           <td style="font-size: 13px; padding-bottom: 4px;">
@@ -66,7 +88,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
                   <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" width="14" height="14" style="display: block;" />
                 </td>
                 <td style="vertical-align: middle;">
-                  <a href="mailto:${email}" style="color: #FFFFFF; text-decoration: none;">${email}</a>
+                  <a href="mailto:${safeEmail}" style="color: #FFFFFF; text-decoration: none;">${safeEmail}</a>
                 </td>
               </tr>
             </table>
@@ -80,7 +102,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
                   <img src="https://cdn-icons-png.flaticon.com/512/126/126509.png" alt="Teléfono" width="14" height="14" style="display: block; filter: brightness(0) invert(1);" />
                 </td>
                 <td style="vertical-align: middle;">
-                  <a href="tel:${phone.replace(/\s/g, '')}" style="color: #FFFFFF; text-decoration: none;">${phone}</a>
+                  <a href="tel:${safePhoneHref}" style="color: #FFFFFF; text-decoration: none;">${safePhone}</a>
                 </td>
               </tr>
             </table>
@@ -116,14 +138,13 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
         </tr>
         <tr>
           <td style="padding-top: 4px;">
-            <a href="${linkedin || 'https://www.linkedin.com/company/fenixiasolutions/'}" style="text-decoration: none;">
+            <a href="${safeLinkedinHref}" style="text-decoration: none;">
               <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="20" height="20" style="display: inline-block;" />
             </a>
           </td>
         </tr>
       </table>
     </td>
-    <!-- QR a la derecha -->
     <td style="padding-left: 16px; vertical-align: middle; text-align: center; width: 80px;">
       <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="65" height="65" style="display: block; margin: 0 auto;" />
     </td>
@@ -140,7 +161,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
         description: `Firma de ${name} copiada al portapapeles`,
       });
       setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
+    } catch {
       toast({
         title: "Error",
         description: "No se pudo copiar la firma",
@@ -151,7 +172,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
 
   const downloadAsPng = async () => {
     if (!signatureRef.current) return;
-    
+
     setDownloading(true);
     try {
       const canvas = await html2canvas(signatureRef.current, {
@@ -160,17 +181,17 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
         useCORS: true,
         allowTaint: true,
       });
-      
+
       const link = document.createElement("a");
       link.download = `firma-${name.toLowerCase().replace(/\s+/g, "-")}.png`;
       link.href = canvas.toDataURL("image/png");
       link.click();
-      
+
       toast({
         title: "Descargado",
         description: `Firma de ${name} guardada como imagen`,
       });
-    } catch (err) {
+    } catch {
       toast({
         title: "Error",
         description: "No se pudo descargar la firma",
@@ -196,21 +217,194 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
             <Download className="h-4 w-4" />
             {downloading ? "Descargando..." : "Descargar PNG"}
           </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={copyToClipboard}
-            className="gap-2"
-          >
+          <Button variant="outline" size="sm" onClick={copyToClipboard} className="gap-2">
             {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
             {copied ? "Copiado" : "Copiar HTML"}
           </Button>
         </div>
       </div>
-      
-      {/* Preview */}
+
+      {/* Preview (no dangerouslySetInnerHTML) */}
       <div className="rounded-lg overflow-hidden">
-        <div ref={signatureRef} dangerouslySetInnerHTML={{ __html: signatureHtml }} />
+        <div ref={signatureRef}>
+          <table
+            cellPadding={0}
+            cellSpacing={0}
+            border={0}
+            style={{
+              fontFamily: "'Segoe UI', Arial, sans-serif",
+              fontSize: 14,
+              lineHeight: 1.5,
+              backgroundColor: "#1A1C1E",
+              padding: "28px 32px",
+              borderRadius: 8,
+              width: "100%",
+              maxWidth: 680,
+            }}
+          >
+            <tbody>
+              <tr>
+                <td
+                  style={{
+                    paddingRight: 20,
+                    borderRight: "1px solid rgba(21, 240, 255, 0.4)",
+                    verticalAlign: "middle",
+                    textAlign: "center",
+                    width: 140,
+                  }}
+                >
+                  <img
+                    src={logoUrl}
+                    alt="Fenix IA"
+                    width={110}
+                    height={110}
+                    style={{ display: "block", borderRadius: 8, margin: "0 auto" }}
+                  />
+                </td>
+
+                <td style={{ paddingLeft: 24, paddingRight: 20, verticalAlign: "middle" }}>
+                  <table cellPadding={0} cellSpacing={0} border={0}>
+                    <tbody>
+                      <tr>
+                        <td style={{ fontSize: 20, fontWeight: "bold", color: "#FFFFFF", paddingBottom: 4 }}>{name}</td>
+                      </tr>
+                      <tr>
+                        <td style={{ fontSize: 14, color: "#15F0FF", fontWeight: 500, paddingBottom: 12 }}>{role}</td>
+                      </tr>
+
+                      <tr>
+                        <td style={{ fontSize: 13, paddingBottom: 4 }}>
+                          <table cellPadding={0} cellSpacing={0} border={0}>
+                            <tbody>
+                              <tr>
+                                <td style={{ paddingRight: 8, verticalAlign: "middle" }}>
+                                  <img
+                                    src="https://cdn-icons-png.flaticon.com/512/732/732200.png"
+                                    alt="Email"
+                                    width={14}
+                                    height={14}
+                                    style={{ display: "block" }}
+                                  />
+                                </td>
+                                <td style={{ verticalAlign: "middle" }}>
+                                  <a href={`mailto:${email}`} style={{ color: "#FFFFFF", textDecoration: "none" }}>
+                                    {email}
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td style={{ fontSize: 13, paddingBottom: 4 }}>
+                          <table cellPadding={0} cellSpacing={0} border={0}>
+                            <tbody>
+                              <tr>
+                                <td style={{ paddingRight: 8, verticalAlign: "middle" }}>
+                                  <img
+                                    src="https://cdn-icons-png.flaticon.com/512/126/126509.png"
+                                    alt="Teléfono"
+                                    width={14}
+                                    height={14}
+                                    style={{ display: "block", filter: "brightness(0) invert(1)" }}
+                                  />
+                                </td>
+                                <td style={{ verticalAlign: "middle" }}>
+                                  <a href={`tel:${phoneClean}`} style={{ color: "#FFFFFF", textDecoration: "none" }}>
+                                    {phone}
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td style={{ fontSize: 13, paddingBottom: 4 }}>
+                          <table cellPadding={0} cellSpacing={0} border={0}>
+                            <tbody>
+                              <tr>
+                                <td style={{ paddingRight: 8, verticalAlign: "middle" }}>
+                                  <img
+                                    src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png"
+                                    alt="Web"
+                                    width={14}
+                                    height={14}
+                                    style={{ display: "block", filter: "brightness(0) invert(1)" }}
+                                  />
+                                </td>
+                                <td style={{ verticalAlign: "middle" }}>
+                                  <a
+                                    href="https://fenixia.tech"
+                                    style={{ color: "#15F0FF", textDecoration: "none", fontWeight: 500 }}
+                                  >
+                                    fenixia.tech
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td style={{ fontSize: 12, paddingBottom: 8 }}>
+                          <table cellPadding={0} cellSpacing={0} border={0}>
+                            <tbody>
+                              <tr>
+                                <td style={{ paddingRight: 8, verticalAlign: "middle" }}>
+                                  <img
+                                    src="https://cdn-icons-png.flaticon.com/512/684/684908.png"
+                                    alt="Dirección"
+                                    width={14}
+                                    height={14}
+                                    style={{ display: "block", filter: "brightness(0) invert(1)" }}
+                                  />
+                                </td>
+                                <td style={{ verticalAlign: "middle" }}>
+                                  <span style={{ color: "#D9D9D9" }}>
+                                    C/ La Paz, 83 · 03320 Torrellano-Elche · Alicante
+                                  </span>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td style={{ paddingTop: 4 }}>
+                          <a href={safeLinkedinUrl(linkedin)} style={{ textDecoration: "none" }}>
+                            <img
+                              src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+                              alt="LinkedIn"
+                              width={20}
+                              height={20}
+                              style={{ display: "inline-block" }}
+                            />
+                          </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </td>
+
+                <td style={{ paddingLeft: 16, verticalAlign: "middle", textAlign: "center", width: 80 }}>
+                  <img
+                    src={qrCodeUrl}
+                    alt="Tarjeta de visita"
+                    width={65}
+                    height={65}
+                    style={{ display: "block", margin: "0 auto" }}
+                  />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );
