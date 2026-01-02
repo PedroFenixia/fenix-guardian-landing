@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { Copy, Check } from "lucide-react";
+import { useState, useRef } from "react";
+import { Copy, Check, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { toast } from "@/hooks/use-toast";
+import html2canvas from "html2canvas";
 
 interface SignatureProps {
   name: string;
@@ -12,7 +13,8 @@ interface SignatureProps {
 
 const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
   const [copied, setCopied] = useState(false);
-
+  const [downloading, setDownloading] = useState(false);
+  const signatureRef = useRef<HTMLDivElement>(null);
 
   const logoUrl = typeof window !== "undefined"
     ? `${window.location.origin}/logoFENIXIA.png`
@@ -128,29 +130,72 @@ const SignatureTemplate = ({ name, role, email, phone }: SignatureProps) => {
     }
   };
 
+  const downloadAsPng = async () => {
+    if (!signatureRef.current) return;
+    
+    setDownloading(true);
+    try {
+      const canvas = await html2canvas(signatureRef.current, {
+        backgroundColor: null,
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+      });
+      
+      const link = document.createElement("a");
+      link.download = `firma-${name.toLowerCase().replace(/\s+/g, "-")}.png`;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+      
+      toast({
+        title: "Descargado",
+        description: `Firma de ${name} guardada como imagen`,
+      });
+    } catch (err) {
+      toast({
+        title: "Error",
+        description: "No se pudo descargar la firma",
+        variant: "destructive",
+      });
+    } finally {
+      setDownloading(false);
+    }
+  };
+
   return (
     <div className="glass-card p-6 rounded-xl">
-      <div className="flex justify-between items-center mb-4">
+      <div className="flex justify-between items-center mb-4 flex-wrap gap-2">
         <h3 className="text-lg font-semibold text-foreground">{name}</h3>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={copyToClipboard}
-          className="gap-2"
-        >
-          {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
-          {copied ? "Copiado" : "Copiar HTML"}
-        </Button>
+        <div className="flex gap-2">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={downloadAsPng}
+            className="gap-2"
+            disabled={downloading}
+          >
+            <Download className="h-4 w-4" />
+            {downloading ? "Descargando..." : "Descargar PNG"}
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={copyToClipboard}
+            className="gap-2"
+          >
+            {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
+            {copied ? "Copiado" : "Copiar HTML"}
+          </Button>
+        </div>
       </div>
       
       {/* Preview */}
       <div className="rounded-lg overflow-hidden">
-        <div dangerouslySetInnerHTML={{ __html: signatureHtml }} />
+        <div ref={signatureRef} dangerouslySetInnerHTML={{ __html: signatureHtml }} />
       </div>
     </div>
   );
 };
-
 const Signatures = () => {
   const signatures = [
     {
