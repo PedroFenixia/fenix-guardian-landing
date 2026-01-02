@@ -203,7 +203,7 @@ const Signatures = () => {
       role: "Co-Founder",
       email: "pedro@fenixia.tech",
       phone: "+34 620 654 925",
-      linkedin: "https://www.linkedin.com/in/pedro-s%C3%A1nchez-81b4a0377",
+      linkedin: "https://www.linkedin.com/in/pedro-sánchez-81b4a0377",
     },
     {
       name: "Jose J. Antón",
