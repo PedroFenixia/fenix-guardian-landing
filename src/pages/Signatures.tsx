@@ -124,7 +124,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
       </table>
     </td>
     <!-- QR a la derecha -->
-    <td style="padding-left: 10px; border-left: 3px solid #15F0FF; vertical-align: middle; text-align: center; width: 100px;">
+    <td style="padding-left: 10px; vertical-align: middle; text-align: center; width: 100px;">
       <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
         <tr>
           <td style="text-align: center;">
