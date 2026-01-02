@@ -103,7 +103,6 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
       <table cellpadding="0" cellspacing="0" border="0" width="100%">
         <tr>
           <td style="font-size: 12px; color: #D9D9D9;">
-            <strong style="color: #15F0FF;">FENIX IA SOLUTIONS SL</strong><br />
             C/ La Paz, 83 · 03320 Torrellano-Elche · Alicante
           </td>
         </tr>
