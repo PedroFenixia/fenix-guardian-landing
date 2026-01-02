@@ -77,7 +77,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding-right: 8px; vertical-align: middle;">
-                  <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Teléfono" width="14" height="14" style="display: block;" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/126/126509.png" alt="Teléfono" width="14" height="14" style="display: block; filter: brightness(0) invert(1);" />
                 </td>
                 <td style="vertical-align: middle;">
                   <a href="tel:${phone.replace(/\s/g, '')}" style="color: #FFFFFF; text-decoration: none;">${phone}</a>
@@ -91,7 +91,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding-right: 8px; vertical-align: middle;">
-                  <img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png" alt="Web" width="14" height="14" style="display: block;" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png" alt="Web" width="14" height="14" style="display: block; filter: brightness(0) invert(1);" />
                 </td>
                 <td style="vertical-align: middle;">
                   <a href="https://fenixia.tech" style="color: #15F0FF; text-decoration: none; font-weight: 500;">fenixia.tech</a>
@@ -105,7 +105,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding-right: 8px; vertical-align: middle;">
-                  <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Dirección" width="14" height="14" style="display: block;" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Dirección" width="14" height="14" style="display: block; filter: brightness(0) invert(1);" />
                 </td>
                 <td style="vertical-align: middle;">
                   <span style="color: #D9D9D9;">C/ La Paz, 83 · 03320 Torrellano-Elche · Alicante</span>
