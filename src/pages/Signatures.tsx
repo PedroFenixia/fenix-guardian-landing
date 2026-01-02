@@ -200,19 +200,19 @@ const Signatures = () => {
   const signatures = [
     {
       name: "Pedro Sánchez",
-      role: "Co-Founder & COO",
+      role: "Co-Founder",
       email: "pedro@fenixia.tech",
       phone: "+34 620 654 925",
     },
     {
       name: "Jose J. Antón",
-      role: "Co-Founder & CEO",
+      role: "Co-Founder",
       email: "jose@fenixia.tech",
       phone: "+34 966 10 10 29",
     },
     {
       name: "Izhar Sanz",
-      role: "Co-Founder & CTO",
+      role: "Co-Founder",
       email: "izhar@fenixia.tech",
       phone: "+34 966 10 10 29",
     },
