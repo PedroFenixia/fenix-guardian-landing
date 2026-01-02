@@ -39,45 +39,31 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(vCardUrl)}&bgcolor=1A1C1E&color=15F0FF`;
 
   const signatureHtml = `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 32px 40px; border-radius: 8px; width: 100%; max-width: 650px;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 32px 40px; border-radius: 8px; width: 100%; max-width: 700px;">
   <tr>
-    <td style="padding-right: 16px; border-right: 3px solid #15F0FF; vertical-align: middle; text-align: center;">
-      <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
-        <tr>
-          <td style="text-align: center;">
-            <img src="${logoUrl}" alt="Fenix IA" width="140" height="140" style="display: block; border-radius: 8px; margin: 0 auto 12px auto;" />
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: center;">
-            <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="80" height="80" style="display: block; margin: 0 auto; border-radius: 4px;" />
-          </td>
-        </tr>
-        <tr>
-          <td style="text-align: center;">
-            <span style="font-size: 10px; color: #D9D9D9; display: block; margin-top: 6px;">Escanea para guardar</span>
-          </td>
-        </tr>
-      </table>
+    <!-- Logo centrado -->
+    <td style="padding-right: 20px; border-right: 3px solid #15F0FF; vertical-align: middle; text-align: center; width: 160px;">
+      <img src="${logoUrl}" alt="Fenix IA" width="130" height="130" style="display: block; border-radius: 8px; margin: 0 auto;" />
     </td>
-    <td style="padding-left: 24px;">
+    <!-- Contenido central -->
+    <td style="padding-left: 24px; padding-right: 24px; vertical-align: top;">
       <table cellpadding="0" cellspacing="0" border="0">
         <tr>
-          <td style="font-size: 20px; font-weight: bold; color: #FFFFFF; padding-bottom: 6px;">
+          <td style="font-size: 20px; font-weight: bold; color: #FFFFFF; padding-bottom: 4px;">
             ${name}
           </td>
         </tr>
         <tr>
-          <td style="font-size: 14px; color: #15F0FF; font-weight: 500; padding-bottom: 16px;">
+          <td style="font-size: 14px; color: #15F0FF; font-weight: 500; padding-bottom: 14px;">
             ${role}
           </td>
         </tr>
         <tr>
-          <td style="font-size: 14px; padding-bottom: 6px;">
+          <td style="font-size: 13px; padding-bottom: 5px;">
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding-right: 8px; vertical-align: middle;">
-                  <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" width="16" height="16" style="display: block;" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" width="14" height="14" style="display: block;" />
                 </td>
                 <td style="vertical-align: middle;">
                   <a href="mailto:${email}" style="color: #FFFFFF; text-decoration: none;">${email}</a>
@@ -87,11 +73,11 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
           </td>
         </tr>
         <tr>
-          <td style="font-size: 14px; padding-bottom: 6px;">
+          <td style="font-size: 13px; padding-bottom: 5px;">
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding-right: 8px; vertical-align: middle;">
-                  <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Teléfono" width="16" height="16" style="display: block;" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Teléfono" width="14" height="14" style="display: block;" />
                 </td>
                 <td style="vertical-align: middle;">
                   <a href="tel:${phone.replace(/\s/g, '')}" style="color: #FFFFFF; text-decoration: none;">${phone}</a>
@@ -101,11 +87,11 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
           </td>
         </tr>
         <tr>
-          <td style="font-size: 14px; padding-bottom: 6px;">
+          <td style="font-size: 13px; padding-bottom: 5px;">
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding-right: 8px; vertical-align: middle;">
-                  <img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png" alt="Web" width="16" height="16" style="display: block;" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png" alt="Web" width="14" height="14" style="display: block;" />
                 </td>
                 <td style="vertical-align: middle;">
                   <a href="https://fenixia.tech" style="color: #15F0FF; text-decoration: none; font-weight: 500;">fenixia.tech</a>
@@ -115,11 +101,11 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
           </td>
         </tr>
         <tr>
-          <td style="font-size: 14px; padding-bottom: 12px;">
+          <td style="font-size: 12px; padding-bottom: 10px;">
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding-right: 8px; vertical-align: middle;">
-                  <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Dirección" width="16" height="16" style="display: block;" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Dirección" width="14" height="14" style="display: block;" />
                 </td>
                 <td style="vertical-align: middle;">
                   <span style="color: #D9D9D9;">C/ La Paz, 83 · 03320 Torrellano-Elche · Alicante</span>
@@ -129,10 +115,25 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
           </td>
         </tr>
         <tr>
-          <td style="padding-top: 10px;">
+          <td style="padding-top: 6px;">
             <a href="${linkedin || 'https://www.linkedin.com/company/fenixiasolutions'}" style="text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="24" height="24" style="display: inline-block;" />
+              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="22" height="22" style="display: inline-block;" />
             </a>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <!-- QR a la derecha -->
+    <td style="padding-left: 20px; border-left: 3px solid #15F0FF; vertical-align: middle; text-align: center; width: 120px;">
+      <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto;">
+        <tr>
+          <td style="text-align: center;">
+            <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="90" height="90" style="display: block; margin: 0 auto; border-radius: 4px;" />
+          </td>
+        </tr>
+        <tr>
+          <td style="text-align: center;">
+            <span style="font-size: 9px; color: #D9D9D9; display: block; margin-top: 6px;">Escanea para guardar</span>
           </td>
         </tr>
       </table>
