@@ -74,17 +74,58 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
         </tr>
         <tr>
           <td style="font-size: 14px; padding-bottom: 6px;">
-            <a href="mailto:${email}" style="color: #FFFFFF; text-decoration: none;">${email}</a>
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding-right: 8px; vertical-align: middle;">
+                  <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email" width="16" height="16" style="display: block;" />
+                </td>
+                <td style="vertical-align: middle;">
+                  <a href="mailto:${email}" style="color: #FFFFFF; text-decoration: none;">${email}</a>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
         <tr>
           <td style="font-size: 14px; padding-bottom: 6px;">
-            <a href="tel:${phone.replace(/\s/g, '')}" style="color: #FFFFFF; text-decoration: none;">${phone}</a>
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding-right: 8px; vertical-align: middle;">
+                  <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Teléfono" width="16" height="16" style="display: block;" />
+                </td>
+                <td style="vertical-align: middle;">
+                  <a href="tel:${phone.replace(/\s/g, '')}" style="color: #FFFFFF; text-decoration: none;">${phone}</a>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td style="font-size: 14px; padding-bottom: 6px;">
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding-right: 8px; vertical-align: middle;">
+                  <img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png" alt="Web" width="16" height="16" style="display: block;" />
+                </td>
+                <td style="vertical-align: middle;">
+                  <a href="https://fenixia.tech" style="color: #15F0FF; text-decoration: none; font-weight: 500;">fenixia.tech</a>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
         <tr>
           <td style="font-size: 14px; padding-bottom: 12px;">
-            <a href="https://fenixia.tech" style="color: #15F0FF; text-decoration: none; font-weight: 500;">fenixia.tech</a>
+            <table cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td style="padding-right: 8px; vertical-align: middle;">
+                  <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Dirección" width="16" height="16" style="display: block;" />
+                </td>
+                <td style="vertical-align: middle;">
+                  <span style="color: #D9D9D9;">C/ La Paz, 83 · 03320 Torrellano-Elche · Alicante</span>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
         <tr>
@@ -92,18 +133,6 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
             <a href="${linkedin || 'https://www.linkedin.com/company/fenixiasolutions'}" style="text-decoration: none;">
               <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="24" height="24" style="display: inline-block;" />
             </a>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
-  <tr>
-    <td style="padding-right: 16px; vertical-align: top;"></td>
-    <td style="padding-left: 24px; padding-top: 20px;">
-      <table cellpadding="0" cellspacing="0" border="0" width="100%">
-        <tr>
-          <td style="font-size: 12px; color: #D9D9D9;">
-            C/ La Paz, 83 · 03320 Torrellano-Elche · Alicante
           </td>
         </tr>
       </table>
