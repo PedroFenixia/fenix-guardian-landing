@@ -1,9 +1,10 @@
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import linkedinPedro1 from "@/assets/linkedin-pedro-1.png";
 import linkedinPedro2 from "@/assets/linkedin-pedro-2.png";
 import linkedinCompany1 from "@/assets/linkedin-company-1.png";
 import linkedinCompany2 from "@/assets/linkedin-company-2.png";
+import linkedinBannerPedro from "@/assets/linkedin-banner-pedro.png";
+import linkedinBannerCompany from "@/assets/linkedin-banner-company.png";
 
 interface AssetCardProps {
   title: string;
@@ -66,6 +67,21 @@ const LinkedInAssets = () => {
     },
   ];
 
+  const bannerAssets = [
+    {
+      title: "Banner Pedro Sánchez",
+      description: "Banner para perfil personal de LinkedIn",
+      imageSrc: linkedinBannerPedro,
+      fileName: "linkedin-banner-pedro.png",
+    },
+    {
+      title: "Banner FENIXIA",
+      description: "Banner para página de empresa LinkedIn",
+      imageSrc: linkedinBannerCompany,
+      fileName: "linkedin-banner-fenixia.png",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground py-12">
       <div className="container mx-auto px-4">
@@ -104,8 +120,41 @@ const LinkedInAssets = () => {
 
         <div className="mt-12 text-center">
           <p className="text-sm text-muted-foreground">
-            Tamaño recomendado para LinkedIn: 400x400 píxeles (perfil) • Las imágenes están en 1024x1024 para máxima calidad
+            Tamaño recomendado: Perfil 400x400px • Banners 1584x396px (personal) / 1128x191px (empresa) • Imágenes en alta resolución
           </p>
+        </div>
+
+        {/* Banners Section */}
+        <div className="mb-12">
+          <h2 className="text-2xl font-semibold mb-6 text-center">
+            Banners de LinkedIn
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {bannerAssets.map((asset) => (
+              <div key={asset.fileName} className="glass-card p-6 rounded-xl">
+                <div className="aspect-[3.75/1] overflow-hidden rounded-lg mb-4 bg-gunmetal/50">
+                  <img
+                    src={asset.imageSrc}
+                    alt={asset.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <h3 className="text-lg font-semibold text-foreground mb-1">{asset.title}</h3>
+                <p className="text-sm text-muted-foreground mb-4">{asset.description}</p>
+                <Button onClick={() => {
+                  const link = document.createElement("a");
+                  link.href = asset.imageSrc;
+                  link.download = asset.fileName;
+                  document.body.appendChild(link);
+                  link.click();
+                  document.body.removeChild(link);
+                }} className="w-full gap-2">
+                  <Download className="h-4 w-4" />
+                  Descargar
+                </Button>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
