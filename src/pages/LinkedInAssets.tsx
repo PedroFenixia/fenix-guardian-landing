@@ -4,6 +4,8 @@ import linkedinPedro2 from "@/assets/linkedin-pedro-2.png";
 import linkedinCompany1 from "@/assets/linkedin-company-1.png";
 import linkedinCompany2 from "@/assets/linkedin-company-2.png";
 import linkedinBannerPedro from "@/assets/linkedin-banner-pedro.png";
+import linkedinBannerJose from "@/assets/linkedin-banner-jose.png";
+import linkedinBannerIzhar from "@/assets/linkedin-banner-izhar.png";
 import linkedinBannerCompany from "@/assets/linkedin-banner-company.png";
 
 interface AssetCardProps {
@@ -73,6 +75,18 @@ const LinkedInAssets = () => {
       description: "Banner para perfil personal de LinkedIn",
       imageSrc: linkedinBannerPedro,
       fileName: "linkedin-banner-pedro.png",
+    },
+    {
+      title: "Banner Jose J. Antón",
+      description: "Banner para perfil personal de LinkedIn",
+      imageSrc: linkedinBannerJose,
+      fileName: "linkedin-banner-jose.png",
+    },
+    {
+      title: "Banner Izhar Sanz",
+      description: "Banner para perfil personal de LinkedIn",
+      imageSrc: linkedinBannerIzhar,
+      fileName: "linkedin-banner-izhar.png",
     },
     {
       title: "Banner FENIXIA",
