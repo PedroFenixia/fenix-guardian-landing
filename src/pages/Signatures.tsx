@@ -36,7 +36,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
       }).toString()}`
     : `/vcard?name=${encodeURIComponent(name)}&role=${encodeURIComponent(role)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phoneClean)}&auto=1`;
 
-  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(vCardUrl)}&bgcolor=1A1C1E&color=15F0FF`;
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(vCardUrl)}&bgcolor=1A1C1E&color=FFFFFF`;
 
   const signatureHtml = `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 32px 40px; border-radius: 8px; width: 100%; max-width: 700px;">
