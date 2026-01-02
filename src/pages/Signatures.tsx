@@ -131,11 +131,6 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
             <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="70" height="70" style="display: block; margin: 0 auto; border-radius: 4px;" />
           </td>
         </tr>
-        <tr>
-          <td style="text-align: center;">
-            <span style="font-size: 9px; color: #D9D9D9; display: block; margin-top: 6px;">Escanea para guardar</span>
-          </td>
-        </tr>
       </table>
     </td>
   </tr>
