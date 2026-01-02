@@ -91,7 +91,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding-right: 8px; vertical-align: middle;">
-                  <img src="https://cdn-icons-png.flaticon.com/512/3178/3178162.png" alt="Web" width="14" height="14" style="display: block;" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/1006/1006771.png" alt="Web" width="14" height="14" style="display: block;" />
                 </td>
                 <td style="vertical-align: middle;">
                   <a href="https://fenixia.tech" style="color: #15F0FF; text-decoration: none; font-weight: 500;">fenixia.tech</a>
