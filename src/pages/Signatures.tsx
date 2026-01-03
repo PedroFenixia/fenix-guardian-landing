@@ -80,18 +80,18 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
   const safeLinkedinHref = escapeHtml(safeLinkedinUrl(linkedin));
 
   const signatureHtml = `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #2C2F32; padding: 24px 28px; border-radius: 12px; width: 100%; max-width: 720px; border: 1px solid rgba(21, 240, 255, 0.2); box-shadow: 0 4px 20px rgba(21, 240, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.4; background-color: #2C2F32; padding: 16px 20px; border-radius: 10px; width: 100%; max-width: 620px; border: 1px solid rgba(21, 240, 255, 0.2); box-shadow: 0 4px 20px rgba(21, 240, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);">
   <tr>
-    <td style="padding-left: 12px; padding-right: 12px; border-right: 1px solid rgba(255, 255, 255, 0.15); vertical-align: middle; text-align: center; width: 110px; background-color: #2C2F32;">
-      <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="85" height="85" style="display: block; margin: auto; border: 1px solid rgba(21, 240, 255, 0.3); border-radius: 6px; padding: 4px; background-color: #FFFFFF;" />
+    <td style="padding-left: 8px; padding-right: 10px; border-right: 1px solid rgba(255, 255, 255, 0.15); vertical-align: middle; text-align: center; width: 90px; background-color: #2C2F32;">
+      <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="75" height="75" style="display: block; margin: auto; border: 1px solid rgba(21, 240, 255, 0.3); border-radius: 5px; padding: 3px; background-color: #FFFFFF;" />
     </td>
-    <td style="padding-left: 22px; padding-right: 24px; vertical-align: middle; background-color: #2C2F32;">
+    <td style="padding-left: 16px; padding-right: 16px; vertical-align: middle; background-color: #2C2F32;">
       <table cellpadding="0" cellspacing="0" border="0" style="margin: auto 0;">
         <tr>
-          <td style="font-size: 22px; font-weight: bold; color: #FFFFFF; padding-bottom: 2px; padding-top: 8px;">${safeName}</td>
+          <td style="font-size: 18px; font-weight: bold; color: #FFFFFF; padding-bottom: 1px; padding-top: 4px;">${safeName}</td>
         </tr>
         <tr>
-          <td style="font-size: 14px; color: #15F0FF; font-weight: 500; padding-bottom: 14px;">
+          <td style="font-size: 13px; color: #15F0FF; font-weight: 500; padding-bottom: 10px;">
             ${safeRole}
             <a href="${safeLinkedinHref}" style="text-decoration: none; margin-left: 6px; vertical-align: middle;">
               <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="16" height="16" style="display: inline-block; vertical-align: middle;" />
@@ -242,12 +242,12 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
             style={{
               fontFamily: "'Segoe UI', Arial, sans-serif",
               fontSize: 14,
-              lineHeight: 1.5,
+              lineHeight: 1.4,
               backgroundColor: "#2C2F32",
-              padding: "24px 28px",
-              borderRadius: 12,
+              padding: "16px 20px",
+              borderRadius: 10,
               width: "100%",
-              maxWidth: 720,
+              maxWidth: 620,
               border: "1px solid rgba(21, 240, 255, 0.2)",
               boxShadow: "0 4px 20px rgba(21, 240, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3)",
             }}
@@ -256,32 +256,32 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
               <tr>
                 <td
                   style={{
-                    paddingLeft: 12,
-                    paddingRight: 12,
+                    paddingLeft: 8,
+                    paddingRight: 10,
                     borderRight: "1px solid rgba(255, 255, 255, 0.15)",
                     verticalAlign: "middle",
                     textAlign: "center",
-                    width: 110,
+                    width: 90,
                     backgroundColor: "#2C2F32",
                   }}
                 >
                   <img
                     src={qrCodeUrl}
                     alt="Tarjeta de visita"
-                    width={85}
-                    height={85}
-                    style={{ display: "block", margin: "auto", border: "1px solid rgba(21, 240, 255, 0.3)", borderRadius: 6, padding: 4, backgroundColor: "#FFFFFF" }}
+                    width={75}
+                    height={75}
+                    style={{ display: "block", margin: "auto", border: "1px solid rgba(21, 240, 255, 0.3)", borderRadius: 5, padding: 3, backgroundColor: "#FFFFFF" }}
                   />
                 </td>
 
-                <td style={{ paddingLeft: 22, paddingRight: 24, verticalAlign: "middle", backgroundColor: "#2C2F32" }}>
+                <td style={{ paddingLeft: 16, paddingRight: 16, verticalAlign: "middle", backgroundColor: "#2C2F32" }}>
                   <table cellPadding={0} cellSpacing={0} border={0}>
                     <tbody>
                       <tr>
-                        <td style={{ fontSize: 22, fontWeight: "bold", color: "#FFFFFF", paddingBottom: 2, paddingTop: 8 }}>{name}</td>
+                        <td style={{ fontSize: 18, fontWeight: "bold", color: "#FFFFFF", paddingBottom: 1, paddingTop: 4 }}>{name}</td>
                       </tr>
                       <tr>
-                        <td style={{ fontSize: 14, color: "#15F0FF", fontWeight: 500, paddingBottom: 14 }}>
+                        <td style={{ fontSize: 13, color: "#15F0FF", fontWeight: 500, paddingBottom: 10 }}>
                           {role}
                           <a 
                             href={safeLinkedinUrl(linkedin)} 
