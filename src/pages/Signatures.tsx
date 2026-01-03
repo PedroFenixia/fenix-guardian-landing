@@ -156,8 +156,8 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
         </tr>
       </table>
     </td>
-    <td style="padding-left: 24px; padding-right: 18px; vertical-align: middle; text-align: center; width: 140px; background-color: #0D0D0D;">
-      <img src="${logoUrl}" alt="Fenix IA" width="120" height="120" style="display: block; margin: auto; background-color: #0D0D0D;" />
+    <td style="padding-left: 24px; padding-right: 18px; vertical-align: middle; text-align: center; width: 160px; background-color: #0D0D0D;">
+      <img src="${logoUrl}" alt="Fenix IA" width="140" height="140" style="display: block; margin: auto; background-color: #0D0D0D;" />
     </td>
   </tr>
 </table>
@@ -419,12 +419,12 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                   </table>
                 </td>
 
-                <td style={{ paddingLeft: 24, paddingRight: 18, verticalAlign: "middle", textAlign: "center", width: 140, backgroundColor: "#0D0D0D" }}>
+                <td style={{ paddingLeft: 24, paddingRight: 18, verticalAlign: "middle", textAlign: "center", width: 160, backgroundColor: "#0D0D0D" }}>
                   <img
                     src={logoUrl}
                     alt="Fenix IA"
-                    width={120}
-                    height={120}
+                    width={140}
+                    height={140}
                     style={{ display: "block", margin: "auto", backgroundColor: "#0D0D0D" }}
                   />
                 </td>
