@@ -86,6 +86,66 @@ export type Database = {
         }
         Relationships: []
       }
+      page_visit_details: {
+        Row: {
+          exited_at: string | null
+          id: string
+          is_exit: boolean | null
+          language: string | null
+          page_path: string
+          referrer: string | null
+          screen_height: number | null
+          screen_width: number | null
+          session_id: string
+          time_on_page: number | null
+          user_agent: string | null
+          utm_campaign: string | null
+          utm_content: string | null
+          utm_medium: string | null
+          utm_source: string | null
+          utm_term: string | null
+          visited_at: string
+        }
+        Insert: {
+          exited_at?: string | null
+          id?: string
+          is_exit?: boolean | null
+          language?: string | null
+          page_path: string
+          referrer?: string | null
+          screen_height?: number | null
+          screen_width?: number | null
+          session_id: string
+          time_on_page?: number | null
+          user_agent?: string | null
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+          visited_at?: string
+        }
+        Update: {
+          exited_at?: string | null
+          id?: string
+          is_exit?: boolean | null
+          language?: string | null
+          page_path?: string
+          referrer?: string | null
+          screen_height?: number | null
+          screen_width?: number | null
+          session_id?: string
+          time_on_page?: number | null
+          user_agent?: string | null
+          utm_campaign?: string | null
+          utm_content?: string | null
+          utm_medium?: string | null
+          utm_source?: string | null
+          utm_term?: string | null
+          visited_at?: string
+        }
+        Relationships: []
+      }
       page_visits: {
         Row: {
           first_visit_at: string
@@ -146,6 +206,10 @@ export type Database = {
         }
         Returns: Json
       }
+      get_analytics_summary: {
+        Args: { p_end_date?: string; p_start_date?: string }
+        Returns: Json
+      }
       get_page_visit_stats: {
         Args: never
         Returns: {
@@ -161,6 +225,27 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      track_detailed_visit: {
+        Args: {
+          p_language?: string
+          p_page_path: string
+          p_referrer?: string
+          p_screen_height?: number
+          p_screen_width?: number
+          p_session_id: string
+          p_user_agent?: string
+          p_utm_campaign?: string
+          p_utm_content?: string
+          p_utm_medium?: string
+          p_utm_source?: string
+          p_utm_term?: string
+        }
+        Returns: string
+      }
+      track_page_exit: {
+        Args: { p_time_on_page: number; p_visit_id: string }
+        Returns: undefined
       }
       track_page_visit: { Args: { p_page_path: string }; Returns: Json }
     }
