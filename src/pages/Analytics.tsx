@@ -33,19 +33,12 @@ export default function Analytics() {
         const { data: result, error: fetchError } = await supabase.rpc('get_analytics_summary');
         
         if (fetchError) {
-          // For demo purposes, show mock data if not admin
-          if (fetchError.message.includes('Access denied')) {
-            setData(getMockData());
-            setError('Vista demo - Los datos reales requieren rol de administrador');
-          } else {
-            throw fetchError;
-          }
+          setError(fetchError.message);
         } else {
           setData(result as unknown as AnalyticsData);
         }
       } catch (err) {
-        setData(getMockData());
-        setError('Vista demo - Los datos reales requieren rol de administrador');
+        setError('Error al cargar los datos de analytics');
       } finally {
         setLoading(false);
       }
@@ -346,41 +339,3 @@ function formatReferrer(url: string): string {
   }
 }
 
-function getMockData(): AnalyticsData {
-  return {
-    total_visits: 1247,
-    unique_sessions: 892,
-    avg_time_on_page: 124,
-    top_pages: [
-      { page_path: '/', visits: 523 },
-      { page_path: '/contacto', visits: 245 },
-      { page_path: '/nosotros', visits: 189 },
-      { page_path: '/carreras', visits: 156 },
-      { page_path: '/privacidad', visits: 67 },
-    ],
-    top_referrers: [
-      { referrer: 'https://google.com', visits: 312 },
-      { referrer: 'https://linkedin.com', visits: 189 },
-      { referrer: 'https://twitter.com', visits: 78 },
-    ],
-    utm_sources: [
-      { utm_source: 'google', visits: 245 },
-      { utm_source: 'linkedin', visits: 156 },
-      { utm_source: 'email', visits: 89 },
-    ],
-    utm_campaigns: [
-      { utm_campaign: 'launch_2024', visits: 156 },
-      { utm_campaign: 'brand_awareness', visits: 89 },
-      { utm_campaign: 'webinar_q1', visits: 45 },
-    ],
-    exit_pages: [
-      { page_path: '/contacto', exits: 189 },
-      { page_path: '/', exits: 156 },
-      { page_path: '/carreras', exits: 78 },
-    ],
-    visits_by_day: Array.from({ length: 14 }, (_, i) => ({
-      date: new Date(Date.now() - (13 - i) * 86400000).toISOString().split('T')[0],
-      visits: Math.floor(Math.random() * 100) + 50,
-    })),
-  };
-}
