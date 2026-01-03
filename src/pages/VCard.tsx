@@ -16,13 +16,15 @@ function buildVCard(params: {
   role: string;
   email: string;
   phone: string;
+  linkedin?: string;
+  photo?: string;
 }) {
-  const { name, role, email, phone } = params;
+  const { name, role, email, phone, linkedin, photo } = params;
   const firstName = name.split(" ")[0] ?? "";
   const lastName = name.split(" ").slice(1).join(" ");
   const phoneClean = phone.replace(/\s/g, "");
 
-  return [
+  const lines = [
     "BEGIN:VCARD",
     "VERSION:3.0",
     `N:${escapeVCardText(lastName)};${escapeVCardText(firstName)}`,
@@ -33,8 +35,21 @@ function buildVCard(params: {
     `EMAIL:${escapeVCardText(email)}`,
     "URL:https://fenixia.tech",
     "ADR;TYPE=WORK:;;C/ La Paz 83;Torrellano-Elche;Alicante;03320;Spain",
-    "END:VCARD",
-  ].join("\r\n");
+  ];
+
+  // Add LinkedIn if provided
+  if (linkedin) {
+    lines.push(`X-SOCIALPROFILE;TYPE=linkedin:${escapeVCardText(linkedin)}`);
+  }
+
+  // Add photo if provided (URI format)
+  if (photo) {
+    lines.push(`PHOTO;VALUE=URI:${escapeVCardText(photo)}`);
+  }
+
+  lines.push("END:VCARD");
+
+  return lines.join("\r\n");
 }
 
 function downloadVcf(filename: string, vcard: string) {
@@ -58,11 +73,13 @@ const VCard = () => {
   const role = searchParams.get("role") ?? "";
   const email = searchParams.get("email") ?? "";
   const phone = searchParams.get("phone") ?? "";
+  const linkedin = searchParams.get("linkedin") ?? "";
+  const photo = searchParams.get("photo") ?? "";
 
   const vcard = useMemo(() => {
     if (!name || !email) return "";
-    return buildVCard({ name, role, email, phone });
-  }, [name, role, email, phone]);
+    return buildVCard({ name, role, email, phone, linkedin, photo });
+  }, [name, role, email, phone, linkedin, photo]);
 
   useEffect(() => {
     document.title = name ? `${name} · Contacto (VCF)` : "Contacto (VCF)";
@@ -99,6 +116,13 @@ const VCard = () => {
             {role ? <p className="text-muted-foreground">{role}</p> : null}
             {email ? <p className="text-muted-foreground">{email}</p> : null}
             {phone ? <p className="text-muted-foreground">{phone}</p> : null}
+            {linkedin ? (
+              <p className="text-muted-foreground">
+                <a href={linkedin} target="_blank" rel="noopener noreferrer" className="text-primary hover:underline">
+                  LinkedIn
+                </a>
+              </p>
+            ) : null}
           </div>
 
           <div className="mt-6 flex flex-wrap gap-3">
