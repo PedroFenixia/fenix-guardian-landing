@@ -209,7 +209,7 @@ const Contact = () => {
                       <h3 className="font-semibold mb-1">Ubicación</h3>
                       <p className="text-muted-foreground">
                         C/ La Paz, 83<br />
-                        03320 Torrellano-Elche, Alicante
+                        03320 Torrellano (Elche), Alicante
                       </p>
                     </div>
                   </div>
