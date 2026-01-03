@@ -80,12 +80,12 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
   const safeLinkedinHref = escapeHtml(safeLinkedinUrl(linkedin));
 
   const signatureHtml = `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 24px 28px; border-radius: 12px; width: 100%; max-width: 720px; border: 1px solid rgba(21, 240, 255, 0.2); box-shadow: 0 4px 20px rgba(21, 240, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #2A2D30; padding: 24px 28px; border-radius: 12px; width: 100%; max-width: 720px; border: 1px solid rgba(21, 240, 255, 0.2); box-shadow: 0 4px 20px rgba(21, 240, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);">
   <tr>
-    <td style="padding-left: 12px; padding-right: 12px; border-right: 1px solid rgba(255, 255, 255, 0.15); vertical-align: middle; text-align: center; width: 110px; background-color: #1A1C1E;">
+    <td style="padding-left: 12px; padding-right: 12px; border-right: 1px solid rgba(255, 255, 255, 0.15); vertical-align: middle; text-align: center; width: 110px; background-color: #2A2D30;">
       <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="85" height="85" style="display: block; margin: auto; border: 1px solid rgba(21, 240, 255, 0.3); border-radius: 6px; padding: 4px; background-color: #FFFFFF;" />
     </td>
-    <td style="padding-left: 22px; padding-right: 24px; vertical-align: middle; background-color: #1A1C1E;">
+    <td style="padding-left: 22px; padding-right: 24px; vertical-align: middle; background-color: #2A2D30;">
       <table cellpadding="0" cellspacing="0" border="0" style="margin: auto 0;">
         <tr>
           <td style="font-size: 22px; font-weight: bold; color: #FFFFFF; padding-bottom: 2px; padding-top: 8px;">${safeName}</td>
@@ -156,8 +156,8 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
         </tr>
       </table>
     </td>
-    <td style="padding-left: 24px; padding-right: 18px; vertical-align: middle; text-align: center; width: 160px; background-color: #1A1C1E;">
-      <img src="${logoUrl}" alt="Fenix IA" width="140" height="140" style="display: block; margin: auto; background-color: #1A1C1E;" />
+    <td style="padding-left: 24px; padding-right: 18px; vertical-align: middle; text-align: center; width: 160px; background-color: #2A2D30;">
+      <img src="${logoUrl}" alt="Fenix IA" width="140" height="140" style="display: block; margin: auto; background-color: #2A2D30;" />
     </td>
   </tr>
 </table>
@@ -246,7 +246,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
               fontFamily: "'Segoe UI', Arial, sans-serif",
               fontSize: 14,
               lineHeight: 1.5,
-              backgroundColor: "#1A1C1E",
+              backgroundColor: "#2A2D30",
               padding: "24px 28px",
               borderRadius: 12,
               width: "100%",
@@ -265,7 +265,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                     verticalAlign: "middle",
                     textAlign: "center",
                     width: 110,
-                    backgroundColor: "#1A1C1E",
+                    backgroundColor: "#2A2D30",
                   }}
                 >
                   <img
@@ -277,7 +277,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                   />
                 </td>
 
-                <td style={{ paddingLeft: 22, paddingRight: 24, verticalAlign: "middle", backgroundColor: "#1A1C1E" }}>
+                <td style={{ paddingLeft: 22, paddingRight: 24, verticalAlign: "middle", backgroundColor: "#2A2D30" }}>
                   <table cellPadding={0} cellSpacing={0} border={0}>
                     <tbody>
                       <tr>
@@ -419,13 +419,13 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                   </table>
                 </td>
 
-                <td style={{ paddingLeft: 24, paddingRight: 18, verticalAlign: "middle", textAlign: "center", width: 160, backgroundColor: "#1A1C1E" }}>
+                <td style={{ paddingLeft: 24, paddingRight: 18, verticalAlign: "middle", textAlign: "center", width: 160, backgroundColor: "#2A2D30" }}>
                   <img
                     src={logoUrl}
                     alt="Fenix IA"
                     width={140}
                     height={140}
-                    style={{ display: "block", margin: "auto", backgroundColor: "#1A1C1E" }}
+                    style={{ display: "block", margin: "auto", backgroundColor: "#2A2D30" }}
                   />
                 </td>
               </tr>
