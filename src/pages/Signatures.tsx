@@ -438,14 +438,12 @@ const Signatures = () => {
       role: "Co-Founder",
       email: "jose@fenixia.tech",
       phone: "+34 966 10 10 29",
-      photo: "https://fenixia.tech/assets/jose-profile.jpg",
     },
     {
       name: "Izhar Sanz",
       role: "Co-Founder",
       email: "izhar@fenixia.tech",
       phone: "+34 966 10 10 29",
-      photo: "https://fenixia.tech/assets/izhar-profile.jpg",
     },
   ];
 
