@@ -288,13 +288,18 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                       <tr>
                         <td style={{ fontSize: 22, fontWeight: "bold", color: "#FFFFFF", paddingBottom: 2 }}>{name}</td>
                         <td style={{ paddingLeft: 10, paddingBottom: 4, verticalAlign: "middle" }}>
-                          <a href={safeLinkedinUrl(linkedin)} style={{ textDecoration: "none" }}>
+                          <a 
+                            href={safeLinkedinUrl(linkedin)} 
+                            style={{ textDecoration: "none" }}
+                            className="transition-transform duration-200 hover:scale-110 inline-block"
+                          >
                             <img
                               src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
                               alt="LinkedIn"
                               width={20}
                               height={20}
                               style={{ display: "block" }}
+                              className="transition-opacity duration-200 hover:opacity-80"
                             />
                           </a>
                         </td>
