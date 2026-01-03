@@ -1,12 +1,12 @@
 import { Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useRef, useCallback } from "react";
+import html2canvas from "html2canvas";
 import linkedinPedro2 from "@/assets/linkedin-pedro-2.png";
 import linkedinCompany1 from "@/assets/linkedin-company-1.png";
 import linkedinCompany2 from "@/assets/linkedin-company-2.png";
 import linkedinProfileCompany from "@/assets/linkedin-profile-company.png";
-import linkedinBannerPedro from "@/assets/linkedin-banner-pedro.png";
-import linkedinBannerJose from "@/assets/linkedin-banner-jose.png";
-import linkedinBannerIzhar from "@/assets/linkedin-banner-izhar.png";
+import linkedinBannerBg from "@/assets/linkedin-banner-bg.png";
 import linkedinBannerCompanyFinal from "@/assets/linkedin-banner-company-final.png";
 
 interface AssetCardProps {
@@ -14,6 +14,13 @@ interface AssetCardProps {
   description: string;
   imageSrc: string;
   fileName: string;
+}
+
+interface BannerData {
+  name: string;
+  subtitle: string;
+  fileName: string;
+  isCompany?: boolean;
 }
 
 const AssetCard = ({ title, description, imageSrc, fileName }: AssetCardProps) => {
@@ -37,6 +44,80 @@ const AssetCard = ({ title, description, imageSrc, fileName }: AssetCardProps) =
       </div>
       <h3 className="text-lg font-semibold text-foreground mb-1">{title}</h3>
       <p className="text-sm text-muted-foreground mb-4">{description}</p>
+      <Button onClick={handleDownload} className="w-full gap-2">
+        <Download className="h-4 w-4" />
+        Descargar
+      </Button>
+    </div>
+  );
+};
+
+const BannerWithOverlay = ({ name, subtitle, fileName, isCompany }: BannerData) => {
+  const bannerRef = useRef<HTMLDivElement>(null);
+
+  const handleDownload = useCallback(async () => {
+    if (!bannerRef.current) return;
+    
+    try {
+      const canvas = await html2canvas(bannerRef.current, {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: null,
+      });
+      
+      const link = document.createElement("a");
+      link.download = fileName;
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    } catch (error) {
+      console.error("Error generating banner:", error);
+    }
+  }, [fileName]);
+
+  return (
+    <div className="glass-card p-6 rounded-xl">
+      <div 
+        ref={bannerRef}
+        className="aspect-[3/1] overflow-hidden rounded-lg mb-4 relative"
+        style={{
+          backgroundImage: `url(${linkedinBannerBg})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* Text Overlay */}
+        <div className="absolute inset-0 flex items-center justify-end pr-[10%]">
+          <div className="text-right">
+            <h2 
+              className="font-bold text-white drop-shadow-lg"
+              style={{ 
+                fontSize: isCompany ? "clamp(1.5rem, 4vw, 3rem)" : "clamp(1.25rem, 3.5vw, 2.5rem)",
+                textShadow: "0 2px 10px rgba(0,0,0,0.5)",
+                fontFamily: "'Inter', 'SF Pro Display', system-ui, sans-serif",
+              }}
+            >
+              {name}
+            </h2>
+            <p 
+              className="text-[#15F0FF] font-medium mt-1"
+              style={{ 
+                fontSize: "clamp(0.75rem, 2vw, 1.25rem)",
+                textShadow: "0 0 20px rgba(21, 240, 255, 0.5)",
+                fontFamily: "'Inter', 'SF Pro Display', system-ui, sans-serif",
+              }}
+            >
+              {subtitle}
+            </p>
+          </div>
+        </div>
+      </div>
+      <h3 className="text-lg font-semibold text-foreground mb-1">
+        Banner {isCompany ? "FENIX IA (Empresa)" : name}
+      </h3>
+      <p className="text-sm text-muted-foreground mb-4">
+        {isCompany ? "Banner corporativo con fénix" : "Banner personal con fénix"}
+      </p>
       <Button onClick={handleDownload} className="w-full gap-2">
         <Download className="h-4 w-4" />
         Descargar
@@ -76,29 +157,26 @@ const LinkedInAssets = () => {
     },
   ];
 
-  const bannerAssets = [
+  const bannerOverlays: BannerData[] = [
     {
-      title: "Banner FENIX IA (Empresa)",
-      description: "Banner corporativo con fénix de alas extendidas",
-      imageSrc: linkedinBannerCompanyFinal,
+      name: "FENIX IA",
+      subtitle: "Inteligencia Artificial para Empresas",
       fileName: "linkedin-banner-fenixia.png",
+      isCompany: true,
     },
     {
-      title: "Banner Pedro Sánchez",
-      description: "Banner personal con fénix de alas extendidas",
-      imageSrc: linkedinBannerPedro,
+      name: "Pedro Sánchez",
+      subtitle: "Co-Founder | FENIX IA",
       fileName: "linkedin-banner-pedro.png",
     },
     {
-      title: "Banner Jose J. Antón",
-      description: "Banner personal con fénix de alas extendidas",
-      imageSrc: linkedinBannerJose,
+      name: "Jose J. Antón",
+      subtitle: "Co-Founder | FENIX IA",
       fileName: "linkedin-banner-jose.png",
     },
     {
-      title: "Banner Izhar Sanz",
-      description: "Banner personal con fénix de alas extendidas",
-      imageSrc: linkedinBannerIzhar,
+      name: "Izhar Sanz",
+      subtitle: "Co-Founder | FENIX IA",
       fileName: "linkedin-banner-izhar.png",
     },
   ];
@@ -139,35 +217,17 @@ const LinkedInAssets = () => {
           </div>
         </div>
 
-        {/* Banners Section */}
+        {/* Banners Section with Overlays */}
         <div className="mb-12">
           <h2 className="text-2xl font-semibold mb-6 text-center">
             Banners de LinkedIn
           </h2>
+          <p className="text-center text-muted-foreground mb-6 text-sm">
+            Banners generados con texto HTML para tipografía perfecta
+          </p>
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {bannerAssets.map((asset) => (
-              <div key={asset.fileName} className="glass-card p-6 rounded-xl">
-                <div className="aspect-[3/1] overflow-hidden rounded-lg mb-4 bg-gunmetal/50">
-                  <img
-                    src={asset.imageSrc}
-                    alt={asset.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-lg font-semibold text-foreground mb-1">{asset.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4">{asset.description}</p>
-                <Button onClick={() => {
-                  const link = document.createElement("a");
-                  link.href = asset.imageSrc;
-                  link.download = asset.fileName;
-                  document.body.appendChild(link);
-                  link.click();
-                  document.body.removeChild(link);
-                }} className="w-full gap-2">
-                  <Download className="h-4 w-4" />
-                  Descargar
-                </Button>
-              </div>
+            {bannerOverlays.map((banner) => (
+              <BannerWithOverlay key={banner.fileName} {...banner} />
             ))}
           </div>
         </div>
