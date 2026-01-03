@@ -85,8 +85,8 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
       <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;">
         <tr>
           <td style="font-size: 18px; font-weight: bold; color: #1A1A1A; padding-bottom: 1px; padding-top: 4px;">${safeName}</td>
-          <td rowspan="6" style="vertical-align: top; text-align: right; padding-left: 10px; width: 70px;">
-            <img src="${logoUrl}" alt="FENIXIA" width="65" height="65" style="display: block;" />
+          <td rowspan="6" style="vertical-align: top; text-align: right; padding-left: 10px; width: 90px;">
+            <img src="${logoUrl}" alt="FENIXIA" width="85" height="85" style="display: block;" />
           </td>
         </tr>
         <tr>
