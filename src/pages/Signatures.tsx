@@ -430,7 +430,7 @@ const Signatures = () => {
       email: "pedro@fenixia.tech",
       phone: "+34 620 654 925",
       linkedin: "https://www.linkedin.com/in/pedro-s%C3%A1nchez-81b4a0377",
-      photo: typeof window !== "undefined" ? `${window.location.origin}/assets/pedro-original.jpeg` : "/assets/pedro-original.jpeg",
+      photo: typeof window !== "undefined" ? `${window.location.origin}/assets/pedro-updated.jpeg` : "/assets/pedro-updated.jpeg",
     },
     {
       name: "Jose J. Antón",
