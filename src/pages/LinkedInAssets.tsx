@@ -8,6 +8,10 @@ import linkedinBannerPedro from "@/assets/linkedin-banner-pedro.png";
 import linkedinBannerJose from "@/assets/linkedin-banner-jose.png";
 import linkedinBannerIzhar from "@/assets/linkedin-banner-izhar.png";
 import linkedinBannerCompany from "@/assets/linkedin-banner-company-final.png";
+import linkedinBannerPedroV2 from "@/assets/linkedin-banner-pedro-v2.png";
+import linkedinBannerJoseV2 from "@/assets/linkedin-banner-jose-v2.png";
+import linkedinBannerIzharV2 from "@/assets/linkedin-banner-izhar-v2.png";
+import linkedinBannerCompanyV2 from "@/assets/linkedin-banner-company-v3.png";
 
 interface AssetCardProps {
   title: string;
@@ -113,10 +117,22 @@ const LinkedInAssets = () => {
       fileName: "linkedin-banner-fenixia.png",
     },
     {
+      title: "Banner FENIX IA V2 (Derecha)",
+      description: "Banner corporativo - escudo cerca del nombre, desplazado a la derecha",
+      imageSrc: linkedinBannerCompanyV2,
+      fileName: "linkedin-banner-fenixia-v2.png",
+    },
+    {
       title: "Banner Pedro Sánchez",
       description: "Banner personal con escudo fénix",
       imageSrc: linkedinBannerPedro,
       fileName: "linkedin-banner-pedro.png",
+    },
+    {
+      title: "Banner Pedro Sánchez V2 (Derecha)",
+      description: "Banner personal - escudo cerca del nombre, desplazado a la derecha",
+      imageSrc: linkedinBannerPedroV2,
+      fileName: "linkedin-banner-pedro-v2.png",
     },
     {
       title: "Banner Jose J. Antón",
@@ -125,10 +141,22 @@ const LinkedInAssets = () => {
       fileName: "linkedin-banner-jose.png",
     },
     {
+      title: "Banner Jose J. Antón V2 (Derecha)",
+      description: "Banner personal - escudo cerca del nombre, desplazado a la derecha",
+      imageSrc: linkedinBannerJoseV2,
+      fileName: "linkedin-banner-jose-v2.png",
+    },
+    {
       title: "Banner Izhar Sanz",
       description: "Banner personal con escudo fénix",
       imageSrc: linkedinBannerIzhar,
       fileName: "linkedin-banner-izhar.png",
+    },
+    {
+      title: "Banner Izhar Sanz V2 (Derecha)",
+      description: "Banner personal - escudo cerca del nombre, desplazado a la derecha",
+      imageSrc: linkedinBannerIzharV2,
+      fileName: "linkedin-banner-izhar-v2.png",
     },
   ];
 
