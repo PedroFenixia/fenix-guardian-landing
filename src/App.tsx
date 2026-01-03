@@ -11,6 +11,7 @@ import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
 import Cookies from "./pages/Cookies";
 import Signatures from "./pages/Signatures";
+import SignaturesV2 from "./pages/SignaturesV2";
 import VCard from "./pages/VCard";
 import LinkedInAssets from "./pages/LinkedInAssets";
 import NotFound from "./pages/NotFound";
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/terminos" element={<Terms />} />
           <Route path="/cookies" element={<Cookies />} />
           <Route path="/firmas" element={<Signatures />} />
+          <Route path="/firmas-v2" element={<SignaturesV2 />} />
           <Route path="/vcard" element={<VCard />} />
           <Route path="/linkedin-assets" element={<LinkedInAssets />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
