@@ -27,12 +27,6 @@ import linkedinBannerIzharV4 from "@/assets/linkedin-banner-izhar-v4.png";
 import linkedinBannerIzharV5 from "@/assets/linkedin-banner-izhar-v5.png";
 import linkedinBannerCompanyV4 from "@/assets/linkedin-banner-company-v5.png";
 import linkedinBannerCompanyV5 from "@/assets/linkedin-banner-company-v6.png";
-import linkedinBannerPedroV6 from "@/assets/linkedin-banner-pedro-v6.png";
-import linkedinBannerPedroV7 from "@/assets/linkedin-banner-pedro-v7.png";
-import linkedinBannerIzharV6 from "@/assets/linkedin-banner-izhar-v6.png";
-import linkedinBannerIzharV7 from "@/assets/linkedin-banner-izhar-v7.png";
-import linkedinBannerCompanyV6 from "@/assets/linkedin-banner-company-v7.png";
-import linkedinBannerCompanyV7 from "@/assets/linkedin-banner-company-v8.png";
 
 interface AssetCardProps {
   title: string;
@@ -223,8 +217,6 @@ const LinkedInAssets = () => {
     { title: "V3 - Escudo derecha", description: "Escudo a la derecha del texto", imageSrc: linkedinBannerCompanyV3, fileName: "linkedin-banner-fenixia-v3.png" },
     { title: "V4 - Llama sutil (izq)", description: "Brillo ámbar inferior", imageSrc: linkedinBannerCompanyV4, fileName: "linkedin-banner-fenixia-v4.png" },
     { title: "V5 - Llama sutil (der)", description: "Brillo ámbar, escudo derecha", imageSrc: linkedinBannerCompanyV5, fileName: "linkedin-banner-fenixia-v5.png" },
-    { title: "V6 - Llama intensa (izq)", description: "Llamas intensas, escudo izq", imageSrc: linkedinBannerCompanyV6, fileName: "linkedin-banner-fenixia-v6.png" },
-    { title: "V7 - Llama intensa (der)", description: "Llamas intensas, escudo der", imageSrc: linkedinBannerCompanyV7, fileName: "linkedin-banner-fenixia-v7.png" },
   ];
 
   const pedroBanners = [
@@ -233,8 +225,6 @@ const LinkedInAssets = () => {
     { title: "V3 - Escudo derecha", description: "Escudo a la derecha del texto", imageSrc: linkedinBannerPedroV3, fileName: "linkedin-banner-pedro-v3.png" },
     { title: "V4 - Llama sutil (izq)", description: "Brillo ámbar inferior", imageSrc: linkedinBannerPedroV4, fileName: "linkedin-banner-pedro-v4.png" },
     { title: "V5 - Llama sutil (der)", description: "Brillo ámbar, escudo derecha", imageSrc: linkedinBannerPedroV5, fileName: "linkedin-banner-pedro-v5.png" },
-    { title: "V6 - Llama intensa (izq)", description: "Llamas intensas, escudo izq", imageSrc: linkedinBannerPedroV6, fileName: "linkedin-banner-pedro-v6.png" },
-    { title: "V7 - Llama intensa (der)", description: "Llamas intensas, escudo der", imageSrc: linkedinBannerPedroV7, fileName: "linkedin-banner-pedro-v7.png" },
   ];
 
   const joseBanners = [
@@ -251,8 +241,6 @@ const LinkedInAssets = () => {
     { title: "V3 - Escudo derecha", description: "Escudo a la derecha del texto", imageSrc: linkedinBannerIzharV3, fileName: "linkedin-banner-izhar-v3.png" },
     { title: "V4 - Llama sutil (izq)", description: "Brillo ámbar inferior", imageSrc: linkedinBannerIzharV4, fileName: "linkedin-banner-izhar-v4.png" },
     { title: "V5 - Llama sutil (der)", description: "Brillo ámbar, escudo derecha", imageSrc: linkedinBannerIzharV5, fileName: "linkedin-banner-izhar-v5.png" },
-    { title: "V6 - Llama intensa (izq)", description: "Llamas intensas, escudo izq", imageSrc: linkedinBannerIzharV6, fileName: "linkedin-banner-izhar-v6.png" },
-    { title: "V7 - Llama intensa (der)", description: "Llamas intensas, escudo der", imageSrc: linkedinBannerIzharV7, fileName: "linkedin-banner-izhar-v7.png" },
   ];
 
   const allBanners = [...companyBanners, ...pedroBanners, ...joseBanners, ...izharBanners];
