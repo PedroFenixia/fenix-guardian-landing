@@ -3,10 +3,11 @@ import { Button } from "@/components/ui/button";
 import linkedinPedro2 from "@/assets/linkedin-pedro-2.png";
 import linkedinCompany1 from "@/assets/linkedin-company-1.png";
 import linkedinCompany2 from "@/assets/linkedin-company-2.png";
+import linkedinProfileCompany from "@/assets/linkedin-profile-company.png";
 import linkedinBannerPedro from "@/assets/linkedin-banner-pedro.png";
 import linkedinBannerJose from "@/assets/linkedin-banner-jose.png";
 import linkedinBannerIzhar from "@/assets/linkedin-banner-izhar.png";
-import linkedinBannerCompany from "@/assets/linkedin-banner-company.png";
+import linkedinBannerCompanyFinal from "@/assets/linkedin-banner-company-final.png";
 
 interface AssetCardProps {
   title: string;
@@ -56,6 +57,12 @@ const LinkedInAssets = () => {
 
   const companyAssets = [
     {
+      title: "FENIX IA - Perfil (Recomendado)",
+      description: "Escudo fénix minimalista con brillo cyan",
+      imageSrc: linkedinProfileCompany,
+      fileName: "linkedin-fenixia-profile.png",
+    },
+    {
       title: "FENIXIA - Opción 1",
       description: "Logo corporativo con fénix y texto",
       imageSrc: linkedinCompany1,
@@ -71,28 +78,28 @@ const LinkedInAssets = () => {
 
   const bannerAssets = [
     {
+      title: "Banner FENIX IA (Empresa)",
+      description: "Banner corporativo con fénix de alas extendidas",
+      imageSrc: linkedinBannerCompanyFinal,
+      fileName: "linkedin-banner-fenixia.png",
+    },
+    {
       title: "Banner Pedro Sánchez",
-      description: "Banner para perfil personal de LinkedIn",
+      description: "Banner personal con fénix de alas extendidas",
       imageSrc: linkedinBannerPedro,
       fileName: "linkedin-banner-pedro.png",
     },
     {
       title: "Banner Jose J. Antón",
-      description: "Banner para perfil personal de LinkedIn",
+      description: "Banner personal con fénix de alas extendidas",
       imageSrc: linkedinBannerJose,
       fileName: "linkedin-banner-jose.png",
     },
     {
       title: "Banner Izhar Sanz",
-      description: "Banner para perfil personal de LinkedIn",
+      description: "Banner personal con fénix de alas extendidas",
       imageSrc: linkedinBannerIzhar,
       fileName: "linkedin-banner-izhar.png",
-    },
-    {
-      title: "Banner FENIXIA",
-      description: "Banner para página de empresa LinkedIn",
-      imageSrc: linkedinBannerCompany,
-      fileName: "linkedin-banner-fenixia.png",
     },
   ];
 
@@ -121,21 +128,15 @@ const LinkedInAssets = () => {
         </div>
 
         {/* Company Section */}
-        <div>
+        <div className="mb-12">
           <h2 className="text-2xl font-semibold mb-6 text-center">
-            Perfil de Empresa FENIXIA
+            Perfil de Empresa FENIX IA
           </h2>
-          <div className="grid md:grid-cols-2 gap-6 max-w-2xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             {companyAssets.map((asset) => (
               <AssetCard key={asset.fileName} {...asset} />
             ))}
           </div>
-        </div>
-
-        <div className="mt-12 text-center">
-          <p className="text-sm text-muted-foreground">
-            Tamaño recomendado: Perfil 400x400px • Banners 1584x396px (personal) / 1128x191px (empresa) • Imágenes en alta resolución
-          </p>
         </div>
 
         {/* Banners Section */}
@@ -143,10 +144,10 @@ const LinkedInAssets = () => {
           <h2 className="text-2xl font-semibold mb-6 text-center">
             Banners de LinkedIn
           </h2>
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {bannerAssets.map((asset) => (
               <div key={asset.fileName} className="glass-card p-6 rounded-xl">
-                <div className="aspect-[3.75/1] overflow-hidden rounded-lg mb-4 bg-gunmetal/50">
+                <div className="aspect-[3/1] overflow-hidden rounded-lg mb-4 bg-gunmetal/50">
                   <img
                     src={asset.imageSrc}
                     alt={asset.title}
@@ -169,6 +170,12 @@ const LinkedInAssets = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="text-center">
+          <p className="text-sm text-muted-foreground">
+            Tamaño recomendado: Perfil 400x400px • Banners 1584x512px • Imágenes en alta resolución
+          </p>
         </div>
       </div>
     </div>
