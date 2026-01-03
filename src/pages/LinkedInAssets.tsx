@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Download, FolderArchive, Loader2 } from "lucide-react";
+import { Download, FolderArchive, Loader2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import JSZip from "jszip";
 import linkedinPedro2 from "@/assets/linkedin-pedro-2.png";
 import linkedinCompany1 from "@/assets/linkedin-company-1.png";
@@ -62,7 +63,11 @@ const AssetCard = ({ title, description, imageSrc, fileName }: AssetCardProps) =
   );
 };
 
-const BannerCard = ({ title, description, imageSrc, fileName }: AssetCardProps) => {
+interface BannerCardProps extends AssetCardProps {
+  onPreview: (imageSrc: string, title: string) => void;
+}
+
+const BannerCard = ({ title, description, imageSrc, fileName, onPreview }: BannerCardProps) => {
   const handleDownload = () => {
     const link = document.createElement("a");
     link.href = imageSrc;
@@ -74,7 +79,10 @@ const BannerCard = ({ title, description, imageSrc, fileName }: AssetCardProps) 
 
   return (
     <div className="glass-card p-6 rounded-xl">
-      <div className="aspect-[3/1] overflow-hidden rounded-lg mb-4 bg-gunmetal/50">
+      <div 
+        className="aspect-[3/1] overflow-hidden rounded-lg mb-4 bg-gunmetal/50 cursor-pointer hover:ring-2 hover:ring-primary transition-all"
+        onClick={() => onPreview(imageSrc, title)}
+      >
         <img
           src={imageSrc}
           alt={title}
@@ -95,9 +103,10 @@ interface BannerSectionProps {
   title: string;
   banners: BannerAsset[];
   zipFileName: string;
+  onPreview: (imageSrc: string, title: string) => void;
 }
 
-const BannerSection = ({ title, banners, zipFileName }: BannerSectionProps) => {
+const BannerSection = ({ title, banners, zipFileName, onPreview }: BannerSectionProps) => {
   const [isDownloading, setIsDownloading] = useState(false);
 
   const handleDownloadAll = async () => {
@@ -147,7 +156,7 @@ const BannerSection = ({ title, banners, zipFileName }: BannerSectionProps) => {
       </div>
       <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto">
         {banners.map((banner) => (
-          <BannerCard key={banner.fileName} {...banner} />
+          <BannerCard key={banner.fileName} {...banner} onPreview={onPreview} />
         ))}
       </div>
     </div>
@@ -155,6 +164,14 @@ const BannerSection = ({ title, banners, zipFileName }: BannerSectionProps) => {
 };
 
 const LinkedInAssets = () => {
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState<{ src: string; title: string } | null>(null);
+
+  const handlePreview = (imageSrc: string, title: string) => {
+    setPreviewImage({ src: imageSrc, title });
+    setPreviewOpen(true);
+  };
+
   const pedroAssets = [
     {
       title: "Pedro Sánchez",
@@ -258,26 +275,54 @@ const LinkedInAssets = () => {
             title="FENIX IA (Empresa)" 
             banners={companyBanners} 
             zipFileName="banners-fenixia-empresa.zip" 
+            onPreview={handlePreview}
           />
 
           <BannerSection 
             title="Pedro Sánchez" 
             banners={pedroBanners} 
             zipFileName="banners-pedro-sanchez.zip" 
+            onPreview={handlePreview}
           />
 
           <BannerSection 
             title="Jose J. Antón" 
             banners={joseBanners} 
             zipFileName="banners-jose-anton.zip" 
+            onPreview={handlePreview}
           />
 
           <BannerSection 
             title="Izhar Sanz" 
             banners={izharBanners} 
             zipFileName="banners-izhar-sanz.zip" 
+            onPreview={handlePreview}
           />
         </div>
+
+        {/* Preview Modal */}
+        <Dialog open={previewOpen} onOpenChange={setPreviewOpen}>
+          <DialogContent className="max-w-5xl p-0 overflow-hidden bg-background/95 backdrop-blur-sm border-border">
+            <button
+              onClick={() => setPreviewOpen(false)}
+              className="absolute right-4 top-4 z-10 rounded-full bg-background/80 p-2 hover:bg-background transition-colors"
+            >
+              <X className="h-5 w-5" />
+            </button>
+            {previewImage && (
+              <div className="p-4">
+                <img
+                  src={previewImage.src}
+                  alt={previewImage.title}
+                  className="w-full h-auto rounded-lg"
+                />
+                <p className="text-center mt-4 text-lg font-medium text-foreground">
+                  {previewImage.title}
+                </p>
+              </div>
+            )}
+          </DialogContent>
+        </Dialog>
 
         <div className="text-center">
           <p className="text-sm text-muted-foreground">
