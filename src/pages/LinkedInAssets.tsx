@@ -166,6 +166,7 @@ const BannerSection = ({ title, banners, zipFileName, onPreview }: BannerSection
 const LinkedInAssets = () => {
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewImage, setPreviewImage] = useState<{ src: string; title: string } | null>(null);
+  const [isDownloadingAll, setIsDownloadingAll] = useState(false);
 
   const handlePreview = (imageSrc: string, title: string) => {
     setPreviewImage({ src: imageSrc, title });
@@ -226,6 +227,44 @@ const LinkedInAssets = () => {
     { title: "V3 - Escudo derecha", description: "Escudo a la derecha del texto", imageSrc: linkedinBannerIzharV3, fileName: "linkedin-banner-izhar-v3.png" },
   ];
 
+  const allBanners = [...companyBanners, ...pedroBanners, ...joseBanners, ...izharBanners];
+
+  const handleDownloadAllBanners = async () => {
+    setIsDownloadingAll(true);
+    try {
+      const zip = new JSZip();
+      
+      // Create folders for each person/company
+      const folders = {
+        empresa: companyBanners,
+        pedro: pedroBanners,
+        jose: joseBanners,
+        izhar: izharBanners,
+      };
+
+      for (const [folderName, banners] of Object.entries(folders)) {
+        for (const banner of banners) {
+          const response = await fetch(banner.imageSrc);
+          const blob = await response.blob();
+          zip.file(`${folderName}/${banner.fileName}`, blob);
+        }
+      }
+      
+      const content = await zip.generateAsync({ type: "blob" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(content);
+      link.download = "todos-los-banners-fenixia.zip";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href);
+    } catch (error) {
+      console.error("Error creating ZIP:", error);
+    } finally {
+      setIsDownloadingAll(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground py-12">
       <div className="container mx-auto px-4">
@@ -264,12 +303,26 @@ const LinkedInAssets = () => {
 
         {/* Banners Section - Grouped by Person */}
         <div className="mb-12">
-          <h2 className="text-2xl font-semibold mb-2 text-center">
-            Banners de LinkedIn
-          </h2>
-          <p className="text-center text-muted-foreground mb-8 text-sm">
-            3 versiones por persona: V1 (escudo izquierda), V2 (escudo cerca del nombre), V3 (escudo derecha)
-          </p>
+          <div className="flex flex-col items-center mb-6">
+            <h2 className="text-2xl font-semibold mb-2 text-center">
+              Banners de LinkedIn
+            </h2>
+            <p className="text-center text-muted-foreground mb-4 text-sm">
+              3 versiones por persona: V1 (escudo izquierda), V2 (escudo cerca del nombre), V3 (escudo derecha)
+            </p>
+            <Button 
+              onClick={handleDownloadAllBanners}
+              disabled={isDownloadingAll}
+              className="gap-2"
+            >
+              {isDownloadingAll ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <FolderArchive className="h-4 w-4" />
+              )}
+              {isDownloadingAll ? "Creando ZIP..." : `Descargar todos los banners (${allBanners.length})`}
+            </Button>
+          </div>
 
           <BannerSection 
             title="FENIX IA (Empresa)" 
