@@ -91,14 +91,14 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
       <table cellpadding="0" cellspacing="0" border="0" style="margin: auto 0;">
         <tr>
           <td style="font-size: 22px; font-weight: bold; color: #FFFFFF; padding-bottom: 2px;">${safeName}</td>
-          <td style="padding-left: 3px; padding-bottom: 4px; vertical-align: middle;">
-            <a href="${safeLinkedinHref}" style="text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="20" height="20" style="display: block;" />
-            </a>
-          </td>
         </tr>
         <tr>
-          <td style="font-size: 14px; color: #15F0FF; font-weight: 500; padding-bottom: 14px;">${safeRole}</td>
+          <td style="font-size: 14px; color: #15F0FF; font-weight: 500; padding-bottom: 14px;">
+            ${safeRole}
+            <a href="${safeLinkedinHref}" style="text-decoration: none; margin-left: 6px; vertical-align: middle;">
+              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="16" height="16" style="display: inline-block; vertical-align: middle;" />
+            </a>
+          </td>
         </tr>
         <tr>
           <td style="font-size: 13px; padding-bottom: 6px;">
@@ -287,25 +287,25 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                     <tbody>
                       <tr>
                         <td style={{ fontSize: 22, fontWeight: "bold", color: "#FFFFFF", paddingBottom: 2 }}>{name}</td>
-                        <td style={{ paddingLeft: 3, paddingBottom: 4, verticalAlign: "middle" }}>
+                      </tr>
+                      <tr>
+                        <td style={{ fontSize: 14, color: "#15F0FF", fontWeight: 500, paddingBottom: 14 }}>
+                          {role}
                           <a 
                             href={safeLinkedinUrl(linkedin)} 
-                            style={{ textDecoration: "none" }}
+                            style={{ textDecoration: "none", marginLeft: 6, verticalAlign: "middle" }}
                             className="transition-transform duration-200 hover:scale-110 inline-block"
                           >
                             <img
                               src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
                               alt="LinkedIn"
-                              width={20}
-                              height={20}
-                              style={{ display: "block" }}
+                              width={16}
+                              height={16}
+                              style={{ display: "inline-block", verticalAlign: "middle" }}
                               className="transition-opacity duration-200 hover:opacity-80"
                             />
                           </a>
                         </td>
-                      </tr>
-                      <tr>
-                        <td style={{ fontSize: 14, color: "#15F0FF", fontWeight: 500, paddingBottom: 14 }}>{role}</td>
                       </tr>
 
                       <tr>
