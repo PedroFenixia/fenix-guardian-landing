@@ -82,7 +82,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
   const signatureHtml = `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #0D0D0D; padding: 24px 28px; border-radius: 12px; width: 100%; max-width: 720px; border: 1px solid rgba(21, 240, 255, 0.2); box-shadow: 0 4px 20px rgba(21, 240, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);">
   <tr>
-    <td style="padding-right: 18px; border-right: 2px solid rgba(21, 240, 255, 0.5); vertical-align: middle; text-align: center; width: 120px;">
+    <td style="padding-right: 18px; border-right: 2px solid rgba(21, 240, 255, 0.5); vertical-align: middle; text-align: center; width: 140px;">
       <img src="${logoUrl}" alt="Fenix IA" width="120" height="120" style="display: block; margin: 0 auto;" />
     </td>
     <td style="padding-left: 22px; padding-right: 24px; vertical-align: middle;">
@@ -265,7 +265,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                     borderRight: "2px solid rgba(21, 240, 255, 0.5)",
                     verticalAlign: "middle",
                     textAlign: "center",
-                    width: 120,
+                    width: 140,
                   }}
                 >
                   <img
