@@ -113,79 +113,28 @@ const LinkedInAssets = () => {
     },
   ];
 
-  const bannerAssets = [
-    {
-      title: "Banner FENIX IA (Empresa)",
-      description: "Escudo a la izquierda",
-      imageSrc: linkedinBannerCompany,
-      fileName: "linkedin-banner-fenixia.png",
-    },
-    {
-      title: "Banner FENIX IA V2",
-      description: "Escudo cerca del nombre, desplazado a la derecha",
-      imageSrc: linkedinBannerCompanyV2,
-      fileName: "linkedin-banner-fenixia-v2.png",
-    },
-    {
-      title: "Banner FENIX IA V3",
-      description: "Escudo a la derecha del nombre",
-      imageSrc: linkedinBannerCompanyV3,
-      fileName: "linkedin-banner-fenixia-v3.png",
-    },
-    {
-      title: "Banner Pedro Sánchez",
-      description: "Escudo a la izquierda",
-      imageSrc: linkedinBannerPedro,
-      fileName: "linkedin-banner-pedro.png",
-    },
-    {
-      title: "Banner Pedro Sánchez V2",
-      description: "Escudo cerca del nombre, desplazado a la derecha",
-      imageSrc: linkedinBannerPedroV2,
-      fileName: "linkedin-banner-pedro-v2.png",
-    },
-    {
-      title: "Banner Pedro Sánchez V3",
-      description: "Escudo a la derecha del nombre",
-      imageSrc: linkedinBannerPedroV3,
-      fileName: "linkedin-banner-pedro-v3.png",
-    },
-    {
-      title: "Banner Jose J. Antón",
-      description: "Escudo a la izquierda",
-      imageSrc: linkedinBannerJose,
-      fileName: "linkedin-banner-jose.png",
-    },
-    {
-      title: "Banner Jose J. Antón V2",
-      description: "Escudo cerca del nombre, desplazado a la derecha",
-      imageSrc: linkedinBannerJoseV2,
-      fileName: "linkedin-banner-jose-v2.png",
-    },
-    {
-      title: "Banner Jose J. Antón V3",
-      description: "Escudo a la derecha del nombre",
-      imageSrc: linkedinBannerJoseV3,
-      fileName: "linkedin-banner-jose-v3.png",
-    },
-    {
-      title: "Banner Izhar Sanz",
-      description: "Escudo a la izquierda",
-      imageSrc: linkedinBannerIzhar,
-      fileName: "linkedin-banner-izhar.png",
-    },
-    {
-      title: "Banner Izhar Sanz V2",
-      description: "Escudo cerca del nombre, desplazado a la derecha",
-      imageSrc: linkedinBannerIzharV2,
-      fileName: "linkedin-banner-izhar-v2.png",
-    },
-    {
-      title: "Banner Izhar Sanz V3",
-      description: "Escudo a la derecha del nombre",
-      imageSrc: linkedinBannerIzharV3,
-      fileName: "linkedin-banner-izhar-v3.png",
-    },
+  const companyBanners = [
+    { title: "V1 - Escudo izquierda", description: "Diseño original", imageSrc: linkedinBannerCompany, fileName: "linkedin-banner-fenixia-v1.png" },
+    { title: "V2 - Escudo cerca", description: "Desplazado a la derecha", imageSrc: linkedinBannerCompanyV2, fileName: "linkedin-banner-fenixia-v2.png" },
+    { title: "V3 - Escudo derecha", description: "Escudo a la derecha del texto", imageSrc: linkedinBannerCompanyV3, fileName: "linkedin-banner-fenixia-v3.png" },
+  ];
+
+  const pedroBanners = [
+    { title: "V1 - Escudo izquierda", description: "Diseño original", imageSrc: linkedinBannerPedro, fileName: "linkedin-banner-pedro-v1.png" },
+    { title: "V2 - Escudo cerca", description: "Desplazado a la derecha", imageSrc: linkedinBannerPedroV2, fileName: "linkedin-banner-pedro-v2.png" },
+    { title: "V3 - Escudo derecha", description: "Escudo a la derecha del texto", imageSrc: linkedinBannerPedroV3, fileName: "linkedin-banner-pedro-v3.png" },
+  ];
+
+  const joseBanners = [
+    { title: "V1 - Escudo izquierda", description: "Diseño original", imageSrc: linkedinBannerJose, fileName: "linkedin-banner-jose-v1.png" },
+    { title: "V2 - Escudo cerca", description: "Desplazado a la derecha", imageSrc: linkedinBannerJoseV2, fileName: "linkedin-banner-jose-v2.png" },
+    { title: "V3 - Escudo derecha", description: "Escudo a la derecha del texto", imageSrc: linkedinBannerJoseV3, fileName: "linkedin-banner-jose-v3.png" },
+  ];
+
+  const izharBanners = [
+    { title: "V1 - Escudo izquierda", description: "Diseño original", imageSrc: linkedinBannerIzhar, fileName: "linkedin-banner-izhar-v1.png" },
+    { title: "V2 - Escudo cerca", description: "Desplazado a la derecha", imageSrc: linkedinBannerIzharV2, fileName: "linkedin-banner-izhar-v2.png" },
+    { title: "V3 - Escudo derecha", description: "Escudo a la derecha del texto", imageSrc: linkedinBannerIzharV3, fileName: "linkedin-banner-izhar-v3.png" },
   ];
 
   return (
@@ -200,7 +149,7 @@ const LinkedInAssets = () => {
           </p>
         </div>
 
-        {/* Pedro Sánchez Section */}
+        {/* Pedro Sánchez Profile Section */}
         <div className="mb-12">
           <h2 className="text-2xl font-semibold mb-6 text-center">
             Perfil de Pedro Sánchez
@@ -212,7 +161,7 @@ const LinkedInAssets = () => {
           </div>
         </div>
 
-        {/* Company Section */}
+        {/* Company Profile Section */}
         <div className="mb-12">
           <h2 className="text-2xl font-semibold mb-6 text-center">
             Perfil de Empresa FENIX IA
@@ -224,18 +173,53 @@ const LinkedInAssets = () => {
           </div>
         </div>
 
-        {/* Banners Section */}
+        {/* Banners Section - Grouped by Person */}
         <div className="mb-12">
-          <h2 className="text-2xl font-semibold mb-6 text-center">
+          <h2 className="text-2xl font-semibold mb-2 text-center">
             Banners de LinkedIn
           </h2>
-          <p className="text-center text-muted-foreground mb-6 text-sm">
-            Banners con escudo fénix metálico y brillo cyan
+          <p className="text-center text-muted-foreground mb-8 text-sm">
+            3 versiones por persona: V1 (escudo izquierda), V2 (escudo cerca del nombre), V3 (escudo derecha)
           </p>
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {bannerAssets.map((banner) => (
-              <BannerCard key={banner.fileName} {...banner} />
-            ))}
+
+          {/* FENIX IA Company Banners */}
+          <div className="mb-10">
+            <h3 className="text-xl font-medium mb-4 text-primary text-center">FENIX IA (Empresa)</h3>
+            <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto">
+              {companyBanners.map((banner) => (
+                <BannerCard key={banner.fileName} {...banner} />
+              ))}
+            </div>
+          </div>
+
+          {/* Pedro Sánchez Banners */}
+          <div className="mb-10">
+            <h3 className="text-xl font-medium mb-4 text-primary text-center">Pedro Sánchez</h3>
+            <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto">
+              {pedroBanners.map((banner) => (
+                <BannerCard key={banner.fileName} {...banner} />
+              ))}
+            </div>
+          </div>
+
+          {/* Jose J. Antón Banners */}
+          <div className="mb-10">
+            <h3 className="text-xl font-medium mb-4 text-primary text-center">Jose J. Antón</h3>
+            <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto">
+              {joseBanners.map((banner) => (
+                <BannerCard key={banner.fileName} {...banner} />
+              ))}
+            </div>
+          </div>
+
+          {/* Izhar Sanz Banners */}
+          <div className="mb-10">
+            <h3 className="text-xl font-medium mb-4 text-primary text-center">Izhar Sanz</h3>
+            <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto">
+              {izharBanners.map((banner) => (
+                <BannerCard key={banner.fileName} {...banner} />
+              ))}
+            </div>
           </div>
         </div>
 
