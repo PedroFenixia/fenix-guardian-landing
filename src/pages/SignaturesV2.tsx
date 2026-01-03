@@ -64,8 +64,8 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
   // White background for QR
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(vCardUrl)}&bgcolor=FFFFFF&color=1A1A1A`;
 
-  // Logo URL - using production domain for email clients (transparent background)
-  const logoUrl = "https://fenixia.tech/assets/fenix-logo-transparent.png";
+  // Logo URL - using production domain for email clients (true transparent PNG)
+  const logoUrl = "https://fenixia.tech/assets/fenix-logo-transparent-alpha.png";
 
   const safeName = escapeHtml(name);
   const safeRole = escapeHtml(role);
