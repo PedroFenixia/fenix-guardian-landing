@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import fenixLogo from "@/assets/fenix-header-logo.png";
+
+const fenixLogo = "https://aetxomsehqbuhpotkkdy.supabase.co/storage/v1/object/public/brand-assets/logo-firma.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
