@@ -86,6 +86,30 @@ export type Database = {
         }
         Relationships: []
       }
+      page_visits: {
+        Row: {
+          first_visit_at: string
+          id: string
+          last_visit_at: string
+          page_path: string
+          visit_count: number
+        }
+        Insert: {
+          first_visit_at?: string
+          id?: string
+          last_visit_at?: string
+          page_path: string
+          visit_count?: number
+        }
+        Update: {
+          first_visit_at?: string
+          id?: string
+          last_visit_at?: string
+          page_path?: string
+          visit_count?: number
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
@@ -122,6 +146,15 @@ export type Database = {
         }
         Returns: Json
       }
+      get_page_visit_stats: {
+        Args: never
+        Returns: {
+          first_visit_at: string
+          last_visit_at: string
+          page_path: string
+          visit_count: number
+        }[]
+      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -129,6 +162,7 @@ export type Database = {
         }
         Returns: boolean
       }
+      track_page_visit: { Args: { p_page_path: string }; Returns: Json }
     }
     Enums: {
       app_role: "admin" | "moderator" | "user"

@@ -16,6 +16,7 @@ import VCard from "./pages/VCard";
 import LinkedInAssets from "./pages/LinkedInAssets";
 import NotFound from "./pages/NotFound";
 import ChatWidget from "./components/ChatWidget";
+import { PageTracker } from "./components/PageTracker";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <PageTracker />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/nosotros" element={<About />} />
