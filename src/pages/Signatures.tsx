@@ -64,10 +64,9 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
     vCardParams.photo = photo;
   }
 
-  const vCardUrl =
-    typeof window !== "undefined"
-      ? `${window.location.origin}/vcard?${new URLSearchParams(vCardParams).toString()}`
-      : `/vcard?${new URLSearchParams(vCardParams).toString()}`;
+  // Always use production domain for QR codes
+  const productionDomain = "https://fenixia.tech";
+  const vCardUrl = `${productionDomain}/vcard?${new URLSearchParams(vCardParams).toString()}`;
 
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(vCardUrl)}&bgcolor=0D0D0D&color=FFFFFF`;
 
