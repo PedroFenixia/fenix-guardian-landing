@@ -10,9 +10,10 @@ interface SignatureProps {
   email: string;
   phone: string;
   linkedin?: string;
+  photo?: string;
 }
 
-const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProps) => {
+const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: SignatureProps) => {
   const [copied, setCopied] = useState(false);
   const [downloading, setDownloading] = useState(false);
   const signatureRef = useRef<HTMLDivElement>(null);
@@ -45,16 +46,28 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin }: SignatureProp
   // QR: use an URL that downloads the contact (more compatible than embedding VCARD in QR)
   const phoneClean = phone.replace(/\s/g, "");
 
+  const vCardParams: Record<string, string> = {
+    name,
+    role,
+    email,
+    phone: phoneClean,
+    auto: "1",
+  };
+
+  // Add linkedin if available
+  if (linkedin) {
+    vCardParams.linkedin = linkedin;
+  }
+
+  // Add photo if available
+  if (photo) {
+    vCardParams.photo = photo;
+  }
+
   const vCardUrl =
     typeof window !== "undefined"
-      ? `${window.location.origin}/vcard?${new URLSearchParams({
-          name,
-          role,
-          email,
-          phone: phoneClean,
-          auto: "1",
-        }).toString()}`
-      : `/vcard?name=${encodeURIComponent(name)}&role=${encodeURIComponent(role)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phoneClean)}&auto=1`;
+      ? `${window.location.origin}/vcard?${new URLSearchParams(vCardParams).toString()}`
+      : `/vcard?${new URLSearchParams(vCardParams).toString()}`;
 
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(vCardUrl)}&bgcolor=1A1C1E&color=FFFFFF`;
 
@@ -417,18 +430,21 @@ const Signatures = () => {
       email: "pedro@fenixia.tech",
       phone: "+34 620 654 925",
       linkedin: "https://www.linkedin.com/in/pedro-s%C3%A1nchez-81b4a0377",
+      photo: "https://fenixia.tech/assets/pedro-profile.jpg",
     },
     {
       name: "Jose J. Antón",
       role: "Co-Founder",
       email: "jose@fenixia.tech",
       phone: "+34 966 10 10 29",
+      photo: "https://fenixia.tech/assets/jose-profile.jpg",
     },
     {
       name: "Izhar Sanz",
       role: "Co-Founder",
       email: "izhar@fenixia.tech",
       phone: "+34 966 10 10 29",
+      photo: "https://fenixia.tech/assets/izhar-profile.jpg",
     },
   ];
 
