@@ -147,7 +147,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                   <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Dirección" width="16" height="16" style="display: block; filter: invert(45%) sepia(90%) saturate(2000%) hue-rotate(330deg) brightness(95%) contrast(95%);" />
                 </td>
                 <td style="vertical-align: middle;">
-                  <span style="color: #FFFFFF;">C/ La Paz, 83 · 03320 Torrellano-Elche · Alicante</span>
+                  <span style="color: #FFFFFF;">C/ La Paz, 83 · 03320 Torrellano (Elche)</span>
                 </td>
               </tr>
             </table>
@@ -402,7 +402,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                                 </td>
                                 <td style={{ verticalAlign: "middle" }}>
                                   <span style={{ color: "#FFFFFF" }}>
-                                    C/ La Paz, 83 · 03320 Torrellano-Elche · Alicante
+                                    C/ La Paz, 83 · 03320 Torrellano (Elche)
                                   </span>
                                 </td>
                               </tr>
