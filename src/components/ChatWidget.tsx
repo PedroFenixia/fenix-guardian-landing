@@ -177,24 +177,36 @@ const ChatWidget = () => {
           </ScrollArea>
 
           {/* Input */}
-          <form onSubmit={sendMessage} className="p-4 border-t border-border">
-            <div className="flex gap-2">
-              <Input
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Escribe tu mensaje..."
-                disabled={isLoading}
-                className="flex-1"
-              />
-              <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
-                {isLoading ? (
-                  <Loader2 className="w-4 h-4 animate-spin" />
-                ) : (
-                  <Send className="w-4 h-4" />
-                )}
-              </Button>
-            </div>
-          </form>
+          <div className="p-4 border-t border-border space-y-2">
+            <form onSubmit={sendMessage}>
+              <div className="flex gap-2">
+                <Input
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  placeholder="Escribe tu mensaje..."
+                  disabled={isLoading}
+                  className="flex-1"
+                />
+                <Button type="submit" size="icon" disabled={isLoading || !input.trim()}>
+                  {isLoading ? (
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                  ) : (
+                    <Send className="w-4 h-4" />
+                  )}
+                </Button>
+              </div>
+            </form>
+            <p className="text-[10px] text-muted-foreground text-center leading-tight">
+              Protegido por reCAPTCHA.{" "}
+              <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">
+                Privacidad
+              </a>
+              {" · "}
+              <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">
+                Términos
+              </a>
+            </p>
+          </div>
         </div>
       )}
     </>
