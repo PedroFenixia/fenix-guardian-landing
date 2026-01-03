@@ -437,7 +437,7 @@ const SignaturesV2 = () => {
       name: "Pedro Sánchez",
       role: "Co-founder",
       email: "pedro@fenixia.tech",
-      phone: "+34 644 308 920",
+      phone: "+34 620 654 925",
       linkedin: "https://www.linkedin.com/in/pedro-sánchez-81b4a0377/",
       photo: "https://fenixia.tech/assets/pedro-updated.jpeg",
     },
