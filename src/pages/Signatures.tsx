@@ -160,7 +160,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
     </td>
     <td style="padding-left: 16px; padding-right: 16px; vertical-align: middle; text-align: center; width: 100px; height: 100%;">
       <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
-        <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="85" height="85" style="display: block; margin: 0 auto;" />
+        <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="85" height="85" style="display: block; margin: 0 auto; border: 1px solid rgba(21, 240, 255, 0.3); border-radius: 6px; padding: 4px; background-color: #FFFFFF;" />
       </div>
     </td>
   </tr>
@@ -417,7 +417,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                       alt="Tarjeta de visita"
                       width={85}
                       height={85}
-                      style={{ display: "block", margin: "0 auto" }}
+                      style={{ display: "block", margin: "0 auto", border: "1px solid rgba(21, 240, 255, 0.3)", borderRadius: 6, padding: 4, backgroundColor: "#FFFFFF" }}
                     />
                   </div>
                 </td>
