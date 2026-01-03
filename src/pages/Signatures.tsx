@@ -119,7 +119,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
             <table cellpadding="0" cellspacing="0" border="0">
               <tr>
                 <td style="padding-right: 10px; vertical-align: middle;">
-                  <img src="https://cdn-icons-png.flaticon.com/512/3059/3059446.png" alt="Teléfono" width="16" height="16" style="display: block;" />
+                  <img src="https://cdn-icons-png.flaticon.com/512/724/724664.png" alt="Teléfono" width="16" height="16" style="display: block;" />
                 </td>
                 <td style="vertical-align: middle;">
                   <a href="tel:${safePhoneHref}" style="color: #FFFFFF; text-decoration: none;">${safePhone}</a>
@@ -344,7 +344,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                               <tr>
                                 <td style={{ paddingRight: 10, verticalAlign: "middle" }}>
                                   <img
-                                    src="https://cdn-icons-png.flaticon.com/512/3059/3059446.png"
+                                    src="https://cdn-icons-png.flaticon.com/512/724/724664.png"
                                     alt="Teléfono"
                                     width={16}
                                     height={16}
