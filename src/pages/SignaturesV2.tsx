@@ -61,8 +61,8 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
   const productionDomain = "https://fenixia.tech";
   const vCardUrl = `${productionDomain}/vcard?${new URLSearchParams(vCardParams).toString()}`;
 
-  // Neutral gray background for QR
-  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(vCardUrl)}&bgcolor=F5F5F5&color=1A1A1A`;
+  // White background for QR
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(vCardUrl)}&bgcolor=FFFFFF&color=1A1A1A`;
 
   // Logo URL from Supabase Storage
   const logoUrl = "https://aetxomsehqbuhpotkkdy.supabase.co/storage/v1/object/public/brand-assets/logo-firma.png";
@@ -74,14 +74,14 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
   const safePhoneHref = escapeHtml(phoneClean);
   const safeLinkedinHref = escapeHtml(safeLinkedinUrl(linkedin));
 
-  // V2: Neutral gray background (#F5F5F5) for better email client compatibility
+  // V2: White background (#FFFFFF) for better email client compatibility
   const signatureHtml = `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.4; background-color: #F5F5F5; padding: 16px 20px; border-radius: 10px; width: 100%; max-width: 620px; border: 1px solid #E0E0E0;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.4; background-color: #FFFFFF; padding: 16px 20px; border-radius: 10px; width: 100%; max-width: 620px; border: 1px solid #E0E0E0;">
   <tr>
-    <td style="padding-left: 8px; padding-right: 10px; border-right: 1px solid #D0D0D0; vertical-align: middle; text-align: center; width: 90px; background-color: #F5F5F5;">
+    <td style="padding-left: 8px; padding-right: 10px; border-right: 1px solid #D0D0D0; vertical-align: middle; text-align: center; width: 90px; background-color: #FFFFFF;">
       <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="75" height="75" style="display: block; margin: auto; border: 1px solid #D0D0D0; border-radius: 5px; padding: 3px; background-color: #FFFFFF;" />
     </td>
-    <td style="padding-left: 16px; padding-right: 16px; vertical-align: middle; background-color: #F5F5F5;">
+    <td style="padding-left: 16px; padding-right: 16px; vertical-align: middle; background-color: #FFFFFF;">
       <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;">
         <tr>
           <td style="font-size: 18px; font-weight: bold; color: #1A1A1A; padding-bottom: 1px; padding-top: 4px;">${safeName}</td>
@@ -243,7 +243,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
               fontFamily: "'Segoe UI', Arial, sans-serif",
               fontSize: 14,
               lineHeight: 1.4,
-              backgroundColor: "#F5F5F5",
+              backgroundColor: "#FFFFFF",
               padding: "16px 20px",
               borderRadius: 10,
               width: "100%",
@@ -261,7 +261,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                     verticalAlign: "middle",
                     textAlign: "center",
                     width: 90,
-                    backgroundColor: "#F5F5F5",
+                    backgroundColor: "#FFFFFF",
                   }}
                 >
                   <img
@@ -273,7 +273,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                   />
                 </td>
 
-                <td style={{ paddingLeft: 16, paddingRight: 16, verticalAlign: "middle", backgroundColor: "#F5F5F5" }}>
+                <td style={{ paddingLeft: 16, paddingRight: 16, verticalAlign: "middle", backgroundColor: "#FFFFFF" }}>
                   <table cellPadding={0} cellSpacing={0} border={0} style={{ width: "100%" }}>
                     <tbody>
                       <tr>
