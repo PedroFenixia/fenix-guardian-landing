@@ -64,8 +64,6 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
   // White background for QR
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(vCardUrl)}&bgcolor=FFFFFF&color=1A1A1A`;
 
-  // Logo URL - using production domain for email clients (alpha transparent PNG)
-  const logoUrl = "https://fenixia.tech/assets/fenix-logo-alpha.png";
 
   const safeName = escapeHtml(name);
   const safeRole = escapeHtml(role);
@@ -85,9 +83,6 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
       <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;">
         <tr>
           <td style="font-size: 18px; font-weight: bold; color: #1A1A1A; padding-bottom: 1px; padding-top: 4px;">${safeName}</td>
-          <td rowspan="6" style="vertical-align: top; text-align: right; padding-left: 10px; width: 90px;">
-            <img src="${logoUrl}" alt="FENIXIA" width="85" height="85" style="display: block;" />
-          </td>
         </tr>
         <tr>
           <td style="font-size: 13px; color: #0891B2; font-weight: 500; padding-bottom: 10px;">
@@ -278,15 +273,6 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                     <tbody>
                       <tr>
                         <td style={{ fontSize: 18, fontWeight: "bold", color: "#1A1A1A", paddingBottom: 1, paddingTop: 4 }}>{name}</td>
-                        <td rowSpan={6} style={{ verticalAlign: "top", textAlign: "right", paddingLeft: 10, width: 50 }}>
-                          <img
-                            src={logoUrl}
-                            alt="FENIXIA"
-                            width={45}
-                            height={45}
-                            style={{ display: "block" }}
-                          />
-                        </td>
                       </tr>
                       <tr>
                         <td style={{ fontSize: 13, color: "#0891B2", fontWeight: 500, paddingBottom: 10 }}>
