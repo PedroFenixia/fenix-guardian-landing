@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-const fenixLogo = "/assets/fenix-logo-dark.png";
+const fenixLogo = "/assets/fenix-shield-only.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,7 +18,7 @@ const Header = () => {
             <img 
               src={fenixLogo} 
               alt="FENIX IA Solutions" 
-              className="h-10 w-auto brightness-110 contrast-110 drop-shadow-[0_0_8px_hsl(var(--primary)/0.3)] transition-all duration-300 group-hover:brightness-125 group-hover:drop-shadow-[0_0_16px_hsl(var(--primary)/0.6)]"
+              className="h-10 w-auto drop-shadow-[0_0_8px_hsl(var(--primary)/0.3)] transition-all duration-300 group-hover:drop-shadow-[0_0_16px_hsl(var(--primary)/0.6)]"
             />
             <span className="text-lg font-bold text-foreground">
               FENIX <span className="text-primary">IA SOLUTIONS</span>
