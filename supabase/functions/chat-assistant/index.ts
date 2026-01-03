@@ -61,6 +61,41 @@ async function checkRateLimitDB(supabase: SupabaseClient<any>, ip: string): Prom
   }
 }
 
+async function verifyRecaptcha(token: string): Promise<{ success: boolean; score: number }> {
+  const secretKey = Deno.env.get('RECAPTCHA_SECRET_KEY');
+  
+  if (!secretKey) {
+    console.warn('RECAPTCHA_SECRET_KEY not configured, skipping verification');
+    return { success: true, score: 1.0 };
+  }
+
+  if (!token) {
+    console.warn('No reCAPTCHA token provided');
+    return { success: false, score: 0 };
+  }
+
+  try {
+    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `secret=${encodeURIComponent(secretKey)}&response=${encodeURIComponent(token)}`,
+    });
+
+    const result = await response.json();
+    console.log('reCAPTCHA verification result:', { success: result.success, score: result.score, action: result.action });
+    
+    return {
+      success: result.success === true,
+      score: result.score || 0,
+    };
+  } catch (error) {
+    console.error('reCAPTCHA verification error:', error);
+    return { success: false, score: 0 };
+  }
+}
+
 serve(async (req) => {
   const corsHeaders = getCorsHeaders(req);
 
@@ -104,7 +139,7 @@ serve(async (req) => {
       );
     }
 
-    const { messages } = await req.json();
+    const { messages, recaptchaToken } = await req.json();
     
     if (!messages || !Array.isArray(messages)) {
       return new Response(
@@ -114,6 +149,20 @@ serve(async (req) => {
           headers: { ...corsHeaders, "Content-Type": "application/json" },
         }
       );
+    }
+
+    // Verify reCAPTCHA token
+    if (recaptchaToken) {
+      const recaptchaResult = await verifyRecaptcha(recaptchaToken);
+      
+      if (!recaptchaResult.success || recaptchaResult.score < 0.3) {
+        console.warn('reCAPTCHA verification failed or low score:', recaptchaResult.score);
+        return new Response(
+          JSON.stringify({ error: 'Verificación de seguridad fallida.' }),
+          { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+        );
+      }
+      console.log('reCAPTCHA passed with score:', recaptchaResult.score);
     }
     
     const MAX_MESSAGES = 20;

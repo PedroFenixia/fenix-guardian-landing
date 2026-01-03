@@ -23,6 +23,7 @@ interface LeadData {
   email: string;
   company?: string;
   message: string;
+  recaptchaToken?: string;
 }
 
 interface HoldedFunnel {
@@ -76,7 +77,7 @@ function validateInput(data: unknown): { valid: boolean; error?: string; parsed?
     return { valid: false, error: 'Invalid request body' };
   }
 
-  const { name, email, company, message } = data as Record<string, unknown>;
+  const { name, email, company, message, recaptchaToken } = data as Record<string, unknown>;
 
   if (typeof name !== 'string' || name.trim().length === 0 || name.length > 100) {
     return { valid: false, error: 'Name is required and must be less than 100 characters' };
@@ -101,8 +102,44 @@ function validateInput(data: unknown): { valid: boolean; error?: string; parsed?
       email: email.trim().toLowerCase(),
       company: typeof company === 'string' ? company.trim() : undefined,
       message: message.trim(),
+      recaptchaToken: typeof recaptchaToken === 'string' ? recaptchaToken : undefined,
     },
   };
+}
+
+async function verifyRecaptcha(token: string): Promise<{ success: boolean; score: number }> {
+  const secretKey = Deno.env.get('RECAPTCHA_SECRET_KEY');
+  
+  if (!secretKey) {
+    console.warn('RECAPTCHA_SECRET_KEY not configured, skipping verification');
+    return { success: true, score: 1.0 };
+  }
+
+  if (!token) {
+    console.warn('No reCAPTCHA token provided');
+    return { success: false, score: 0 };
+  }
+
+  try {
+    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: `secret=${encodeURIComponent(secretKey)}&response=${encodeURIComponent(token)}`,
+    });
+
+    const result = await response.json();
+    console.log('reCAPTCHA verification result:', { success: result.success, score: result.score, action: result.action });
+    
+    return {
+      success: result.success === true,
+      score: result.score || 0,
+    };
+  } catch (error) {
+    console.error('reCAPTCHA verification error:', error);
+    return { success: false, score: 0 };
+  }
 }
 
 serve(async (req) => {
@@ -167,7 +204,24 @@ serve(async (req) => {
       );
     }
 
-    const { name, email, company, message } = validation.parsed;
+    const { name, email, company, message, recaptchaToken } = validation.parsed;
+
+    // Verify reCAPTCHA token
+    if (recaptchaToken) {
+      const recaptchaResult = await verifyRecaptcha(recaptchaToken);
+      
+      if (!recaptchaResult.success || recaptchaResult.score < 0.5) {
+        console.warn('reCAPTCHA verification failed or low score:', recaptchaResult.score);
+        return new Response(
+          JSON.stringify({ 
+            success: false, 
+            error: 'Verificación de seguridad fallida. Por favor, intenta de nuevo.' 
+          }),
+          { status: 403, headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+        );
+      }
+      console.log('reCAPTCHA passed with score:', recaptchaResult.score);
+    }
 
     console.log('Creating lead in Holded CRM');
 
