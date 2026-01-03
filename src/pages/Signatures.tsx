@@ -91,7 +91,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
       <table cellpadding="0" cellspacing="0" border="0" style="margin: auto 0;">
         <tr>
           <td style="font-size: 22px; font-weight: bold; color: #FFFFFF; padding-bottom: 2px;">${safeName}</td>
-          <td style="padding-left: 10px; padding-bottom: 4px; vertical-align: middle;">
+          <td style="padding-left: 6px; padding-bottom: 4px; vertical-align: middle;">
             <a href="${safeLinkedinHref}" style="text-decoration: none;">
               <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="20" height="20" style="display: block;" />
             </a>
@@ -287,7 +287,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                     <tbody>
                       <tr>
                         <td style={{ fontSize: 22, fontWeight: "bold", color: "#FFFFFF", paddingBottom: 2 }}>{name}</td>
-                        <td style={{ paddingLeft: 10, paddingBottom: 4, verticalAlign: "middle" }}>
+                        <td style={{ paddingLeft: 6, paddingBottom: 4, verticalAlign: "middle" }}>
                           <a 
                             href={safeLinkedinUrl(linkedin)} 
                             style={{ textDecoration: "none" }}
