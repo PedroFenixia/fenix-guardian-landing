@@ -91,6 +91,11 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
       <table cellpadding="0" cellspacing="0" border="0" style="margin: auto 0;">
         <tr>
           <td style="font-size: 22px; font-weight: bold; color: #FFFFFF; padding-bottom: 2px;">${safeName}</td>
+          <td style="padding-left: 10px; vertical-align: middle;">
+            <a href="${safeLinkedinHref}" style="text-decoration: none;">
+              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="20" height="20" style="display: block;" />
+            </a>
+          </td>
         </tr>
         <tr>
           <td style="font-size: 14px; color: #15F0FF; font-weight: 500; padding-bottom: 14px;">${safeRole}</td>
@@ -149,13 +154,6 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                 </td>
               </tr>
             </table>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding-top: 2px;">
-            <a href="${safeLinkedinHref}" style="text-decoration: none;">
-              <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" width="22" height="22" style="display: inline-block;" />
-            </a>
           </td>
         </tr>
       </table>
@@ -289,6 +287,17 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                     <tbody>
                       <tr>
                         <td style={{ fontSize: 22, fontWeight: "bold", color: "#FFFFFF", paddingBottom: 2 }}>{name}</td>
+                        <td style={{ paddingLeft: 10, verticalAlign: "middle" }}>
+                          <a href={safeLinkedinUrl(linkedin)} style={{ textDecoration: "none" }}>
+                            <img
+                              src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+                              alt="LinkedIn"
+                              width={20}
+                              height={20}
+                              style={{ display: "block" }}
+                            />
+                          </a>
+                        </td>
                       </tr>
                       <tr>
                         <td style={{ fontSize: 14, color: "#15F0FF", fontWeight: 500, paddingBottom: 14 }}>{role}</td>
@@ -397,19 +406,6 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                         </td>
                       </tr>
 
-                      <tr>
-                        <td style={{ paddingTop: 2 }}>
-                          <a href={safeLinkedinUrl(linkedin)} style={{ textDecoration: "none" }}>
-                            <img
-                              src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
-                              alt="LinkedIn"
-                              width={22}
-                              height={22}
-                              style={{ display: "inline-block" }}
-                            />
-                          </a>
-                        </td>
-                      </tr>
                     </tbody>
                   </table>
                 </td>
