@@ -87,24 +87,38 @@ const BannerWithOverlay = ({ name, subtitle, fileName, isCompany }: BannerData) 
         }}
       >
         {/* Text Overlay */}
-        <div className="absolute inset-0 flex items-center justify-end pr-[10%]">
+        <div className="absolute inset-0 flex items-center justify-end pr-[8%]">
           <div className="text-right">
             <h2 
-              className="font-bold text-white drop-shadow-lg"
+              className="font-bold text-white tracking-wide"
               style={{ 
-                fontSize: isCompany ? "clamp(1.5rem, 4vw, 3rem)" : "clamp(1.25rem, 3.5vw, 2.5rem)",
-                textShadow: "0 2px 10px rgba(0,0,0,0.5)",
+                fontSize: isCompany ? "clamp(1.75rem, 5vw, 3.5rem)" : "clamp(1.5rem, 4vw, 3rem)",
+                textShadow: `
+                  0 0 10px rgba(255, 255, 255, 0.3),
+                  0 0 20px rgba(255, 255, 255, 0.2),
+                  0 4px 15px rgba(0, 0, 0, 0.8),
+                  0 8px 30px rgba(0, 0, 0, 0.6)
+                `,
                 fontFamily: "'Inter', 'SF Pro Display', system-ui, sans-serif",
+                letterSpacing: "0.02em",
               }}
             >
               {name}
             </h2>
             <p 
-              className="text-[#15F0FF] font-medium mt-1"
+              className="font-semibold mt-2"
               style={{ 
-                fontSize: "clamp(0.75rem, 2vw, 1.25rem)",
-                textShadow: "0 0 20px rgba(21, 240, 255, 0.5)",
+                fontSize: "clamp(0.875rem, 2.5vw, 1.5rem)",
+                color: "#15F0FF",
+                textShadow: `
+                  0 0 10px rgba(21, 240, 255, 0.8),
+                  0 0 20px rgba(21, 240, 255, 0.6),
+                  0 0 40px rgba(21, 240, 255, 0.4),
+                  0 0 60px rgba(21, 240, 255, 0.2),
+                  0 2px 10px rgba(0, 0, 0, 0.5)
+                `,
                 fontFamily: "'Inter', 'SF Pro Display', system-ui, sans-serif",
+                letterSpacing: "0.05em",
               }}
             >
               {subtitle}
