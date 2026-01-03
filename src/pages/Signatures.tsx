@@ -69,7 +69,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
       ? `${window.location.origin}/vcard?${new URLSearchParams(vCardParams).toString()}`
       : `/vcard?${new URLSearchParams(vCardParams).toString()}`;
 
-  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(vCardUrl)}&bgcolor=1A1C1E&color=FFFFFF`;
+  const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=${encodeURIComponent(vCardUrl)}&bgcolor=0D0D0D&color=FFFFFF`;
 
   // Build HTML to copy (escape all interpolated values to prevent HTML/script injection)
   const safeName = escapeHtml(name);
@@ -80,7 +80,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
   const safeLinkedinHref = escapeHtml(safeLinkedinUrl(linkedin));
 
   const signatureHtml = `
-<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 24px 28px; border-radius: 12px; width: 100%; max-width: 720px;">
+<table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #0D0D0D; padding: 24px 28px; border-radius: 12px; width: 100%; max-width: 720px;">
   <tr>
     <td style="padding-right: 18px; border-right: 2px solid rgba(21, 240, 255, 0.5); vertical-align: middle; text-align: center; width: 120px;">
       <img src="${logoUrl}" alt="Fenix IA" width="100" height="100" style="display: block; margin: 0 auto;" />
@@ -248,7 +248,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
               fontFamily: "'Segoe UI', Arial, sans-serif",
               fontSize: 14,
               lineHeight: 1.5,
-              backgroundColor: "#1A1C1E",
+              backgroundColor: "#0D0D0D",
               padding: "24px 28px",
               borderRadius: 12,
               width: "100%",
