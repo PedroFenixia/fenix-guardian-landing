@@ -21,6 +21,12 @@ import linkedinBannerIzharV3 from "@/assets/linkedin-banner-izhar-v3.png";
 import linkedinBannerCompanyV3 from "@/assets/linkedin-banner-company-v4.png";
 import linkedinBannerJoseV4 from "@/assets/linkedin-banner-jose-v4.png";
 import linkedinBannerJoseV5 from "@/assets/linkedin-banner-jose-v5.png";
+import linkedinBannerPedroV4 from "@/assets/linkedin-banner-pedro-v4.png";
+import linkedinBannerPedroV5 from "@/assets/linkedin-banner-pedro-v5.png";
+import linkedinBannerIzharV4 from "@/assets/linkedin-banner-izhar-v4.png";
+import linkedinBannerIzharV5 from "@/assets/linkedin-banner-izhar-v5.png";
+import linkedinBannerCompanyV4 from "@/assets/linkedin-banner-company-v5.png";
+import linkedinBannerCompanyV5 from "@/assets/linkedin-banner-company-v6.png";
 
 interface AssetCardProps {
   title: string;
@@ -209,12 +215,16 @@ const LinkedInAssets = () => {
     { title: "V1 - Escudo izquierda", description: "Diseño original", imageSrc: linkedinBannerCompany, fileName: "linkedin-banner-fenixia-v1.png" },
     { title: "V2 - Escudo cerca", description: "Desplazado a la derecha", imageSrc: linkedinBannerCompanyV2, fileName: "linkedin-banner-fenixia-v2.png" },
     { title: "V3 - Escudo derecha", description: "Escudo a la derecha del texto", imageSrc: linkedinBannerCompanyV3, fileName: "linkedin-banner-fenixia-v3.png" },
+    { title: "V4 - Llama sutil (izq)", description: "Brillo ámbar inferior", imageSrc: linkedinBannerCompanyV4, fileName: "linkedin-banner-fenixia-v4.png" },
+    { title: "V5 - Llama sutil (der)", description: "Brillo ámbar, escudo derecha", imageSrc: linkedinBannerCompanyV5, fileName: "linkedin-banner-fenixia-v5.png" },
   ];
 
   const pedroBanners = [
     { title: "V1 - Escudo izquierda", description: "Diseño original", imageSrc: linkedinBannerPedro, fileName: "linkedin-banner-pedro-v1.png" },
     { title: "V2 - Escudo cerca", description: "Desplazado a la derecha", imageSrc: linkedinBannerPedroV2, fileName: "linkedin-banner-pedro-v2.png" },
     { title: "V3 - Escudo derecha", description: "Escudo a la derecha del texto", imageSrc: linkedinBannerPedroV3, fileName: "linkedin-banner-pedro-v3.png" },
+    { title: "V4 - Llama sutil (izq)", description: "Brillo ámbar inferior", imageSrc: linkedinBannerPedroV4, fileName: "linkedin-banner-pedro-v4.png" },
+    { title: "V5 - Llama sutil (der)", description: "Brillo ámbar, escudo derecha", imageSrc: linkedinBannerPedroV5, fileName: "linkedin-banner-pedro-v5.png" },
   ];
 
   const joseBanners = [
@@ -229,6 +239,8 @@ const LinkedInAssets = () => {
     { title: "V1 - Escudo izquierda", description: "Diseño original", imageSrc: linkedinBannerIzhar, fileName: "linkedin-banner-izhar-v1.png" },
     { title: "V2 - Escudo cerca", description: "Desplazado a la derecha", imageSrc: linkedinBannerIzharV2, fileName: "linkedin-banner-izhar-v2.png" },
     { title: "V3 - Escudo derecha", description: "Escudo a la derecha del texto", imageSrc: linkedinBannerIzharV3, fileName: "linkedin-banner-izhar-v3.png" },
+    { title: "V4 - Llama sutil (izq)", description: "Brillo ámbar inferior", imageSrc: linkedinBannerIzharV4, fileName: "linkedin-banner-izhar-v4.png" },
+    { title: "V5 - Llama sutil (der)", description: "Brillo ámbar, escudo derecha", imageSrc: linkedinBannerIzharV5, fileName: "linkedin-banner-izhar-v5.png" },
   ];
 
   const allBanners = [...companyBanners, ...pedroBanners, ...joseBanners, ...izharBanners];
