@@ -14,6 +14,7 @@ import Signatures from "./pages/Signatures";
 import SignaturesV2 from "./pages/SignaturesV2";
 import VCard from "./pages/VCard";
 import LinkedInAssets from "./pages/LinkedInAssets";
+import Analytics from "./pages/Analytics";
 import NotFound from "./pages/NotFound";
 import ChatWidget from "./components/ChatWidget";
 import { PageTracker } from "./components/PageTracker";
@@ -39,6 +40,7 @@ const App = () => (
           <Route path="/firmas-v2" element={<SignaturesV2 />} />
           <Route path="/vcard" element={<VCard />} />
           <Route path="/linkedin-assets" element={<LinkedInAssets />} />
+          <Route path="/analytics" element={<Analytics />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
