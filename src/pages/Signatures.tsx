@@ -90,7 +90,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
     <td style="padding-left: 22px; padding-right: 24px; vertical-align: middle;">
       <table cellpadding="0" cellspacing="0" border="0" style="margin: auto 0;">
         <tr>
-          <td style="font-size: 22px; font-weight: bold; color: #FFFFFF; padding-bottom: 2px;">${safeName}</td>
+          <td style="font-size: 22px; font-weight: bold; color: #FFFFFF; padding-bottom: 2px; padding-top: 8px;">${safeName}</td>
         </tr>
         <tr>
           <td style="font-size: 14px; color: #15F0FF; font-weight: 500; padding-bottom: 14px;">
@@ -286,7 +286,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                   <table cellPadding={0} cellSpacing={0} border={0}>
                     <tbody>
                       <tr>
-                        <td style={{ fontSize: 22, fontWeight: "bold", color: "#FFFFFF", paddingBottom: 2 }}>{name}</td>
+                        <td style={{ fontSize: 22, fontWeight: "bold", color: "#FFFFFF", paddingBottom: 2, paddingTop: 8 }}>{name}</td>
                       </tr>
                       <tr>
                         <td style={{ fontSize: 14, color: "#15F0FF", fontWeight: 500, paddingBottom: 14 }}>
