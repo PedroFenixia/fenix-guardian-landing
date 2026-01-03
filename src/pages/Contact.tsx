@@ -65,13 +65,9 @@ const Contact = () => {
           },
         });
         
-        if (holdedResponse.error) {
-          console.error('Error sending to Holded:', holdedResponse.error);
-        } else {
-          console.log('Lead sent to Holded successfully');
-        }
-      } catch (holdedError) {
-        console.error('Error calling Holded function:', holdedError);
+        // Silent handling - errors are logged server-side
+      } catch {
+        // Silent handling - errors are logged server-side
       }
       
       toast({
