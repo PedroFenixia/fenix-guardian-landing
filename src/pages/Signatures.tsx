@@ -82,10 +82,10 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
   const signatureHtml = `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #0D0D0D; padding: 24px 28px; border-radius: 12px; width: 100%; max-width: 720px; border: 1px solid rgba(21, 240, 255, 0.2); box-shadow: 0 4px 20px rgba(21, 240, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);">
   <tr>
-    <td style="padding-right: 16px; border-right: 2px solid rgba(21, 240, 255, 0.5); vertical-align: middle; text-align: center; width: 100px;">
+    <td style="padding-right: 16px; border-right: 2px solid rgba(21, 240, 255, 0.5); vertical-align: middle; text-align: center; width: 100px; background-color: #0D0D0D;">
       <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="85" height="85" style="display: block; margin: auto; border: 1px solid rgba(21, 240, 255, 0.3); border-radius: 6px; padding: 4px; background-color: #FFFFFF;" />
     </td>
-    <td style="padding-left: 22px; padding-right: 24px; vertical-align: middle;">
+    <td style="padding-left: 22px; padding-right: 24px; vertical-align: middle; background-color: #0D0D0D;">
       <table cellpadding="0" cellspacing="0" border="0" style="margin: auto 0;">
         <tr>
           <td style="font-size: 22px; font-weight: bold; color: #FFFFFF; padding-bottom: 2px; padding-top: 8px;">${safeName}</td>
@@ -264,6 +264,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                     verticalAlign: "middle",
                     textAlign: "center",
                     width: 100,
+                    backgroundColor: "#0D0D0D",
                   }}
                 >
                   <img
@@ -275,7 +276,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                   />
                 </td>
 
-                <td style={{ paddingLeft: 22, paddingRight: 24, verticalAlign: "middle" }}>
+                <td style={{ paddingLeft: 22, paddingRight: 24, verticalAlign: "middle", backgroundColor: "#0D0D0D" }}>
                   <table cellPadding={0} cellSpacing={0} border={0}>
                     <tbody>
                       <tr>
