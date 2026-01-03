@@ -17,7 +17,7 @@ const Index = () => {
         <img 
           src={fenixLogo} 
           alt="" 
-          className="w-[120vw] h-auto max-w-none opacity-[0.08] blur-[2px]"
+          className="w-[200vw] h-auto max-w-none opacity-[0.08] blur-[2px]"
         />
       </div>
       
