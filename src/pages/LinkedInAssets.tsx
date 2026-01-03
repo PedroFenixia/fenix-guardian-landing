@@ -1,5 +1,7 @@
-import { Download } from "lucide-react";
+import { useState } from "react";
+import { Download, FolderArchive, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import JSZip from "jszip";
 import linkedinPedro2 from "@/assets/linkedin-pedro-2.png";
 import linkedinCompany1 from "@/assets/linkedin-company-1.png";
 import linkedinCompany2 from "@/assets/linkedin-company-2.png";
@@ -18,6 +20,13 @@ import linkedinBannerIzharV3 from "@/assets/linkedin-banner-izhar-v3.png";
 import linkedinBannerCompanyV3 from "@/assets/linkedin-banner-company-v4.png";
 
 interface AssetCardProps {
+  title: string;
+  description: string;
+  imageSrc: string;
+  fileName: string;
+}
+
+interface BannerAsset {
   title: string;
   description: string;
   imageSrc: string;
@@ -78,6 +87,69 @@ const BannerCard = ({ title, description, imageSrc, fileName }: AssetCardProps) 
         <Download className="h-4 w-4" />
         Descargar
       </Button>
+    </div>
+  );
+};
+
+interface BannerSectionProps {
+  title: string;
+  banners: BannerAsset[];
+  zipFileName: string;
+}
+
+const BannerSection = ({ title, banners, zipFileName }: BannerSectionProps) => {
+  const [isDownloading, setIsDownloading] = useState(false);
+
+  const handleDownloadAll = async () => {
+    setIsDownloading(true);
+    try {
+      const zip = new JSZip();
+      
+      for (const banner of banners) {
+        const response = await fetch(banner.imageSrc);
+        const blob = await response.blob();
+        zip.file(banner.fileName, blob);
+      }
+      
+      const content = await zip.generateAsync({ type: "blob" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(content);
+      link.download = zipFileName;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href);
+    } catch (error) {
+      console.error("Error creating ZIP:", error);
+    } finally {
+      setIsDownloading(false);
+    }
+  };
+
+  return (
+    <div className="mb-10">
+      <div className="flex items-center justify-center gap-4 mb-4">
+        <h3 className="text-xl font-medium text-primary">{title}</h3>
+        <Button 
+          variant="outline" 
+          size="sm" 
+          onClick={handleDownloadAll}
+          disabled={isDownloading}
+          className="gap-2"
+        >
+          {isDownloading ? (
+            <Loader2 className="h-4 w-4 animate-spin" />
+          ) : (
+            <FolderArchive className="h-4 w-4" />
+          )}
+          {isDownloading ? "Creando ZIP..." : "Descargar todo (ZIP)"}
+        </Button>
+      </div>
+      <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto">
+        {banners.map((banner) => (
+          <BannerCard key={banner.fileName} {...banner} />
+        ))}
+      </div>
     </div>
   );
 };
@@ -182,45 +254,29 @@ const LinkedInAssets = () => {
             3 versiones por persona: V1 (escudo izquierda), V2 (escudo cerca del nombre), V3 (escudo derecha)
           </p>
 
-          {/* FENIX IA Company Banners */}
-          <div className="mb-10">
-            <h3 className="text-xl font-medium mb-4 text-primary text-center">FENIX IA (Empresa)</h3>
-            <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto">
-              {companyBanners.map((banner) => (
-                <BannerCard key={banner.fileName} {...banner} />
-              ))}
-            </div>
-          </div>
+          <BannerSection 
+            title="FENIX IA (Empresa)" 
+            banners={companyBanners} 
+            zipFileName="banners-fenixia-empresa.zip" 
+          />
 
-          {/* Pedro Sánchez Banners */}
-          <div className="mb-10">
-            <h3 className="text-xl font-medium mb-4 text-primary text-center">Pedro Sánchez</h3>
-            <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto">
-              {pedroBanners.map((banner) => (
-                <BannerCard key={banner.fileName} {...banner} />
-              ))}
-            </div>
-          </div>
+          <BannerSection 
+            title="Pedro Sánchez" 
+            banners={pedroBanners} 
+            zipFileName="banners-pedro-sanchez.zip" 
+          />
 
-          {/* Jose J. Antón Banners */}
-          <div className="mb-10">
-            <h3 className="text-xl font-medium mb-4 text-primary text-center">Jose J. Antón</h3>
-            <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto">
-              {joseBanners.map((banner) => (
-                <BannerCard key={banner.fileName} {...banner} />
-              ))}
-            </div>
-          </div>
+          <BannerSection 
+            title="Jose J. Antón" 
+            banners={joseBanners} 
+            zipFileName="banners-jose-anton.zip" 
+          />
 
-          {/* Izhar Sanz Banners */}
-          <div className="mb-10">
-            <h3 className="text-xl font-medium mb-4 text-primary text-center">Izhar Sanz</h3>
-            <div className="grid md:grid-cols-3 gap-4 max-w-6xl mx-auto">
-              {izharBanners.map((banner) => (
-                <BannerCard key={banner.fileName} {...banner} />
-              ))}
-            </div>
-          </div>
+          <BannerSection 
+            title="Izhar Sanz" 
+            banners={izharBanners} 
+            zipFileName="banners-izhar-sanz.zip" 
+          />
         </div>
 
         <div className="text-center">
