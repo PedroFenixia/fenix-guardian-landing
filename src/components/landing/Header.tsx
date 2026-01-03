@@ -29,7 +29,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
             <span className="text-lg font-bold text-foreground">
-              <span className="text-primary">FENIX</span> IA
+              FENIX <span className="text-primary">IA</span>
             </span>
           </Link>
 
