@@ -12,6 +12,10 @@ import linkedinBannerPedroV2 from "@/assets/linkedin-banner-pedro-v2.png";
 import linkedinBannerJoseV2 from "@/assets/linkedin-banner-jose-v2.png";
 import linkedinBannerIzharV2 from "@/assets/linkedin-banner-izhar-v2.png";
 import linkedinBannerCompanyV2 from "@/assets/linkedin-banner-company-v3.png";
+import linkedinBannerPedroV3 from "@/assets/linkedin-banner-pedro-v3.png";
+import linkedinBannerJoseV3 from "@/assets/linkedin-banner-jose-v3.png";
+import linkedinBannerIzharV3 from "@/assets/linkedin-banner-izhar-v3.png";
+import linkedinBannerCompanyV3 from "@/assets/linkedin-banner-company-v4.png";
 
 interface AssetCardProps {
   title: string;
@@ -112,51 +116,75 @@ const LinkedInAssets = () => {
   const bannerAssets = [
     {
       title: "Banner FENIX IA (Empresa)",
-      description: "Banner corporativo con escudo fénix",
+      description: "Escudo a la izquierda",
       imageSrc: linkedinBannerCompany,
       fileName: "linkedin-banner-fenixia.png",
     },
     {
-      title: "Banner FENIX IA V2 (Derecha)",
-      description: "Banner corporativo - escudo cerca del nombre, desplazado a la derecha",
+      title: "Banner FENIX IA V2",
+      description: "Escudo cerca del nombre, desplazado a la derecha",
       imageSrc: linkedinBannerCompanyV2,
       fileName: "linkedin-banner-fenixia-v2.png",
     },
     {
+      title: "Banner FENIX IA V3",
+      description: "Escudo a la derecha del nombre",
+      imageSrc: linkedinBannerCompanyV3,
+      fileName: "linkedin-banner-fenixia-v3.png",
+    },
+    {
       title: "Banner Pedro Sánchez",
-      description: "Banner personal con escudo fénix",
+      description: "Escudo a la izquierda",
       imageSrc: linkedinBannerPedro,
       fileName: "linkedin-banner-pedro.png",
     },
     {
-      title: "Banner Pedro Sánchez V2 (Derecha)",
-      description: "Banner personal - escudo cerca del nombre, desplazado a la derecha",
+      title: "Banner Pedro Sánchez V2",
+      description: "Escudo cerca del nombre, desplazado a la derecha",
       imageSrc: linkedinBannerPedroV2,
       fileName: "linkedin-banner-pedro-v2.png",
     },
     {
+      title: "Banner Pedro Sánchez V3",
+      description: "Escudo a la derecha del nombre",
+      imageSrc: linkedinBannerPedroV3,
+      fileName: "linkedin-banner-pedro-v3.png",
+    },
+    {
       title: "Banner Jose J. Antón",
-      description: "Banner personal con escudo fénix",
+      description: "Escudo a la izquierda",
       imageSrc: linkedinBannerJose,
       fileName: "linkedin-banner-jose.png",
     },
     {
-      title: "Banner Jose J. Antón V2 (Derecha)",
-      description: "Banner personal - escudo cerca del nombre, desplazado a la derecha",
+      title: "Banner Jose J. Antón V2",
+      description: "Escudo cerca del nombre, desplazado a la derecha",
       imageSrc: linkedinBannerJoseV2,
       fileName: "linkedin-banner-jose-v2.png",
     },
     {
+      title: "Banner Jose J. Antón V3",
+      description: "Escudo a la derecha del nombre",
+      imageSrc: linkedinBannerJoseV3,
+      fileName: "linkedin-banner-jose-v3.png",
+    },
+    {
       title: "Banner Izhar Sanz",
-      description: "Banner personal con escudo fénix",
+      description: "Escudo a la izquierda",
       imageSrc: linkedinBannerIzhar,
       fileName: "linkedin-banner-izhar.png",
     },
     {
-      title: "Banner Izhar Sanz V2 (Derecha)",
-      description: "Banner personal - escudo cerca del nombre, desplazado a la derecha",
+      title: "Banner Izhar Sanz V2",
+      description: "Escudo cerca del nombre, desplazado a la derecha",
       imageSrc: linkedinBannerIzharV2,
       fileName: "linkedin-banner-izhar-v2.png",
+    },
+    {
+      title: "Banner Izhar Sanz V3",
+      description: "Escudo a la derecha del nombre",
+      imageSrc: linkedinBannerIzharV3,
+      fileName: "linkedin-banner-izhar-v3.png",
     },
   ];
 
