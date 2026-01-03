@@ -34,7 +34,7 @@ function buildVCard(params: {
     `TEL;TYPE=WORK,VOICE:${escapeVCardText(phoneClean)}`,
     `EMAIL:${escapeVCardText(email)}`,
     "URL:https://fenixia.tech",
-    "ADR;TYPE=WORK:;;C/ La Paz 83;Torrellano-Elche;Alicante;03320;Spain",
+    "ADR;TYPE=WORK:;;C/ La Paz 83;Torrellano (Elche);Alicante;03320;Spain",
   ];
 
   // Add LinkedIn if provided

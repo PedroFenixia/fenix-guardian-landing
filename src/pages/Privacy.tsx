@@ -21,7 +21,7 @@ const Privacy = () => {
                   </p>
                   <ul className="text-muted-foreground space-y-2 list-none pl-0">
                     <li><strong className="text-foreground">Responsable:</strong> Fenix IA Solutions SL</li>
-                    <li><strong className="text-foreground">Domicilio:</strong> C/ La Paz, 83, 03320 Torrellano-Elche, Alicante</li>
+                    <li><strong className="text-foreground">Domicilio:</strong> C/ La Paz, 83, 03320 Torrellano (Elche), Alicante</li>
                     <li><strong className="text-foreground">Email:</strong> <a href="mailto:contacto@fenixia.tech" className="text-primary hover:underline">contacto@fenixia.tech</a></li>
                     <li><strong className="text-foreground">Teléfono:</strong> <a href="tel:+34966101029" className="text-primary hover:underline">+34 966 10 10 29</a></li>
                   </ul>
