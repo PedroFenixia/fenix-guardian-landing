@@ -3,7 +3,7 @@ import { Download, FolderArchive, Loader2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent } from "@/components/ui/dialog";
 import JSZip from "jszip";
-import linkedinPedro2 from "@/assets/linkedin-pedro-2.png";
+import linkedinPedro2 from "@/assets/linkedin-pedro-2-updated.png";
 import linkedinCompany1 from "@/assets/linkedin-company-1.png";
 import linkedinCompany2 from "@/assets/linkedin-company-2.png";
 import linkedinProfileCompany from "@/assets/linkedin-profile-company.png";
