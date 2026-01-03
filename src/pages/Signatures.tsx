@@ -82,7 +82,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
   const signatureHtml = `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #1A1C1E; padding: 24px 28px; border-radius: 12px; width: 100%; max-width: 720px; border: 1px solid rgba(21, 240, 255, 0.2); box-shadow: 0 4px 20px rgba(21, 240, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);">
   <tr>
-    <td style="padding-left: 12px; padding-right: 12px; border-right: 1px solid rgba(21, 240, 255, 0.25); vertical-align: middle; text-align: center; width: 110px; background-color: #1A1C1E;">
+    <td style="padding-left: 12px; padding-right: 12px; border-right: 1px solid rgba(255, 255, 255, 0.15); vertical-align: middle; text-align: center; width: 110px; background-color: #1A1C1E;">
       <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="85" height="85" style="display: block; margin: auto; border: 1px solid rgba(21, 240, 255, 0.3); border-radius: 6px; padding: 4px; background-color: #FFFFFF;" />
     </td>
     <td style="padding-left: 22px; padding-right: 24px; vertical-align: middle; background-color: #1A1C1E;">
@@ -261,7 +261,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                   style={{
                     paddingLeft: 12,
                     paddingRight: 12,
-                    borderRight: "1px solid rgba(21, 240, 255, 0.25)",
+                    borderRight: "1px solid rgba(255, 255, 255, 0.15)",
                     verticalAlign: "middle",
                     textAlign: "center",
                     width: 110,
