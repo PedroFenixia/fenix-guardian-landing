@@ -18,7 +18,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
   const [downloading, setDownloading] = useState(false);
   const signatureRef = useRef<HTMLDivElement>(null);
 
-  const logoUrl = typeof window !== "undefined" ? `${window.location.origin}/assets/fenix-shield-logo.png` : "/assets/fenix-shield-logo.png";
+  const logoUrl = typeof window !== "undefined" ? `${window.location.origin}/assets/fenix-shield-only.png` : "/assets/fenix-shield-only.png";
 
   const escapeHtml = (value: string) =>
     value
