@@ -323,7 +323,11 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                                   />
                                 </td>
                                 <td style={{ verticalAlign: "middle" }}>
-                                  <a href={`mailto:${email}`} style={{ color: "#FFFFFF", textDecoration: "none" }}>
+                                  <a 
+                                    href={`mailto:${email}`} 
+                                    style={{ color: "#FFFFFF", textDecoration: "none" }}
+                                    className="transition-opacity duration-200 hover:opacity-70"
+                                  >
                                     {email}
                                   </a>
                                 </td>
@@ -348,7 +352,11 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                                   />
                                 </td>
                                 <td style={{ verticalAlign: "middle" }}>
-                                  <a href={`tel:${phoneClean}`} style={{ color: "#FFFFFF", textDecoration: "none" }}>
+                                  <a 
+                                    href={`tel:${phoneClean}`} 
+                                    style={{ color: "#FFFFFF", textDecoration: "none" }}
+                                    className="transition-opacity duration-200 hover:opacity-70"
+                                  >
                                     {phone}
                                   </a>
                                 </td>
@@ -376,6 +384,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                                   <a
                                     href="https://fenixia.tech"
                                     style={{ color: "#15F0FF", textDecoration: "none", fontWeight: 500 }}
+                                    className="transition-opacity duration-200 hover:opacity-70"
                                   >
                                     fenixia.tech
                                   </a>
