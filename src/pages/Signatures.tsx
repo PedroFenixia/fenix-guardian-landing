@@ -82,11 +82,13 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
   const signatureHtml = `
 <table cellpadding="0" cellspacing="0" border="0" style="font-family: 'Segoe UI', Arial, sans-serif; font-size: 14px; line-height: 1.5; background-color: #0D0D0D; padding: 24px 28px; border-radius: 12px; width: 100%; max-width: 720px; border: 1px solid rgba(21, 240, 255, 0.2); box-shadow: 0 4px 20px rgba(21, 240, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.3);">
   <tr>
-    <td style="padding-right: 18px; border-right: 2px solid rgba(21, 240, 255, 0.5); vertical-align: middle; text-align: center; width: 140px;">
-      <img src="${logoUrl}" alt="Fenix IA" width="120" height="120" style="display: block; margin: 0 auto;" />
+    <td style="padding-right: 18px; border-right: 2px solid rgba(21, 240, 255, 0.5); vertical-align: middle; text-align: center; width: 140px; height: 100%;">
+      <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+        <img src="${logoUrl}" alt="Fenix IA" width="120" height="120" style="display: block; margin: 0 auto;" />
+      </div>
     </td>
     <td style="padding-left: 22px; padding-right: 24px; vertical-align: middle;">
-      <table cellpadding="0" cellspacing="0" border="0">
+      <table cellpadding="0" cellspacing="0" border="0" style="margin: auto 0;">
         <tr>
           <td style="font-size: 22px; font-weight: bold; color: #FFFFFF; padding-bottom: 2px;">${safeName}</td>
         </tr>
@@ -158,8 +160,10 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
         </tr>
       </table>
     </td>
-    <td style="padding-left: 20px; padding-right: 8px; vertical-align: middle; text-align: center; width: 100px;">
-      <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="85" height="85" style="display: block; margin: 0 auto;" />
+    <td style="padding-left: 20px; padding-right: 8px; vertical-align: middle; text-align: center; width: 100px; height: 100%;">
+      <div style="display: flex; align-items: center; justify-content: center; height: 100%;">
+        <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="85" height="85" style="display: block; margin: 0 auto;" />
+      </div>
     </td>
   </tr>
 </table>
@@ -266,15 +270,18 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                     verticalAlign: "middle",
                     textAlign: "center",
                     width: 140,
+                    height: "100%",
                   }}
                 >
-                  <img
-                    src={logoUrl}
-                    alt="Fenix IA"
-                    width={120}
-                    height={120}
-                    style={{ display: "block", margin: "0 auto" }}
-                  />
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>
+                    <img
+                      src={logoUrl}
+                      alt="Fenix IA"
+                      width={120}
+                      height={120}
+                      style={{ display: "block", margin: "0 auto" }}
+                    />
+                  </div>
                 </td>
 
                 <td style={{ paddingLeft: 22, paddingRight: 24, verticalAlign: "middle" }}>
@@ -407,14 +414,16 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                   </table>
                 </td>
 
-                <td style={{ paddingLeft: 20, paddingRight: 8, verticalAlign: "middle", textAlign: "center", width: 100 }}>
-                  <img
-                    src={qrCodeUrl}
-                    alt="Tarjeta de visita"
-                    width={85}
-                    height={85}
-                    style={{ display: "block", margin: "0 auto" }}
-                  />
+                <td style={{ paddingLeft: 20, paddingRight: 8, verticalAlign: "middle", textAlign: "center", width: 100, height: "100%" }}>
+                  <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%" }}>
+                    <img
+                      src={qrCodeUrl}
+                      alt="Tarjeta de visita"
+                      width={85}
+                      height={85}
+                      style={{ display: "block", margin: "0 auto" }}
+                    />
+                  </div>
                 </td>
               </tr>
             </tbody>
