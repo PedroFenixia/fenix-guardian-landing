@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useToast } from "@/hooks/use-toast";
+import { useRecaptcha } from "@/hooks/use-recaptcha";
 
 interface Message {
   role: "user" | "assistant";
@@ -24,6 +25,7 @@ const ChatWidget = () => {
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+  const { executeRecaptcha } = useRecaptcha();
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -43,13 +45,16 @@ const ChatWidget = () => {
     let assistantContent = "";
 
     try {
+      // Get reCAPTCHA token for chat
+      const recaptchaToken = await executeRecaptcha('chat');
+      
       const response = await fetch(CHAT_URL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
         },
-        body: JSON.stringify({ messages: [...messages, userMessage] }),
+        body: JSON.stringify({ messages: [...messages, userMessage], recaptchaToken }),
       });
 
       if (!response.ok) {

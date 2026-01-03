@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { z } from "zod";
+import { useRecaptcha } from "@/hooks/use-recaptcha";
 
 const contactSchema = z.object({
   name: z.string().trim().min(1, "El nombre es requerido").max(100, "El nombre es demasiado largo"),
@@ -18,6 +19,7 @@ const contactSchema = z.object({
 
 const Contact = () => {
   const { toast } = useToast();
+  const { executeRecaptcha } = useRecaptcha();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -34,6 +36,9 @@ const Contact = () => {
       // Validate input with zod
       const validatedData = contactSchema.parse(formData);
       
+      // Get reCAPTCHA token
+      const recaptchaToken = await executeRecaptcha('contact_form');
+      
       // Submit to database
       const { error } = await supabase
         .from('demo_requests')
@@ -48,7 +53,7 @@ const Contact = () => {
         throw new Error(error.message);
       }
 
-      // Send to Holded CRM
+      // Send to Holded CRM with reCAPTCHA token
       try {
         const holdedResponse = await supabase.functions.invoke('holded-lead', {
           body: {
@@ -56,6 +61,7 @@ const Contact = () => {
             email: validatedData.email,
             company: validatedData.company || '',
             message: validatedData.message,
+            recaptchaToken,
           },
         });
         
