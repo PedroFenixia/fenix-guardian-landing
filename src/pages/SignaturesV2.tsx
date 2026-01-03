@@ -64,6 +64,9 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
   // Neutral gray background for QR
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(vCardUrl)}&bgcolor=F5F5F5&color=1A1A1A`;
 
+  // Logo URL from Supabase Storage
+  const logoUrl = "https://aetxomsehqbuhpotkkdy.supabase.co/storage/v1/object/public/brand-assets/fenix-shield-logo.png";
+
   const safeName = escapeHtml(name);
   const safeRole = escapeHtml(role);
   const safeEmail = escapeHtml(email);
@@ -79,9 +82,12 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
       <img src="${qrCodeUrl}" alt="Tarjeta de visita" width="75" height="75" style="display: block; margin: auto; border: 1px solid #D0D0D0; border-radius: 5px; padding: 3px; background-color: #FFFFFF;" />
     </td>
     <td style="padding-left: 16px; padding-right: 16px; vertical-align: middle; background-color: #F5F5F5;">
-      <table cellpadding="0" cellspacing="0" border="0" style="margin: auto 0;">
+      <table cellpadding="0" cellspacing="0" border="0" style="width: 100%;">
         <tr>
           <td style="font-size: 18px; font-weight: bold; color: #1A1A1A; padding-bottom: 1px; padding-top: 4px;">${safeName}</td>
+          <td rowspan="6" style="vertical-align: top; text-align: right; padding-left: 10px; width: 50px;">
+            <img src="${logoUrl}" alt="FENIXIA" width="45" height="45" style="display: block;" />
+          </td>
         </tr>
         <tr>
           <td style="font-size: 13px; color: #0891B2; font-weight: 500; padding-bottom: 10px;">
@@ -268,10 +274,19 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                 </td>
 
                 <td style={{ paddingLeft: 16, paddingRight: 16, verticalAlign: "middle", backgroundColor: "#F5F5F5" }}>
-                  <table cellPadding={0} cellSpacing={0} border={0}>
+                  <table cellPadding={0} cellSpacing={0} border={0} style={{ width: "100%" }}>
                     <tbody>
                       <tr>
                         <td style={{ fontSize: 18, fontWeight: "bold", color: "#1A1A1A", paddingBottom: 1, paddingTop: 4 }}>{name}</td>
+                        <td rowSpan={6} style={{ verticalAlign: "top", textAlign: "right", paddingLeft: 10, width: 50 }}>
+                          <img
+                            src={logoUrl}
+                            alt="FENIXIA"
+                            width={45}
+                            height={45}
+                            style={{ display: "block" }}
+                          />
+                        </td>
                       </tr>
                       <tr>
                         <td style={{ fontSize: 13, color: "#0891B2", fontWeight: 500, paddingBottom: 10 }}>
