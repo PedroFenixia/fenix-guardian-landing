@@ -247,8 +247,9 @@ serve(async (req) => {
     });
 
     if (!contactResponse.ok) {
-      console.error('Holded Contact API error:', contactResponse.status);
-      throw new Error(`Holded Contact API error: ${contactResponse.status}`);
+      const errorBody = await contactResponse.text();
+      console.error('Holded Contact API error:', contactResponse.status, errorBody);
+      throw new Error(`Holded Contact API error: ${contactResponse.status} - ${errorBody}`);
     }
 
     const contactResult = await contactResponse.json();
