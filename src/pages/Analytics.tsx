@@ -26,10 +26,23 @@ export default function Analytics() {
   const [data, setData] = useState<AnalyticsData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const fetchAnalytics = async () => {
+    const checkAuthAndFetch = async () => {
       try {
+        // First check if user is authenticated
+        const { data: { session } } = await supabase.auth.getSession();
+        
+        if (!session) {
+          setError('Debes iniciar sesión para acceder a Analytics');
+          setLoading(false);
+          return;
+        }
+        
+        setIsAuthenticated(true);
+        
+        // Now fetch analytics
         const { data: result, error: fetchError } = await supabase.rpc('get_analytics_summary');
         
         if (fetchError) {
@@ -44,8 +57,19 @@ export default function Analytics() {
       }
     };
 
-    fetchAnalytics();
-  }, []);
+    checkAuthAndFetch();
+
+    // Listen for auth changes
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+      if (session && !isAuthenticated) {
+        setIsAuthenticated(true);
+        setLoading(true);
+        checkAuthAndFetch();
+      }
+    });
+
+    return () => subscription.unsubscribe();
+  }, [isAuthenticated]);
 
   if (loading) {
     return (
@@ -55,10 +79,23 @@ export default function Analytics() {
     );
   }
 
+  if (error) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center flex-col gap-4">
+        <div className="text-destructive">{error}</div>
+        {!isAuthenticated && (
+          <a href="/auth" className="text-primary underline hover:no-underline">
+            Ir a iniciar sesión
+          </a>
+        )}
+      </div>
+    );
+  }
+
   if (!data) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="text-destructive">Error al cargar los datos</div>
+        <div className="text-muted-foreground">No hay datos disponibles</div>
       </div>
     );
   }
