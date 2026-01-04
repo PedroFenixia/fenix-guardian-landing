@@ -229,7 +229,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
 
       {/* Preview */}
       <div className="rounded-lg overflow-hidden">
-        <div ref={signatureRef}>
+        <div ref={signatureRef} style={{ display: "inline-block" }}>
           <table
             cellPadding={0}
             cellSpacing={0}
@@ -241,8 +241,6 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
               backgroundColor: "#FFFFFF",
               padding: "16px 20px",
               borderRadius: 10,
-              width: "100%",
-              maxWidth: 620,
               border: "1px solid #E0E0E0",
             }}
           >
