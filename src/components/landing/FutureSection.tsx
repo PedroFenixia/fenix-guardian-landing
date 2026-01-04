@@ -41,10 +41,10 @@ const FutureSection = () => {
                 <span className="text-primary text-glow">Futuro</span>{" "}
                 de la Tecnología
               </h2>
-              <p className="text-lg text-foreground/80 leading-relaxed mb-4">
+              <p className="text-lg text-foreground/80 leading-relaxed mb-4 text-justify">
                 En <span className="text-primary font-semibold">FENIX IA</span>, creemos en el poder transformador de la inteligencia artificial. Como el fénix, ayudamos a los negocios a elevarse, reinventarse y alcanzar nuevas alturas a través de soluciones digitales innovadoras.
               </p>
-              <p className="text-foreground/70 leading-relaxed">
+              <p className="text-foreground/70 leading-relaxed text-justify">
                 Nuestro equipo de expertos en IA, desarrolladores y estrategas trabaja de forma colaborativa para entregar soluciones que no solo satisfacen tus necesidades actuales, sino que anticipan desafíos futuros.
               </p>
             </div>
