@@ -36,9 +36,9 @@ const Contact = () => {
       // Validate input with zod
       const validatedData = contactSchema.parse(formData);
       
-      // Get reCAPTCHA token
+      // Get reCAPTCHA token (optional - form works without it)
       const recaptchaToken = await executeRecaptcha('contact_form');
-      
+      console.log('reCAPTCHA token:', recaptchaToken ? 'obtained' : 'not configured (skipping)');
       // Submit to database
       const { error } = await supabase
         .from('demo_requests')
@@ -166,17 +166,7 @@ const Contact = () => {
                     {isSubmitting ? "Enviando..." : "Enviar mensaje"}
                     <Send className="w-4 h-4 ml-2" />
                   </Button>
-                  <p className="text-xs text-muted-foreground text-center mt-4">
-                    Este sitio está protegido por reCAPTCHA y se aplican la{" "}
-                    <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">
-                      Política de Privacidad
-                    </a>{" "}
-                    y los{" "}
-                    <a href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary transition-colors">
-                      Términos de Servicio
-                    </a>{" "}
-                    de Google.
-                  </p>
+                  {/* reCAPTCHA notice - only show if configured */}
                 </form>
               </div>
 
