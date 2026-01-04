@@ -178,11 +178,18 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
     setDownloading(true);
     try {
       const canvas = await html2canvas(signatureRef.current, {
-        backgroundColor: "#F5F5F5",
-        scale: 4, // Higher resolution for better quality
+        backgroundColor: "#FFFFFF",
+        scale: 6,
         useCORS: true,
-        allowTaint: true,
+        allowTaint: false,
         logging: false,
+        imageTimeout: 15000,
+        onclone: (clonedDoc) => {
+          const clonedElement = clonedDoc.querySelector('[data-signature]');
+          if (clonedElement) {
+            (clonedElement as HTMLElement).style.display = 'inline-block';
+          }
+        }
       });
 
       const link = document.createElement("a");
@@ -229,7 +236,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
 
       {/* Preview */}
       <div className="rounded-lg overflow-hidden">
-        <div ref={signatureRef} style={{ display: "inline-block" }}>
+        <div ref={signatureRef} data-signature style={{ display: "inline-block" }}>
           <table
             cellPadding={0}
             cellSpacing={0}
@@ -274,21 +281,29 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
                       </tr>
                       <tr>
                         <td style={{ fontSize: 13, color: "#0891B2", fontWeight: 500, paddingBottom: 10 }}>
-                          {role}
-                          <a 
-                            href={safeLinkedinUrl(linkedin)} 
-                            style={{ textDecoration: "none", marginLeft: 6, verticalAlign: "middle" }}
-                            className="transition-transform duration-200 hover:scale-110 inline-block"
-                          >
-                            <img
-                              src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
-                              alt="LinkedIn"
-                              width={16}
-                              height={16}
-                              style={{ display: "inline-block", verticalAlign: "middle" }}
-                              className="transition-opacity duration-200 hover:opacity-80"
-                            />
-                          </a>
+                          <table cellPadding={0} cellSpacing={0} border={0}>
+                            <tbody>
+                              <tr>
+                                <td style={{ verticalAlign: "middle" }}>{role}</td>
+                                <td style={{ paddingLeft: 6, verticalAlign: "middle" }}>
+                                  <a 
+                                    href={safeLinkedinUrl(linkedin)} 
+                                    style={{ textDecoration: "none", display: "block" }}
+                                    className="transition-transform duration-200 hover:scale-110"
+                                  >
+                                    <img
+                                      src="https://cdn-icons-png.flaticon.com/512/174/174857.png"
+                                      alt="LinkedIn"
+                                      width={16}
+                                      height={16}
+                                      style={{ display: "block" }}
+                                      className="transition-opacity duration-200 hover:opacity-80"
+                                    />
+                                  </a>
+                                </td>
+                              </tr>
+                            </tbody>
+                          </table>
                         </td>
                       </tr>
 
