@@ -1,7 +1,1 @@
-project_id = "aetxomsehqbuhpotkkdy"
-
-[functions.chat-assistant]
-verify_jwt = false
-
-[functions.holded-lead]
-verify_jwt = false
+project_id = "zufiwjeebudrafvdohsr"
