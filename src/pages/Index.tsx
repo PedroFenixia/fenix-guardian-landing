@@ -1,6 +1,7 @@
 import Header from "@/components/landing/Header";
 import HeroSection from "@/components/landing/HeroSection";
 import ValueProposition from "@/components/landing/ValueProposition";
+import FutureSection from "@/components/landing/FutureSection";
 import FeaturesSection from "@/components/landing/FeaturesSection";
 import Footer from "@/components/landing/Footer";
 
@@ -26,6 +27,7 @@ const Index = () => {
         <main>
           <HeroSection />
           <ValueProposition />
+          <FutureSection />
           <FeaturesSection />
         </main>
         <Footer />
