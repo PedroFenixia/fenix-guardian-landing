@@ -28,6 +28,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
+            <img src={fenixLogo} alt="Fenix IA" className="h-9 w-9 object-contain" />
             <span className="text-lg font-bold text-foreground">
               FENIX <span className="text-primary">IA</span>
             </span>
