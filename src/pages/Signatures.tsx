@@ -29,7 +29,7 @@ const SignatureTemplate = ({ name, role, email, phone, linkedin, photo }: Signat
       .replace(/'/g, "&#39;");
 
   const safeLinkedinUrl = (value?: string) => {
-    const fallback = "https://www.linkedin.com/company/fenixiasolutions/";
+    const fallback = "https://www.linkedin.com/company/109810068/admin/dashboard/";
     if (!value) return fallback;
     try {
       const url = new URL(value);
