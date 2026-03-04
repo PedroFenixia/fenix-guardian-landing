@@ -100,7 +100,7 @@ const Cookies = () => {
                 <section className="space-y-4">
                   <h2 className="text-2xl font-semibold">7. Contacto</h2>
                   <p className="text-muted-foreground">
-                    Si tiene alguna pregunta sobre nuestra política de cookies, puede contactarnos en <a href="mailto:contacto@fenixia.tech" className="text-primary hover:underline">contacto@fenixia.tech</a> o en el teléfono <a href="tel:+34966101029" className="text-primary hover:underline">+34 966 10 10 29</a>
+                    Si tiene alguna pregunta sobre nuestra política de cookies, puede contactarnos en <a href="mailto:contacto@fenixia.tech" className="text-primary hover:underline">contacto@fenixia.tech</a>
                   </p>
                 </section>
 

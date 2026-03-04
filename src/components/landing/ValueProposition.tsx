@@ -1,26 +1,26 @@
-import { Brain, Rocket, Users } from "lucide-react";
+import { Database, Search, Bell } from "lucide-react";
 
 const values = [
   {
-    icon: Brain,
-    title: "Innovación con IA",
-    description: "Aplicamos las últimas tecnologías de inteligencia artificial para resolver los desafíos más complejos de tu negocio.",
+    icon: Database,
+    title: "Monitorización automática",
+    description: "Cada día revisamos BORME, BOE, BDNS, licitaciones y registros concursales por ti. Tú solo recibes lo relevante.",
   },
   {
-    icon: Rocket,
-    title: "Impulso al crecimiento",
-    description: "Nuestras soluciones están diseñadas para escalar contigo y acelerar el crecimiento de tu empresa.",
+    icon: Search,
+    title: "Datos verificados y completos",
+    description: "Identificamos cada empresa con su NIF, sector, ubicación y perfil comercial desde fuentes oficiales.",
   },
   {
-    icon: Users,
-    title: "Equipo especializado",
-    description: "Contamos con expertos en IA, machine learning y desarrollo de software listos para ayudarte.",
+    icon: Bell,
+    title: "Alertas personalizadas",
+    description: "Define qué te interesa: sector, territorio o tipo de oportunidad. Te avisamos en cuanto aparezca algo relevante.",
   },
 ];
 
 const ValueProposition = () => {
   return (
-    <section id="about" className="py-24 lg:py-32 relative">
+    <section id="producto" className="py-24 lg:py-32 relative">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/20 to-background" />
 
@@ -28,10 +28,10 @@ const ValueProposition = () => {
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            ¿Por qué <span className="text-primary">FENIX IA</span>?
+            ¿Qué hace <span className="text-primary">Prospector</span>?
           </h2>
           <p className="text-lg text-foreground/80">
-            Somos tu partner estratégico en la transformación digital impulsada por inteligencia artificial.
+            Convierte datos públicos en oportunidades de negocio. Sin esfuerzo manual, sin perder el tiempo buscando.
           </p>
         </div>
 

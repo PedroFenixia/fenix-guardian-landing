@@ -13,7 +13,7 @@ const Privacy = () => {
                 Política de <span className="text-primary">Privacidad</span>
               </h1>
               
-              <div className="prose prose-invert max-w-none space-y-8">
+              <div className="prose max-w-none space-y-8">
                 <section className="space-y-4">
                   <h2 className="text-2xl font-semibold">1. Responsable del Tratamiento</h2>
                   <p className="text-muted-foreground">
@@ -23,7 +23,6 @@ const Privacy = () => {
                     <li><strong className="text-foreground">Responsable:</strong> Fenix IA Solutions SL</li>
                     <li><strong className="text-foreground">Domicilio:</strong> C/ La Paz, 83, 03320 Torrellano (Elche), Alicante</li>
                     <li><strong className="text-foreground">Email:</strong> <a href="mailto:contacto@fenixia.tech" className="text-primary hover:underline">contacto@fenixia.tech</a></li>
-                    <li><strong className="text-foreground">Teléfono:</strong> <a href="tel:+34966101029" className="text-primary hover:underline">+34 966 10 10 29</a></li>
                   </ul>
                 </section>
 
@@ -35,7 +34,7 @@ const Privacy = () => {
                   <ul className="list-disc list-inside text-muted-foreground space-y-2">
                     <li>Datos de identificación (nombre, email, teléfono)</li>
                     <li>Datos de navegación y uso del sitio web</li>
-                    <li>Datos de audio para el análisis con IA (cuando utilice nuestros servicios)</li>
+                    <li>Datos de sociedades y actos registrales consultados desde fuentes públicas oficiales</li>
                     <li>Datos técnicos (dirección IP, tipo de navegador, etc.)</li>
                   </ul>
                 </section>
@@ -46,7 +45,7 @@ const Privacy = () => {
                     Utilizamos sus datos para:
                   </p>
                   <ul className="list-disc list-inside text-muted-foreground space-y-2">
-                    <li>Proporcionar nuestros servicios de análisis de voz con IA</li>
+                    <li>Proporcionar nuestros servicios de vigilancia y enriquecimiento de datos públicos</li>
                     <li>Gestionar su cuenta y relación comercial</li>
                     <li>Enviar comunicaciones comerciales (con su consentimiento)</li>
                     <li>Mejorar nuestros servicios y sitio web</li>
@@ -99,7 +98,7 @@ const Privacy = () => {
                 </section>
 
                 <p className="text-muted-foreground pt-4 border-t border-border/50">
-                  Última actualización: Julio 2025
+                  Última actualización: Febrero 2026
                 </p>
               </div>
             </div>

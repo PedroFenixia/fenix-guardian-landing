@@ -13,7 +13,7 @@ const Terms = () => {
                 Aviso <span className="text-primary">Legal</span>
               </h1>
               
-              <div className="prose prose-invert max-w-none space-y-8">
+              <div className="prose max-w-none space-y-8">
                 <section className="space-y-4">
                   <h2 className="text-2xl font-semibold">1. Información General</h2>
                   <p className="text-muted-foreground">
@@ -23,14 +23,13 @@ const Terms = () => {
                     <li><strong className="text-foreground">Denominación social:</strong> Fenix IA Solutions SL</li>
                     <li><strong className="text-foreground">Domicilio:</strong> C/ La Paz, 83, 03320 Torrellano (Elche), Alicante</li>
                     <li><strong className="text-foreground">Email:</strong> <a href="mailto:contacto@fenixia.tech" className="text-primary hover:underline">contacto@fenixia.tech</a></li>
-                    <li><strong className="text-foreground">Teléfono:</strong> <a href="tel:+34966101029" className="text-primary hover:underline">+34 966 10 10 29</a></li>
                   </ul>
                 </section>
 
                 <section className="space-y-4">
                   <h2 className="text-2xl font-semibold">2. Objeto</h2>
                   <p className="text-muted-foreground">
-                    El presente aviso legal regula el uso del sitio web de Fenix IA Solutions SL, que pone a disposición de los usuarios de Internet información sobre nuestros servicios de análisis de voz con inteligencia artificial.
+                    El presente aviso legal regula el uso del sitio web de Fenix IA Solutions SL, que pone a disposición de los usuarios de Internet información sobre nuestros servicios de vigilancia automatizada de fuentes públicas y prospección empresarial con inteligencia artificial.
                   </p>
                 </section>
 
@@ -70,7 +69,7 @@ const Terms = () => {
                 </section>
 
                 <p className="text-muted-foreground pt-4 border-t border-border/50">
-                  Última actualización: Julio 2025
+                  Última actualización: Febrero 2026
                 </p>
               </div>
             </div>

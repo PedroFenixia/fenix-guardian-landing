@@ -1,36 +1,36 @@
-import { 
-  Lightbulb, 
-  Target, 
-  Handshake, 
-  TrendingUp
+import {
+  Download,
+  Layers,
+  BadgeCheck,
+  Bell
 } from "lucide-react";
 
 const features = [
   {
-    icon: Lightbulb,
-    title: "Visión innovadora",
-    description: "Buscamos constantemente nuevas formas de aplicar la IA para generar valor en cada proyecto.",
+    icon: Download,
+    title: "Recopilación diaria",
+    description: "Cada mañana revisamos todas las publicaciones oficiales y extraemos lo relevante para ti.",
   },
   {
-    icon: Target,
-    title: "Enfoque personalizado",
-    description: "Cada solución es única y está diseñada específicamente para las necesidades de tu negocio.",
+    icon: Layers,
+    title: "Datos limpios y organizados",
+    description: "Estandarizamos nombres, direcciones y sectores para que puedas buscar y filtrar sin complicaciones.",
   },
   {
-    icon: Handshake,
-    title: "Compromiso total",
-    description: "Trabajamos codo a codo contigo para garantizar el éxito de cada iniciativa.",
+    icon: BadgeCheck,
+    title: "Empresas identificadas",
+    description: "Cada oportunidad lleva asociada la empresa, su sector y su ubicación, lista para contactar.",
   },
   {
-    icon: TrendingUp,
-    title: "Resultados medibles",
-    description: "Nos enfocamos en generar impacto real y cuantificable en tu organización.",
+    icon: Bell,
+    title: "Alertas que llegan a ti",
+    description: "Cruzamos las novedades del día con tu perfil de interés y te notificamos solo lo que encaja.",
   },
 ];
 
 const FeaturesSection = () => {
   return (
-    <section id="solutions" className="py-24 lg:py-32 relative">
+    <section id="como-funciona" className="py-24 lg:py-32 relative">
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-background via-muted/10 to-background" />
 
@@ -38,13 +38,13 @@ const FeaturesSection = () => {
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-            Nuestro enfoque
+            Así de sencillo
           </span>
           <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-            Cómo <span className="text-primary">trabajamos</span>
+            Cómo <span className="text-primary">funciona</span>
           </h2>
           <p className="text-lg text-foreground/80">
-            Nuestra metodología se basa en la colaboración estrecha, la innovación continua y el compromiso con los resultados.
+            De los registros oficiales a tu bandeja de entrada, en cuatro pasos automáticos.
           </p>
         </div>
 

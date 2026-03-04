@@ -2,15 +2,17 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const footerLinks = {
-    empresa: [
-      { label: "Sobre nosotros", href: "/nosotros" },
-      { label: "Carreras", href: "/carreras" },
+    producto: [
+      { label: "Funcionalidades", href: "/#producto" },
+      { label: "Fuentes", href: "/#fuentes" },
+      { label: "Casos de uso", href: "/#casos-de-uso" },
     ],
     contacto: [
       { label: "contacto@fenixia.tech", href: "mailto:contacto@fenixia.tech" },
-      { label: "+34 966 10 10 29", href: "tel:+34966101029" },
     ],
     dirección: [
+      { label: "Fenix IA Solutions SL", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano,+Elche" },
+      { label: "CIF: B22739668", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano,+Elche" },
       { label: "C/ La Paz, 83", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano,+Elche" },
       { label: "03320 Torrellano (Elche)", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano,+Elche" },
       { label: "Alicante, España", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano,+Elche" },
@@ -25,11 +27,11 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-4 group">
               <span className="text-lg font-bold text-foreground">
-                FENIX <span className="text-primary">IA</span>
+                FenixIA <span className="text-primary">Prospector</span>
               </span>
             </Link>
             <p className="text-sm text-foreground/80 mb-6 max-w-xs">
-              Transformamos empresas con soluciones de inteligencia artificial innovadoras y personalizadas.
+              Vigilancia inteligente de fuentes públicas para prospección empresarial.
             </p>
             <div className="flex gap-4">
               <a

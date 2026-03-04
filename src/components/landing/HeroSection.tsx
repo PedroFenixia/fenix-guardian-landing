@@ -8,7 +8,7 @@ const HeroSection = () => {
       {/* Background Effects */}
       <div className="absolute inset-0 bg-grid opacity-30" />
       <div className="absolute inset-0 bg-hero-glow" />
-      
+
       {/* Animated particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => (
@@ -31,49 +31,49 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           {/* Badge */}
-          <div 
+          <div
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-primary/20 text-sm animate-fade-in-up"
             style={{ animationDelay: '0.1s' }}
           >
             <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-            <span className="text-foreground">Soluciones de Inteligencia Artificial</span>
+            <span className="text-foreground">Tu ventaja competitiva en datos públicos</span>
           </div>
 
           {/* Headline */}
-          <h1 
+          <h1
             className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight animate-fade-in-up"
             style={{ animationDelay: '0.2s' }}
           >
-            Transformamos tu negocio con{" "}
-            <span className="text-primary text-glow">Inteligencia Artificial</span>
+            Encuentra nuevos clientes antes que{" "}
+            <span className="text-primary text-glow">tu competencia</span>
           </h1>
 
           {/* Subheadline */}
-          <p 
+          <p
             className="text-lg lg:text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-in-up"
             style={{ animationDelay: '0.3s' }}
           >
-            Desarrollamos soluciones personalizadas de IA para impulsar la innovación y el crecimiento de tu empresa.
+            Prospector rastrea cada día subvenciones, licitaciones y registros mercantiles para enviarte las oportunidades que importan a tu negocio.
           </p>
 
           {/* CTA Buttons */}
-          <div 
+          <div
             className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up"
             style={{ animationDelay: '0.4s' }}
           >
             <Button variant="hero" size="xl" className="group" asChild>
               <Link to="/contacto">
-                Hablemos
+                Solicitar demo
                 <ArrowRight className="transition-transform group-hover:translate-x-1" />
               </Link>
             </Button>
             <Button variant="hero-outline" size="xl" asChild>
-              <Link to="/nosotros">Conócenos</Link>
+              <a href="#como-funciona">Ver cómo funciona</a>
             </Button>
           </div>
 
           {/* Trust badges */}
-          <div 
+          <div
             className="flex flex-wrap items-center gap-6 justify-center pt-4 animate-fade-in-up"
             style={{ animationDelay: '0.5s' }}
           >
@@ -81,19 +81,19 @@ const HeroSection = () => {
               <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              Innovación constante
+              Casi 4M de empresas
             </div>
             <div className="flex items-center gap-2 text-sm text-foreground">
               <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              Equipo experto
+              Solo fuentes oficiales
             </div>
             <div className="flex items-center gap-2 text-sm text-foreground">
               <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
-              Resultados reales
+              Alertas a tu medida
             </div>
           </div>
         </div>

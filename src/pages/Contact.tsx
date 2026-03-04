@@ -1,6 +1,6 @@
 import Header from "@/components/landing/Header";
 import Footer from "@/components/landing/Footer";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -104,10 +104,10 @@ const Contact = () => {
           <div className="container mx-auto px-4 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
               <h1 className="text-4xl lg:text-5xl font-bold mb-6">
-                <span className="text-primary">Contáctanos</span>
+                Solicitar <span className="text-primary">demo</span>
               </h1>
               <p className="text-lg lg:text-xl text-muted-foreground">
-                ¿Tienes un proyecto en mente? Nos encantaría escucharte y explorar cómo podemos ayudarte.
+                ¿Quieres ver Prospector en acción? Solicita una demo personalizada y te mostraremos cómo detectar oportunidades desde fuentes públicas.
               </p>
             </div>
           </div>
@@ -188,18 +188,6 @@ const Contact = () => {
                       <h3 className="font-semibold mb-1">Email</h3>
                       <a href="mailto:contacto@fenixia.tech" className="text-muted-foreground hover:text-primary transition-colors">
                         contacto@fenixia.tech
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                      <Phone className="w-5 h-5 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-1">Teléfono</h3>
-                      <a href="tel:+34966101029" className="text-muted-foreground hover:text-primary transition-colors">
-                        +34 966 10 10 29
                       </a>
                     </div>
                   </div>
