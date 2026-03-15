@@ -1,5 +1,5 @@
 #!/bin/bash
-# Deploy prospector.fenixia.tech to OVH server
+# Deploy app.prospector.fenixia.tech to OVH server
 set -e
 
 SERVER="root@91.134.43.229"
@@ -12,4 +12,4 @@ echo "Uploading to $SERVER:$REMOTE_PATH..."
 ssh "$SERVER" "rm -rf ${REMOTE_PATH}/*"
 scp -r dist/* "$SERVER:${REMOTE_PATH}/"
 
-echo "Done! https://prospector.fenixia.tech"
+echo "Done! https://app.prospector.fenixia.tech"

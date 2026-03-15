@@ -49,9 +49,9 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <img src={fenixLogo} alt="FenixIA Prospector" className="h-9 w-9 object-contain" />
+            <img src={fenixLogo} alt="FENIX Guardian" className="h-9 w-9 object-contain" />
             <span className="text-lg font-bold text-foreground">
-              FenixIA <span className="text-primary">Prospector</span>
+              FENIX <span style={{ color: '#f59e0b' }}>Guardian</span>
             </span>
           </Link>
 
@@ -72,6 +72,14 @@ const Header = () => {
             >
               Contacto
             </Link>
+            <a
+              href="https://fenixia.tech"
+              target="_blank"
+              rel="noopener"
+              className="px-3 py-1.5 text-sm font-medium text-foreground bg-muted/50 rounded-md border border-border/50 hover:bg-primary/10 hover:border-primary/30 hover:text-primary transition-all duration-200"
+            >
+              Ecosistema Fenixia
+            </a>
           </nav>
 
           {/* Desktop CTA */}
@@ -113,6 +121,15 @@ const Header = () => {
               >
                 Contacto
               </Link>
+              <a
+                href="https://fenixia.tech"
+                target="_blank"
+                rel="noopener"
+                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Ecosistema Fenixia
+              </a>
               <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
                 <Link to="/contacto" onClick={() => setIsMenuOpen(false)}>
                   <Button variant="hero" size="sm" className="w-full">

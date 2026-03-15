@@ -7,15 +7,22 @@ const Footer = () => {
       { label: "Fuentes", href: "/#fuentes" },
       { label: "Casos de uso", href: "/#casos-de-uso" },
     ],
+    ecosistema: [
+      { label: "Fenixia.tech", href: "https://fenixia.tech", external: true },
+      { label: "Fenix 360", href: "https://360.fenixia.tech", external: true },
+      { label: "Fenix HR", href: "https://hr.fenixia.tech", external: true },
+      { label: "Fenix Prospector", href: "https://prospector.fenixia.tech", external: true },
+      { label: "Fenix Portfolio", href: "https://portfolio.fenixia.tech", external: true },
+    ],
     contacto: [
       { label: "contacto@fenixia.tech", href: "mailto:contacto@fenixia.tech" },
     ],
     dirección: [
-      { label: "Fenix IA Solutions SL", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano,+Elche" },
-      { label: "CIF: B22739668", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano,+Elche" },
-      { label: "C/ La Paz, 83", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano,+Elche" },
-      { label: "03320 Torrellano (Elche)", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano,+Elche" },
-      { label: "Alicante, España", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano,+Elche" },
+      { label: "Fenix IA Solutions SL", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano,+Elche", external: true },
+      { label: "CIF: B22739668", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano,+Elche", external: true },
+      { label: "C/ La Paz, 83", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano,+Elche", external: true },
+      { label: "03320 Torrellano (Elche)", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano,+Elche", external: true },
+      { label: "Alicante, España", href: "https://maps.google.com/?q=C/+La+Paz,+83,+03320+Torrellano,+Elche", external: true },
     ],
   };
 
@@ -24,14 +31,14 @@ const Footer = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 mb-12">
           {/* Brand */}
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-4 group">
               <span className="text-lg font-bold text-foreground">
-                FenixIA <span className="text-primary">Prospector</span>
+                FENIX <span style={{ color: '#f59e0b' }}>Guardian</span>
               </span>
             </Link>
             <p className="text-sm text-foreground/80 mb-6 max-w-xs">
-              Vigilancia inteligente de fuentes públicas para prospección empresarial.
+              Vigilancia inteligente de fuentes oficiales para protección empresarial.
             </p>
             <div className="flex gap-4">
               <a
@@ -62,6 +69,15 @@ const Footer = () => {
                       >
                         {link.label}
                       </a>
+                    ) : 'external' in link && link.external ? (
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200"
+                      >
+                        {link.label}
+                      </a>
                     ) : (
                       <Link
                         to={link.href}
@@ -80,12 +96,15 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="pt-8 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-foreground/80">
-            © 2026 FENIX IA SOLUTIONS SL. Todos los derechos reservados.
+            © 2026 FENIX IA SOLUTIONS —{" "}
+            <a href="https://fenixia.tech" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+              fenixia.tech
+            </a>
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <Link to="/terminos" className="hover:text-foreground transition-colors">Aviso Legal</Link>
-            <Link to="/privacidad" className="hover:text-foreground transition-colors">Política de Privacidad</Link>
-            <Link to="/cookies" className="hover:text-foreground transition-colors">Política de Cookies</Link>
+            <a href="https://fenixia.tech/terminos" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Aviso Legal</a>
+            <a href="https://fenixia.tech/privacidad" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Política de Privacidad</a>
+            <a href="https://fenixia.tech/cookies" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Política de Cookies</a>
           </div>
         </div>
       </div>
