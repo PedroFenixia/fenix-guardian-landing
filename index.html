@@ -115,19 +115,19 @@ a:hover{color:var(--amber2)}
 .dash-dots span:nth-child(3){background:#22c55e}
 .dash-title{font-size:.72rem;font-weight:600;color:var(--text3);letter-spacing:.5px;font-family:var(--mono)}
 .dash-body{padding:1.2rem}
-.dash-row{display:flex;align-items:center;justify-content:space-between;padding:.65rem .9rem;border-radius:10px;background:rgba(245,158,11,.02);border:1px solid var(--border);margin-bottom:.5rem;transition:.2s}
-.dash-row:hover{background:rgba(245,158,11,.05);border-color:rgba(245,158,11,.12)}
-.dash-label{font-size:.75rem;color:var(--text3);font-weight:500}
-.dash-value{font-size:.9rem;font-weight:700;font-family:var(--mono)}
-.dash-value.amber{color:var(--amber)}
-.dash-value.green{color:var(--emerald)}
-.dash-value.blue{color:var(--blue)}
-.dash-value.red{color:var(--rose)}
-.dash-chart{margin-top:.8rem;padding:.8rem;border-radius:10px;background:rgba(245,158,11,.02);border:1px solid var(--border)}
-.dash-chart-label{font-size:.65rem;color:var(--text3);margin-bottom:.4rem;font-family:var(--mono)}
-.dash-chart-bars{display:flex;align-items:flex-end;gap:4px;height:50px;padding-top:.5rem}
-.dash-chart-bars span{flex:1;border-radius:3px 3px 0 0;opacity:.7;transition:.3s}
-.dash-chart-bars span:hover{opacity:1}
+.gauges{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1rem}
+.gauge{text-align:center}
+.gauge svg{width:72px;height:72px}
+.gauge-label{font-size:.65rem;color:var(--text3);margin-top:.2rem}
+.tl-header{font-size:.65rem;color:var(--text3);font-family:var(--mono);margin-bottom:.5rem;letter-spacing:.5px;text-transform:uppercase}
+.tl-item{display:flex;align-items:center;gap:.6rem;padding:.45rem .6rem;border-radius:8px;margin-bottom:.3rem;transition:.2s}
+.tl-item:hover{background:rgba(245,158,11,.04)}
+.tl-time{font-size:.68rem;font-family:var(--mono);color:var(--text3);font-weight:600;min-width:34px}
+.tl-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.tl-green{background:var(--emerald)}
+.tl-amber{background:var(--amber)}
+.tl-red{background:var(--rose)}
+.tl-text{font-size:.75rem;color:var(--text2);font-weight:500}
 
 /* ── SECTIONS ── */
 section{padding:6rem 2rem}
@@ -326,39 +326,30 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.5rem 2r
           <span class="dash-title">Guardian &mdash; Tiempo real</span>
         </div>
         <div class="dash-body">
-          <!-- Gauges circulares -->
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1rem">
-            <div style="text-align:center">
-              <svg viewBox="0 0 80 80" width="72" height="72">
-                <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(245,158,11,.1)" stroke-width="6"/>
-                <circle cx="40" cy="40" r="34" fill="none" stroke="url(#g-amber)" stroke-width="6" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="21" transform="rotate(-90 40 40)"/>
-                <text x="40" y="43" text-anchor="middle" fill="#f59e0b" font-size="14" font-weight="800" font-family="var(--mono)">90%</text>
-              </svg>
-              <div style="font-size:.65rem;color:var(--text3);margin-top:.2rem">Desarrollo</div>
+          <svg width="0" height="0"><defs>
+            <linearGradient id="g-amber" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#fbbf24"/></linearGradient>
+            <linearGradient id="g-green" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#34d399"/></linearGradient>
+            <linearGradient id="g-violet" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#a78bfa"/></linearGradient>
+          </defs></svg>
+          <div class="gauges">
+            <div class="gauge">
+              <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="none" stroke="rgba(245,158,11,.1)" stroke-width="6"/><circle cx="40" cy="40" r="34" fill="none" stroke="url(#g-amber)" stroke-width="6" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="21" transform="rotate(-90 40 40)"/><text x="40" y="43" text-anchor="middle" fill="#f59e0b" font-size="14" font-weight="800">90%</text></svg>
+              <div class="gauge-label">Desarrollo</div>
             </div>
-            <div style="text-align:center">
-              <svg viewBox="0 0 80 80" width="72" height="72">
-                <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(16,185,129,.1)" stroke-width="6"/>
-                <circle cx="40" cy="40" r="34" fill="none" stroke="url(#g-green)" stroke-width="6" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="42" transform="rotate(-90 40 40)"/>
-                <text x="40" y="43" text-anchor="middle" fill="#10b981" font-size="14" font-weight="800" font-family="var(--mono)">80%</text>
-              </svg>
-              <div style="font-size:.65rem;color:var(--text3);margin-top:.2rem">Comercial</div>
+            <div class="gauge">
+              <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="none" stroke="rgba(16,185,129,.1)" stroke-width="6"/><circle cx="40" cy="40" r="34" fill="none" stroke="url(#g-green)" stroke-width="6" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="42" transform="rotate(-90 40 40)"/><text x="40" y="43" text-anchor="middle" fill="#10b981" font-size="14" font-weight="800">80%</text></svg>
+              <div class="gauge-label">Comercial</div>
             </div>
-            <div style="text-align:center">
-              <svg viewBox="0 0 80 80" width="72" height="72">
-                <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(139,92,246,.1)" stroke-width="6"/>
-                <circle cx="40" cy="40" r="34" fill="none" stroke="url(#g-violet)" stroke-width="6" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="15" transform="rotate(-90 40 40)"/>
-                <text x="40" y="43" text-anchor="middle" fill="#8b5cf6" font-size="14" font-weight="800" font-family="var(--mono)">93%</text>
-              </svg>
-              <div style="font-size:.65rem;color:var(--text3);margin-top:.2rem">Soporte</div>
+            <div class="gauge">
+              <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="none" stroke="rgba(139,92,246,.1)" stroke-width="6"/><circle cx="40" cy="40" r="34" fill="none" stroke="url(#g-violet)" stroke-width="6" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="15" transform="rotate(-90 40 40)"/><text x="40" y="43" text-anchor="middle" fill="#8b5cf6" font-size="14" font-weight="800">93%</text></svg>
+              <div class="gauge-label">Soporte</div>
             </div>
           </div>
-          <!-- Timeline de actividad -->
-          <div style="font-size:.65rem;color:var(--text3);font-family:var(--mono);margin-bottom:.5rem;letter-spacing:.5px">ACTIVIDAD RECIENTE</div>
-          <div class="tl-item"><span class="tl-time">09:14</span><span class="tl-dot" style="background:var(--emerald)"></span><span class="tl-text">M. L&oacute;pez &mdash; Inicio jornada</span></div>
-          <div class="tl-item"><span class="tl-time">09:47</span><span class="tl-dot" style="background:var(--amber)"></span><span class="tl-text">Cuello botella detectado &mdash; QA</span></div>
-          <div class="tl-item"><span class="tl-time">10:02</span><span class="tl-dot" style="background:var(--emerald)"></span><span class="tl-text">Sprint review completada</span></div>
-          <div class="tl-item"><span class="tl-time">10:31</span><span class="tl-dot" style="background:var(--rose)"></span><span class="tl-text">Anomal&iacute;a &mdash; 3h inactivo (J. Ruiz)</span></div>
+          <div class="tl-header">ACTIVIDAD RECIENTE</div>
+          <div class="tl-item"><span class="tl-time">09:14</span><span class="tl-dot tl-green"></span><span class="tl-text">M. L&oacute;pez &mdash; Inicio jornada</span></div>
+          <div class="tl-item"><span class="tl-time">09:47</span><span class="tl-dot tl-amber"></span><span class="tl-text">Cuello botella detectado &mdash; QA</span></div>
+          <div class="tl-item"><span class="tl-time">10:02</span><span class="tl-dot tl-green"></span><span class="tl-text">Sprint review completada</span></div>
+          <div class="tl-item"><span class="tl-time">10:31</span><span class="tl-dot tl-red"></span><span class="tl-text">Anomal&iacute;a &mdash; 3h inactivo (J. Ruiz)</span></div>
         </div>
       </div>
     </div>
