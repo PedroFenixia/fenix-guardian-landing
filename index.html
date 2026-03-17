@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fenix Guardian &mdash; Vigilancia inteligente de fuentes oficiales con IA</title>
+<title>Fenix Guardian &mdash; Monitoriza y mide la productividad de tus equipos con IA</title>
 
 <!-- SEO -->
-<meta name="description" content="Monitoriza autom&aacute;ticamente fuentes oficiales espa&ntilde;olas: BOE, BORME, registros concursales, edictos y m&aacute;s. Alertas personalizadas para proteger tu negocio.">
-<meta name="keywords" content="vigilancia fuentes oficiales, monitorizaci&oacute;n BOE, BORME alertas, registros concursales, edictos judiciales, inteligencia artificial, protecci&oacute;n empresarial">
+<meta name="description" content="Monitoriza la productividad de tus equipos en tiempo real. M&eacute;tricas autom&aacute;ticas, detecci&oacute;n de cuellos de botella y dashboards por equipo. Sin micromanagement.">
+<meta name="keywords" content="productividad equipos, monitorizaci&oacute;n empleados, m&eacute;tricas productividad, rendimiento equipos, gesti&oacute;n productividad IA, tiempo trabajo">
 <meta name="author" content="FENIXIA SOLUTIONS S.L.">
 <meta name="robots" content="index, follow">
 <meta name="language" content="Spanish">
@@ -18,15 +18,15 @@
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://guardian.fenixia.tech/">
-<meta property="og:title" content="Fenix Guardian &mdash; Vigilancia inteligente de fuentes oficiales con IA">
-<meta property="og:description" content="Monitoriza BORME, BOE, BDNS, licitaciones y registros concursales cada d&iacute;a. Alertas personalizadas con IA.">
+<meta property="og:title" content="Fenix Guardian &mdash; Productividad de equipos con IA">
+<meta property="og:description" content="Mide y mejora la productividad de tus equipos. M&eacute;tricas autom&aacute;ticas, alertas inteligentes y dashboards en tiempo real.">
 <meta property="og:site_name" content="Fenix Guardian">
 <meta property="og:locale" content="es_ES">
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Fenix Guardian &mdash; Vigilancia inteligente de fuentes oficiales con IA">
-<meta name="twitter:description" content="Monitoriza fuentes oficiales espa&ntilde;olas cada d&iacute;a. Alertas personalizadas con IA.">
+<meta name="twitter:title" content="Fenix Guardian &mdash; Productividad de equipos con IA">
+<meta name="twitter:description" content="Monitoriza y mide la productividad de tus equipos con IA. Sin micromanagement.">
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,6 +44,7 @@
   --accent:#f59e0b;--accent2:#fbbf24;
   --teal:#0d9488;--teal2:#2dd4bf;
   --rose:#f43f5e;
+  --blue:#3b82f6;
   --text:#e2e8f0;--text2:#94a3b8;--text3:#64748b;
   --border:rgba(148,163,184,.08);--border2:rgba(148,163,184,.12);
   --font:'Inter',system-ui,sans-serif;
@@ -120,12 +121,13 @@ a:hover{color:var(--amber2)}
 .dash-value{font-size:.9rem;font-weight:700;font-family:var(--mono)}
 .dash-value.amber{color:var(--amber)}
 .dash-value.green{color:var(--emerald)}
-.dash-value.blue{color:#60a5fa}
+.dash-value.blue{color:var(--blue)}
 .dash-value.red{color:var(--rose)}
-.dash-tag{font-size:.6rem;padding:.15rem .5rem;border-radius:6px;font-weight:600;font-family:var(--mono)}
-.dash-tag.new{background:rgba(16,185,129,.1);color:var(--emerald)}
-.dash-tag.alert{background:rgba(245,158,11,.1);color:var(--amber)}
-.dash-tag.risk{background:rgba(244,63,94,.1);color:var(--rose)}
+.dash-chart{margin-top:.8rem;padding:.8rem;border-radius:10px;background:rgba(245,158,11,.02);border:1px solid var(--border)}
+.dash-chart-label{font-size:.65rem;color:var(--text3);margin-bottom:.4rem;font-family:var(--mono)}
+.dash-chart-bars{display:flex;align-items:flex-end;gap:4px;height:50px;padding-top:.5rem}
+.dash-chart-bars span{flex:1;border-radius:3px 3px 0 0;opacity:.7;transition:.3s}
+.dash-chart-bars span:hover{opacity:1}
 
 /* ── SECTIONS ── */
 section{padding:6rem 2rem}
@@ -138,9 +140,9 @@ section{padding:6rem 2rem}
 .sdesc{color:var(--text3);font-size:1.05rem;max-width:560px;line-height:1.75}
 .center{text-align:center}
 .center .sdesc{margin:0 auto}
+.alt-bg{background:var(--bg2)}
 
 /* Feature cards */
-.alt-bg{background:var(--bg2)}
 .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .fcard{background:var(--surface);border-radius:var(--radius);padding:2rem 1.6rem;border:1px solid var(--border);position:relative;overflow:hidden;transition:.35s}
 .fcard:hover{border-color:rgba(245,158,11,.2);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.25)}
@@ -149,14 +151,14 @@ section{padding:6rem 2rem}
 .fcard:nth-child(2) .fcard-accent{background:linear-gradient(90deg,var(--emerald),var(--emerald2))}
 .fcard:nth-child(3) .fcard-accent{background:linear-gradient(90deg,var(--violet),var(--violet2))}
 .fcard:nth-child(4) .fcard-accent{background:linear-gradient(90deg,var(--teal),var(--teal2))}
-.fcard:nth-child(5) .fcard-accent{background:linear-gradient(90deg,#60a5fa,#3b82f6)}
+.fcard:nth-child(5) .fcard-accent{background:linear-gradient(90deg,var(--blue),#60a5fa)}
 .fcard:nth-child(6) .fcard-accent{background:linear-gradient(90deg,var(--rose),#fb7185)}
 .fcard-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem}
 .fcard:nth-child(1) .fcard-icon{background:rgba(245,158,11,.1);color:var(--amber)}
 .fcard:nth-child(2) .fcard-icon{background:rgba(16,185,129,.1);color:var(--emerald)}
 .fcard:nth-child(3) .fcard-icon{background:rgba(139,92,246,.1);color:var(--violet)}
 .fcard:nth-child(4) .fcard-icon{background:rgba(13,148,136,.1);color:var(--teal)}
-.fcard:nth-child(5) .fcard-icon{background:rgba(96,165,250,.1);color:#60a5fa}
+.fcard:nth-child(5) .fcard-icon{background:rgba(59,130,246,.1);color:var(--blue)}
 .fcard:nth-child(6) .fcard-icon{background:rgba(244,63,94,.1);color:var(--rose)}
 .fcard-title{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.4rem}
 .fcard-desc{color:var(--text3);font-size:.85rem;line-height:1.65}
@@ -176,24 +178,27 @@ section{padding:6rem 2rem}
 .use-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
 .use-card:nth-child(1) .use-icon{background:rgba(245,158,11,.1);color:var(--amber)}
 .use-card:nth-child(2) .use-icon{background:rgba(16,185,129,.1);color:var(--emerald)}
-.use-card:nth-child(3) .use-icon{background:rgba(244,63,94,.1);color:var(--rose)}
+.use-card:nth-child(3) .use-icon{background:rgba(139,92,246,.1);color:var(--violet)}
 .use-card h4{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.4rem}
 .use-card p{font-size:.85rem;color:var(--text3);line-height:1.65}
 
-/* Security */
-.sec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
-.sec-card{background:var(--surface);border-radius:var(--radius);padding:1.8rem 1.5rem;border:1px solid var(--border);transition:.3s}
-.sec-card:hover{border-color:rgba(245,158,11,.2);transform:translateY(-3px);box-shadow:0 16px 50px rgba(0,0,0,.2)}
-.sec-card .sec-ico{font-size:1.6rem;margin-bottom:.7rem}
-.sec-card h4{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.35rem}
-.sec-card p{font-size:.82rem;color:var(--text3);line-height:1.6}
+/* CTA */
+/* Compare table */
+.compare-table{overflow-x:auto;margin-top:2.5rem}
+.compare-table table{width:100%;border-collapse:collapse;font-size:.85rem}
+.compare-table th,.compare-table td{padding:.85rem 1.2rem;text-align:left;border-bottom:1px solid var(--border)}
+.compare-table thead th{font-weight:700;font-size:.78rem;letter-spacing:1px;text-transform:uppercase;padding-bottom:1rem}
+.compare-table th.comp-them{color:var(--text3)}
+.compare-table th.comp-us{color:var(--amber);background:rgba(245,158,11,.04);border-radius:10px 10px 0 0}
+.compare-table td.comp-feature{font-weight:600;color:#fff;font-size:.88rem}
+.compare-table td.comp-them{color:var(--text3)}
+.compare-table td.comp-us{color:var(--emerald);background:rgba(245,158,11,.04);font-weight:500}
+@media(max-width:600px){.compare-table{font-size:.75rem}.compare-table th,.compare-table td{padding:.65rem .8rem}}
 
 /* CTA */
 .cta-section{position:relative;overflow:hidden}
 .cta-section::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(245,158,11,.04),rgba(139,92,246,.03));pointer-events:none}
 .cta-section::after{content:'';position:absolute;top:50%;left:50%;width:800px;height:800px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(245,158,11,.06),transparent 60%);pointer-events:none}
-
-/* Form */
 .cta-form{max-width:480px;margin:2rem auto 0;display:flex;flex-direction:column;gap:.8rem;position:relative;z-index:1}
 .cta-form input,.cta-form select{padding:.85rem 1.2rem;border-radius:10px;border:1px solid var(--border2);background:var(--surface);color:#fff;font-family:var(--font);font-size:.9rem;outline:none;transition:.25s;width:100%}
 .cta-form input:focus,.cta-form select:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,158,11,.1)}
@@ -230,7 +235,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.5rem 2r
   .hero-ctas{justify-content:center}
   .hero-trust{justify-content:center}
   .hero-visual{display:none}
-  .features-grid,.sec-grid,.use-grid{grid-template-columns:1fr}
+  .features-grid,.use-grid{grid-template-columns:1fr}
   .steps-grid{grid-template-columns:repeat(2,1fr)}
   .nav-links{display:none}
   .mobile-toggle{display:block}
@@ -258,9 +263,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.5rem 2r
   "name":"Fenix Guardian",
   "applicationCategory":"BusinessApplication",
   "operatingSystem":"Web",
-  "description":"Vigilancia inteligente de fuentes oficiales espa&ntilde;olas con IA. Monitoriza BORME, BOE, BDNS, licitaciones y registros concursales cada d&iacute;a.",
+  "description":"Monitoriza y mide la productividad de tus equipos con IA. Metricas automaticas, deteccion de cuellos de botella y dashboards en tiempo real.",
   "provider":{"@type":"Organization","name":"FENIXIA SOLUTIONS S.L.","url":"https://guardian.fenixia.tech"},
-  "featureList":["Monitorizaci&oacute;n diaria de BORME","Alertas BOE y subvenciones","BDNS y licitaciones PLACSP","Registros concursales","Edictos judiciales","Alertas personalizadas con IA"]
+  "featureList":["Monitorizacion de productividad por equipo","Metricas automaticas con IA","Deteccion de cuellos de botella","Dashboards en tiempo real","Distribucion de carga de trabajo","Alertas de rendimiento"]
 }
 </script>
 </head>
@@ -271,8 +276,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.5rem 2r
   <div class="nav-inner">
     <div class="logo"><img src="logoFENIXIA.png" alt="Fenix Guardian"> FENIX <span>Guardian</span></div>
     <div class="nav-links">
-      <a href="#producto">Producto</a>
-      <a href="#fuentes">Fuentes</a>
+      <a href="#funcionalidades">Funcionalidades</a>
       <a href="#como-funciona">C&oacute;mo funciona</a>
       <a href="#casos-de-uso">Casos de uso</a>
       <a href="https://fenixia.tech" target="_blank" rel="noopener">Ecosistema Fenixia</a>
@@ -284,8 +288,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.5rem 2r
 
 <div class="mobile-overlay" onclick="toggleMenu()"></div>
 <div class="mobile-menu">
-  <a href="#producto" onclick="toggleMenu()">Producto</a>
-  <a href="#fuentes" onclick="toggleMenu()">Fuentes</a>
+  <a href="#funcionalidades" onclick="toggleMenu()">Funcionalidades</a>
   <a href="#como-funciona" onclick="toggleMenu()">C&oacute;mo funciona</a>
   <a href="#casos-de-uso" onclick="toggleMenu()">Casos de uso</a>
   <a href="https://fenixia.tech" target="_blank" rel="noopener" onclick="toggleMenu()">Ecosistema Fenixia</a>
@@ -301,253 +304,252 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.5rem 2r
   </div>
   <div class="hero-inner">
     <div>
-      <div class="hero-badge"><span class="dot"></span> Tu ventaja competitiva en datos p&uacute;blicos</div>
-      <h1>Encuentra nuevos clientes antes que <span class="gradient">tu competencia</span></h1>
-      <p class="sub">Guardian rastrea cada d&iacute;a subvenciones, licitaciones y registros mercantiles para enviarte las oportunidades que importan a tu negocio.</p>
+      <div class="hero-badge"><span class="dot"></span> Productividad en tiempo real</div>
+      <h1>&iquest;Sabes d&oacute;nde se pierde el tiempo en <span class="gradient">tu equipo</span>?</h1>
+      <p class="sub">Guardian monitoriza la productividad de tus equipos, detecta cuellos de botella y te da m&eacute;tricas accionables. Sin micromanagement, con datos reales.</p>
       <div class="hero-ctas">
         <a href="#contacto" class="btn btn-primary">Solicitar Demo &rarr;</a>
         <a href="#como-funciona" class="btn btn-outline">Ver c&oacute;mo funciona</a>
       </div>
       <div class="hero-trust">
-        <span><span class="check">&#10003;</span> Casi 4M de empresas</span>
-        <span><span class="check">&#10003;</span> Solo fuentes oficiales</span>
-        <span><span class="check">&#10003;</span> Alertas a tu medida</span>
+        <span><span class="check">&#10003;</span> M&eacute;tricas autom&aacute;ticas</span>
+        <span><span class="check">&#10003;</span> Sin instalar nada</span>
+        <span><span class="check">&#10003;</span> IA integrada</span>
       </div>
     </div>
     <div class="hero-visual">
       <div class="dashboard">
         <div class="dash-header">
           <div class="dash-dots"><span></span><span></span><span></span></div>
-          <span class="dash-title">Guardian &mdash; Alertas del d&iacute;a</span>
+          <span class="dash-title">Guardian &mdash; Productividad</span>
         </div>
         <div class="dash-body">
-          <div class="dash-row"><span class="dash-label">BORME &mdash; Nueva S.L. en Alicante</span><span class="dash-tag new">NUEVA</span></div>
-          <div class="dash-row"><span class="dash-label">BDNS &mdash; Subvenci&oacute;n CDTI digitalizaci&oacute;n</span><span class="dash-tag alert">OPORTUNIDAD</span></div>
-          <div class="dash-row"><span class="dash-label">PLACSP &mdash; Licitaci&oacute;n Ayto. Valencia</span><span class="dash-tag alert">OPORTUNIDAD</span></div>
-          <div class="dash-row"><span class="dash-label">BOE &mdash; Concurso acreedor sector retail</span><span class="dash-tag risk">RIESGO</span></div>
-          <div class="dash-row"><span class="dash-label">BORME &mdash; Ampliaci&oacute;n capital TechCorp</span><span class="dash-tag new">CRECIMIENTO</span></div>
+          <div class="dash-row"><span class="dash-label">Equipo Desarrollo</span><span class="dash-value green">94%</span></div>
+          <div class="dash-row"><span class="dash-label">Equipo Comercial</span><span class="dash-value amber">78%</span></div>
+          <div class="dash-row"><span class="dash-label">Equipo Soporte</span><span class="dash-value green">91%</span></div>
+          <div class="dash-row"><span class="dash-label">Tareas completadas hoy</span><span class="dash-value blue">47</span></div>
+          <div class="dash-row"><span class="dash-label">Cuellos de botella</span><span class="dash-value red">2</span></div>
+          <div class="dash-chart">
+            <div class="dash-chart-label">Productividad semanal por equipo</div>
+            <div class="dash-chart-bars">
+              <span style="height:85%;background:linear-gradient(to top,var(--amber),var(--amber2))"></span>
+              <span style="height:92%;background:linear-gradient(to top,var(--emerald),var(--emerald2))"></span>
+              <span style="height:70%;background:linear-gradient(to top,var(--amber),var(--amber2))"></span>
+              <span style="height:95%;background:linear-gradient(to top,var(--emerald),var(--emerald2))"></span>
+              <span style="height:88%;background:linear-gradient(to top,var(--emerald),var(--emerald2))"></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- QUÉ HACE GUARDIAN -->
-<section id="producto">
+<!-- FUNCIONALIDADES -->
+<section id="funcionalidades">
   <div class="container">
     <div class="section-header">
-      <span class="tag">Producto</span>
-      <h2 class="stitle">&iquest;Qu&eacute; hace <span class="hl">Guardian</span>?</h2>
-      <p class="sdesc">Convierte datos p&uacute;blicos en oportunidades de negocio. Sin esfuerzo manual, sin perder el tiempo buscando.</p>
+      <span class="tag">Funcionalidades</span>
+      <h2 class="stitle">Todo lo que necesitas para medir <span class="hl">sin estorbar</span></h2>
+      <p class="sdesc">M&eacute;tricas reales de productividad sin interrumpir el flujo de trabajo de nadie.</p>
     </div>
     <div class="features-grid">
       <div class="fcard reveal">
         <div class="fcard-accent"></div>
         <div class="fcard-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         </div>
-        <div class="fcard-title">Monitorizaci&oacute;n autom&aacute;tica</div>
-        <p class="fcard-desc">Cada d&iacute;a revisamos BORME, BOE, BDNS, licitaciones y registros concursales por ti. T&uacute; solo recibes lo relevante.</p>
+        <div class="fcard-title">Dashboards por equipo</div>
+        <p class="fcard-desc">Visualiza la productividad de cada equipo en tiempo real. Compara periodos, detecta tendencias y act&uacute;a antes de que sea un problema.</p>
       </div>
       <div class="fcard reveal reveal-d1">
         <div class="fcard-accent"></div>
         <div class="fcard-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
-        <div class="fcard-title">Datos verificados y completos</div>
-        <p class="fcard-desc">Identificamos cada empresa con su NIF, sector, ubicaci&oacute;n y perfil comercial desde fuentes oficiales.</p>
-      </div>
-      <div class="fcard reveal reveal-d2">
-        <div class="fcard-accent"></div>
-        <div class="fcard-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-        </div>
-        <div class="fcard-title">Alertas personalizadas</div>
-        <p class="fcard-desc">Define qu&eacute; te interesa: sector, territorio o tipo de oportunidad. Te avisamos en cuanto aparezca algo relevante.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FUENTES -->
-<section id="fuentes" class="alt-bg">
-  <div class="container center">
-    <div class="section-header">
-      <span class="tag">Fuentes oficiales</span>
-      <h2 class="stitle">M&aacute;s de 6 fuentes oficiales <span class="hl">cada d&iacute;a</span></h2>
-      <p class="sdesc">Toda la informaci&oacute;n viene directamente de registros p&uacute;blicos del Estado. Datos fiables, actualizados y verificables.</p>
-    </div>
-    <div class="features-grid">
-      <div class="fcard reveal">
-        <div class="fcard-accent"></div>
-        <div class="fcard-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </div>
-        <div class="fcard-title">BORME</div>
-        <p class="fcard-desc">Nuevas empresas, nombramientos, ampliaciones de capital y disoluciones.</p>
-      </div>
-      <div class="fcard reveal reveal-d1">
-        <div class="fcard-accent"></div>
-        <div class="fcard-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9h1"/><path d="M9 13h1"/><path d="M9 17h1"/></svg>
-        </div>
-        <div class="fcard-title">BOE Subvenciones</div>
-        <p class="fcard-desc">Convocatorias de ayudas y subvenciones p&uacute;blicas del Estado.</p>
-      </div>
-      <div class="fcard reveal reveal-d2">
-        <div class="fcard-accent"></div>
-        <div class="fcard-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></svg>
-        </div>
-        <div class="fcard-title">BDNS</div>
-        <p class="fcard-desc">Subvenciones de CDTI, IVACE, red.es, AVI y m&aacute;s organismos.</p>
-      </div>
-      <div class="fcard reveal">
-        <div class="fcard-accent"></div>
-        <div class="fcard-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-        </div>
-        <div class="fcard-title">PLACSP</div>
-        <p class="fcard-desc">Licitaciones y contratos del sector p&uacute;blico, listos para filtrar.</p>
-      </div>
-      <div class="fcard reveal reveal-d1">
-        <div class="fcard-accent"></div>
-        <div class="fcard-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 12 15 16 10"/></svg>
-        </div>
-        <div class="fcard-title">Edictos judiciales</div>
-        <p class="fcard-desc">Concursos, embargos y subastas publicados en el BOE.</p>
+        <div class="fcard-title">Seguimiento de tiempos</div>
+        <p class="fcard-desc">Cu&aacute;nto tiempo se dedica a cada proyecto, tarea o cliente. Autom&aacute;tico, sin que nadie tenga que rellenar hojas de horas.</p>
       </div>
       <div class="fcard reveal reveal-d2">
         <div class="fcard-accent"></div>
         <div class="fcard-icon">
           <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         </div>
-        <div class="fcard-title">Registro Concursal</div>
-        <p class="fcard-desc">Situaciones de insolvencia: desde la apertura hasta la liquidaci&oacute;n.</p>
+        <div class="fcard-title">Detecci&oacute;n de cuellos de botella</div>
+        <p class="fcard-desc">La IA identifica d&oacute;nde se atascan los procesos, qu&eacute; equipos est&aacute;n sobrecargados y qu&eacute; tareas llevan demasiado tiempo.</p>
+      </div>
+      <div class="fcard reveal">
+        <div class="fcard-accent"></div>
+        <div class="fcard-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="fcard-title">Carga de trabajo equilibrada</div>
+        <p class="fcard-desc">Detecta desequilibrios entre miembros del equipo. Sabe qui&eacute;n est&aacute; al l&iacute;mite y qui&eacute;n tiene margen para asumir m&aacute;s.</p>
+      </div>
+      <div class="fcard reveal reveal-d1">
+        <div class="fcard-accent"></div>
+        <div class="fcard-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        </div>
+        <div class="fcard-title">Alertas inteligentes</div>
+        <p class="fcard-desc">Recibe avisos cuando la productividad de un equipo cae, un proyecto se retrasa o una persona lleva demasiadas horas extra.</p>
+      </div>
+      <div class="fcard reveal reveal-d2">
+        <div class="fcard-accent"></div>
+        <div class="fcard-icon">
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        </div>
+        <div class="fcard-title">Informes autom&aacute;ticos</div>
+        <p class="fcard-desc">Reportes semanales y mensuales generados por IA. Listos para direcci&oacute;n, con insights accionables y comparativas hist&oacute;ricas.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CÓMO FUNCIONA -->
-<section id="como-funciona">
+<section id="como-funciona" class="alt-bg">
   <div class="container center">
     <div class="section-header">
       <span class="tag">As&iacute; de sencillo</span>
       <h2 class="stitle">C&oacute;mo <span class="hl">funciona</span></h2>
-      <p class="sdesc">De los registros oficiales a tu bandeja de entrada, en cuatro pasos autom&aacute;ticos.</p>
+      <p class="sdesc">De tus herramientas de trabajo a un dashboard de productividad, sin fricci&oacute;n.</p>
     </div>
     <div class="steps-grid">
       <div class="step-card reveal">
         <div class="step-num">01</div>
-        <h4>Recopilaci&oacute;n diaria</h4>
-        <p>Cada ma&ntilde;ana revisamos todas las publicaciones oficiales y extraemos lo relevante para ti.</p>
+        <h4>Conecta tus herramientas</h4>
+        <p>Integra las herramientas que ya usa tu equipo: JIRA, GitHub, Slack, Google Workspace, calendarios...</p>
       </div>
       <div class="step-card reveal reveal-d1">
         <div class="step-num">02</div>
-        <h4>Datos limpios y organizados</h4>
-        <p>Estandarizamos nombres, direcciones y sectores para que puedas buscar y filtrar sin complicaciones.</p>
+        <h4>Recogida autom&aacute;tica</h4>
+        <p>Guardian extrae m&eacute;tricas de actividad sin que nadie tenga que hacer nada. Cero fricci&oacute;n, cero formularios.</p>
       </div>
       <div class="step-card reveal reveal-d2">
         <div class="step-num">03</div>
-        <h4>Empresas identificadas</h4>
-        <p>Cada oportunidad lleva asociada la empresa, su sector y su ubicaci&oacute;n, lista para contactar.</p>
+        <h4>An&aacute;lisis con IA</h4>
+        <p>La IA procesa los datos, detecta patrones, identifica cuellos de botella y genera insights accionables.</p>
       </div>
       <div class="step-card reveal reveal-d3">
         <div class="step-num">04</div>
-        <h4>Alertas que llegan a ti</h4>
-        <p>Cruzamos las novedades del d&iacute;a con tu perfil de inter&eacute;s y te notificamos solo lo que encaja.</p>
+        <h4>Decide con datos</h4>
+        <p>Dashboards claros, alertas a tiempo y reportes autom&aacute;ticos para que tomes decisiones basadas en evidencia.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- CASOS DE USO -->
-<section id="casos-de-uso" class="alt-bg">
+<section id="casos-de-uso">
   <div class="container">
     <div class="section-header">
-      <span class="tag">Para tu negocio</span>
-      <h2 class="stitle">&iquest;C&oacute;mo te <span class="hl">ayuda</span>?</h2>
-      <p class="sdesc">Tres formas concretas de sacar partido a la informaci&oacute;n p&uacute;blica.</p>
+      <span class="tag">Para tu empresa</span>
+      <h2 class="stitle">&iquest;D&oacute;nde te <span class="hl">ayuda</span>?</h2>
+      <p class="sdesc">Tres problemas reales que Guardian resuelve cada d&iacute;a.</p>
     </div>
     <div class="use-grid">
       <div class="use-card reveal">
         <div class="use-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
-        <h4>Captar nuevos clientes</h4>
-        <p>Descubre empresas reci&eacute;n constituidas en tu sector y territorio. Detecta se&ntilde;ales de crecimiento como ampliaciones de capital o nuevos nombramientos.</p>
+        <h4>Equipos que no rinden igual</h4>
+        <p>Sabes que hay diferencia de rendimiento entre equipos pero no tienes datos para demostrarlo. Guardian te da las m&eacute;tricas para comparar y actuar.</p>
       </div>
       <div class="use-card reveal reveal-d1">
         <div class="use-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
         </div>
-        <h4>No perder ninguna oportunidad</h4>
-        <p>Recibe alertas de subvenciones y licitaciones filtradas por tu sector y provincia, antes de que venzan los plazos.</p>
+        <h4>Proyectos que se retrasan</h4>
+        <p>Los plazos se incumplen pero nadie sabe por qu&eacute;. Guardian identifica d&oacute;nde se pierde el tiempo y qu&eacute; tareas bloquean el avance.</p>
       </div>
       <div class="use-card reveal reveal-d2">
         <div class="use-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
         </div>
-        <h4>Proteger tu cartera</h4>
-        <p>Conoce la situaci&oacute;n de tus clientes y proveedores. Detecta concursos, embargos y disoluciones a tiempo.</p>
+        <h4>Gente quemada sin saberlo</h4>
+        <p>Algunos empleados acumulan horas extra sin que nadie lo detecte. Guardian alerta antes de que el burnout se convierta en baja.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SEGURIDAD -->
-<section>
-  <div class="container">
+<!-- POR QUÉ GUARDIAN -->
+<section class="alt-bg">
+  <div class="container center">
     <div class="section-header">
-      <span class="tag">Transparencia</span>
-      <h2 class="stitle">Seguridad y <span class="hl">transparencia</span></h2>
-      <p class="sdesc">Sabes exactamente de d&oacute;nde viene cada dato y c&oacute;mo lo tratamos.</p>
+      <span class="tag">Por qu&eacute; Guardian</span>
+      <h2 class="stitle">Productividad sin <span class="hl">vigilancia</span></h2>
+      <p class="sdesc">Las herramientas de monitorizaci&oacute;n tradicionales esp&iacute;an. Guardian mide.</p>
     </div>
-    <div class="sec-grid">
-      <div class="sec-card reveal">
-        <div class="sec-ico">
-          <svg width="28" height="28" fill="none" stroke="var(--amber)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h4>Solo datos p&uacute;blicos</h4>
-        <p>Trabajamos exclusivamente con registros oficiales: BORME, BOE, BDNS y licitaciones. Nunca accedemos a informaci&oacute;n privada.</p>
-      </div>
-      <div class="sec-card reveal reveal-d1">
-        <div class="sec-ico">
-          <svg width="28" height="28" fill="none" stroke="var(--emerald)" stroke-width="2" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
-        </div>
-        <h4>Todo trazable</h4>
-        <p>Cada dato incluye su fuente y fecha de publicaci&oacute;n original. Puedes verificar cualquier informaci&oacute;n en un clic.</p>
-      </div>
-      <div class="sec-card reveal reveal-d2">
-        <div class="sec-ico">
-          <svg width="28" height="28" fill="none" stroke="var(--violet)" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <h4>Tus datos, tu control</h4>
-        <p>Solo procesamos lo estrictamente necesario. T&uacute; decides cu&aacute;nto tiempo conservar la informaci&oacute;n.</p>
-      </div>
+    <div class="compare-table">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th class="comp-them">Hubstaff / Insightful</th>
+            <th class="comp-us">Fenix Guardian</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="comp-feature">Capturas de pantalla</td>
+            <td class="comp-them">&#10003; Cada X minutos</td>
+            <td class="comp-us">&#10007; Nunca</td>
+          </tr>
+          <tr>
+            <td class="comp-feature">Registro de teclas / clics</td>
+            <td class="comp-them">&#10003; Keystroke logging</td>
+            <td class="comp-us">&#10007; Nunca</td>
+          </tr>
+          <tr>
+            <td class="comp-feature">Tracking de apps / webs</td>
+            <td class="comp-them">&#10003; Vigila cada app</td>
+            <td class="comp-us">&#10007; Solo m&eacute;tricas agregadas</td>
+          </tr>
+          <tr>
+            <td class="comp-feature">Enfoque</td>
+            <td class="comp-them">Vigilar al individuo</td>
+            <td class="comp-us">Medir al equipo</td>
+          </tr>
+          <tr>
+            <td class="comp-feature">Instalar software en el PC</td>
+            <td class="comp-them">&#10003; Agente obligatorio</td>
+            <td class="comp-us">&#10007; Se conecta a tus herramientas</td>
+          </tr>
+          <tr>
+            <td class="comp-feature">IA para detectar problemas</td>
+            <td class="comp-them">&#10007; Solo datos brutos</td>
+            <td class="comp-us">&#10003; Insights y alertas autom&aacute;ticas</td>
+          </tr>
+          <tr>
+            <td class="comp-feature">Confianza del equipo</td>
+            <td class="comp-them">Genera desconfianza</td>
+            <td class="comp-us">Cultura de transparencia</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+    <p style="color:var(--text3);font-size:.88rem;margin-top:2rem;max-width:560px;margin-left:auto;margin-right:auto">Guardian mide resultados, no actividad. Tu equipo trabaja tranquilo y t&uacute; tienes los datos que necesitas para tomar decisiones.</p>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section alt-bg" id="contacto">
+<section class="cta-section" id="contacto">
   <div class="container center">
     <div class="section-header">
       <span class="tag">Contacto</span>
-      <h2 class="stitle">Empieza a detectar <span class="hl">oportunidades</span></h2>
-      <p class="sdesc">Solicita una demo y descubre c&oacute;mo Guardian puede ayudarte a encontrar nuevos clientes y oportunidades cada d&iacute;a.</p>
+      <h2 class="stitle">Empieza a medir lo que <span class="hl">importa</span></h2>
+      <p class="sdesc">Demo gratuita de 30 min con datos de tu equipo. Sin compromiso.</p>
     </div>
     <form class="cta-form" id="contactForm" onsubmit="event.preventDefault();this.style.display='none';document.getElementById('successMsg').style.display='block'">
       <input type="text" placeholder="Tu nombre" required>
       <input type="email" placeholder="Email corporativo" required>
-      <input type="text" placeholder="Empresa y sector">
+      <input type="text" placeholder="Empresa y n&uacute;mero de empleados">
       <select>
-        <option value="">&iquest;Qu&eacute; te interesa?</option>
-        <option>Captar nuevos clientes</option>
-        <option>Subvenciones y licitaciones</option>
-        <option>Vigilancia de cartera</option>
+        <option value="">&iquest;Qu&eacute; necesitas?</option>
+        <option>Medir productividad por equipo</option>
+        <option>Detectar cuellos de botella</option>
+        <option>Equilibrar carga de trabajo</option>
         <option>Demo general</option>
       </select>
       <button type="submit" class="btn btn-primary cta-submit">Solicitar Demo Gratuita &rarr;</button>
@@ -568,8 +570,8 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.5rem 2r
       <span style="font-weight:700;color:#ffffff;font-size:.95rem">FENIX <span style="color:#f59e0b">Guardian</span></span>
     </div>
     <div class="ft-links">
-      <a href="#producto">Producto</a>
-      <a href="#fuentes">Fuentes</a>
+      <a href="#funcionalidades">Funcionalidades</a>
+      <a href="#como-funciona">C&oacute;mo funciona</a>
       <a href="#casos-de-uso">Casos de uso</a>
       <a href="mailto:contacto@fenixia.tech">contacto@fenixia.tech</a>
     </div>
