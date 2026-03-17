@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fenix Guardian &mdash; Presentaci&oacute;n</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="dns-prefetch" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#1e2633;--bg2:#243040;--bg3:#2c394d;--card:#253345;
+  --amber:#f59e0b;--amber-bright:#fbbf24;--amber-glow:rgba(245,158,11,.12);
+  --teal:#14b8a6;--teal-bright:#2dd4bf;
+  --silver:#c4c8c4;--silver-light:#e2e2e2;--white:#f0f2f0;
+  --gray:#7a8494;--gray2:#3d4a5c;--gray3:#2a3040;
+  --purple:#8b7cc8;--green:#5cb88a;--orange:#d4944a;--red:#c85454;
+  --font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth;scroll-snap-type:y mandatory;font-size:16px}
+body{font-family:var(--font);background:var(--bg);color:var(--silver);line-height:1.65;overflow-x:hidden}
+a{color:var(--amber);text-decoration:none;transition:all .25s}
+a:hover{color:var(--amber-bright)}
+::selection{background:var(--amber);color:var(--bg)}
+
+/* ── SLIDES ── */
+.slide{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:60px 80px;scroll-snap-align:start;position:relative;overflow:hidden}
+.slide::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 50%,rgba(245,158,11,.04) 0%,transparent 50%),radial-gradient(circle at 70% 80%,rgba(139,124,200,.03) 0%,transparent 50%);pointer-events:none}
+.slide-content{max-width:1180px;width:100%;position:relative;z-index:1}
+
+/* ── NAV DOTS ── */
+.nav{position:fixed;right:30px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:12px}
+.nav-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.2);cursor:pointer;transition:all .3s}
+.nav-dot:hover,.nav-dot.active{background:var(--amber);border-color:var(--amber);transform:scale(1.3)}
+.slide-counter{position:fixed;bottom:30px;right:30px;font-size:13px;color:var(--gray);z-index:100;font-weight:500;font-family:var(--mono)}
+.keyboard-hint{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);color:var(--gray);font-size:.75rem;z-index:100;opacity:.5;display:flex;align-items:center;gap:8px}
+.key{display:inline-block;padding:2px 8px;background:rgba(255,255,255,.06);border-radius:4px;font-size:.7rem;font-family:var(--mono);border:1px solid var(--gray3)}
+
+/* ── TYPOGRAPHY ── */
+h1{font-size:3.8rem;font-weight:800;line-height:1.1;letter-spacing:-.8px;color:var(--white)}
+h2{font-size:2.5rem;font-weight:800;line-height:1.18;letter-spacing:-.4px;margin-bottom:36px;color:var(--white)}
+h3{font-size:1.3rem;font-weight:700;margin-bottom:12px;color:var(--white)}
+p{font-size:1.05rem;line-height:1.7;color:var(--gray)}
+.hl{color:var(--amber-bright)}
+.hl-teal{color:var(--teal-bright)}
+.hl-purple{color:var(--purple)}
+.tag{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--amber);margin-bottom:.8rem;padding:.3rem .85rem;border-radius:100px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.1)}
+.subtitle{font-size:1.2rem;color:var(--gray);font-weight:400;margin-top:16px;max-width:680px}
+
+/* ── GRIDS ── */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+
+/* ── CARDS ── */
+.card{background:var(--card);border-radius:14px;padding:2rem 1.6rem;border:1px solid var(--gray3);position:relative;overflow:hidden;transition:all .4s ease}
+.card:hover{border-color:rgba(245,158,11,.25);transform:translateY(-3px);box-shadow:0 16px 50px rgba(0,0,0,.25)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.card:nth-child(1)::before{background:linear-gradient(90deg,var(--amber),var(--amber-bright))}
+.card:nth-child(2)::before{background:linear-gradient(90deg,var(--teal),var(--teal-bright))}
+.card:nth-child(3)::before{background:linear-gradient(90deg,var(--purple),#a99ad8)}
+.card:nth-child(4)::before{background:linear-gradient(90deg,var(--orange),#e8a96a)}
+.card:nth-child(5)::before{background:linear-gradient(90deg,var(--green),#78d4a6)}
+.card:nth-child(6)::before{background:linear-gradient(90deg,var(--red),#e87878)}
+.card-icon{font-size:2rem;margin-bottom:.7rem}
+.card h3{font-size:1.1rem;margin-bottom:.35rem}
+.card p{font-size:.85rem;line-height:1.6}
+
+/* ── STATS ── */
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:40px}
+.stat{text-align:center;padding:26px;background:var(--card);border-radius:14px;border:1px solid var(--gray3)}
+.stat-number{font-size:2.6rem;font-weight:800;line-height:1;margin-bottom:6px;font-family:var(--mono);color:var(--amber)}
+.stat-label{color:var(--gray);font-size:.8rem;font-weight:500}
+
+/* ── PROBLEM LIST ── */
+.problem-list{list-style:none;display:flex;flex-direction:column;gap:18px}
+.problem-list li{display:flex;align-items:flex-start;gap:14px;font-size:1rem;color:var(--gray);line-height:1.6}
+.problem-list li .icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+
+/* ── FEATURE LIST ── */
+.feature-list{list-style:none;margin-top:14px}
+.feature-list li{padding:7px 0;font-size:.88rem;color:var(--gray);display:flex;align-items:center;gap:10px}
+.feature-list li::before{content:'\2713';color:var(--teal);font-weight:700;font-size:1rem}
+.neg-list{list-style:none;margin-top:14px}
+.neg-list li{padding:7px 0;font-size:.88rem;color:var(--gray);display:flex;align-items:center;gap:10px}
+.neg-list li::before{content:'\2717';color:var(--red);font-weight:700;font-size:1rem}
+
+/* ── TECH CARDS ── */
+.tech-card{background:var(--card);border-radius:10px;padding:1.4rem 1rem;text-align:center;border:1px solid var(--gray3);transition:all .3s}
+.tech-card:hover{border-color:rgba(245,158,11,.2);transform:translateY(-3px)}
+.tech-icon{font-size:2rem;margin-bottom:.5rem}
+.tech-card h3{font-size:.88rem;margin-bottom:4px}
+.tech-card p{font-size:.75rem}
+
+/* ── SECURITY ── */
+.sec-card{background:var(--card);border-radius:14px;padding:1.8rem 1.5rem;border:1px solid var(--gray3);transition:all .3s}
+.sec-card:hover{border-color:rgba(245,158,11,.25);transform:translateY(-3px)}
+.sec-icon{font-size:1.6rem;margin-bottom:.6rem}
+.sec-card h4{font-size:.9rem;font-weight:700;color:var(--white);margin-bottom:.3rem}
+.sec-card p{font-size:.78rem;color:var(--gray);line-height:1.5}
+
+/* ── STEP CARDS ── */
+.step-card{background:var(--card);border-radius:14px;padding:2rem 1.6rem;border:1px solid var(--gray3);position:relative;transition:all .4s ease}
+.step-card:hover{border-color:rgba(245,158,11,.25);transform:translateY(-3px);box-shadow:0 16px 50px rgba(0,0,0,.25)}
+.step-number{font-size:3rem;font-weight:800;color:var(--amber);opacity:.3;font-family:var(--mono);line-height:1;margin-bottom:.5rem}
+.step-card h3{font-size:1.1rem;margin-bottom:.35rem}
+.step-card p{font-size:.85rem;line-height:1.6}
+
+/* ── CTA ── */
+.cta-slide{text-align:center}
+.cta-slide h1{margin-bottom:16px}
+.cta-button{display:inline-flex;align-items:center;gap:.5rem;margin-top:32px;padding:16px 40px;background:var(--amber);color:#1e2633;border-radius:8px;font-size:1.1rem;font-weight:700;text-decoration:none;transition:all .3s;border:none;cursor:pointer;font-family:var(--font);box-shadow:0 0 25px rgba(245,158,11,.2)}
+.cta-button:hover{background:var(--amber-bright);transform:translateY(-2px);box-shadow:0 8px 35px rgba(245,158,11,.3);color:#1e2633}
+.contact-info{margin-top:32px;color:var(--gray);font-size:.9rem}
+.contact-info a{color:var(--amber);text-decoration:none}
+
+/* ── LOGO ── */
+.logo{font-weight:800;font-size:1.6rem;color:var(--silver-light);letter-spacing:1.5px}
+.logo em{font-style:normal;color:var(--amber)}
+
+/* ── DECORATIVE ── */
+.glow-orb{position:absolute;border-radius:50%;filter:blur(120px);pointer-events:none;opacity:.35}
+
+/* ── ANIMATIONS ── */
+.fi{opacity:0;transform:translateY(24px);transition:all .55s ease-out}
+.fi.vis{opacity:1;transform:translateY(0)}
+.s1{transition-delay:.08s}.s2{transition-delay:.16s}.s3{transition-delay:.24s}
+
+/* ── HELPERS ── */
+.text-center{text-align:center}
+.mt-20{margin-top:20px}
+.mb-20{margin-bottom:20px}
+
+/* ── PRINT ── */
+@media print{
+  .slide{page-break-after:always;min-height:auto;padding:40px}
+  .nav,.slide-counter,.keyboard-hint{display:none}
+}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .slide{padding:40px 24px}
+  h1{font-size:2.4rem}
+  h2{font-size:1.9rem}
+  .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+  .stat-grid{grid-template-columns:repeat(2,1fr)}
+  .nav{display:none}
+}
+@media(max-width:600px){
+  .slide{padding:32px 16px}
+  h1{font-size:1.8rem}
+  .stat-grid{grid-template-columns:1fr}
+  .keyboard-hint{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- Navigation dots -->
+<nav class="nav" id="nav"></nav>
+<div class="slide-counter" id="slideCounter">1 / 10</div>
+<div class="keyboard-hint">Navega con <span class="key">&uarr;</span> <span class="key">&darr;</span> o scroll</div>
+
+<!-- ═══════════════════════════════ -->
+<!-- SLIDE 1: PORTADA -->
+<!-- ═══════════════════════════════ -->
+<section class="slide" id="slide-1">
+  <div class="glow-orb" style="width:600px;height:600px;background:rgba(245,158,11,.12);top:-200px;right:-200px"></div>
+  <div class="glow-orb" style="width:400px;height:400px;background:rgba(139,124,200,.08);bottom:-100px;left:-100px"></div>
+  <div class="slide-content text-center">
+    <div class="logo mb-20">Fenix <em>Guardian</em></div>
+    <h1>Mide la productividad de tus equipos<br>con <span class="hl">inteligencia real</span></h1>
+    <p class="subtitle" style="margin:16px auto 0">Sin micromanagement. Sin instalar nada. Con IA.</p>
+    <div style="margin-top:44px;color:var(--gray);font-size:.85rem;font-family:var(--mono)">FENIXIA SOLUTIONS S.L. &mdash; 2026</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ -->
+<!-- SLIDE 2: EL PROBLEMA -->
+<!-- ═══════════════════════════════ -->
+<section class="slide" id="slide-2">
+  <div class="slide-content">
+    <span class="tag">El Problema</span>
+    <h2>&iquest;Sabes d&oacute;nde se pierde el tiempo<br><span class="hl">en tu equipo?</span></h2>
+    <div class="grid-2" style="align-items:start">
+      <ul class="problem-list">
+        <li><span class="icon">&#128200;</span><div><strong style="color:var(--white)">Hojas de Excel para tracking de horas</strong> &mdash; Datos dispersos, sin conexi&oacute;n entre proyectos y personas</div></li>
+        <li><span class="icon">&#128683;</span><div><strong style="color:var(--white)">Sin m&eacute;tricas reales de productividad</strong> &mdash; Sensaciones en lugar de datos. Nadie sabe qu&eacute; equipo rinde m&aacute;s ni por qu&eacute;</div></li>
+        <li><span class="icon">&#9888;&#65039;</span><div><strong style="color:var(--white)">Proyectos que se retrasan sin saber por qu&eacute;</strong> &mdash; Los cuellos de botella son invisibles hasta que es demasiado tarde</div></li>
+        <li><span class="icon">&#128293;</span><div><strong style="color:var(--white)">Burnout silencioso que nadie detecta</strong> &mdash; Empleados al l&iacute;mite que no piden ayuda hasta que es baja</div></li>
+      </ul>
+      <div class="stat-grid" style="grid-template-columns:1fr 1fr;margin-top:0">
+        <div class="stat"><div class="stat-number">67%</div><div class="stat-label">managers sin datos de productividad</div></div>
+        <div class="stat"><div class="stat-number">12h</div><div class="stat-label">semanales en reuniones de seguimiento</div></div>
+        <div class="stat"><div class="stat-number">40%</div><div class="stat-label">proyectos retrasados</div></div>
+        <div class="stat"><div class="stat-number">3/10</div><div class="stat-label">empleados quemados</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ -->
+<!-- SLIDE 3: LA SOLUCIÓN -->
+<!-- ═══════════════════════════════ -->
+<section class="slide" id="slide-3">
+  <div class="slide-content text-center">
+    <span class="tag">La Soluci&oacute;n</span>
+    <h2>Una plataforma.<br><span class="hl">Toda la productividad de tu empresa visible.</span></h2>
+    <p style="max-width:680px;margin:0 auto 44px;font-size:1.05rem">Fenix Guardian conecta tus herramientas, recoge m&eacute;tricas autom&aacute;ticamente y usa IA para darte visibilidad total sobre la productividad de tus equipos.</p>
+    <div class="stat-grid" style="margin-top:0">
+      <div class="stat"><div class="stat-number">24/7</div><div class="stat-label">Dashboards en tiempo real</div></div>
+      <div class="stat"><div class="stat-number" style="color:var(--purple)">IA</div><div class="stat-label">Detecta cuellos de botella</div></div>
+      <div class="stat"><div class="stat-number" style="color:var(--teal)">0</div><div class="stat-label">Software instalado</div></div>
+      <div class="stat"><div class="stat-number">&#9889;</div><div class="stat-label">Alertas autom&aacute;ticas</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ -->
+<!-- SLIDE 4: FUNCIONALIDADES -->
+<!-- ═══════════════════════════════ -->
+<section class="slide" id="slide-4">
+  <div class="slide-content">
+    <span class="tag">Funcionalidades</span>
+    <h2>Todo lo que necesitas para<br><span class="hl">medir sin vigilar</span></h2>
+    <div class="grid-3">
+      <div class="card fi"><div class="card-icon">&#128202;</div><h3>Dashboards por equipo</h3><p>Productividad en tiempo real, tendencias semanales y comparativas entre equipos con m&eacute;tricas claras.</p></div>
+      <div class="card fi s1"><div class="card-icon">&#9201;</div><h3>Seguimiento de tiempos</h3><p>Autom&aacute;tico por proyecto, tarea y cliente. Sin formularios, sin fricci&oacute;n, sin que nadie rellene nada.</p></div>
+      <div class="card fi s2"><div class="card-icon">&#128270;</div><h3>Detecci&oacute;n de cuellos de botella</h3><p>La IA identifica bloqueos, sobrecarga y dependencias cr&iacute;ticas antes de que afecten al proyecto.</p></div>
+      <div class="card fi"><div class="card-icon">&#9878;&#65039;</div><h3>Carga equilibrada</h3><p>Detecta qui&eacute;n est&aacute; al l&iacute;mite y qui&eacute;n tiene margen. Redistribuye antes de que alguien se queme.</p></div>
+      <div class="card fi s1"><div class="card-icon">&#128276;</div><h3>Alertas inteligentes</h3><p>Ca&iacute;da de productividad, retrasos en entregas, horas extra acumuladas. Te avisa antes de que sea problema.</p></div>
+      <div class="card fi s2"><div class="card-icon">&#128203;</div><h3>Informes autom&aacute;ticos</h3><p>Reportes semanales y mensuales generados con IA, listos para direcci&oacute;n. Sin que nadie los prepare.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ -->
+<!-- SLIDE 5: CÓMO FUNCIONA -->
+<!-- ═══════════════════════════════ -->
+<section class="slide" id="slide-5">
+  <div class="slide-content text-center">
+    <span class="tag">C&oacute;mo Funciona</span>
+    <h2>De cero a datos en<br><span class="hl">cuatro pasos</span></h2>
+    <p style="margin-bottom:44px;max-width:600px;margin-left:auto;margin-right:auto">Sin instalaciones, sin fricci&oacute;n. Conecta y empieza a ver resultados.</p>
+    <div class="grid-4">
+      <div class="step-card fi"><div class="step-number">01</div><h3>Conecta tus herramientas</h3><p>JIRA, GitHub, Slack, Google Workspace y m&aacute;s</p></div>
+      <div class="step-card fi s1"><div class="step-number">02</div><h3>Recogida autom&aacute;tica</h3><p>M&eacute;tricas sin fricci&oacute;n, sin que nadie cambie su forma de trabajar</p></div>
+      <div class="step-card fi s2"><div class="step-number">03</div><h3>An&aacute;lisis con IA</h3><p>Patrones, cuellos de botella, insights y predicciones</p></div>
+      <div class="step-card fi s3"><div class="step-number">04</div><h3>Decide con datos</h3><p>Dashboards, alertas y reportes para tomar decisiones reales</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ -->
+<!-- SLIDE 6: VS COMPETENCIA -->
+<!-- ═══════════════════════════════ -->
+<section class="slide" id="slide-6">
+  <div class="slide-content">
+    <span class="tag">Comparativa</span>
+    <h2>Productividad<br><span class="hl">sin vigilancia</span></h2>
+    <div class="grid-2">
+      <div class="card fi" style="padding:2rem">
+        <h3 style="color:var(--red)">&#128683; Hubstaff / Insightful</h3>
+        <ul class="neg-list">
+          <li>Screenshots cada X minutos</li>
+          <li>Keystroke logging</li>
+          <li>Vigila cada app que abres</li>
+          <li>Vigila al individuo</li>
+          <li>Agente obligatorio en cada equipo</li>
+          <li>Solo datos brutos sin contexto</li>
+          <li>Genera desconfianza en el equipo</li>
+        </ul>
+      </div>
+      <div class="card fi s1" style="padding:2rem">
+        <h3 style="color:var(--amber)">&#128737;&#65039; Fenix Guardian</h3>
+        <ul class="feature-list">
+          <li>Nunca hace screenshots</li>
+          <li>Nunca registra keystrokes</li>
+          <li>Solo m&eacute;tricas agregadas por equipo</li>
+          <li>Mide al equipo, no al individuo</li>
+          <li>Se conecta a herramientas existentes</li>
+          <li>IA con insights accionables</li>
+          <li>Cultura de transparencia y confianza</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ -->
+<!-- SLIDE 7: CASOS DE USO -->
+<!-- ═══════════════════════════════ -->
+<section class="slide" id="slide-7">
+  <div class="slide-content">
+    <span class="tag">Casos de Uso</span>
+    <h2>Problemas reales que<br><span class="hl">Guardian resuelve</span></h2>
+    <div class="grid-3">
+      <div class="card fi">
+        <div class="card-icon">&#128201;</div>
+        <h3>Equipos que no rinden igual</h3>
+        <p>M&eacute;tricas objetivas para comparar rendimiento entre equipos, identificar best practices y actuar con datos.</p>
+      </div>
+      <div class="card fi s1">
+        <div class="card-icon">&#9200;</div>
+        <h3>Proyectos retrasados</h3>
+        <p>Identifica exactamente d&oacute;nde se pierde el tiempo: dependencias, bloqueos, reuniones excesivas o tareas subestimadas.</p>
+      </div>
+      <div class="card fi s2">
+        <div class="card-icon">&#128293;</div>
+        <h3>Burnout silencioso</h3>
+        <p>Detecta patrones de sobrecarga antes de que se conviertan en baja. Horas extra sostenidas, carga desigual, ritmo insostenible.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ -->
+<!-- SLIDE 8: INTEGRACIONES -->
+<!-- ═══════════════════════════════ -->
+<section class="slide" id="slide-8">
+  <div class="slide-content text-center">
+    <span class="tag">Integraciones</span>
+    <h2>Se conecta con las herramientas<br><span class="hl">que ya usas</span></h2>
+    <p style="margin-bottom:44px;max-width:600px;margin-left:auto;margin-right:auto">Sin instalar agentes. Sin cambiar flujos. Conecta y listo.</p>
+    <div class="grid-3" style="max-width:800px;margin:0 auto">
+      <div class="tech-card fi"><div class="tech-icon">&#127899;</div><h3>JIRA</h3><p>Worklogs, issues, sprints y velocidad</p></div>
+      <div class="tech-card fi s1"><div class="tech-icon">&#128025;</div><h3>GitHub</h3><p>PRs, commits, reviews y cycle time</p></div>
+      <div class="tech-card fi s2"><div class="tech-icon">&#128172;</div><h3>Slack</h3><p>Actividad, canales y tiempos de respuesta</p></div>
+      <div class="tech-card fi"><div class="tech-icon">&#128231;</div><h3>Google Workspace</h3><p>Calendar, Meet y documentos</p></div>
+      <div class="tech-card fi s1"><div class="tech-icon">&#128197;</div><h3>Calendarios</h3><p>Reuniones, disponibilidad y tiempo real</p></div>
+      <div class="tech-card fi s2"><div class="tech-icon">&#128279;</div><h3>API REST</h3><p>Endpoints para integraci&oacute;n custom</p></div>
+    </div>
+    <div class="stat-grid" style="margin-top:36px">
+      <div class="stat fi"><div class="stat-number">24/7</div><div class="stat-label">Tiempo real</div></div>
+      <div class="stat fi s1"><div class="stat-number">&lt;1m</div><div class="stat-label">Sincronizaci&oacute;n</div></div>
+      <div class="stat fi s2"><div class="stat-number">0</div><div class="stat-label">Instalaciones</div></div>
+      <div class="stat fi s3"><div class="stat-number">&infin;</div><div class="stat-label">Ilimitado</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ -->
+<!-- SLIDE 9: SEGURIDAD -->
+<!-- ═══════════════════════════════ -->
+<section class="slide" id="slide-9">
+  <div class="slide-content">
+    <span class="tag">Seguridad y Privacidad</span>
+    <h2>Productividad con<br><span class="hl">respeto total</span></h2>
+    <p style="margin-bottom:36px;max-width:680px">Guardian mide equipos, no personas. Privacidad por dise&ntilde;o, no por promesa.</p>
+    <div class="grid-3">
+      <div class="sec-card fi">
+        <div class="sec-icon">&#128737;&#65039;</div>
+        <h4>Solo m&eacute;tricas agregadas</h4>
+        <p>Nunca datos individuales invasivos. Las m&eacute;tricas se agregan por equipo y proyecto. Ning&uacute;n dato personal sensible se recoge ni almacena.</p>
+      </div>
+      <div class="sec-card fi s1">
+        <div class="sec-icon">&#128270;</div>
+        <h4>Todo trazable</h4>
+        <p>Cada m&eacute;trica tiene fuente y fecha. Sabes exactamente de d&oacute;nde viene cada dato y cu&aacute;ndo se recogi&oacute;. Auditor&iacute;a completa.</p>
+      </div>
+      <div class="sec-card fi s2">
+        <div class="sec-icon">&#128274;</div>
+        <h4>Tus datos, tu control</h4>
+        <p>T&uacute; decides qu&eacute; se mide, qui&eacute;n lo ve y cu&aacute;nto tiempo se guarda. Exporta o elimina en cualquier momento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ -->
+<!-- SLIDE 10: CTA -->
+<!-- ═══════════════════════════════ -->
+<section class="slide" id="slide-10">
+  <div class="glow-orb" style="width:800px;height:800px;background:rgba(245,158,11,.08);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+  <div class="slide-content cta-slide">
+    <div class="logo mb-20" style="font-size:2.2rem">Fenix <em>Guardian</em></div>
+    <h1>&iquest;Listo para medir<br><span class="hl">lo que importa?</span></h1>
+    <p class="subtitle" style="margin:16px auto">Una plataforma. M&eacute;tricas reales. IA integrada.<br>Sin vigilancia. Sin instalar nada.</p>
+    <a href="https://guardian.fenixia.tech/#contacto" class="cta-button">Solicitar acceso &rarr;</a>
+    <div class="contact-info">
+      <p style="color:var(--white);font-weight:700;margin-bottom:6px">FENIXIA SOLUTIONS S.L.</p>
+      <p><a href="mailto:contacto@fenixia.tech">contacto@fenixia.tech</a> &mdash; guardian.fenixia.tech</p>
+      <p style="margin-top:4px">C/ La Paz 83, 03320 Elx/Elche (Alicante)</p>
+    </div>
+  </div>
+</section>
+
+<script>
+const slides=document.querySelectorAll('.slide');
+const nav=document.getElementById('nav');
+const counter=document.getElementById('slideCounter');
+const total=slides.length;
+
+// Create nav dots
+slides.forEach((_,i)=>{
+  const dot=document.createElement('div');
+  dot.className='nav-dot'+(i===0?' active':'');
+  dot.addEventListener('click',()=>slides[i].scrollIntoView({behavior:'smooth'}));
+  nav.appendChild(dot);
+});
+
+// Slide observer
+const slideObs=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      const idx=Array.from(slides).indexOf(entry.target);
+      document.querySelectorAll('.nav-dot').forEach((d,i)=>d.classList.toggle('active',i===idx));
+      counter.textContent=`${idx+1} / ${total}`;
+    }
+  });
+},{threshold:.5});
+slides.forEach(slide=>slideObs.observe(slide));
+
+// Reveal animations
+const revealObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');revealObs.unobserve(x.target)}})},{threshold:.12});
+document.querySelectorAll('.fi').forEach(e=>revealObs.observe(e));
+
+// Keyboard navigation
+document.addEventListener('keydown',e=>{
+  const dots=document.querySelectorAll('.nav-dot');
+  let current=Array.from(dots).findIndex(d=>d.classList.contains('active'));
+  if(e.key==='ArrowDown'||e.key==='PageDown'){
+    e.preventDefault();
+    if(current<total-1)slides[current+1].scrollIntoView({behavior:'smooth'});
+  }else if(e.key==='ArrowUp'||e.key==='PageUp'){
+    e.preventDefault();
+    if(current>0)slides[current-1].scrollIntoView({behavior:'smooth'});
+  }
+});
+</script>
+</body>
+</html>
