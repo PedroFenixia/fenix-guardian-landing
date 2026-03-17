@@ -49,7 +49,8 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <img src={fenixLogo} alt="FENIX Guardian" className="h-9 w-9 object-contain" />
+            <svg width="0" height="0" className="absolute"><defs><filter id="f-guardian" colorInterpolationFilters="sRGB"><feColorMatrix type="matrix" values="0.961 0 0 0 0  0.620 0 0 0 0  0.043 0 0 0 0  0 0 0 1 0"/></filter></defs></svg>
+            <img src={fenixLogo} alt="FENIX Guardian" className="h-9 w-9 object-contain" style={{filter:"url(#f-guardian)"}} />
             <span className="text-lg font-bold text-foreground">
               FENIX <span style={{ color: '#f59e0b' }}>Guardian</span>
             </span>
