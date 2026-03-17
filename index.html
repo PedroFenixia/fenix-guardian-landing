@@ -323,24 +323,42 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.5rem 2r
       <div class="dashboard">
         <div class="dash-header">
           <div class="dash-dots"><span></span><span></span><span></span></div>
-          <span class="dash-title">Guardian &mdash; Productividad</span>
+          <span class="dash-title">Guardian &mdash; Tiempo real</span>
         </div>
         <div class="dash-body">
-          <div class="dash-row"><span class="dash-label">Equipo Desarrollo</span><span class="dash-value green">94%</span></div>
-          <div class="dash-row"><span class="dash-label">Equipo Comercial</span><span class="dash-value amber">78%</span></div>
-          <div class="dash-row"><span class="dash-label">Equipo Soporte</span><span class="dash-value green">91%</span></div>
-          <div class="dash-row"><span class="dash-label">Tareas completadas hoy</span><span class="dash-value blue">47</span></div>
-          <div class="dash-row"><span class="dash-label">Cuellos de botella</span><span class="dash-value red">2</span></div>
-          <div class="dash-chart">
-            <div class="dash-chart-label">Productividad semanal por equipo</div>
-            <div class="dash-chart-bars">
-              <span style="height:85%;background:linear-gradient(to top,var(--amber),var(--amber2))"></span>
-              <span style="height:92%;background:linear-gradient(to top,var(--emerald),var(--emerald2))"></span>
-              <span style="height:70%;background:linear-gradient(to top,var(--amber),var(--amber2))"></span>
-              <span style="height:95%;background:linear-gradient(to top,var(--emerald),var(--emerald2))"></span>
-              <span style="height:88%;background:linear-gradient(to top,var(--emerald),var(--emerald2))"></span>
+          <!-- Gauges circulares -->
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1rem">
+            <div style="text-align:center">
+              <svg viewBox="0 0 80 80" width="72" height="72">
+                <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(245,158,11,.1)" stroke-width="6"/>
+                <circle cx="40" cy="40" r="34" fill="none" stroke="url(#g-amber)" stroke-width="6" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="21" transform="rotate(-90 40 40)"/>
+                <text x="40" y="43" text-anchor="middle" fill="#f59e0b" font-size="14" font-weight="800" font-family="var(--mono)">90%</text>
+              </svg>
+              <div style="font-size:.65rem;color:var(--text3);margin-top:.2rem">Desarrollo</div>
+            </div>
+            <div style="text-align:center">
+              <svg viewBox="0 0 80 80" width="72" height="72">
+                <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(16,185,129,.1)" stroke-width="6"/>
+                <circle cx="40" cy="40" r="34" fill="none" stroke="url(#g-green)" stroke-width="6" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="42" transform="rotate(-90 40 40)"/>
+                <text x="40" y="43" text-anchor="middle" fill="#10b981" font-size="14" font-weight="800" font-family="var(--mono)">80%</text>
+              </svg>
+              <div style="font-size:.65rem;color:var(--text3);margin-top:.2rem">Comercial</div>
+            </div>
+            <div style="text-align:center">
+              <svg viewBox="0 0 80 80" width="72" height="72">
+                <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(139,92,246,.1)" stroke-width="6"/>
+                <circle cx="40" cy="40" r="34" fill="none" stroke="url(#g-violet)" stroke-width="6" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="15" transform="rotate(-90 40 40)"/>
+                <text x="40" y="43" text-anchor="middle" fill="#8b5cf6" font-size="14" font-weight="800" font-family="var(--mono)">93%</text>
+              </svg>
+              <div style="font-size:.65rem;color:var(--text3);margin-top:.2rem">Soporte</div>
             </div>
           </div>
+          <!-- Timeline de actividad -->
+          <div style="font-size:.65rem;color:var(--text3);font-family:var(--mono);margin-bottom:.5rem;letter-spacing:.5px">ACTIVIDAD RECIENTE</div>
+          <div class="tl-item"><span class="tl-time">09:14</span><span class="tl-dot" style="background:var(--emerald)"></span><span class="tl-text">M. L&oacute;pez &mdash; Inicio jornada</span></div>
+          <div class="tl-item"><span class="tl-time">09:47</span><span class="tl-dot" style="background:var(--amber)"></span><span class="tl-text">Cuello botella detectado &mdash; QA</span></div>
+          <div class="tl-item"><span class="tl-time">10:02</span><span class="tl-dot" style="background:var(--emerald)"></span><span class="tl-text">Sprint review completada</span></div>
+          <div class="tl-item"><span class="tl-time">10:31</span><span class="tl-dot" style="background:var(--rose)"></span><span class="tl-text">Anomal&iacute;a &mdash; 3h inactivo (J. Ruiz)</span></div>
         </div>
       </div>
     </div>
