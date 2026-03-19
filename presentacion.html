@@ -21,6 +21,16 @@
   --purple:#8b7cc8;--green:#5cb88a;--orange:#d4944a;--red:#c85454;
   --font:'Inter',sans-serif;--mono:'JetBrains Mono',monospace;
 }
+html.light{
+  --bg:#FAFAF8;--bg2:#F0F0ED;--bg3:#E8E8E5;--card:#FFFFFF;
+  --silver:#4a4a5a;--silver-light:#2a2a3a;--white:#1a1a2e;
+  --gray:#6b6b7b;--gray2:rgba(0,0,0,.12);--gray3:rgba(0,0,0,.08);
+}
+html.light .slide::before{opacity:.3}
+html.light .nav-dot{background:rgba(0,0,0,.1);border-color:rgba(0,0,0,.15)}
+html.light .key{background:rgba(0,0,0,.05);border-color:rgba(0,0,0,.1)}
+.theme-toggle{position:fixed;top:20px;left:20px;z-index:200;background:var(--card);border:1.5px solid var(--gray3);border-radius:8px;color:var(--gray);cursor:pointer;padding:.5rem;display:flex;align-items:center;justify-content:center;transition:all .3s;font-size:1.1rem}
+.theme-toggle:hover{border-color:var(--amber);color:var(--amber)}
 html{scroll-behavior:smooth;scroll-snap-type:y mandatory;font-size:16px}
 body{font-family:var(--font);background:var(--bg);color:var(--silver);line-height:1.65;overflow-x:hidden}
 a{color:var(--amber);text-decoration:none;transition:all .25s}
@@ -389,7 +399,30 @@ p{font-size:1.05rem;line-height:1.7;color:var(--gray)}
   </div>
 </section>
 
+<button class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema" title="Cambiar tema">
+  <span class="icon-sun">&#9728;</span><span class="icon-moon" style="display:none">&#9790;</span>
+</button>
+
 <script>
+function toggleTheme(){
+  const isLight=document.documentElement.classList.toggle('light');
+  document.querySelector('.icon-sun').style.display=isLight?'none':'block';
+  document.querySelector('.icon-moon').style.display=isLight?'block':'none';
+  localStorage.setItem('guardian-theme',isLight?'light':'dark');
+}
+(function(){
+  const saved=localStorage.getItem('guardian-theme');
+  if(saved==='light'){
+    document.documentElement.classList.add('light');
+    document.addEventListener('DOMContentLoaded',function(){
+      var sun=document.querySelector('.icon-sun');
+      var moon=document.querySelector('.icon-moon');
+      if(sun)sun.style.display='none';
+      if(moon)moon.style.display='block';
+    });
+  }
+})();
+
 const slides=document.querySelectorAll('.slide');
 const nav=document.getElementById('nav');
 const counter=document.getElementById('slideCounter');
