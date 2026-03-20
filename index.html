@@ -27,6 +27,9 @@
 <meta name="twitter:title" content="Fenix Guardian &mdash; Productividad de equipos con IA">
 <meta name="twitter:description" content="Monitoriza y mide la productividad de tus equipos con IA. Sin micromanagement.">
 
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -570,11 +573,11 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 2rem
       <h2 class="stitle">Empieza a medir lo que <span class="hl">importa</span></h2>
       <p class="sdesc">Demo gratuita de 30 min con datos de tu equipo. Sin compromiso.</p>
     </div>
-    <form class="cta-form" id="contactForm" onsubmit="event.preventDefault();this.style.display='none';document.getElementById('successMsg').style.display='block'">
-      <input type="text" placeholder="Tu nombre" required>
-      <input type="email" placeholder="Email corporativo" required>
-      <input type="text" placeholder="Empresa y n&uacute;mero de empleados">
-      <select>
+    <form class="cta-form" id="contactForm" onsubmit="submitLead(event)">
+      <input type="text" name="name" placeholder="Tu nombre" required>
+      <input type="email" name="email" placeholder="Email corporativo" required>
+      <input type="text" name="company" placeholder="Empresa y n&uacute;mero de empleados">
+      <select name="need">
         <option value="">&iquest;Qu&eacute; necesitas?</option>
         <option>Medir productividad por equipo</option>
         <option>Detectar cuellos de botella</option>
@@ -672,6 +675,21 @@ function toggleTheme(){
     });
   }
 })();
+
+// Lead submit to Holded
+function submitLead(e){
+  e.preventDefault();
+  var f=e.target;var btn=f.querySelector('button[type="submit"]');
+  btn.disabled=true;btn.textContent='Enviando...';
+  fetch('https://app.advisor.fenixia.tech/api/contact',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name:f.name.value,email:f.email.value,company:f.company.value,source:'guardian'})
+  }).then(function(){
+    f.style.display='none';document.getElementById('successMsg').style.display='block';
+  }).catch(function(){
+    f.style.display='none';document.getElementById('successMsg').style.display='block';
+  });
+}
 </script>
 </body>
 </html>
