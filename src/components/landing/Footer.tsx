@@ -7,13 +7,6 @@ const Footer = () => {
       { label: "Fuentes", href: "/#fuentes" },
       { label: "Casos de uso", href: "/#casos-de-uso" },
     ],
-    ecosistema: [
-      { label: "Fenixia.tech", href: "https://fenixia.tech", external: true },
-      { label: "Fenix 360", href: "https://360.fenixia.tech", external: true },
-      { label: "Fenix HR", href: "https://hr.fenixia.tech", external: true },
-      { label: "Fenix Prospector", href: "https://prospector.fenixia.tech", external: true },
-      { label: "Fenix Portfolio", href: "https://portfolio.fenixia.tech", external: true },
-    ],
     contacto: [
       { label: "contacto@fenixia.tech", href: "mailto:contacto@fenixia.tech" },
     ],
@@ -29,7 +22,7 @@ const Footer = () => {
   return (
     <footer id="footer" className="py-16 lg:py-20 border-t border-border/50 bg-background">
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="grid lg:grid-cols-5 gap-12 lg:gap-8 mb-12">
+        <div className="grid lg:grid-cols-4 gap-12 lg:gap-8 mb-12">
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-3 mb-4 group">

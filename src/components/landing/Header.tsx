@@ -70,14 +70,6 @@ const Header = () => {
             >
               Contacto
             </Link>
-            <a
-              href="https://fenixia.tech"
-              target="_blank"
-              rel="noopener"
-              className="px-3 py-1.5 text-sm font-medium text-foreground bg-muted/50 rounded-md border border-border/50 hover:bg-primary/10 hover:border-primary/30 hover:text-primary transition-all duration-200"
-            >
-              Ecosistema Fenixia
-            </a>
           </nav>
 
           {/* Desktop CTA */}
@@ -119,15 +111,6 @@ const Header = () => {
               >
                 Contacto
               </Link>
-              <a
-                href="https://fenixia.tech"
-                target="_blank"
-                rel="noopener"
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors py-2"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Ecosistema Fenixia
-              </a>
               <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
                 <Link to="/contacto" onClick={() => setIsMenuOpen(false)}>
                   <Button variant="hero" size="sm" className="w-full">
