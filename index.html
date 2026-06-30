@@ -583,6 +583,7 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 2rem
         <option>Equilibrar carga de trabajo</option>
         <option>Demo general</option>
       </select>
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <button type="submit" class="btn btn-primary cta-submit">Solicitar Demo Gratuita &rarr;</button>
       <p class="cta-hint">Sin compromiso. Te contactamos en menos de 24h</p>
     </form>
@@ -676,18 +677,33 @@ function toggleTheme(){
   }
 })();
 
-// Lead submit to Holded
+// Lead submit al CRM Fenixia (proyecto Fenix Guard). El proyecto se resuelve por
+// el token; el lead entra en la etapa inicial del embudo con origen "Formulario landing".
 function submitLead(e){
   e.preventDefault();
   var f=e.target;var btn=f.querySelector('button[type="submit"]');
+  // Honeypot: si el campo oculto viene relleno es un bot — no enviamos.
+  var hp=f.querySelector('[name="website"]');
+  if(hp&&hp.value){return;}
+  var original=btn.textContent;
   btn.disabled=true;btn.textContent='Enviando...';
-  fetch('https://app.advisor.fenixia.tech/api/contact',{
-    method:'POST',headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({name:f.name.value,email:f.email.value,company:f.company.value,source:'guardian'})
-  }).then(function(){
+  var need=f.need&&f.need.value?f.need.value:'';
+  fetch('https://crm.fenixia.tech/api/public/leads',{
+    method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
+    body:JSON.stringify({
+      token:'Dv3n2IUtPjdaMCaUPxkikfIOg358JTUnAlHUimRZcvo9j2JR',
+      nombre:f.name.value,
+      email:f.email.value,
+      empresa:f.company.value,
+      mensaje:need?('Interés: '+need):null,
+      origen:'guardian.fenixia.tech'
+    })
+  }).then(function(res){
+    if(!res.ok){throw new Error('HTTP '+res.status);}
     f.style.display='none';document.getElementById('successMsg').style.display='block';
   }).catch(function(){
-    f.style.display='none';document.getElementById('successMsg').style.display='block';
+    btn.disabled=false;btn.textContent=original;
+    alert('No se pudo enviar. Inténtalo de nuevo o escribe a hola@fenixia.tech.');
   });
 }
 </script>
