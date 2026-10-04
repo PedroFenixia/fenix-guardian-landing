@@ -262,6 +262,9 @@ footer{background:var(--bg);border-top:1px solid var(--border);padding:2.5rem 2r
   "featureList":["Monitorizaci&oacute;n diaria de BORME","Alertas BOE y subvenciones","BDNS y licitaciones PLACSP","Registros concursales","Edictos judiciales","Alertas personalizadas con IA"]
 }
 </script>
+<!-- Analítica sin cookies (Umami · stats.fenixia.tech) -->
+<script defer src="https://stats.fenixia.tech/s.js" data-website-id="ebee8be2-d46d-486b-b176-9f978919f5be" data-domains="guardian.fenixia.tech"></script>
+<script>(function(){function t(n,d){if(window.umami){window.umami.track(n,d)}}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a){return}var h=a.getAttribute('href')||'',p={pagina:location.pathname};if(/^tel:/i.test(h)){t('telefono',p)}else if(/^mailto:/i.test(h)){t('email',p)}else if(/wa\.me|whatsapp\.com/i.test(h)){t('whatsapp',p)}else if(/^#contact/i.test(h)){p.texto=(a.textContent||'').trim().slice(0,40);t('cta_contacto',p)}else if(/^https?:/i.test(h)&&a.hostname!==location.hostname){p.destino=a.hostname;t('enlace_externo',p)}},true);document.addEventListener('submit',function(e){t('formulario',{pagina:location.pathname,form:e.target.id||e.target.getAttribute('name')||''})},true)})();</script>
 </head>
 <body>
 
