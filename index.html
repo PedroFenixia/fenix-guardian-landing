@@ -2,713 +2,133 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fenix Guardian &mdash; Monitoriza y mide la productividad de tus equipos con IA</title>
-
-<!-- SEO -->
-<meta name="description" content="Monitoriza la productividad de tus equipos en tiempo real. M&eacute;tricas autom&aacute;ticas, detecci&oacute;n de cuellos de botella y dashboards por equipo. Sin micromanagement.">
-<meta name="keywords" content="productividad equipos, monitorizaci&oacute;n empleados, m&eacute;tricas productividad, rendimiento equipos, gesti&oacute;n productividad IA, tiempo trabajo">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fenix Guardian · Medir el trabajo del equipo sin vigilar a nadie (en desarrollo)</title>
+<meta name="description" content="Fenix Guardian está en desarrollo: medir dónde se atasca el trabajo de los equipos y quién está sobrecargado, sin capturas de pantalla ni registro de teclas. Apúntate a la lista de espera.">
 <meta name="author" content="FENIXIA SOLUTIONS S.L.">
 <meta name="robots" content="index, follow">
-<meta name="language" content="Spanish">
-<meta name="theme-color" content="#0d9488">
+<meta name="theme-color" content="#4d7c0f">
 <link rel="canonical" href="https://guardian.fenixia.tech/">
-
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://guardian.fenixia.tech/">
-<meta property="og:title" content="Fenix Guardian &mdash; Productividad de equipos con IA">
-<meta property="og:description" content="Mide y mejora la productividad de tus equipos. M&eacute;tricas autom&aacute;ticas, alertas inteligentes y dashboards en tiempo real.">
-<meta property="og:site_name" content="Fenix Guardian">
+<meta property="og:title" content="Fenix Guardian · Medir el trabajo del equipo sin vigilar a nadie (en desarrollo)">
+<meta property="og:description" content="Fenix Guardian está en desarrollo: medir dónde se atasca el trabajo de los equipos y quién está sobrecargado, sin capturas de pantalla ni registro de teclas. Apúntate a la lista de espera.">
+<meta property="og:site_name" content="FENIX IA">
 <meta property="og:locale" content="es_ES">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Fenix Guardian &mdash; Productividad de equipos con IA">
-<meta name="twitter:description" content="Monitoriza y mide la productividad de tus equipos con IA. Sin micromanagement.">
-
-<!-- Favicon -->
+<meta name="twitter:card" content="summary">
 <link rel="icon" href="favicon.ico" sizes="any">
-
-<!-- Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
+<link rel="icon" href="fenix.png" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preload" href="/fonts/sora-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/familia.css">
 <style>
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#0b1220;--bg2:#0f1629;--bg3:#151d30;
-  --surface:#0f1629;--surface2:#151d30;
-  --amber:#f59e0b;--amber2:#fbbf24;--amber-glow:rgba(245,158,11,.12);
-  --emerald:#10b981;--emerald2:#34d399;
-  --violet:#8b5cf6;--violet2:#a78bfa;
-  --accent:#f59e0b;--accent2:#fbbf24;
-  --teal:#0d9488;--teal2:#0d9488;
-  --rose:#f43f5e;
-  --blue:#3b82f6;
-  --text:#f0f2f0;--text2:#c4c8d0;--text3:#8892a4;
-  --border:rgba(255,255,255,.06);--border2:rgba(255,255,255,.12);
-  --font:'Inter',system-ui,sans-serif;
-  --mono:'JetBrains Mono',monospace;
-  --radius:16px;
-}
-html.light{
-  --bg:#FAFAF8;--bg2:#F0F0ED;--bg3:#E8E8E5;
-  --surface:#FAFAF8;--surface2:#F0F0ED;
-  --text:#1a1a2e;--text2:#4a4a5a;--text3:#6b6b7b;
-  --border:rgba(0,0,0,.08);--border2:rgba(0,0,0,.12);
-}
-html.light nav{background:rgba(250,250,248,.88)!important}
-html.light nav.scrolled{background:rgba(250,250,248,.95)!important;box-shadow:0 1px 8px rgba(0,0,0,.06)}
-html.light .orb{opacity:.08}
-.theme-toggle{background:none;border:1.5px solid var(--border2);border-radius:8px;color:var(--text3);cursor:pointer;padding:.4rem;display:flex;align-items:center;justify-content:center;transition:all .3s}
-.theme-toggle:hover{border-color:var(--accent);color:var(--accent)}
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-a{color:var(--amber);text-decoration:none;transition:.2s}
-a:hover{color:var(--amber2)}
-::selection{background:var(--amber);color:#fff}
+:root { --acento: #4d7c0f; --acento-osc: #365314; --acento-suave: #eef5e1; }
 
-/* ── NAV ── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.1rem 0;transition:.35s}
-.nav.scrolled{background:rgba(11,18,32,.92);-webkit-backdrop-filter:blur(20px) saturate(1.4);backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid var(--border);padding:.75rem 0;box-shadow:0 1px 12px rgba(0,0,0,.3)}
-.nav-inner{max-width:1200px;margin:0 auto;padding:0 2rem;display:flex;align-items:center;justify-content:space-between}
-.logo{font-weight:900;font-size:1.2rem;color:var(--text);letter-spacing:.5px;display:flex;align-items:center;gap:.5rem}
-.logo img{height:32px;width:auto}
-.logo span{color:var(--amber)}
-.nav-links{display:flex;gap:2rem;align-items:center}
-.nav-links a{color:var(--text2);font-weight:500;font-size:.85rem;letter-spacing:.3px;transition:.2s}
-.nav-links a:hover{color:var(--text)}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1.5rem;border-radius:10px;font-weight:600;font-size:.85rem;transition:.25s;cursor:pointer;border:none;font-family:var(--font);letter-spacing:.2px}
-.btn-primary{background:linear-gradient(135deg,var(--amber),#d97706);color:#fff !important;box-shadow:0 2px 20px rgba(245,158,11,.2)}
-.btn-primary:hover{transform:translateY(-1px);box-shadow:0 6px 30px rgba(245,158,11,.3);color:#fff !important}
-.btn-outline{background:transparent;color:var(--amber) !important;border:1.5px solid rgba(245,158,11,.3)}
-.btn-outline:hover{background:rgba(245,158,11,.06);border-color:var(--amber)}
+.compromisos { display: grid; grid-template-columns: 1fr 1fr; }
+.cmp-col { padding: 26px; }
+.cmp-col + .cmp-col { border-left: 1px solid var(--linea); background: var(--acento-suave); }
+.cmp-col p { font-weight: 700; font-size: var(--t-s); margin-bottom: 14px; }
+.cmp-col li { list-style: none; padding: 10px 0 10px 28px; position: relative; border-top: 1px solid var(--linea); font-size: .95rem; }
+.cmp-col ul { margin: 0; padding: 0; }
+.cmp-col li::before { position: absolute; left: 0; top: 9px; width: 18px; height: 18px; border-radius: 50%; display: grid; place-items: center; font-size: 11px; font-weight: 800; }
+.no li::before { content: "✕"; background: #fde8e8; color: #b42318; }
+.si li::before { content: "✓"; background: #fff; color: var(--acento-osc); }
+@media (max-width: 560px) { .compromisos { grid-template-columns: 1fr; } .cmp-col + .cmp-col { border-left: 0; border-top: 1px solid var(--linea); } }
 
-/* Mobile */
-.mobile-toggle{display:none;background:none;border:none;color:var(--amber);font-size:1.5rem;cursor:pointer;padding:.5rem}
-.mobile-menu{position:fixed;top:0;right:-100%;width:min(320px,85vw);height:100vh;background:var(--bg2);padding:5rem 2rem 2rem;transition:right .35s;z-index:99;border-left:1px solid var(--border);box-shadow:-4px 0 24px rgba(0,0,0,.3)}
-.mobile-menu.open{right:0}
-.mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);opacity:0;visibility:hidden;transition:.3s;z-index:98}
-.mobile-overlay.open{opacity:1;visibility:visible}
-.mobile-menu a{display:block;padding:.9rem 0;color:var(--text2);font-size:.95rem;border-bottom:1px solid var(--border)}
-.mobile-menu a:hover{color:var(--amber)}
-.mobile-menu .btn{margin-top:1.5rem;width:100%;justify-content:center}
+@font-face { font-family: 'Sora'; font-style: normal; font-weight: 100 800;  font-display: swap; src: url(/fonts/sora-latin-wght-normal.woff2) format('woff2'); }
 
-/* ── HERO ── */
-.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:8rem 2rem 6rem;background:linear-gradient(160deg,var(--bg) 60%,var(--bg2) 100%)}
-.hero-bg{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.hero-bg .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.25}
-.hero-bg .orb-1{width:600px;height:600px;background:rgba(245,158,11,.2);top:-20%;right:-10%;animation:float-orb 12s ease-in-out infinite}
-.hero-bg .orb-2{width:500px;height:500px;background:rgba(139,92,246,.1);bottom:-15%;left:-10%;animation:float-orb 15s ease-in-out infinite reverse}
-.hero-bg .grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(245,158,11,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,.04) 1px,transparent 1px);background-size:60px 60px;-webkit-mask-image:radial-gradient(ellipse at 50% 50%,black 30%,transparent 70%);mask-image:radial-gradient(ellipse at 50% 50%,black 30%,transparent 70%)}
-@keyframes float-orb{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(30px,-20px) scale(1.05)}}
+:root { --papel: #f2f5ee; --hoja: #ffffff; --tinta: #16200f; --tinta-2: #55624b; --linea: #d8e0cf;
+  --sans: 'Sora', system-ui, sans-serif; --nav-fondo: rgba(242,245,238,.9);
+  --radio: 14px; --radio-boton: 999px; --sombra: 0 0 0 1px #d8e0cf, 0 30px 60px -36px rgba(54,83,20,.4);
+  --t-3xl: clamp(2.5rem, 5.4vw, 4.2rem); }
+h1, h2, h3 { font-weight: 600; letter-spacing: -.035em; }
+.portada h1 { line-height: 1.04; }
+.bloque { border-top-color: var(--linea); }
+.pasos li::before { font-weight: 300; }
+.rasgos li { padding-left: 18px; border-left: 2px solid var(--acento); }
+.final { background: #16200f; }
+.final .boton-principal { color: #16200f; }
 
-.hero-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center;position:relative;z-index:1}
-.hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem .4rem .5rem;border-radius:100px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.18);font-size:.78rem;color:var(--amber);font-weight:600;margin-bottom:1.5rem}
-.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--emerald);animation:pulse-dot 2s ease-in-out infinite}
-@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
-.hero h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;line-height:1.08;color:var(--text);margin-bottom:1.4rem;letter-spacing:-.03em}
-.hero h1 .gradient{background:linear-gradient(135deg,var(--amber),#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero .sub{font-size:1.1rem;color:var(--text2);line-height:1.75;margin-bottom:2.2rem;max-width:480px}
-.hero-ctas{display:flex;gap:1rem;flex-wrap:wrap}
-.hero-trust{display:flex;gap:2rem;margin-top:2.5rem;flex-wrap:wrap}
-.hero-trust span{display:flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--text2);font-weight:500}
-.hero-trust .check{color:var(--emerald);font-weight:700}
-
-/* Dashboard mock */
-.hero-visual{position:relative;display:flex;justify-content:center}
-.dashboard{width:100%;max-width:500px;background:var(--surface);border-radius:var(--radius);border:1px solid var(--border2);overflow:hidden;box-shadow:0 24px 80px rgba(0,0,0,.2),0 4px 24px rgba(0,0,0,.2)}
-.dash-header{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.2rem;background:var(--bg2);border-bottom:1px solid var(--border)}
-.dash-dots{display:flex;gap:5px}
-.dash-dots span{width:8px;height:8px;border-radius:50%}
-.dash-dots span:nth-child(1){background:#ef4444}
-.dash-dots span:nth-child(2){background:#f59e0b}
-.dash-dots span:nth-child(3){background:#22c55e}
-.dash-title{font-size:.72rem;font-weight:600;color:var(--text3);letter-spacing:.5px;font-family:var(--mono)}
-.dash-body{padding:1.2rem}
-.gauges{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem;margin-bottom:1rem}
-.gauge{text-align:center}
-.gauge svg{width:72px;height:72px}
-.gauge-label{font-size:.65rem;color:var(--text3);margin-top:.2rem}
-.tl-header{font-size:.65rem;color:var(--text3);font-family:var(--mono);margin-bottom:.5rem;letter-spacing:.5px;text-transform:uppercase}
-.tl-item{display:flex;align-items:center;gap:.6rem;padding:.45rem .6rem;border-radius:8px;margin-bottom:.3rem;transition:.2s}
-.tl-item:hover{background:rgba(245,158,11,.05)}
-.tl-time{font-size:.68rem;font-family:var(--mono);color:var(--text3);font-weight:600;min-width:34px}
-.tl-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.tl-green{background:var(--emerald)}
-.tl-amber{background:var(--amber)}
-.tl-red{background:var(--rose)}
-.tl-text{font-size:.75rem;color:var(--text2);font-weight:500}
-
-/* ── SECTIONS ── */
-section{padding:6rem 2rem}
-.container{max-width:1200px;margin:0 auto}
-.section-header{margin-bottom:3.5rem}
-.tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.7rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:1rem;padding:.35rem .9rem;border-radius:100px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.18)}
-.stitle{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:800;color:var(--text);line-height:1.15;margin-bottom:1rem;letter-spacing:-.02em}
-.stitle .hl{background:linear-gradient(135deg,var(--amber),#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.stitle .hl2{background:linear-gradient(135deg,var(--emerald),var(--teal2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.sdesc{color:var(--text2);font-size:1.05rem;max-width:560px;line-height:1.75}
-.center{text-align:center}
-.center .sdesc{margin:0 auto}
-.alt-bg{background:var(--bg2)}
-
-/* Feature cards */
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.fcard{background:var(--surface);border-radius:var(--radius);padding:2rem 1.6rem;border:1px solid var(--border);position:relative;overflow:hidden;transition:.35s;box-shadow:0 2px 12px rgba(0,0,0,.2)}
-.fcard:hover{border-color:rgba(245,158,11,.25);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.2)}
-.fcard-accent{position:absolute;top:0;left:0;right:0;height:2px}
-.fcard:nth-child(1) .fcard-accent{background:linear-gradient(90deg,var(--amber),var(--amber2))}
-.fcard:nth-child(2) .fcard-accent{background:linear-gradient(90deg,var(--emerald),var(--emerald2))}
-.fcard:nth-child(3) .fcard-accent{background:linear-gradient(90deg,var(--violet),var(--violet2))}
-.fcard:nth-child(4) .fcard-accent{background:linear-gradient(90deg,var(--teal),var(--teal2))}
-.fcard:nth-child(5) .fcard-accent{background:linear-gradient(90deg,var(--blue),#60a5fa)}
-.fcard:nth-child(6) .fcard-accent{background:linear-gradient(90deg,var(--rose),#fb7185)}
-.fcard-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem}
-.fcard:nth-child(1) .fcard-icon{background:rgba(245,158,11,.1);color:var(--amber)}
-.fcard:nth-child(2) .fcard-icon{background:rgba(16,185,129,.1);color:var(--emerald)}
-.fcard:nth-child(3) .fcard-icon{background:rgba(139,92,246,.1);color:var(--violet)}
-.fcard:nth-child(4) .fcard-icon{background:rgba(13,148,136,.1);color:var(--teal)}
-.fcard:nth-child(5) .fcard-icon{background:rgba(59,130,246,.1);color:var(--blue)}
-.fcard:nth-child(6) .fcard-icon{background:rgba(244,63,94,.1);color:var(--rose)}
-.fcard-title{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:.4rem}
-.fcard-desc{color:var(--text2);font-size:.85rem;line-height:1.65}
-
-/* Steps */
-.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
-.step-card{background:var(--surface);border-radius:var(--radius);padding:2rem 1.4rem;border:1px solid var(--border);text-align:center;position:relative;transition:.35s;box-shadow:0 2px 12px rgba(0,0,0,.2)}
-.step-card:hover{border-color:rgba(245,158,11,.25);transform:translateY(-3px);box-shadow:0 16px 50px rgba(0,0,0,.2)}
-.step-num{font-size:2.2rem;font-weight:900;font-family:var(--mono);background:linear-gradient(135deg,var(--amber),#d97706);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:.8rem}
-.step-card h4{font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:.4rem}
-.step-card p{font-size:.82rem;color:var(--text2);line-height:1.6}
-
-/* Use cases */
-.use-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.use-card{background:var(--surface);border-radius:var(--radius);padding:2rem 1.6rem;border:1px solid var(--border);transition:.35s;box-shadow:0 2px 12px rgba(0,0,0,.2)}
-.use-card:hover{border-color:rgba(245,158,11,.25);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,.2)}
-.use-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:1rem}
-.use-card:nth-child(1) .use-icon{background:rgba(245,158,11,.1);color:var(--amber)}
-.use-card:nth-child(2) .use-icon{background:rgba(16,185,129,.1);color:var(--emerald)}
-.use-card:nth-child(3) .use-icon{background:rgba(139,92,246,.1);color:var(--violet)}
-.use-card h4{font-size:1.05rem;font-weight:700;color:var(--text);margin-bottom:.4rem}
-.use-card p{font-size:.85rem;color:var(--text2);line-height:1.65}
-
-/* Compare table */
-.compare-table{overflow-x:auto;margin-top:2.5rem}
-.compare-table table{width:100%;border-collapse:collapse;font-size:.85rem}
-.compare-table th,.compare-table td{padding:.85rem 1.2rem;text-align:left;border-bottom:1px solid var(--border)}
-.compare-table thead th{font-weight:700;font-size:.78rem;letter-spacing:1px;text-transform:uppercase;padding-bottom:1rem}
-.compare-table th.comp-them{color:var(--text3)}
-.compare-table th.comp-us{color:var(--amber);background:rgba(245,158,11,.05);border-radius:10px 10px 0 0}
-.compare-table td.comp-feature{font-weight:600;color:var(--text);font-size:.88rem}
-.compare-table td.comp-them{color:var(--text3)}
-.compare-table td.comp-us{color:var(--emerald);background:rgba(245,158,11,.04);font-weight:500}
-@media(max-width:600px){.compare-table{font-size:.75rem}.compare-table th,.compare-table td{padding:.65rem .8rem}}
-
-/* CTA */
-.cta-section{position:relative;overflow:hidden;background:var(--bg2)}
-.cta-section::before{content:'';position:absolute;inset:0;background:linear-gradient(160deg,rgba(245,158,11,.03),rgba(139,92,246,.02));pointer-events:none}
-.cta-section::after{content:'';position:absolute;top:50%;left:50%;width:800px;height:800px;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(245,158,11,.05),transparent 60%);pointer-events:none}
-.cta-form{max-width:480px;margin:2rem auto 0;display:flex;flex-direction:column;gap:.8rem;position:relative;z-index:1}
-.cta-form input,.cta-form select{padding:.85rem 1.2rem;border-radius:10px;border:1px solid var(--border2);background:var(--surface);color:var(--text);font-family:var(--font);font-size:.9rem;outline:none;transition:.25s;width:100%}
-.cta-form input:focus,.cta-form select:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,158,11,.1)}
-.cta-form input::placeholder{color:var(--text3)}
-.cta-form select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2394a3b8' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center}
-.cta-form select option{background:var(--surface);color:var(--text)}
-.success-msg{display:none;padding:2rem;background:rgba(16,185,129,.06);border-radius:14px;border:1px solid rgba(16,185,129,.15);text-align:center}
-.success-msg .check{font-size:1.5rem;font-weight:800;color:var(--emerald);margin-bottom:.4rem}
-.success-msg p{color:var(--text2);font-size:.95rem}
-.cta-submit{width:100%;justify-content:center;padding:.95rem;font-size:.95rem}
-.cta-hint{font-size:.72rem;color:var(--text3);text-align:center}
-
-/* Footer */
-footer{background:var(--bg);border-top:1px solid var(--border);padding:3rem 2rem 1.5rem}
-.ft-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem}
-.ft-brand-name{font-weight:900;font-size:1.1rem;color:var(--text);margin-bottom:.5rem}
-.ft-brand-name span{color:#f97316}
-.ft-brand-desc{font-size:.78rem;color:var(--text3);line-height:1.6}
-.ft-col h4{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--text);margin-bottom:.8rem}
-.ft-col a{display:block;color:var(--text2);font-size:.82rem;padding:.25rem 0;transition:.2s}
-.ft-col a:hover{color:var(--accent)}
-.ft-bottom{max-width:1200px;margin:1.5rem auto 0;padding-top:1.2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem}
-.ft-copy{color:var(--text3);font-size:.72rem}
-.ft-linkedin{color:var(--text3);font-size:.82rem;transition:.2s}
-.ft-linkedin:hover{color:var(--accent)}
-
-/* Animations */
-.reveal{opacity:0;transform:translateY(28px);transition:all .6s cubic-bezier(.16,1,.3,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
-.reveal-d1{transition-delay:.1s}
-.reveal-d2{transition-delay:.2s}
-.reveal-d3{transition-delay:.3s}
-
-/* Responsive */
-@media(max-width:900px){
-  .hero-inner{grid-template-columns:1fr;text-align:center}
-  .hero h1{font-size:2.2rem}
-  .hero .sub{margin:0 auto 2rem}
-  .hero-ctas{justify-content:center}
-  .hero-trust{justify-content:center}
-  .hero-visual{display:none}
-  .features-grid,.use-grid{grid-template-columns:1fr}
-  .steps-grid{grid-template-columns:repeat(2,1fr)}
-  .nav-links{display:none}
-  .mobile-toggle{display:block}
-  .ft-inner{grid-template-columns:1fr 1fr;gap:1.5rem}
-}
-@media(max-width:600px){
-  nav .nav-inner{padding:0 1.2rem}
-  section{padding:4rem 1.2rem}
-  .hero{padding:6rem 1.2rem 4rem;min-height:auto}
-  .hero h1{font-size:1.8rem}
-  .steps-grid{grid-template-columns:1fr}
-  .btn{padding:.85rem 1.5rem;font-size:.88rem;min-height:44px}
-  .hero-ctas{flex-direction:column;width:100%}
-  .hero-ctas .btn{width:100%;justify-content:center}
-  .cta-form input,.cta-form select{font-size:16px}
-  .cta-form button{min-height:48px}
-  .ft-inner{grid-template-columns:1fr;text-align:center}
-  .ft-bottom{flex-direction:column;text-align:center}
-}
 </style>
 
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@type":"SoftwareApplication",
-  "name":"Fenix Guardian",
-  "applicationCategory":"BusinessApplication",
-  "operatingSystem":"Web",
-  "description":"Monitoriza y mide la productividad de tus equipos con IA. Metricas automaticas, deteccion de cuellos de botella y dashboards en tiempo real.",
-  "provider":{"@type":"Organization","name":"FENIXIA SOLUTIONS S.L.","url":"https://guardian.fenixia.tech"},
-  "featureList":["Monitorizacion de productividad por equipo","Metricas automaticas con IA","Deteccion de cuellos de botella","Dashboards en tiempo real","Distribucion de carga de trabajo","Alertas de rendimiento"]
-}
-</script>
-<!-- Analítica sin cookies (Umami · stats.fenixia.tech) -->
 <script defer src="https://stats.fenixia.tech/s.js" data-website-id="ebee8be2-d46d-486b-b176-9f978919f5be" data-domains="guardian.fenixia.tech"></script>
-<script>(function(){function t(n,d){if(window.umami){window.umami.track(n,d)}}document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');if(!a){return}var h=a.getAttribute('href')||'',p={pagina:location.pathname};if(/^tel:/i.test(h)){t('telefono',p)}else if(/^mailto:/i.test(h)){t('email',p)}else if(/wa\.me|whatsapp\.com/i.test(h)){t('whatsapp',p)}else if(/^#contact/i.test(h)){p.texto=(a.textContent||'').trim().slice(0,40);t('cta_contacto',p)}else if(/^https?:/i.test(h)&&a.hostname!==location.hostname){p.destino=a.hostname;t('enlace_externo',p)}},true);document.addEventListener('submit',function(e){t('formulario',{pagina:location.pathname,form:e.target.id||e.target.getAttribute('name')||''})},true)})();</script>
 </head>
-<body>
-
-<!-- NAV -->
-<nav class="nav" id="navbar">
-  <div class="nav-inner">
-    <div class="logo">FENIX <span>Guardian</span></div>
-    <div class="nav-links">
-      <a href="#funcionalidades">Funcionalidades</a>
-      <a href="#como-funciona">C&oacute;mo funciona</a>
-      <a href="#casos-de-uso">Casos de uso</a>
-      <a href="presentacion.html" class="btn btn-outline">&#9654; Presentaci&oacute;n</a>
-      <a href="#contacto" class="btn btn-primary">Solicitar Demo &rarr;</a>
-      <button type="button" class="theme-toggle" onclick="toggleTheme()" aria-label="Cambiar tema" title="Cambiar tema">
-        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-    </div>
-    <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Men&uacute;">&#9776;</button>
+<body class="tema-guardian">
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<header class="nav" id="nav"><div class="envoltura">
+  <a class="marca" href="/" aria-label="Fenix Guardian, inicio"><img src="fenix.png" alt="" width="34" height="34"><span><b>FENIX</b> Guardian</span></a>
+  <nav class="nav-enlaces" aria-label="Secciones"><a href="#idea">La idea</a><a href="#preguntas">Preguntas</a></nav>
+  <div class="nav-acciones"><a class="boton boton-principal" href="#contacto">Avísame</a></div>
+</div></header>
+<main id="contenido">
+<section class="portada"><div class="envoltura">
+  <div>
+    <h1>Medir el trabajo del equipo sin vigilar a nadie.</h1>
+    <p class="entradilla">Fenix Guardian está en desarrollo. Queremos que sepas dónde se atasca el trabajo y quién está sobrecargado a partir de las herramientas que tu equipo ya usa, sin capturas de pantalla ni registro de teclas.</p>
+    <div class="acciones"><a class="boton boton-principal" href="#contacto">Apuntarme a la lista</a><a class="boton boton-secundario" href="#idea">Ver la idea</a></div>
+    <p class="nota">Todavía no está disponible. Te avisamos cuando lo esté.</p>
   </div>
-</nav>
-
-<div class="mobile-overlay" onclick="toggleMenu()"></div>
-<div class="mobile-menu">
-  <a href="#funcionalidades" onclick="toggleMenu()">Funcionalidades</a>
-  <a href="#como-funciona" onclick="toggleMenu()">C&oacute;mo funciona</a>
-  <a href="#casos-de-uso" onclick="toggleMenu()">Casos de uso</a>
-  <a href="presentacion.html" class="btn btn-outline" onclick="toggleMenu()">&#9654; Presentaci&oacute;n</a>
-  <a href="#contacto" class="btn btn-primary" onclick="toggleMenu()">Solicitar Demo &rarr;</a>
-</div>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-bg">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="grid-lines"></div>
+  <figure class="muestra">
+  <div class="hoja compromisos">
+    <div class="cmp-col no"><p>Guardian nunca</p><ul>
+      <li>hará capturas de pantalla</li><li>registrará teclas ni clics</li><li>vigilará a una persona concreta</li><li>pedirá instalar nada en los ordenadores</li></ul></div>
+    <div class="cmp-col si"><p>Lo que queremos que haga</p><ul>
+      <li>medir equipos, no personas</li><li>enseñar dónde se atasca el trabajo</li><li>avisar de quién está sobrecargado</li><li>usar las herramientas que ya tenéis</li></ul></div>
   </div>
-  <div class="hero-inner">
-    <div>
-      <div class="hero-badge"><span class="dot"></span> Productividad en tiempo real</div>
-      <h1>&iquest;Sabes d&oacute;nde se pierde el tiempo en <span class="gradient">tu equipo</span>?</h1>
-      <p class="sub">Guardian monitoriza la productividad de tus equipos, detecta cuellos de botella y te da m&eacute;tricas accionables. Sin micromanagement, con datos reales.</p>
-      <div class="hero-ctas">
-        <a href="#contacto" class="btn btn-primary">Solicitar Demo &rarr;</a>
-        <a href="#como-funciona" class="btn btn-outline">Ver c&oacute;mo funciona</a>
-      </div>
-      <div class="hero-trust">
-        <span><span class="check">&#10003;</span> M&eacute;tricas autom&aacute;ticas</span>
-        <span><span class="check">&#10003;</span> Sin instalar nada</span>
-        <span><span class="check">&#10003;</span> IA integrada</span>
-      </div>
-    </div>
-    <div class="hero-visual">
-      <div class="dashboard">
-        <div class="dash-header">
-          <div class="dash-dots"><span></span><span></span><span></span></div>
-          <span class="dash-title">Guardian &mdash; Tiempo real</span>
-        </div>
-        <div class="dash-body">
-          <svg width="0" height="0"><defs>
-            <linearGradient id="g-amber" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#fbbf24"/></linearGradient>
-            <linearGradient id="g-green" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#34d399"/></linearGradient>
-            <linearGradient id="g-violet" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8b5cf6"/><stop offset="100%" stop-color="#a78bfa"/></linearGradient>
-          </defs></svg>
-          <div class="gauges">
-            <div class="gauge">
-              <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="none" stroke="rgba(245,158,11,.1)" stroke-width="6"/><circle cx="40" cy="40" r="34" fill="none" stroke="url(#g-amber)" stroke-width="6" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="21" transform="rotate(-90 40 40)"/><text x="40" y="43" text-anchor="middle" fill="#f59e0b" font-size="14" font-weight="800">90%</text></svg>
-              <div class="gauge-label">Desarrollo</div>
-            </div>
-            <div class="gauge">
-              <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="none" stroke="rgba(16,185,129,.1)" stroke-width="6"/><circle cx="40" cy="40" r="34" fill="none" stroke="url(#g-green)" stroke-width="6" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="42" transform="rotate(-90 40 40)"/><text x="40" y="43" text-anchor="middle" fill="#10b981" font-size="14" font-weight="800">80%</text></svg>
-              <div class="gauge-label">Comercial</div>
-            </div>
-            <div class="gauge">
-              <svg viewBox="0 0 80 80"><circle cx="40" cy="40" r="34" fill="none" stroke="rgba(139,92,246,.1)" stroke-width="6"/><circle cx="40" cy="40" r="34" fill="none" stroke="url(#g-violet)" stroke-width="6" stroke-linecap="round" stroke-dasharray="213.6" stroke-dashoffset="15" transform="rotate(-90 40 40)"/><text x="40" y="43" text-anchor="middle" fill="#8b5cf6" font-size="14" font-weight="800">93%</text></svg>
-              <div class="gauge-label">Soporte</div>
-            </div>
-          </div>
-          <div class="tl-header">ACTIVIDAD RECIENTE</div>
-          <div class="tl-item"><span class="tl-time">09:14</span><span class="tl-dot tl-green"></span><span class="tl-text">M. L&oacute;pez &mdash; Inicio jornada</span></div>
-          <div class="tl-item"><span class="tl-time">09:47</span><span class="tl-dot tl-amber"></span><span class="tl-text">Cuello botella detectado &mdash; QA</span></div>
-          <div class="tl-item"><span class="tl-time">10:02</span><span class="tl-dot tl-green"></span><span class="tl-text">Sprint review completada</span></div>
-          <div class="tl-item"><span class="tl-time">10:31</span><span class="tl-dot tl-red"></span><span class="tl-text">Anomal&iacute;a &mdash; 3h inactivo (J. Ruiz)</span></div>
-        </div>
-      </div>
-    </div>
+  <figcaption>Fenix Guardian está en desarrollo.</figcaption>
+</figure>
+</div></section>
+<section class="bloque" id="idea"><div class="envoltura"><div class="rasgos"><div><h2>Lo que estamos construyendo</h2></div><ul><li><strong>Equipos, no personas</strong><span>Métricas por equipo y por proyecto. Nada de clasificar a nadie.</span></li><li><strong>Dónde se atasca el trabajo</strong><span>Qué tareas llevan demasiado tiempo y en qué paso se quedan paradas.</span></li><li><strong>Carga de trabajo</strong><span>Quién está al límite y quién tiene margen, antes de que alguien se queme.</span></li><li><strong>Con lo que ya usáis</strong><span>Sin instalar nada en los ordenadores: a partir de las herramientas de trabajo del equipo.</span></li></ul></div></div></section><section class="bloque" id="preguntas"><div class="envoltura"><div class="bloque-cab"><h2>Preguntas</h2></div><div class="preguntas"><details><summary>¿Cuándo estará disponible?</summary><p>Todavía no tenemos fecha. Si te apuntas, te escribimos en cuanto haya algo que probar.</p></details><details><summary>¿Puedo participar en las pruebas?</summary><p>Sí. Buscamos algunas empresas que quieran probarlo pronto y contarnos qué les sirve y qué no.</p></details><details><summary>¿Cuánto costará?</summary><p>Aún no está decidido.</p></details></div></div></section>
+<section class="final con-formulario" id="contacto"><div class="envoltura"><div><h2>¿Te avisamos cuando esté?</h2><p>Déjanos tu email. Nada de publicidad: solo te escribimos cuando Guardian se pueda probar.</p><p class="otra-via">También en <a href="mailto:contacto@fenixia.tech">contacto@fenixia.tech</a> o en el <a href="tel:+34966101029">966 10 10 29</a>.</p></div><div><form class="formulario" id="form-contacto" novalidate><label>Nombre<input name="nombre" autocomplete="name" required></label><label>Email<input name="email" type="email" autocomplete="email" required></label><label>Empresa<input name="empresa" autocomplete="organization"></label><label>Teléfono<input name="telefono" type="tel" autocomplete="tel"></label><label class="ancho">Qué te interesa<select name="interes"><option value="">Elige una opción</option><option>Quiero probarlo antes que nadie</option><option>Solo avisadme cuando esté</option></select></label><label class="ancho">Cuéntanos (opcional)<textarea name="mensaje"></textarea></label><input class="trampa" name="website" tabindex="-1" autocomplete="off" aria-hidden="true"><label class="casilla ancho"><input type="checkbox" name="privacidad" required> <span>He leído la <a href="https://fenixia.tech/privacidad/" target="_blank" rel="noopener">política de privacidad</a> y acepto que me contactéis.</span></label><p class="form-aviso error" id="form-error" role="alert" hidden></p><button class="boton" type="submit">Avísame cuando esté</button></form><div class="form-ok" id="form-ok" role="status" hidden><strong>Recibido.</strong>Te escribimos en menos de 24 horas.</div></div></div></section>
+</main>
+<footer class="pie"><div class="envoltura">
+  <div>
+    <a class="marca" href="https://fenixia.tech/"><img src="fenix.png" alt="" width="34" height="34"><span><b>FENIX</b> IA</span></a>
+    <p style="margin-top:12px;max-width:26em">Herramientas con inteligencia artificial para empresas, hechas en Elche.</p>
   </div>
-</section>
-
-<!-- FUNCIONALIDADES -->
-<section id="funcionalidades">
-  <div class="container">
-    <div class="section-header">
-      <span class="tag">Funcionalidades</span>
-      <h2 class="stitle">Todo lo que necesitas para medir <span class="hl">sin estorbar</span></h2>
-      <p class="sdesc">M&eacute;tricas reales de productividad sin interrumpir el flujo de trabajo de nadie.</p>
-    </div>
-    <div class="features-grid">
-      <div class="fcard reveal">
-        <div class="fcard-accent"></div>
-        <div class="fcard-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        </div>
-        <div class="fcard-title">Dashboards por equipo</div>
-        <p class="fcard-desc">Visualiza la productividad de cada equipo en tiempo real. Compara periodos, detecta tendencias y act&uacute;a antes de que sea un problema.</p>
-      </div>
-      <div class="fcard reveal reveal-d1">
-        <div class="fcard-accent"></div>
-        <div class="fcard-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <div class="fcard-title">Seguimiento de tiempos</div>
-        <p class="fcard-desc">Cu&aacute;nto tiempo se dedica a cada proyecto, tarea o cliente. Autom&aacute;tico, sin que nadie tenga que rellenar hojas de horas.</p>
-      </div>
-      <div class="fcard reveal reveal-d2">
-        <div class="fcard-accent"></div>
-        <div class="fcard-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </div>
-        <div class="fcard-title">Detecci&oacute;n de cuellos de botella</div>
-        <p class="fcard-desc">La IA identifica d&oacute;nde se atascan los procesos, qu&eacute; equipos est&aacute;n sobrecargados y qu&eacute; tareas llevan demasiado tiempo.</p>
-      </div>
-      <div class="fcard reveal">
-        <div class="fcard-accent"></div>
-        <div class="fcard-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <div class="fcard-title">Carga de trabajo equilibrada</div>
-        <p class="fcard-desc">Detecta desequilibrios entre miembros del equipo. Sabe qui&eacute;n est&aacute; al l&iacute;mite y qui&eacute;n tiene margen para asumir m&aacute;s.</p>
-      </div>
-      <div class="fcard reveal reveal-d1">
-        <div class="fcard-accent"></div>
-        <div class="fcard-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-        </div>
-        <div class="fcard-title">Alertas inteligentes</div>
-        <p class="fcard-desc">Recibe avisos cuando la productividad de un equipo cae, un proyecto se retrasa o una persona lleva demasiadas horas extra.</p>
-      </div>
-      <div class="fcard reveal reveal-d2">
-        <div class="fcard-accent"></div>
-        <div class="fcard-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        </div>
-        <div class="fcard-title">Informes autom&aacute;ticos</div>
-        <p class="fcard-desc">Reportes semanales y mensuales generados por IA. Listos para direcci&oacute;n, con insights accionables y comparativas hist&oacute;ricas.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CÓMO FUNCIONA -->
-<section id="como-funciona" class="alt-bg">
-  <div class="container center">
-    <div class="section-header">
-      <span class="tag">As&iacute; de sencillo</span>
-      <h2 class="stitle">C&oacute;mo <span class="hl">funciona</span></h2>
-      <p class="sdesc">De tus herramientas de trabajo a un dashboard de productividad, sin fricci&oacute;n.</p>
-    </div>
-    <div class="steps-grid">
-      <div class="step-card reveal">
-        <div class="step-num">01</div>
-        <h4>Conecta tus herramientas</h4>
-        <p>Integra las herramientas que ya usa tu equipo: JIRA, GitHub, Slack, Google Workspace, calendarios...</p>
-      </div>
-      <div class="step-card reveal reveal-d1">
-        <div class="step-num">02</div>
-        <h4>Recogida autom&aacute;tica</h4>
-        <p>Guardian extrae m&eacute;tricas de actividad sin que nadie tenga que hacer nada. Cero fricci&oacute;n, cero formularios.</p>
-      </div>
-      <div class="step-card reveal reveal-d2">
-        <div class="step-num">03</div>
-        <h4>An&aacute;lisis con IA</h4>
-        <p>La IA procesa los datos, detecta patrones, identifica cuellos de botella y genera insights accionables.</p>
-      </div>
-      <div class="step-card reveal reveal-d3">
-        <div class="step-num">04</div>
-        <h4>Decide con datos</h4>
-        <p>Dashboards claros, alertas a tiempo y reportes autom&aacute;ticos para que tomes decisiones basadas en evidencia.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CASOS DE USO -->
-<section id="casos-de-uso">
-  <div class="container">
-    <div class="section-header">
-      <span class="tag">Para tu empresa</span>
-      <h2 class="stitle">&iquest;D&oacute;nde te <span class="hl">ayuda</span>?</h2>
-      <p class="sdesc">Tres problemas reales que Guardian resuelve cada d&iacute;a.</p>
-    </div>
-    <div class="use-grid">
-      <div class="use-card reveal">
-        <div class="use-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <h4>Equipos que no rinden igual</h4>
-        <p>Sabes que hay diferencia de rendimiento entre equipos pero no tienes datos para demostrarlo. Guardian te da las m&eacute;tricas para comparar y actuar.</p>
-      </div>
-      <div class="use-card reveal reveal-d1">
-        <div class="use-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
-        <h4>Proyectos que se retrasan</h4>
-        <p>Los plazos se incumplen pero nadie sabe por qu&eacute;. Guardian identifica d&oacute;nde se pierde el tiempo y qu&eacute; tareas bloquean el avance.</p>
-      </div>
-      <div class="use-card reveal reveal-d2">
-        <div class="use-icon">
-          <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
-        </div>
-        <h4>Gente quemada sin saberlo</h4>
-        <p>Algunos empleados acumulan horas extra sin que nadie lo detecte. Guardian alerta antes de que el burnout se convierta en baja.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- POR QUÉ GUARDIAN -->
-<section class="alt-bg">
-  <div class="container center">
-    <div class="section-header">
-      <span class="tag">Por qu&eacute; Guardian</span>
-      <h2 class="stitle">Productividad sin <span class="hl">vigilancia</span></h2>
-      <p class="sdesc">Las herramientas de monitorizaci&oacute;n tradicionales esp&iacute;an. Guardian mide.</p>
-    </div>
-    <div class="compare-table">
-      <table>
-        <thead>
-          <tr>
-            <th></th>
-            <th class="comp-them">Hubstaff / Insightful</th>
-            <th class="comp-us">Fenix Guardian</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="comp-feature">Capturas de pantalla</td>
-            <td class="comp-them">&#10003; Cada X minutos</td>
-            <td class="comp-us">&#10007; Nunca</td>
-          </tr>
-          <tr>
-            <td class="comp-feature">Registro de teclas / clics</td>
-            <td class="comp-them">&#10003; Keystroke logging</td>
-            <td class="comp-us">&#10007; Nunca</td>
-          </tr>
-          <tr>
-            <td class="comp-feature">Tracking de apps / webs</td>
-            <td class="comp-them">&#10003; Vigila cada app</td>
-            <td class="comp-us">&#10007; Solo m&eacute;tricas agregadas</td>
-          </tr>
-          <tr>
-            <td class="comp-feature">Enfoque</td>
-            <td class="comp-them">Vigilar al individuo</td>
-            <td class="comp-us">Medir al equipo</td>
-          </tr>
-          <tr>
-            <td class="comp-feature">Instalar software en el PC</td>
-            <td class="comp-them">&#10003; Agente obligatorio</td>
-            <td class="comp-us">&#10007; Se conecta a tus herramientas</td>
-          </tr>
-          <tr>
-            <td class="comp-feature">IA para detectar problemas</td>
-            <td class="comp-them">&#10007; Solo datos brutos</td>
-            <td class="comp-us">&#10003; Insights y alertas autom&aacute;ticas</td>
-          </tr>
-          <tr>
-            <td class="comp-feature">Confianza del equipo</td>
-            <td class="comp-them">Genera desconfianza</td>
-            <td class="comp-us">Cultura de transparencia</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p style="color:var(--text3);font-size:.88rem;margin-top:2rem;max-width:560px;margin-left:auto;margin-right:auto">Guardian mide resultados, no actividad. Tu equipo trabaja tranquilo y t&uacute; tienes los datos que necesitas para tomar decisiones.</p>
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="cta-section" id="contacto">
-  <div class="container center">
-    <div class="section-header">
-      <span class="tag">Contacto</span>
-      <h2 class="stitle">Empieza a medir lo que <span class="hl">importa</span></h2>
-      <p class="sdesc">Demo gratuita de 30 min con datos de tu equipo. Sin compromiso.</p>
-    </div>
-    <form class="cta-form" id="contactForm" onsubmit="submitLead(event)">
-      <input type="text" name="name" placeholder="Tu nombre" required>
-      <input type="email" name="email" placeholder="Email corporativo" required>
-      <input type="text" name="company" placeholder="Empresa y n&uacute;mero de empleados">
-      <select name="need">
-        <option value="">&iquest;Qu&eacute; necesitas?</option>
-        <option>Medir productividad por equipo</option>
-        <option>Detectar cuellos de botella</option>
-        <option>Equilibrar carga de trabajo</option>
-        <option>Demo general</option>
-      </select>
-      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-      <button type="submit" class="btn btn-primary cta-submit">Solicitar Demo Gratuita &rarr;</button>
-      <p class="cta-hint">Sin compromiso. Te contactamos en menos de 24h</p>
-    </form>
-    <div class="success-msg" id="successMsg">
-      <div class="check">&#10003; Recibido</div>
-      <p>Te contactaremos en menos de 24 horas para agendar tu demo</p>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <div class="ft-inner">
-        <div>
-            <div class="ft-brand-name">FENIX <span>IA</span> SOLUTIONS</div>
-            <p class="ft-brand-desc">Inteligencia artificial que trabaja para tu empresa.</p>
-        </div>
-        <div class="ft-col">
-            <h4>Productos</h4>
-            <a href="https://360.fenixia.tech" target="_blank" rel="noopener">Fenix 360</a>
-            <a href="https://hr.fenixia.tech" target="_blank" rel="noopener">Fenix HR</a>
-            <a href="https://prospector.fenixia.tech" target="_blank" rel="noopener">Fenix Prospector</a>
-            <a href="#">Fenix Guardian</a>
-            <a href="https://portfolio.fenixia.tech" target="_blank" rel="noopener">Fenix Portfolio</a>
-            <a href="https://advisor.fenixia.tech" target="_blank" rel="noopener">Fenix Advisor</a>
-        </div>
-        <div class="ft-col">
-            <h4>Legal</h4>
-            <a href="https://fenixia.tech/legal" target="_blank" rel="noopener">Aviso legal</a>
-            <a href="https://fenixia.tech/privacidad" target="_blank" rel="noopener">Privacidad</a>
-            <a href="https://fenixia.tech/cookies" target="_blank" rel="noopener">Cookies</a>
-            <a href="https://fenixia.tech/terminos" target="_blank" rel="noopener">T&eacute;rminos</a>
-        </div>
-        <div class="ft-col">
-            <h4>Contacto</h4>
-            <a href="mailto:contacto@fenixia.tech">contacto@fenixia.tech</a>
-            <span style="display:block;color:var(--text3);font-size:.82rem;padding:.25rem 0">C/ La Paz 83</span>
-            <span style="display:block;color:var(--text3);font-size:.82rem;padding:.25rem 0">03320 Elx (Alicante)</span>
-        </div>
-    </div>
-    <div class="ft-bottom">
-        <span class="ft-copy">&copy; 2026 FENIXIA SOLUTIONS S.L. &middot; Todos los derechos reservados &middot; CIF B22739668</span>
-        <a href="https://www.linkedin.com/company/fenix-ia-solutions" class="ft-linkedin" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        </a>
-    </div>
-</footer>
-
+  <div><h4>Productos</h4><ul><li><a href="https://fenixia.tech/one/">Fenix ONE</a></li><li><a href="https://360.fenixia.tech/">Fenix 360</a></li><li><a href="https://prospector.fenixia.tech/">Fenix Prospector</a></li><li><a href="https://fenixia.tech/crm/">Fenix CRM</a></li><li><a href="https://fenixia.tech/board/">Fenix Board</a></li><li><a href="https://fenixia.tech/desk/">Fenix Desk</a></li><li><a href="https://advisor.fenixia.tech/">Fenix Advisor</a></li><li><a href="https://portfolio.fenixia.tech/">Fenix Portfolio</a></li><li><a href="https://hr.fenixia.tech/">Fenix HR</a></li></ul></div>
+  <div><h4>Legal</h4><ul>
+    <li><a href="https://fenixia.tech/aviso-legal/">Aviso legal</a></li>
+    <li><a href="https://fenixia.tech/privacidad/">Privacidad</a></li>
+    <li><a href="https://fenixia.tech/cookies/">Cookies</a></li>
+    <li><a href="https://fenixia.tech/terminos/">Términos</a></li>
+  </ul></div>
+  <div><h4>Contacto</h4><ul>
+    <li><a href="mailto:contacto@fenixia.tech">contacto@fenixia.tech</a></li>
+    <li><a href="tel:+34966101029">966 10 10 29</a></li>
+    <li>C/ La Paz 83, 03320 Elx (Alicante)</li>
+    <li><a href="https://www.linkedin.com/company/fenix-ia-solutions" target="_blank" rel="noopener">LinkedIn</a></li>
+  </ul></div>
+  <p class="legal">© 2026 FENIXIA SOLUTIONS S.L. CIF B22739668.</p>
+</div></footer>
 <script>
-// Navbar scroll
-const nav=document.getElementById('navbar');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>50));
-
-// Reveal on scroll
-const revealObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target)}})
-},{threshold:.1,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
-
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
-  e.preventDefault();
-  const t=document.querySelector(a.getAttribute('href'));
-  if(t)t.scrollIntoView({behavior:'smooth',block:'start'})
-}));
-
-// Mobile menu
-function toggleMenu(){
-  document.querySelector('.mobile-menu').classList.toggle('open');
-  document.querySelector('.mobile-overlay').classList.toggle('open');
-  document.body.style.overflow=document.querySelector('.mobile-menu').classList.contains('open')?'hidden':'';
-}
-
-// Theme toggle
-function toggleTheme(){
-  const isLight=document.documentElement.classList.toggle('light');
-  document.querySelector('.icon-sun').style.display=isLight?'none':'block';
-  document.querySelector('.icon-moon').style.display=isLight?'block':'none';
-  localStorage.setItem('fenix-theme',isLight?'light':'dark');
-}
-(function(){
-  const saved=localStorage.getItem('fenix-theme');
-  if(saved==='light'){
-    document.documentElement.classList.add('light');
-    document.addEventListener('DOMContentLoaded',function(){
-      var sun=document.querySelector('.icon-sun');
-      var moon=document.querySelector('.icon-moon');
-      if(sun)sun.style.display='none';
-      if(moon)moon.style.display='block';
-    });
-  }
-})();
-
-// Lead submit al CRM Fenixia (proyecto Fenix Guard). El proyecto se resuelve por
-// el token; el lead entra en la etapa inicial del embudo con origen "Formulario landing".
-function submitLead(e){
-  e.preventDefault();
-  var f=e.target;var btn=f.querySelector('button[type="submit"]');
-  // Honeypot: si el campo oculto viene relleno es un bot — no enviamos.
-  var hp=f.querySelector('[name="website"]');
-  if(hp&&hp.value){return;}
-  var original=btn.textContent;
-  btn.disabled=true;btn.textContent='Enviando...';
-  var need=f.need&&f.need.value?f.need.value:'';
-  fetch('https://crm.fenixia.tech/api/public/leads',{
-    method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},
-    body:JSON.stringify({
-      token:'Dv3n2IUtPjdaMCaUPxkikfIOg358JTUnAlHUimRZcvo9j2JR',
-      nombre:f.name.value,
-      email:f.email.value,
-      empresa:f.company.value,
-      mensaje:need?('Interés: '+need):null,
-      origen:'guardian.fenixia.tech'
-    })
-  }).then(function(res){
-    if(!res.ok){throw new Error('HTTP '+res.status);}
-    f.style.display='none';document.getElementById('successMsg').style.display='block';
-  }).catch(function(){
-    btn.disabled=false;btn.textContent=original;
-    alert('No se pudo enviar. Inténtalo de nuevo o escribe a hola@fenixia.tech.');
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('con-borde', scrollY > 8), { passive: true });
+  
+  
+  const fc = document.getElementById('form-contacto');
+  fc.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    if (fc.website.value) return;
+    const err = document.getElementById('form-error');
+    const v = (n) => (fc[n] ? fc[n].value.trim() : '');
+    const d = { nombre: v('nombre'), email: v('email'), empresa: v('empresa'), telefono: v('telefono'), interes: v('interes'), mensaje: v('mensaje') };
+    if (!d.nombre || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email) || !fc.privacidad.checked) {
+      err.textContent = 'Indica tu nombre, un email válido y acepta la política de privacidad.'; err.hidden = false; return;
+    }
+    const b = fc.querySelector('button[type=submit]'); const t = b.textContent;
+    b.disabled = true; b.textContent = 'Enviando…'; err.hidden = true;
+    try {
+      const r = await fetch("https://crm.fenixia.tech/api/public/leads", { method: 'POST', headers: { 'Content-Type': 'application/json', Accept: 'application/json' }, body: JSON.stringify({token: "Dv3n2IUtPjdaMCaUPxkikfIOg358JTUnAlHUimRZcvo9j2JR", nombre: d.nombre, email: d.email, empresa: d.empresa, mensaje: ([d.interes && ('Interés: ' + d.interes), d.telefono && ('Teléfono: ' + d.telefono), d.mensaje].filter(Boolean).join('\n')) || null, origen: location.hostname || "guardian.fenixia.tech"}) });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      fc.hidden = true; document.getElementById('form-ok').hidden = false;
+      if (window.umami) window.umami.track('lead_enviado', { interes: d.interes || '' });
+    } catch (e) {
+      b.disabled = false; b.textContent = t;
+      err.innerHTML = 'No se ha podido enviar. Escríbenos a <a href="mailto:contacto@fenixia.tech">contacto@fenixia.tech</a> o llama al 966 10 10 29.'; err.hidden = false;
+    }
   });
-}
 </script>
+
 </body>
 </html>
