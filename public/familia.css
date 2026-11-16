@@ -223,3 +223,16 @@ p { margin: 0; }
 .clip { margin: 0; }
 .clip video { display: block; width: 100%; height: auto; aspect-ratio: 1280 / 800; border-radius: var(--radio, 12px); background: var(--hoja); box-shadow: var(--sombra, 0 1px 0 var(--linea), 0 24px 48px -28px rgba(18,26,51,.28)); }
 .clip figcaption { margin-top: 12px; font-size: var(--t-xs); color: var(--tinta-2); }
+
+/* Precio con plan gratis */
+.precio-unico.con-gratis { grid-template-columns: minmax(0, .9fr) minmax(0, .9fr) minmax(0, 1.3fr); }
+.precio-unico .pu-gratis { padding: 36px; display: flex; flex-direction: column; gap: 10px; border-right: 1px solid var(--linea); }
+.precio-unico .pu-gratis b { font-family: var(--display, var(--sans)); font-size: clamp(3rem, 6vw, 4.6rem); line-height: .95; letter-spacing: -.04em; font-weight: 700; color: var(--tinta); }
+.precio-unico .pu-gratis small, .precio-unico .pu-cifra .pu-nombre, .precio-unico .pu-gratis .pu-nombre { font-size: var(--t-m); color: var(--tinta-2); }
+.precio-unico .pu-nombre { font-weight: 600; color: var(--tinta) !important; font-size: var(--t-s) !important; }
+.precio-unico .pu-gratis ul { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 6px; font-size: var(--t-s); }
+.precio-unico .pu-gratis .boton { margin-top: auto; align-self: flex-start; }
+.precio-unico.con-gratis .pu-incluye ul { columns: 1; }
+@media (max-width: 900px) { .precio-unico.con-gratis { grid-template-columns: 1fr; } .precio-unico .pu-gratis { border-right: 0; border-bottom: 1px solid var(--linea); padding: 26px; } }
+.precios-desplazable { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+@media (max-width: 760px) { .precios-desplazable .precios-tabla { min-width: 560px; } }
